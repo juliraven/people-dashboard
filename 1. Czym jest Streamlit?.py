@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
+
 st.sidebar.image("logo.png", use_container_width=True)
 
 st.title("Czym jest Streamlit?")
