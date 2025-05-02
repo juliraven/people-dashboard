@@ -3,27 +3,35 @@ from streamlit_extras.app_logo import add_logo
 
 st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
-st.sidebar.image("logo.png", use_container_width=True)
-
 add_logo('logo.png', height=350)
 
 st.sidebar.markdown(
     """
     <style>
         [data-testid="stSidebar"] {
-            padding-top: 0px;
             padding: 10px;
             font-family: sans-serif;
             font-size: 18px;
         }
 
         [data-testid="stSidebarHeader"] {
-            height: 30px;
+            height: 60px; /* Zmniejszono wysokość headera */
             padding: 5px 10px; 
             margin: 0; 
             display: flex; 
             align-items: center;
-            justify-content: center; 
+            justify-content: center;
+            border-radius: 15px; /* Zaokrąglenie rogów */
+            background-color: #f0f0f0; /* Kolor tła */
+        }
+
+        /* Stylizacja dla logo w sidebarze */
+        .sidebar-logo {
+            width: 50px; /* Zmniejszenie rozmiaru logo */
+            height: 50px; /* Zmniejszenie rozmiaru logo */
+            border-radius: 50%; /* Zaokrąglone logo */
+            object-fit: cover; /* Dopasowanie obrazu do rozmiaru */
+            margin-right: 10px; /* Odstęp między logo a tekstem */
         }
     </style>
     """,
