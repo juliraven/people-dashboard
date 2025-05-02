@@ -19,8 +19,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 
-# Wyświetlenie logo w sidebarze
-st.sidebar.image('logo.png', use_column_width=False, width=50, caption="Logo", class_="sidebar-logo")
+st.sidebar.image('logo.png', use_column_width=False, width=50, caption="Logo")
 
 st.title("Czym jest Streamlit?")
 
