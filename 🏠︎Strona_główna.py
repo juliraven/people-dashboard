@@ -19,7 +19,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 
-st.sidebar.image('logo.png', use_column_width=False, width=50, caption="Logo")
+st.sidebar.image('logo.png', use_container_width=False, width=50)
 
 st.title("Czym jest Streamlit?")
 
