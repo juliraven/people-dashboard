@@ -32,7 +32,7 @@ st.title("Pierwsze kroki")
 st.markdown(
     '''
     <p>
-    Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy w najpierw ją zainstalować za pomocą polecenia:
+    Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy najpierw ją zainstalować za pomocą polecenia:
     </p>
     ''',
     unsafe_allow_html=True
