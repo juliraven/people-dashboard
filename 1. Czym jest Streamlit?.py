@@ -57,3 +57,20 @@ streamlit hello
 
 st.code(code, language='python')
 
+st.markdown(
+    '''
+    <p>
+    Aplikację można utworzyć w dowolnym edytorze tekstowym. Należy ją zapisać następnie do pliku z rozszerzeniem <code>.py</code>, np. <code>streamlit_app.py</code>. W pliku tym wpisujemy przykładowy kod:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+import streamli as st
+
+st.write("Hello world")
+'''
+
+st.code(code, language='python')
+
