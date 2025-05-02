@@ -110,3 +110,24 @@ st.markdown(
     ''',
     unsafe_allow_html=True
 )
+
+
+st.markdown(
+    '''
+    <p>
+    Przykładowa struktura repoozytorium może wyglądać następująco:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+app/
+├── home.py
+└── pages/
+    └── page1.py
+    └── page2.py
+├── requirements.txt
+'''
+
+st.code(code, language='python')
