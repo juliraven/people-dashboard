@@ -36,4 +36,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+import streamlit as st
+
+code = '''
+pip install streamlit
+'''
+
+st.code(code, language='python')
+
+
 
