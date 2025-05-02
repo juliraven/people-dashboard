@@ -16,5 +16,5 @@ st.markdown(
 )
 
 
-st.sidebar.image("logo.png", use_column_width=True)
+st.sidebar.image("logo.png", use_container_width=True)
 
