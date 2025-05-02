@@ -74,3 +74,26 @@ st.write("Hello world")
 
 st.code(code, language='python')
 
+st.markdown(
+    '''
+    <p>
+    Następnie w terminalu wiersza poleceń wpisujemy:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+streamlit run streamlit_app.py
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Powinno to uruchomić przeglądarkę, która wyświetli aplikację.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
