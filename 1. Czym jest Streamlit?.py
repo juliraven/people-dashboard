@@ -15,10 +15,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-from streamlit_extras.app_logo import add_logo
 
-st.set_page_config(page_title="Analiza sentymentu", page_icon="🎥", layout="wide")
-
-add_logo('logo.svg', height=350)
-
+st.sidebar.image("logo.png", use_column_width=True)
 
