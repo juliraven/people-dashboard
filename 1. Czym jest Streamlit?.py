@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.sidebar.image("logo.png", use_container_width=True)
+
 st.title("Czym jest Streamlit?")
 
 st.markdown(
@@ -23,5 +25,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.image("logo.png", use_container_width=True)
+st.title("Pierwsze kroki")
+
+st.markdown(
+    '''
+    <p>
+    Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy w najpierw ją zainstalować za pomocą polecenia:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
 
