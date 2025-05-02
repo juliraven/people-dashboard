@@ -4,24 +4,30 @@ st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
 st.sidebar.image("logo.png", use_container_width=True)
 
-st.markdown("""
+add_logo('logo.png', height=350)
+
+st.sidebar.markdown(
+    """
     <style>
-        .sidebar-logo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
+        [data-testid="stSidebar"] {
+            padding-top: 0px;
             padding: 10px;
-            background-color: #0e1117; /* Kolor tła sidebaru */
-            z-index: 100;
+            font-family: sans-serif;
+            font-size: 18px;
         }
 
-        [data-testid="stSidebar"] > div:first-child {
-            margin-top: 100px;
+        [data-testid="stSidebarHeader"] {
+            height: 30px;
+            padding: 5px 10px; 
+            margin: 0; 
+            display: flex; 
+            align-items: center;
+            justify-content: center; 
         }
     </style>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True,
+)
 
 st.title("Czym jest Streamlit?")
 
