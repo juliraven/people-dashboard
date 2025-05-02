@@ -6,18 +6,37 @@ st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 st.sidebar.markdown(
     """
     <style>
-        /* Stylizacja dla logo w sidebarze */
+        /* Stylizacja logo w sidebarze */
         .sidebar-logo {
             width: 50px; /* Zmniejszenie rozmiaru logo */
             height: 50px; /* Zmniejszenie rozmiaru logo */
             border-radius: 50%; /* Zaokrąglone logo */
             object-fit: cover; /* Dopasowanie obrazu do rozmiaru */
-            margin-right: 10px; /* Odstęp między logo a tekstem */
+            margin-bottom: 20px; /* Odstęp między logo a tekstem */
+            display: block; /* Sprawia, że logo jest blokowym elementem */
+            margin-left: auto;
+            margin-right: auto; /* Centrowanie logo */
+        }
+
+        /* Dodatkowa stylizacja sidebaru */
+        [data-testid="stSidebar"] {
+            padding: 10px;
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+
+        [data-testid="stSidebarHeader"] {
+            padding: 5px 10px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
 
 st.sidebar.image('logo.png', use_container_width=False)
 
