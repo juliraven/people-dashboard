@@ -131,3 +131,24 @@ app/
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    W pliku <code>requirements.txt</code> umieszczamy używane w apliakcji biblioteki. Może on wyglądać w następujący sposób:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+streamlit
+pandas
+numpy
+plotly
+matplotlib
+seaborn
+scikit-learn
+'''
+
+st.code(code, language='python')
