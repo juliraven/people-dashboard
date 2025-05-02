@@ -4,6 +4,26 @@ st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
 st.sidebar.image("logo.png", use_container_width=True)
 
+st.markdown("""
+    <style>
+        .sidebar-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px;
+            background-color: #0e1117; /* Kolor tła sidebaru */
+            z-index: 100;
+        }
+
+        /* Przesunięcie całej zawartości sidebaru w dół, żeby logo nie nakładało się */
+        [data-testid="stSidebar"] > div:first-child {
+            margin-top: 100px;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("Czym jest Streamlit?")
 
 st.markdown(
