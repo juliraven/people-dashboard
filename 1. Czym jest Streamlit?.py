@@ -19,7 +19,7 @@ st.markdown(
 st.markdown(
     '''
     <p>
-    Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://docs.streamlit.io/" style="color:lightpurple; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
+    Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://docs.streamlit.io/" style="color:lightblue; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
     </p>
     ''',
     unsafe_allow_html=True
