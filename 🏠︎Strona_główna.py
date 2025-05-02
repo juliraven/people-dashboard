@@ -4,13 +4,6 @@ st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
 st.sidebar.image("logo.png", use_container_width=True)
 
-st.sidebar.markdown("""
-    <div class="sidebar-logo">
-        <img src="logo.png" style="width: 100%;">
-    </div>
-""", unsafe_allow_html=True)
-
-# Styl nadpisujący sidebar i dodający logo na samej górze
 st.markdown("""
     <style>
         .sidebar-logo {
@@ -24,7 +17,6 @@ st.markdown("""
             z-index: 100;
         }
 
-        /* Przesunięcie całej zawartości sidebaru w dół, żeby logo nie nakładało się */
         [data-testid="stSidebar"] > div:first-child {
             margin-top: 100px;
         }
