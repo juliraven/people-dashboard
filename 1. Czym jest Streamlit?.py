@@ -21,38 +21,4 @@ st.set_page_config(page_title="Analiza sentymentu", page_icon="🎥", layout="wi
 
 add_logo('logo.svg', height=350)
 
-st.sidebar.markdown(
-    """
-    <style>
-        [data-testid="stSidebar"] {
-            padding-top: 0px;
-            padding: 10px;
-            font-family: sans-serif;
-            font-size: 18px;
-        }
 
-        [data-testid="stSidebarHeader"] {
-            height: 30px;
-            padding: 5px 10px; 
-            margin: 0; 
-            display: flex; 
-            align-items: center;
-            justify-content: center; 
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-st.markdown(
-    """
-    <style>
-    [data-testid="stSidebar"] {
-        width: 350px;  /* Ustaw stałą szerokość */
-        min-width: 350px;  /* Minimalna szerokość */
-        max-width: 350px;  /* Maksymalna szerokość */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
