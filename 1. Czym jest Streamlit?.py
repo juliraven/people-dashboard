@@ -36,13 +36,24 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-import streamlit as st
-
 code = '''
 pip install streamlit
 '''
 
 st.code(code, language='python')
 
+st.markdown(
+    '''
+    <p>
+    W celu uruchomienia przykładowej aplikacji należy wywołać polecenie:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
 
+code = '''
+streamlit hello
+'''
+
+st.code(code, language='python')
 
