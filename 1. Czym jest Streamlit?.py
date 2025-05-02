@@ -67,7 +67,7 @@ st.markdown(
 )
 
 code = '''
-import streamli as st
+import streamlit as st
 
 st.write("Hello world")
 '''
