@@ -86,6 +86,8 @@ with col2:
     fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2), 
                        mode='lines',  
                        fill='none')
+
+    min_value = min_rating
     min_line = np.full_like(avg_rating['release_year'].values, min_value)
     
     # Dodanie warstwy wypełnienia do wykresu
