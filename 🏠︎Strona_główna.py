@@ -189,7 +189,7 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    W pliku <code>requirements.txt</code> umieszczamy używane w apliakcji biblioteki. Może on wyglądać w następujący sposób:
+    W pliku <code>requirements.txt</code> umieszczamy używane w aplikacji biblioteki. Może on wyglądać w następujący sposób:
     </p>
     ''',
     unsafe_allow_html=True
