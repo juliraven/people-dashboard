@@ -33,7 +33,7 @@ st.markdown(
     """
     <style>
         [data-testid="stSidebar"] {
-            width: 200px; 
+            width: 150px; 
         }
 
         .main {
