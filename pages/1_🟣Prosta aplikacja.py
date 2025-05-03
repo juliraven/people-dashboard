@@ -24,12 +24,10 @@ st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import plotly.express as px
 
 st.title("🎬 Analiza Filmów Grozy")
 
-# Wczytywanie danych z pliku lokalnego
 @st.cache_data
 def load_data():
     df = pd.read_csv("horror_movies.csv")
@@ -41,7 +39,7 @@ def load_data():
 
 df = load_data()
 
-# Filtry boczne
+# Sidebar filters
 st.sidebar.header("🎛️ Filtry")
 year_min, year_max = int(df["release_year"].min()), int(df["release_year"].max())
 years = st.sidebar.slider("Zakres lat", year_min, year_max, (2000, 2020))
@@ -55,30 +53,31 @@ filtered_df = df[
 if lang != "Wszystkie":
     filtered_df = filtered_df[filtered_df["original_language"] == lang]
 
-# Statystyki
+# Statystyki z wykresami
 st.subheader("📊 Statystyki")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    movies_per_year = filtered_df.groupby("release_year")["title"].count()
-    st.markdown("**Liczba filmów rocznie**")
-    fig, ax = plt.subplots()
-    sns.barplot(x=movies_per_year.index, y=movies_per_year.values, ax=ax)
-    ax.set_xlabel("Rok")
-    ax.set_ylabel("Liczba filmów")
-    plt.xticks(rotation=45)
-    st.pyplot(fig)
+    movies_per_year = (
+        filtered_df.groupby("release_year")["title"]
+        .count()
+        .reset_index(name="liczba_filmów")
+    )
+    fig1 = px.bar(movies_per_year, x="release_year", y="liczba_filmów",
+                  title="Liczba filmów rocznie", labels={"release_year": "Rok"})
+    st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
-    avg_rating_per_year = filtered_df.groupby("release_year")["vote_average"].mean()
-    st.markdown("**Średnia ocena wg roku**")
-    fig, ax = plt.subplots()
-    sns.lineplot(x=avg_rating_per_year.index, y=avg_rating_per_year.values, ax=ax, marker="o")
-    ax.set_xlabel("Rok")
-    ax.set_ylabel("Średnia ocena")
-    plt.xticks(rotation=45)
-    st.pyplot(fig)
+    avg_rating = (
+        filtered_df.groupby("release_year")["vote_average"]
+        .mean()
+        .reset_index(name="średnia_ocena")
+    )
+    fig2 = px.line(avg_rating, x="release_year", y="średnia_ocena",
+                   markers=True, title="Średnia ocena wg roku",
+                   labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
+    st.plotly_chart(fig2, use_container_width=True)
 
 # Top filmy
 st.subheader("⭐ Top filmy wg oceny")
@@ -96,3 +95,4 @@ for _, row in top_movies.iterrows():
         st.markdown(f"**{row['title']}** ({int(row['release_year'])}) — {row['vote_average']}⭐")
         if pd.notna(row.get("overview", "")):
             st.caption(row["overview"])
+
