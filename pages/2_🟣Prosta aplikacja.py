@@ -74,7 +74,7 @@ top_n = st.slider("Ile filmów pokazać:", 5, 50, 10)
 top_movies = filtered_df.sort_values(by="vote_average", ascending=False).head(top_n)
 
 for _, row in top_movies.iterrows():
-    cols = st.columns([2, 2])
+    cols = st.columns([2, 2, 2])
     with cols[0]:
         st.image(row["poster_url"], width=100)
     with cols[1]:
