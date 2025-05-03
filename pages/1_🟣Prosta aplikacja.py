@@ -22,14 +22,12 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-st.title("Prosta aplikacja")
 
 import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(layout="wide")
 st.title("📊 UX Performance Dashboard (Last 7 Days)")
 
 # Symulacja danych
