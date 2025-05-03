@@ -87,7 +87,7 @@ with col2:
                        mode='lines',  
                        fill='none')
 
-    avg_rating_filtered = avg_rating[avg_rating['średnia_ocena'] <= min_rating]
+    avg_rating_filtered = avg_rating[avg_rating['średnia_ocena'] > min_rating]
     min_line = np.full_like(avg_rating_filtered['release_year'].values, min_rating)
     fig2.add_trace(px.area(
         avg_rating_filtered, x="release_year", y=min_line, 
