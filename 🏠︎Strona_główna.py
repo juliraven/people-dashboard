@@ -5,6 +5,34 @@ st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
 st.sidebar.image('logo.png', use_container_width=False)
 
+def add_logo():
+    st.markdown(
+        """
+        <style>
+            [data-testid="stSidebarNav"] {
+                background-image: url('logo.png'); /* Zmień URL na swoje logo */
+                background-repeat: no-repeat;
+                padding-top: 100px; /* Dostosuj przestrzeń, aby logo było widoczne */
+                background-position: center top; /* Centruje tło */
+                background-size: 80px 80px; /* Ustawia rozmiar logo */
+            }
+            [data-testid="stSidebarNav"]::before {
+                content: "My Company Name"; /* Nazwa Twojej firmy */
+                font-size: 24px; /* Zmień rozmiar czcionki */
+                font-weight: bold;
+                color: #333; /* Kolor tekstu */
+                position: relative;
+                top: -40px; /* Przesunięcie tekstu w górę */
+                margin-left: 20px; /* Odstęp od lewej strony */
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Wywołanie funkcji, aby dodać logo i nazwę firmy
+add_logo()
+
 st.title("Czym jest Streamlit?")
 
 st.markdown(
