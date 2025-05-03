@@ -79,21 +79,13 @@ with col2:
         .mean()
         .reset_index(name="średnia_ocena")
     )
-    fig2 = px.line(avg_rating, x="release_year", y="średnia_ocena",
+    fig2 = px.area(avg_rating, x="release_year", y="średnia_ocena",
                    markers=True, title="Średnia ocena wg roku",
                    labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
     fig2.update_layout(title_x=0.4)
     fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2), 
                        mode='lines',  
                        fill='none')
-
-    avg_rating_filtered = avg_rating[avg_rating['średnia_ocena'] > min_rating]
-    min_line = np.full_like(avg_rating_filtered['release_year'].values, min_rating)
-    fig2.add_trace(px.area(
-        avg_rating_filtered, x="release_year", y=min_line, 
-        line_shape="linear").data[0]) 
-
-    fig2.update_traces(fillcolor="rgba(180, 68, 251, 0.2)", selector=dict(type='scatter'))
     st.plotly_chart(fig2, use_container_width=True)
 
 st.subheader("⭐ Top filmy wg oceny")
