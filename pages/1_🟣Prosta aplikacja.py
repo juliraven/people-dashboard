@@ -28,12 +28,15 @@ import plotly.express as px
 
 st.title("🎬 Analiza Filmów Grozy")
 
-@st.cache_data
 def load_data():
     df = pd.read_csv("horror_movies.csv")
     df.columns = [c.lower().strip() for c in df.columns]
     df["release_year"] = pd.to_datetime(df["release_date"], errors="coerce").dt.year
-    df["poster_url"] = "https://image.tmdb.org/t/p/w200" + df["poster_path"].fillna("")
+
+    # Tylko filmy z plakatem
+    df = df[df["poster_path"].notna() & (df["poster_path"].str.strip() != "")]
+
+    df["poster_url"] = "https://image.tmdb.org/t/p/w200" + df["poster_path"]
     df = df.dropna(subset=["title", "release_year", "vote_average"])
     return df
 
