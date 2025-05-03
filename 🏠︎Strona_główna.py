@@ -116,7 +116,7 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    Aplikację można utworzyć w dowolnym edytorze tekstowym. Należy ją zapisać następnie do pliku z rozszerzeniem <code>.py</code>, np. <code>streamlit_app.py</code>. W pliku tym wpisujemy przykładowy kod:
+    Aplikację można utworzyć w dowolnym edytorze tekstowym. Należy ją zapisać następnie do pliku z rozszerzeniem <code>.py</code>, np. <code>app.py</code>. W pliku tym wpisujemy przykładowy kod:
     </p>
     ''',
     unsafe_allow_html=True
@@ -140,7 +140,7 @@ st.markdown(
 )
 
 code = '''
-streamlit run streamlit_app.py
+streamlit run app.py
 '''
 
 st.code(code, language='python')
