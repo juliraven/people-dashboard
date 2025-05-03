@@ -20,7 +20,8 @@ body {
 </style>
 """
 
-st.markdown(page_bg_img_sidebar, unsafe_allow_html=True, layout="wide")
+st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
+st.set_page_config(layout="wide")
 
 import streamlit as st
 import pandas as pd
