@@ -79,9 +79,9 @@ with col2:
         .mean()
         .reset_index(name="średnia_ocena")
     )
-    fig2 = px.area(avg_rating, x="release_year", y="średnia_ocena",
+    fig2 = px.line(avg_rating, x="release_year", y="średnia_ocena",
                    markers=True, title="Średnia ocena wg roku",
-                   labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"}, color="średnia_ocena")
+                   labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
     fig2.update_layout(title_x=0.4)
     fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2), 
                        mode='lines',  
