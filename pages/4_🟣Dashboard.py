@@ -22,3 +22,4 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
+st.page_link("pages/Tworzenie prostej aplikacji.py", label="➡️ Przejdź do strony", icon="🌐")
