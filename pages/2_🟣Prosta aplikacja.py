@@ -86,7 +86,6 @@ with col2:
     fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2), 
                        mode='lines',  
                        fill='none') 
-    fig2.update_traces(fill='tonexty', fillcolor="rgba(180, 68, 251, 0.2)", selector=dict(type='scatter'))
 
     min_value = avg_rating['średnia_ocena'].min()
     min_line = np.full_like(avg_rating['release_year'].values, min_value)
