@@ -276,3 +276,16 @@ st.markdown(
 )
 
 st.page_link("pages/2_🟣Prosta aplikacja.py", label="➡️ Przejdź do zakładki 🟣Prosta aplikacja")
+
+cols = st.columns([5, 2])
+with cols[0]:
+    st.markdown(
+        '''
+        <p>
+        Utworzona aplikacja znajduje się w zakładce <strong>🟣Prosta aplikacja</strong>.
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+with cols[1]:
+    st.page_link("pages/2_🟣Prosta aplikacja.py", label="➡️ Otwórz", icon="📄")
