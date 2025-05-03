@@ -27,18 +27,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-st.set_page_config(page_title="Analiza Filmów Grozy", layout="wide")
 st.title("🎬 Analiza Filmów Grozy")
 
 # Wczytywanie danych z internetu (zamień URL na własny!)
-@st.cache_data
 def load_data():
-    url = "https://raw.githubusercontent.com/nazwouzytkownika/projekt/main/horror_movies.csv"
-    df = pd.read_csv(url)
-    df.columns = [col.lower().strip().replace(" ", "_") for col in df.columns]  # snake_case
-    return df
+    return pd.read_csv("horror_movies.csv")
 
 df = load_data()
+
 
 # Czyszczenie danych
 df = df.dropna(subset=["title", "year", "rating"])
