@@ -17,7 +17,6 @@ def add_logo():
                 background-size: 80px 80px; /* Ustawia rozmiar logo */
             }
             [data-testid="stSidebarNav"]::before {
-                content: "My Company Name"; /* Nazwa Twojej firmy */
                 font-size: 24px; /* Zmień rozmiar czcionki */
                 font-weight: bold;
                 color: #333; /* Kolor tekstu */
