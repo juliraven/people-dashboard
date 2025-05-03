@@ -87,15 +87,9 @@ with col2:
                        mode='lines',  
                        fill='none')
 
-    avg_rating_filtered = avg_rating[avg_rating['średnia_ocena'] >= min_rating]
+    avg_rating_filtered = avg_rating[avg_rating['średnia_ocena'] <= min_rating]
     min_line = np.full_like(avg_rating_filtered['release_year'].values, min_rating)
-    
-    # Dodanie warstwy wypełnienia do wykresu
-    fig2.add_trace(px.area(
-        avg_rating_filtered, x="release_year", y=min_line, 
-        line_shape="linear").data[0])  # Wypełnienie od minimalnej wartości
 
-    # Dostosowanie przezroczystości wypełnienia
     fig2.update_traces(fillcolor="rgba(180, 68, 251, 0.2)", selector=dict(type='scatter'))
     st.plotly_chart(fig2, use_container_width=True)
 
