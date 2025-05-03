@@ -23,15 +23,3 @@ body {
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
 
-from pygments import highlight
-from pygments.lexers import PythonLexer
-from pygments.formatters import HtmlFormatter
-
-code = '''def hello():\n    print("Hello, world!")'''
-
-formatter = HtmlFormatter(style="monokai", full=False, noclasses=True)
-highlighted_code = highlight(code, PythonLexer(), formatter)
-
-blurred = f"<div style='filter: blur(1px);'>{highlighted_code}</div>"
-st.markdown(blurred, unsafe_allow_html=True)
-
