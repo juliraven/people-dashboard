@@ -24,70 +24,79 @@ st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
 import streamlit as st
 import pandas as pd
-import numpy as np
-import plotly.graph_objs as go
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-st.title("📊 UX Performance Dashboard")
+# Tytuł aplikacji
+st.title("🎬 Analiza Filmów Grozy")
 
-# Sidebar z kontrolkami
-st.sidebar.header("🔧 Ustawienia analizy")
-metric_option = st.sidebar.selectbox(
-    "Wybierz metrykę do analizy:",
-    ("Page Load vs Bounce Rate", "Session Length vs PVs per Session")
-)
+# Wczytanie danych
+@st.cache_data
+def load_data():
+    return pd.read_csv("horror_movies.csv")
 
-date_range = st.sidebar.slider(
-    "Zakres dni:",
-    min_value=7, max_value=60, value=30, step=1
-)
+df = load_data()
 
-# Generowanie danych
-np.random.seed(42)
-x = np.linspace(0.5, 20, date_range)
-page_load = np.exp(-x / 4) * 60000
-bounce_rate = 30 + 30 * (1 - np.exp(-x / 5))
-session_length = np.random.normal(17, 2, date_range)
-pvs_per_session = np.random.uniform(1, 5, date_range)
-time_series = pd.date_range(end=pd.Timestamp.today(), periods=date_range)
+# Wstępne czyszczenie danych
+df = df.dropna(subset=["Title", "Year", "Rating"])
+df["Year"] = df["Year"].astype(int)
 
-# Wyświetlenie wybranej metryki
-if metric_option == "Page Load vs Bounce Rate":
-    st.subheader("📉 Page Load vs Bounce Rate")
+# Panel boczny z filtrami
+st.sidebar.header("🎛️ Filtry")
+years = st.sidebar.slider("Zakres lat", int(df["Year"].min()), int(df["Year"].max()), (1990, 2020))
+min_rating = st.sidebar.slider("Minimalna ocena", 0.0, 10.0, 5.0, 0.1)
+country = st.sidebar.selectbox("Kraj produkcji", options=["Wszystkie"] + sorted(df["Country"].dropna().unique().tolist()))
 
-    fig1 = go.Figure()
-    fig1.add_trace(go.Bar(x=x, y=page_load, name='Page Load (LUX)', marker_color='rgb(55, 83, 109)', yaxis='y1'))
-    fig1.add_trace(go.Scatter(x=x, y=bounce_rate, name='Bounce Rate (%)', line=dict(color='rgb(255,105,180)', width=2), yaxis='y2'))
+filtered_df = df[
+    (df["Year"] >= years[0]) & (df["Year"] <= years[1]) &
+    (df["Rating"] >= min_rating)
+]
+if country != "Wszystkie":
+    filtered_df = filtered_df[filtered_df["Country"] == country]
 
-    fig1.update_layout(
-        xaxis=dict(title='Czas ładowania (s)'),
-        yaxis=dict(title='Page Load (LUX)', side='left'),
-        yaxis2=dict(title='Bounce Rate (%)', overlaying='y', side='right'),
-        legend=dict(x=0.01, y=0.99),
-        margin=dict(l=40, r=40, t=40, b=40),
-        height=400
-    )
-    st.plotly_chart(fig1, use_container_width=True)
+# Sekcja: Statystyki ogólne
+st.subheader("📊 Statystyki")
 
-elif metric_option == "Session Length vs PVs per Session":
-    st.subheader("📈 Session Length vs PVs per Session")
+col1, col2 = st.columns(2)
 
-    fig2 = go.Figure()
-    fig2.add_trace(go.Scatter(x=time_series, y=session_length, mode='lines', name='Session Length (min)', line=dict(color='lime')))
-    fig2.add_trace(go.Scatter(x=time_series, y=pvs_per_session, mode='lines', name='PVs per Session', line=dict(color='cyan')))
+with col1:
+    movies_per_year = filtered_df.groupby("Year")["Title"].count()
+    st.markdown("**Liczba filmów rocznie**")
+    fig, ax = plt.subplots()
+    sns.barplot(x=movies_per_year.index, y=movies_per_year.values, ax=ax)
+    ax.set_xlabel("Rok")
+    ax.set_ylabel("Liczba filmów")
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
 
-    fig2.update_layout(
-        xaxis_title='Data',
-        yaxis_title='Wartość',
-        legend=dict(x=0.01, y=0.99),
-        margin=dict(l=40, r=40, t=40, b=40),
-        height=400
-    )
-    st.plotly_chart(fig2, use_container_width=True)
+with col2:
+    avg_rating_per_year = filtered_df.groupby("Year")["Rating"].mean()
+    st.markdown("**Średnia ocena wg roku**")
+    fig, ax = plt.subplots()
+    sns.lineplot(x=avg_rating_per_year.index, y=avg_rating_per_year.values, ax=ax, marker="o")
+    ax.set_xlabel("Rok")
+    ax.set_ylabel("Średnia ocena")
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
 
-# Ogólne metryki (zawsze widoczne)
-col1, col2, col3, col4 = st.columns(4)
-col1.metric("Page Load", "0.7s")
-col2.metric("Page Views", "2.7M", delta="-5%")
-col3.metric("Bounce Rate", "40.6%", delta="+1.2%")
-col4.metric("Sessions", "479K")
+# Sekcja: Top filmy
+st.subheader("⭐ Top filmy wg oceny")
+
+top_n = st.slider("Ile filmów pokazać?", 5, 50, 10)
+top_movies = filtered_df.sort_values(by="Rating", ascending=False).head(top_n)
+
+# Wyświetlanie tabeli z plakatami i tytułami
+for i, row in top_movies.iterrows():
+    cols = st.columns([1, 4])
+    with cols[0]:
+        if pd.notna(row.get("Poster_Link", None)):
+            st.image(row["Poster_Link"], width=100)
+        else:
+            st.image("https://via.placeholder.com/100x150.png?text=Brak+plakatu", width=100)
+    with cols[1]:
+        st.markdown(f"**{row['Title']}** ({row['Year']}) — {row['Rating']}⭐")
+        if "Description" in row and pd.notna(row["Description"]):
+            st.caption(row["Description"])
+
+
 
