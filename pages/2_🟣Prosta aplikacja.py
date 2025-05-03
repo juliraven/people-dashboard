@@ -80,7 +80,10 @@ with col2:
                    markers=True, title="Średnia ocena wg roku",
                    labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
     fig2.update_layout(title_x=0.5)
-    fig2.update_traces(line_color="#b444fb")
+    fig2.update_traces(
+    line_color="#b444fb",
+    fill='tozeroy',  # <-- to dodaje "poświatę" pod wykresem
+    fillcolor='rgba(180, 68, 251, 0.2)'  # przezroczysty fiolet
     st.plotly_chart(fig2, use_container_width=True)
 
 st.subheader("⭐ Top filmy wg oceny")
