@@ -8,6 +8,9 @@ add_logo('logo.png', height=450)
 st.sidebar.markdown(
     """
     <style>
+    .logo {
+            border-radius: 15px;  # Zmieniaj wartość, aby dopasować zaokrąglenie
+        }
         [data-testid="stSidebar"] {
             padding-top: 0px;
             padding: 10px;
