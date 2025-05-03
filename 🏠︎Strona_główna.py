@@ -47,7 +47,7 @@ st.markdown(
 page_bg_img_sidebar = """
 <style>
 [data-testid="stSidebar"] {
-    background: radial-gradient(circle at 59% 55%, rgba(139, 0, 0, 1), rgba(26, 101, 60, 1), rgba(235, 0, 0, 1));
+    background: radial-gradient(circle at 59% 55%, #b444fb, #2d035e, #202125); 
     background-blend-mode: multiply;
     background-size: cover;
     overflow: hidden; /* Prevent scrolling */
@@ -56,6 +56,11 @@ page_bg_img_sidebar = """
 header[data-testid="stHeader"] {
     background-color: rgba(0, 0, 0, 0);
 }
+
+body {
+    background-color: #202125; /* Kolor tła strony */
+}
+
 </style>
 """
 
