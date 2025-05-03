@@ -20,7 +20,7 @@ body {
 </style>
 """
 
-st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
+st.markdown(page_bg_img_sidebar, unsafe_allow_html=True, layout="wide")
 
 import streamlit as st
 import pandas as pd
@@ -35,7 +35,6 @@ def load_data():
 
     # wybranie filmów, które mają plakat:
     df = df[df["poster_path"].notna() & (df["poster_path"].str.strip() != "")]
-
     df["poster_url"] = "https://image.tmdb.org/t/p/w200" + df["poster_path"]
     df = df.dropna(subset=["title", "release_year", "vote_average"])
     return df
@@ -78,6 +77,8 @@ with col2:
     fig2 = px.line(avg_rating, x="release_year", y="średnia_ocena",
                    markers=True, title="Średnia ocena wg roku",
                    labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
+    fig2.update_layout(title_x=0.5)
+    fig2.update_traces(line_color="#b444fb")
     st.plotly_chart(fig2, use_container_width=True)
 
 st.subheader("⭐ Top filmy wg oceny")
