@@ -86,6 +86,17 @@ with col2:
                        mode='lines',  
                        fill='none') 
     fig2.update_traces(fill='tonexty', fillcolor="rgba(180, 68, 251, 0.2)", selector=dict(type='scatter'))
+
+    min_value = avg_rating['średnia_ocena'].min()
+    min_line = np.full_like(avg_rating['release_year'].values, min_value)
+    
+    # Dodanie warstwy wypełnienia do wykresu
+    fig2.add_trace(px.area(
+        avg_rating, x="release_year", y=min_line, 
+        line_shape="linear").data[0])  # Wypełnienie do minimalnej wartości
+
+    # Dostosowanie przezroczystości wypełnienia
+    fig2.update_traces(fillcolor="rgba(180, 68, 251, 0.2)", selector=dict(type='scatter'))
     st.plotly_chart(fig2, use_container_width=True)
 
 st.subheader("⭐ Top filmy wg oceny")
