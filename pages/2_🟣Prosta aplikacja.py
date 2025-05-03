@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-st.header("🎬 Analiza filmów grozy")
+st.title("🎬 Analiza filmów grozy")
 
 def load_data():
     df = pd.read_csv("horror_movies.csv")
@@ -69,7 +69,7 @@ fig1.update_traces(marker_color="rgba(180, 68, 251, 0.2)",
                       marker_line_width=2)
 st.plotly_chart(fig1, use_container_width=True)
 
-st.subheader("⭐ Top filmy wg oceny")
+st.header("⭐ Top filmy wg oceny")
 top_n = st.slider("Ile filmów pokazać:", 5, 50, 10)
 top_movies = filtered_df.sort_values(by="vote_average", ascending=False).head(top_n)
 
