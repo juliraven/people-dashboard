@@ -86,8 +86,7 @@ for _, row in top_movies.iterrows():
     st.markdown(
         f"""
         <div style="background: rgba(32, 33, 37, 0.2);
-                    backdrop-filter: blur(30px);
-                    -webkit-backdrop-filter: blur(30px);
+                    filter: blur(15px);
                     border-radius: 10px;
                     padding: 15px;
                     margin-bottom: 20px;
