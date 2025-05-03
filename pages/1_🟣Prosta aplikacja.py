@@ -26,14 +26,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.title("🎬 Analiza Filmów Grozy")
+st.title("🎬 Analiza filmów grozy")
 
 def load_data():
     df = pd.read_csv("horror_movies.csv")
     df.columns = [c.lower().strip() for c in df.columns]
     df["release_year"] = pd.to_datetime(df["release_date"], errors="coerce").dt.year
 
-    # Tylko filmy z plakatem
+    # wybranie filmów, które mają plakat:
     df = df[df["poster_path"].notna() & (df["poster_path"].str.strip() != "")]
 
     df["poster_url"] = "https://image.tmdb.org/t/p/w200" + df["poster_path"]
@@ -42,22 +42,20 @@ def load_data():
 
 df = load_data()
 
-# Sidebar filters
+# filtry:
 st.sidebar.header("🎛️ Filtry")
 year_min, year_max = int(df["release_year"].min()), int(df["release_year"].max())
-years = st.sidebar.slider("Zakres lat", year_min, year_max, (2000, 2020))
-min_rating = st.sidebar.slider("Minimalna ocena", 0.0, 10.0, 5.0, 0.1)
-lang = st.sidebar.selectbox("Język oryginalny", options=["Wszystkie"] + sorted(df["original_language"].dropna().unique().tolist()))
+years = st.sidebar.slider("Zakres lat:", year_min, year_max, (2000, 2020))
+min_rating = st.sidebar.slider("Minimalna ocena:", 0.0, 10.0, 5.0, 0.1)
+lang = st.sidebar.selectbox("Język oryginalny:", options=["wszystkie"] + sorted(df["original_language"].dropna().unique().tolist()))
 
 filtered_df = df[
     (df["release_year"] >= years[0]) & (df["release_year"] <= years[1]) &
     (df["vote_average"] >= min_rating)
 ]
-if lang != "Wszystkie":
+if lang != "wszystkie":
     filtered_df = filtered_df[filtered_df["original_language"] == lang]
 
-# Statystyki z wykresami
-st.subheader("📊 Statystyki")
 
 col1, col2 = st.columns(2)
 
@@ -68,7 +66,7 @@ with col1:
         .reset_index(name="liczba_filmów")
     )
     fig1 = px.bar(movies_per_year, x="release_year", y="liczba_filmów",
-                  title="Liczba filmów rocznie", labels={"release_year": "Rok"})
+                  title="Liczba filmów rocznie", labels={"release_year": "Rok", "liczba_filmów": "Liczba filmów"})
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
@@ -82,9 +80,8 @@ with col2:
                    labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
     st.plotly_chart(fig2, use_container_width=True)
 
-# Top filmy
 st.subheader("⭐ Top filmy wg oceny")
-top_n = st.slider("Ile filmów pokazać?", 5, 50, 10)
+top_n = st.slider("Ile filmów pokazać:", 5, 50, 10)
 top_movies = filtered_df.sort_values(by="vote_average", ascending=False).head(top_n)
 
 for _, row in top_movies.iterrows():
