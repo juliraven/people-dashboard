@@ -10,7 +10,7 @@ def add_logo():
         """
         <style>
             [data-testid="stSidebarNav"] {
-                background-image: url('logo.png'); /* Zmień URL na swoje logo */
+                background-image: url('../../logo.png'); /* Zmień URL na swoje logo */
                 background-repeat: no-repeat;
                 padding-top: 100px; /* Dostosuj przestrzeń, aby logo było widoczne */
                 background-position: center top; /* Centruje tło */
