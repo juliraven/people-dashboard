@@ -8,8 +8,6 @@ add_logo('logo.png', height=450)
 st.sidebar.markdown(
     """
     <style>
-    .logo {
-            border-radius: 30px;  # Zmieniaj wartość, aby dopasować zaokrąglenie
         }
         [data-testid="stSidebar"] {
             padding-top: 0px;
@@ -25,6 +23,9 @@ st.sidebar.markdown(
             display: flex; 
             align-items: center;
             justify-content: center; 
+        }
+        [data-testid="stSidebar"]::before {
+            border-radius: 15px;  # Zaokrąglamy rogi tła
         }
     </style>
     """,
