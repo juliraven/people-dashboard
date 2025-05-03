@@ -149,3 +149,53 @@ if lang != "wszystkie":
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Następnym krokiem może być utworzenie prostego wykresu słupkowego. W przypadku naszej aplikacji będzie to wykres przedstawiający liczbę wyprodukowanych filmów grozy na przestrzeni lat. W tym celu można uprzednio pogrupować dane po roku i zliczyć liczbę filmów w każdym roku:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+movies_per_year = (
+    filtered_df.groupby("release_year")["title"]
+    .count()
+    .reset_index(name="liczba_filmów")
+)
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Następnie można narysować wykres z wykorzystaniem <code>plotly.express</code> i wyświetlić go w aplikacji:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+fig1 = px.bar(
+    movies_per_year,
+    x="release_year",
+    y="liczba_filmów",
+    title="Liczba wyprodukowanych filmów wg roku",
+    labels={"release_year": "Rok", "liczba_filmów": "Liczba filmów"}
+)
+
+fig1.update_layout(title_x=0.4)
+
+fig1.update_traces(
+    marker_color="rgba(180, 68, 251, 0.2)", 
+    marker_line_color="rgba(180, 68, 251, 1)",
+    marker_line_width=2
+)
+
+st.plotly_chart(fig1, use_container_width=True)
+'''
+
+st.code(code, language='python')
