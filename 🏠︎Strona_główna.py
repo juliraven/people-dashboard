@@ -39,7 +39,7 @@ st.sidebar.markdown(
 page_bg_img_sidebar = """
 <style>
 [data-testid="stSidebar"] {
-    background: radial-gradient(circle at 51% 30%, #b444fb, #2d035e, #202125); 
+    background: radial-gradient(circle at 51% 40%, #b444fb, #2d035e, #202125); 
     background-blend-mode: multiply;
     background-size: cover;
     overflow: hidden; /* Prevent scrolling */
