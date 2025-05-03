@@ -23,6 +23,7 @@ body {
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
 import streamlit as st
+import numpy as np
 import pandas as pd
 import plotly.express as px
 
