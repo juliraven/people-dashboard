@@ -9,7 +9,7 @@ st.sidebar.markdown(
     """
     <style>
     .logo {
-            border-radius: 15px;  # Zmieniaj wartość, aby dopasować zaokrąglenie
+            border-radius: 30px;  # Zmieniaj wartość, aby dopasować zaokrąglenie
         }
         [data-testid="stSidebar"] {
             padding-top: 0px;
