@@ -67,7 +67,7 @@ with col1:
     fig1 = px.bar(movies_per_year, x="release_year", y="liczba_filmów",
                   title="Liczba filmów rocznie", labels={"release_year": "Rok", "liczba_filmów": "Liczba filmów"})
     fig1.update_layout(title_x=0.4)
-    fig1.update_traces(marker_color="rgba(180, 68, 251, 0)", # przezroczyste wnętrze słupków
+    fig1.update_traces(marker_color="rgba(180, 68, 251, 0.4)", # przezroczyste wnętrze słupków
                       marker_line_color="rgba(180, 68, 251, 1)", # ciemna obramówka
                       marker_line_width=2)
     st.plotly_chart(fig1, use_container_width=True)
