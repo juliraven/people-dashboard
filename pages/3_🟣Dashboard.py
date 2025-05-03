@@ -32,6 +32,6 @@ code = '''def hello():\n    print("Hello, world!")'''
 formatter = HtmlFormatter(style="monokai", full=False, noclasses=True)
 highlighted_code = highlight(code, PythonLexer(), formatter)
 
-blurred = f"<div style='filter: blur(4px);'>{highlighted_code}</div>"
+blurred = f"<div style='filter: blur(1px);'>{highlighted_code}</div>"
 st.markdown(blurred, unsafe_allow_html=True)
 
