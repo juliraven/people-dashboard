@@ -33,15 +33,44 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 code = '''
 app/
 ├── home.py
-└── pages/
-    └── page1.py
-    └── page2.py
 ├── requirements.txt
 ├── data.csv
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Po dodaniu danych można zacząć tworzyć aplikację w pliku <code>home.py</code>. Na samym początku zwykle umieszcza się importy niezbędnych bibliotek, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+import streamlit as st
+import numpy as np
+import pandas as pd
+import plotly.express as px
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+st.title("🎬 Analiza filmów grozy")
 '''
 
 st.code(code, language='python')
