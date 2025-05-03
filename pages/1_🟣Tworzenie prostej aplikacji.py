@@ -269,10 +269,10 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    Utworzona w ten sposób aplikacja znajduje się w zakładce:
+    Utworzona w ten sposób aplikacja znajduje się w zakładce 🟣Prosta aplikacja.
     </p>
     ''',
     unsafe_allow_html=True
 )
 
-st.page_link("pages/2_🟣Prosta aplikacja.py", label="➡️ Przejdź do zakładki 'Prosta aplikacja'")
+st.page_link("pages/2_🟣Prosta aplikacja.py", label="➡️ Przejdź do zakładki 🟣Prosta aplikacja")
