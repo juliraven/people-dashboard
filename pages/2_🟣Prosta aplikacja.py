@@ -76,10 +76,7 @@ top_movies = filtered_df.sort_values(by="vote_average", ascending=False).head(to
 for _, row in top_movies.iterrows():
     cols = st.columns([1, 4])
     with cols[0]:
-        if pd.notna(row["poster_path"]) and row["poster_path"].strip():
-            st.image(row["poster_url"], width=100)
-        else:
-            st.image("https://via.placeholder.com/100x150.png?text=Brak+plakatu", width=100)
+        st.image(row["poster_url"], width=100)
     with cols[1]:
         st.markdown(f"**{row['title']}** ({int(row['release_year'])}) — {row['vote_average']}⭐")
         if pd.notna(row.get("overview", "")):
