@@ -24,25 +24,14 @@ st.sidebar.markdown(
             align-items: center;
             justify-content: center; 
         }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-st.markdown(
-    """
-    <style>
-        [data-testid="stSidebar"] {
-            width: 150px; 
-        }
-
         .main {
-            margin-left: 400px; 
-        }
+            margin-left: 170px;
     </style>
     """,
     unsafe_allow_html=True,
 )
+
+
 
 page_bg_img_sidebar = """
 <style>
