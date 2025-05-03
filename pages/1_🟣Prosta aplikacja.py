@@ -3,7 +3,7 @@ import streamlit as st
 page_bg_img_sidebar = """
 <style>
 [data-testid="stSidebar"] {
-    background: radial-gradient(circle at 51% 40%, #202125, #2d035e, #b444fb); 
+    background: radial-gradient(circle at 51% 50%, #202125, #2d035e, #b444fb); 
     background-blend-mode: multiply;
     background-size: cover;
     overflow: hidden; 
