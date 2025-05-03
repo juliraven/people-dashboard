@@ -81,7 +81,7 @@ with col2:
     )
     fig2 = px.area(avg_rating, x="release_year", y="średnia_ocena",
                    markers=True, title="Średnia ocena wg roku",
-                   labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"}, color="rgba(180, 68, 251, 0.2)")
+                   labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"}, color="średnia_ocena")
     fig2.update_layout(title_x=0.4)
     fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2), 
                        mode='lines',  
