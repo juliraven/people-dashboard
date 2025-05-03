@@ -199,3 +199,37 @@ st.plotly_chart(fig1, use_container_width=True)
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    W naszej aplikacji utworzyłyśmy dodatkowo ranking filmów według ocen użytkowników. Uzytkownik ma możliwość wyboru liczby wyświetlanych filmów dzięki wbudowanemu suwakowi. Oto kod pozwalający utworzyć taki ranking:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+# nagłówek sekcji:
+st.subheader("⭐ Top filmy wg oceny")
+
+# suwak do wyboru liczby filmów do pokazania:
+top_n = st.slider("Ile filmów pokazać:", 5, 50, 10)
+
+# sortowanie filmów malejąco wg oceny i wybranie top N filmów:
+top_movies = filtered_df.sort_values(by="vote_average", ascending=False).head(top_n)
+
+# wyświetlanie każdego filmu z listy top N:
+for _, row in top_movies.iterrows():
+    cols = st.columns([1, 4])
+    with cols[0]:
+        st.image(row["poster_url"], width=100)
+    with cols[1]:
+        st.markdown(f"**{row['title']}** ({int(row['release_year'])}) — {row['vote_average']}⭐")
+        
+        # jeśli jest dostępny opis (overview), pokaż go:
+        if pd.notna(row.get("overview", "")):
+            st.caption(row["overview"])
+'''
+
+st.code(code, language='python')
