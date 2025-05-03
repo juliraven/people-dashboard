@@ -22,7 +22,6 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -53,10 +52,9 @@ filtered_df = df[
     (df["release_year"] >= years[0]) & (df["release_year"] <= years[1]) &
     (df["vote_average"] >= min_rating)
 ]
+
 if lang != "wszystkie":
     filtered_df = filtered_df[filtered_df["original_language"] == lang]
-
-
 
 movies_per_year = (
         filtered_df.groupby("release_year")["title"]
@@ -66,11 +64,10 @@ movies_per_year = (
 fig1 = px.bar(movies_per_year, x="release_year", y="liczba_filmów",
                   title="Liczba wyprodukowanych filmów wg roku", labels={"release_year": "Rok", "liczba_filmów": "Liczba filmów"})
 fig1.update_layout(title_x=0.4)
-fig1.update_traces(marker_color="rgba(180, 68, 251, 0.2)", # przezroczyste wnętrze słupków
-                      marker_line_color="rgba(180, 68, 251, 1)", # ciemna obramówka
+fig1.update_traces(marker_color="rgba(180, 68, 251, 0.2)", 
+                      marker_line_color="rgba(180, 68, 251, 1)",
                       marker_line_width=2)
 st.plotly_chart(fig1, use_container_width=True)
-    
 
 st.subheader("⭐ Top filmy wg oceny")
 top_n = st.slider("Ile filmów pokazać:", 5, 50, 10)
