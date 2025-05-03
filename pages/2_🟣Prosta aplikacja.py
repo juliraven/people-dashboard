@@ -84,7 +84,7 @@ with col2:
     fig2.update_layout(title_x=0.4)
     fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2), 
                        mode='lines',  
-                       fill='toself') 
+                       fill='tonextx') 
     st.plotly_chart(fig2, use_container_width=True)
 
 st.subheader("⭐ Top filmy wg oceny")
