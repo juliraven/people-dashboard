@@ -16,7 +16,7 @@ st.sidebar.markdown(
         }
 
         [data-testid="stSidebarHeader"] {
-            height: 20px;
+            height: 10px;
             padding: 5px 10px; 
             margin: 0; 
             display: flex; 
