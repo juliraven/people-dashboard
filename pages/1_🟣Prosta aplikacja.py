@@ -29,29 +29,31 @@ import seaborn as sns
 
 st.title("🎬 Analiza Filmów Grozy")
 
-# Wczytywanie danych z internetu (zamień URL na własny!)
+# Wczytywanie danych z pliku lokalnego
+@st.cache_data
 def load_data():
-    return pd.read_csv("horror_movies.csv")
+    df = pd.read_csv("horror_movies.csv")
+    df.columns = [c.lower().strip() for c in df.columns]
+    df["release_year"] = pd.to_datetime(df["release_date"], errors="coerce").dt.year
+    df["poster_url"] = "https://image.tmdb.org/t/p/w200" + df["poster_path"].fillna("")
+    df = df.dropna(subset=["title", "release_year", "vote_average"])
+    return df
 
 df = load_data()
 
-
-# Czyszczenie danych
-df = df.dropna(subset=["title", "year", "rating"])
-df["year"] = df["year"].astype(int)
-
-# Panel boczny z filtrami
+# Filtry boczne
 st.sidebar.header("🎛️ Filtry")
-years = st.sidebar.slider("Zakres lat", int(df["year"].min()), int(df["year"].max()), (1990, 2020))
+year_min, year_max = int(df["release_year"].min()), int(df["release_year"].max())
+years = st.sidebar.slider("Zakres lat", year_min, year_max, (2000, 2020))
 min_rating = st.sidebar.slider("Minimalna ocena", 0.0, 10.0, 5.0, 0.1)
-country = st.sidebar.selectbox("Kraj produkcji", options=["Wszystkie"] + sorted(df["country"].dropna().unique().tolist()))
+lang = st.sidebar.selectbox("Język oryginalny", options=["Wszystkie"] + sorted(df["original_language"].dropna().unique().tolist()))
 
 filtered_df = df[
-    (df["year"] >= years[0]) & (df["year"] <= years[1]) &
-    (df["rating"] >= min_rating)
+    (df["release_year"] >= years[0]) & (df["release_year"] <= years[1]) &
+    (df["vote_average"] >= min_rating)
 ]
-if country != "Wszystkie":
-    filtered_df = filtered_df[filtered_df["country"] == country]
+if lang != "Wszystkie":
+    filtered_df = filtered_df[filtered_df["original_language"] == lang]
 
 # Statystyki
 st.subheader("📊 Statystyki")
@@ -59,7 +61,7 @@ st.subheader("📊 Statystyki")
 col1, col2 = st.columns(2)
 
 with col1:
-    movies_per_year = filtered_df.groupby("year")["title"].count()
+    movies_per_year = filtered_df.groupby("release_year")["title"].count()
     st.markdown("**Liczba filmów rocznie**")
     fig, ax = plt.subplots()
     sns.barplot(x=movies_per_year.index, y=movies_per_year.values, ax=ax)
@@ -69,7 +71,7 @@ with col1:
     st.pyplot(fig)
 
 with col2:
-    avg_rating_per_year = filtered_df.groupby("year")["rating"].mean()
+    avg_rating_per_year = filtered_df.groupby("release_year")["vote_average"].mean()
     st.markdown("**Średnia ocena wg roku**")
     fig, ax = plt.subplots()
     sns.lineplot(x=avg_rating_per_year.index, y=avg_rating_per_year.values, ax=ax, marker="o")
@@ -78,25 +80,19 @@ with col2:
     plt.xticks(rotation=45)
     st.pyplot(fig)
 
-# Sekcja: Top filmy
+# Top filmy
 st.subheader("⭐ Top filmy wg oceny")
-
 top_n = st.slider("Ile filmów pokazać?", 5, 50, 10)
-top_movies = filtered_df.sort_values(by="rating", ascending=False).head(top_n)
+top_movies = filtered_df.sort_values(by="vote_average", ascending=False).head(top_n)
 
-# Wyświetlanie tabeli z plakatami i tytułami
 for _, row in top_movies.iterrows():
     cols = st.columns([1, 4])
     with cols[0]:
-        if pd.notna(row.get("poster_link", None)):
-            st.image(row["poster_link"], width=100)
+        if pd.notna(row["poster_path"]) and row["poster_path"].strip():
+            st.image(row["poster_url"], width=100)
         else:
             st.image("https://via.placeholder.com/100x150.png?text=Brak+plakatu", width=100)
     with cols[1]:
-        st.markdown(f"**{row['title']}** ({row['year']}) — {row['rating']}⭐")
-        if "description" in row and pd.notna(row["description"]):
-            st.caption(row["description"])
-
-
-
-
+        st.markdown(f"**{row['title']}** ({int(row['release_year'])}) — {row['vote_average']}⭐")
+        if pd.notna(row.get("overview", "")):
+            st.caption(row["overview"])
