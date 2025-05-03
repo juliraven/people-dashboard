@@ -90,7 +90,7 @@ def load_data():
     # wczytanie danych z pliku csv:
     df = pd.read_csv("data.csv")
 
-    # ujednolicenie nazw kolumn (zamiana wszystkich literna małe i usunięcie białych znaków):
+    # ujednolicenie nazw kolumn (zamiana wszystkich liter na małe i usunięcie białych znaków):
     df.columns = [x.lower().strip() for x in df.columns]
 
     # utworzenie kolumny z rokiem premiery filmu na podstawie kolumny release_date:
