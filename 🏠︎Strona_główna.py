@@ -29,6 +29,21 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebar"] {
+            width: 300px; 
+        }
+
+        .main {
+            margin-left: 300px; 
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.title("Czym jest Streamlit?")
 
 st.markdown(
