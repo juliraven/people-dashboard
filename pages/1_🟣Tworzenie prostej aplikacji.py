@@ -74,3 +74,40 @@ st.title("🎬 Analiza filmów grozy")
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy. W naszej apliakcji używamy w tym celu poniższej funkcji:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+def load_data():
+
+    # wczytanie danych z pliku csv:
+    df = pd.read_csv("data.csv")
+
+    # ujednolicenie nazw kolumn (zamiana wszystkich literna małe i usunięcie białych znaków):
+    df.columns = [x.lower().strip() for x in df.columns]
+
+    # utworzenie kolumny z rokiem premiery filmu na podstawie kolumny release_date:
+    df["release_year"] = pd.to_datetime(df["release_date"], errors="coerce").dt.year
+
+    # pozostawienie filmów, które mają przypisany plakat (poster_path nie jest pusty ani NaN):
+    df = df[df["poster_path"].notna() & (df["poster_path"].str.strip() != "")]
+
+    # dodanie pełnego url do plakatu filmu na podstawie ścieżki poster_path:
+    df["poster_url"] = "https://image.tmdb.org/t/p/w200" + df["poster_path"]
+
+    # usunięcie wierszy, w których brakuje tytułu, roku premiery lub oceny:
+    df = df.dropna(subset=["title", "release_year", "vote_average"])
+
+    return df
+
+df = load_data()
+'''
+
+st.code(code, language='python')
