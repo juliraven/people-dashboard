@@ -50,7 +50,7 @@ header[data-testid="stHeader"] {
 }
 
 body {
-    background-color: #202125; /* Kolor tła strony */
+    background-color: #202125; 
 }
 
 </style>
