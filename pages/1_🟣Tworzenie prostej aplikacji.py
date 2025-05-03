@@ -111,3 +111,41 @@ df = load_data()
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Oto przykładowy kod tworzący takie filtry na pasku bocznym aplikacji:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+# nagłówek filtrów:
+st.sidebar.header("🎛️ Filtry")
+
+# pobranie minimalnego i maksymalnego roku z danych:
+year_min, year_max = int(df["release_year"].min()), int(df["release_year"].max())
+
+# suwak do wyboru zakresu lat produkcji filmów:
+years = st.sidebar.slider("Zakres lat:", year_min, year_max, (2000, 2020))
+
+# suwak do wyboru minimalnej oceny filmu:
+min_rating = st.sidebar.slider("Minimalna ocena:", 0.0, 10.0, 5.0, 0.1)
+
+# lista rozwijana do wyboru języka oryginalnego (z opcją "wszystkie"):
+lang = st.sidebar.selectbox("Język oryginalny:", options=["wszystkie"] + sorted(df["original_language"].dropna().unique().tolist()))
+
+# filtrowanie danych wg wybranych wartości (rok, ocena, język):
+filtered_df = df[
+    (df["release_year"] >= years[0]) & (df["release_year"] <= years[1]) &
+    (df["vote_average"] >= min_rating)
+]
+
+# dodatkowe filtrowanie po języku, jeśli użytkownik nie wybrał "wszystkie":
+if lang != "wszystkie":
+    filtered_df = filtered_df[filtered_df["original_language"] == lang]
+'''
+
+st.code(code, language='python')
