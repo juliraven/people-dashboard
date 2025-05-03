@@ -27,40 +27,43 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Tytuł aplikacji
+st.set_page_config(page_title="Analiza Filmów Grozy", layout="wide")
 st.title("🎬 Analiza Filmów Grozy")
 
-# Wczytanie danych
+# Wczytywanie danych z internetu (zamień URL na własny!)
 @st.cache_data
 def load_data():
-    return pd.read_csv("horror_movies.csv")
+    url = "https://raw.githubusercontent.com/nazwouzytkownika/projekt/main/horror_movies.csv"
+    df = pd.read_csv(url)
+    df.columns = [col.lower().strip().replace(" ", "_") for col in df.columns]  # snake_case
+    return df
 
 df = load_data()
 
-# Wstępne czyszczenie danych
-df = df.dropna(subset=["Title", "Year", "Rating"])
-df["Year"] = df["Year"].astype(int)
+# Czyszczenie danych
+df = df.dropna(subset=["title", "year", "rating"])
+df["year"] = df["year"].astype(int)
 
 # Panel boczny z filtrami
 st.sidebar.header("🎛️ Filtry")
-years = st.sidebar.slider("Zakres lat", int(df["Year"].min()), int(df["Year"].max()), (1990, 2020))
+years = st.sidebar.slider("Zakres lat", int(df["year"].min()), int(df["year"].max()), (1990, 2020))
 min_rating = st.sidebar.slider("Minimalna ocena", 0.0, 10.0, 5.0, 0.1)
-country = st.sidebar.selectbox("Kraj produkcji", options=["Wszystkie"] + sorted(df["Country"].dropna().unique().tolist()))
+country = st.sidebar.selectbox("Kraj produkcji", options=["Wszystkie"] + sorted(df["country"].dropna().unique().tolist()))
 
 filtered_df = df[
-    (df["Year"] >= years[0]) & (df["Year"] <= years[1]) &
-    (df["Rating"] >= min_rating)
+    (df["year"] >= years[0]) & (df["year"] <= years[1]) &
+    (df["rating"] >= min_rating)
 ]
 if country != "Wszystkie":
-    filtered_df = filtered_df[filtered_df["Country"] == country]
+    filtered_df = filtered_df[filtered_df["country"] == country]
 
-# Sekcja: Statystyki ogólne
+# Statystyki
 st.subheader("📊 Statystyki")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    movies_per_year = filtered_df.groupby("Year")["Title"].count()
+    movies_per_year = filtered_df.groupby("year")["title"].count()
     st.markdown("**Liczba filmów rocznie**")
     fig, ax = plt.subplots()
     sns.barplot(x=movies_per_year.index, y=movies_per_year.values, ax=ax)
@@ -70,7 +73,7 @@ with col1:
     st.pyplot(fig)
 
 with col2:
-    avg_rating_per_year = filtered_df.groupby("Year")["Rating"].mean()
+    avg_rating_per_year = filtered_df.groupby("year")["rating"].mean()
     st.markdown("**Średnia ocena wg roku**")
     fig, ax = plt.subplots()
     sns.lineplot(x=avg_rating_per_year.index, y=avg_rating_per_year.values, ax=ax, marker="o")
@@ -83,20 +86,21 @@ with col2:
 st.subheader("⭐ Top filmy wg oceny")
 
 top_n = st.slider("Ile filmów pokazać?", 5, 50, 10)
-top_movies = filtered_df.sort_values(by="Rating", ascending=False).head(top_n)
+top_movies = filtered_df.sort_values(by="rating", ascending=False).head(top_n)
 
 # Wyświetlanie tabeli z plakatami i tytułami
-for i, row in top_movies.iterrows():
+for _, row in top_movies.iterrows():
     cols = st.columns([1, 4])
     with cols[0]:
-        if pd.notna(row.get("Poster_Link", None)):
-            st.image(row["Poster_Link"], width=100)
+        if pd.notna(row.get("poster_link", None)):
+            st.image(row["poster_link"], width=100)
         else:
             st.image("https://via.placeholder.com/100x150.png?text=Brak+plakatu", width=100)
     with cols[1]:
-        st.markdown(f"**{row['Title']}** ({row['Year']}) — {row['Rating']}⭐")
-        if "Description" in row and pd.notna(row["Description"]):
-            st.caption(row["Description"])
+        st.markdown(f"**{row['title']}** ({row['year']}) — {row['rating']}⭐")
+        if "description" in row and pd.notna(row["description"]):
+            st.caption(row["description"])
+
 
 
 
