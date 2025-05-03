@@ -277,7 +277,7 @@ st.markdown(
 
 st.page_link("pages/2_🟣Prosta aplikacja.py", label="➡️ Przejdź do zakładki 🟣Prosta aplikacja")
 
-cols = st.columns([2, 2])
+cols = st.columns([2, 2, 2])
 with cols[0]:
     st.markdown(
         '''
