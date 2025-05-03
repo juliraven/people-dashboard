@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-st.title("🎬 Analiza filmów grozy")
+st.header("🎬 Analiza filmów grozy")
 
 def load_data():
     df = pd.read_csv("horror_movies.csv")
