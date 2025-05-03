@@ -66,7 +66,7 @@ with col1:
     )
     fig1 = px.bar(movies_per_year, x="release_year", y="liczba_filmów",
                   title="Liczba filmów rocznie", labels={"release_year": "Rok", "liczba_filmów": "Liczba filmów"})
-    fig1.update_layout(title_x=0.5)
+    fig1.update_layout(title_x=0.4)
     fig1.update_traces(marker_color="#b444fb")
     st.plotly_chart(fig1, use_container_width=True)
 
@@ -79,7 +79,7 @@ with col2:
     fig2 = px.line(avg_rating, x="release_year", y="średnia_ocena",
                    markers=True, title="Średnia ocena wg roku",
                    labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
-    fig2.update_layout(title_x=0.5)
+    fig2.update_layout(title_x=0.4)
     fig2.update_traces(line_color="#b444fb")
     st.plotly_chart(fig2, use_container_width=True)
 
