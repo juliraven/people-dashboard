@@ -82,3 +82,23 @@ for _, row in top_movies.iterrows():
         if pd.notna(row.get("overview", "")):
             st.caption(row["overview"])
 
+for _, row in top_movies.iterrows():
+    st.markdown(
+        f"""
+        <div style="background: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(5px);
+                    -webkit-backdrop-filter: blur(5px);
+                    border-radius: 10px;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    align-items: flex-start;">
+            <img src="{row['poster_url']}" style="width: 100px; border-radius: 5px; margin-right: 15px;" />
+            <div>
+                <h4 style="margin: 0; color: white;">{row['title']} ({int(row['release_year'])}) — {row['vote_average']}⭐</h4>
+                <p style="font-size: 0.9em; color: #ccc;">{row['overview'] if pd.notna(row.get("overview", "")) else ""}</p>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
