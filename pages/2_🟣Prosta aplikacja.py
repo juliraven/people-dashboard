@@ -88,8 +88,6 @@ with col2:
                        fill='none')
 
     avg_rating_filtered = avg_rating[avg_rating['średnia_ocena'] >= min_rating]
-    
-    # Tworzymy dane z wypełnieniem do wartości wybranej przez użytkownika
     min_line = np.full_like(avg_rating_filtered['release_year'].values, min_rating)
     
     # Dodanie warstwy wypełnienia do wykresu
