@@ -24,9 +24,6 @@ st.sidebar.markdown(
             align-items: center;
             justify-content: center; 
         }
-        [data-testid="stSidebar"]::before {
-            border-radius: 15px;  # Zaokrąglamy rogi tła
-        }
     </style>
     """,
     unsafe_allow_html=True,
