@@ -90,3 +90,4 @@ col1.metric("Page Load", "0.7s")
 col2.metric("Page Views", "2.7M", delta="-5%")
 col3.metric("Bounce Rate", "40.6%", delta="+1.2%")
 col4.metric("Sessions", "479K")
+
