@@ -34,8 +34,6 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 
-
-
 page_bg_img_sidebar = """
 <style>
 [data-testid="stSidebar"] {
