@@ -83,18 +83,15 @@ with col2:
                    labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
     fig2.update_layout(title_x=0.4)
     fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2),  # kolor linii
-                       mode='lines',  # zachowanie linii i markerów
+                       mode='lines+markers',  # zachowanie linii i markerów
                        fill='none')  # brak wypełnienia pod linią
 
-    # Oblicz minimalną wartość na osi Y
-    min_value = avg_rating['średnia_ocena'].min()
-
-    # Dodaj warstwę wypełnienia z dynamiczną granicą na minimalną wartość
+    # Dodanie przezroczystego wypełnienia do minimalnej wartości
     fig2.add_traces(px.area(avg_rating, x="release_year", y="średnia_ocena", 
-                            line_shape="linear").data)  # Przezroczyste wypełnienie pod linią
+                            line_shape="linear").data)  # dodanie przezroczystego wypełnienia
     fig2.update_traces(fillcolor="rgba(180, 68, 251, 0.2)", selector=dict(type='scatter'))
 
-    # Wypełnienie od minimalnej wartości
+    # Zmiana wypełnienia na zakres od minimalnej wartości do obecnego punktu
     fig2.update_traces(fill="tonexty", selector=dict(type='scatter'))
     st.plotly_chart(fig2, use_container_width=True)
 
