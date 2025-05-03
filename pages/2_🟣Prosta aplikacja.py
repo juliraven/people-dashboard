@@ -82,11 +82,6 @@ with col2:
                    markers=True, title="Średnia ocena wg roku",
                    labels={"release_year": "Rok", "średnia_ocena": "Średnia ocena"})
     fig2.update_layout(title_x=0.4)
-    fig2.update_traces(line=dict(color="rgba(180, 68, 251, 1)", width=2),  # kolor linii
-                       mode='lines+markers',  # zachowanie linii i markerów
-                       fill='none')  # brak wypełnienia pod linią
-    fig2.add_traces(px.area(avg_rating, x="release_year", y="średnia_ocena", line_shape="linear").data)  # przezroczyste wypełnienie pod linią
-    fig2.update_traces(fillcolor="rgba(180, 68, 251, 0.2)", selector=dict(type='scatter'))
     st.plotly_chart(fig2, use_container_width=True)
 
 st.subheader("⭐ Top filmy wg oceny")
