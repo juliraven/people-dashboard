@@ -1,6 +1,28 @@
 import streamlit as st
 
-st.title("Kalkulator")
+page_bg_img_sidebar = """
+<style>
+[data-testid="stSidebar"] {
+    background: radial-gradient(circle at 51% 50%, #202125, #2d035e, #b444fb); 
+    background-blend-mode: multiply;
+    background-size: cover;
+    overflow: hidden; 
+}
+
+header[data-testid="stHeader"] {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    background-color: #202125; 
+}
+
+</style>
+"""
+
+st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
+
+st.title("Kalkulator BMI i zapotrzebowania energetycznego")
 
 gender = st.selectbox("Płeć", ["Mężczyzna", "Kobieta"])
 age = st.number_input("Wiek", min_value=10, max_value=100, value=25)
