@@ -1,5 +1,12 @@
 import streamlit as st
 
+st.set_page_config(page_title="Moja Strona", page_icon=":guardsman:", layout="wide", initial_sidebar_state="collapsed")
+
+# Treść strony
+st.title("Strona bez Sidebaru")
+st.write("Ten tekst jest widoczny, ale sidebar jest ukryty.")
+
+
 page_bg_img_sidebar = """
 <style>
 [data-testid="stSidebar"] {
