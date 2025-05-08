@@ -22,5 +22,20 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-
 st.balloons()
+
+st.markdown(
+    """
+    <style>
+    .emoji-top {
+        margin-top: -20px; /* Zmniejszenie marginesu górnego */
+    }
+    </style>
+    
+    <div style="text-align: center;">
+        <h1 class="emoji-top"></h1> 
+        <h2></h2>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
