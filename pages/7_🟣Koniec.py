@@ -33,14 +33,14 @@ st.markdown(
         margin-top: -20px; /* Zmniejszenie marginesu górnego */
     }
     .h2-style {
-        font-size: 16px; /* Zmniejszenie czcionki dla h2 */
-        color: #4CAF50; /* Zmiana koloru czcionki na zielony (możesz podać inny kolor) */
+        font-size: 16px; 
+        color: #4CAF50;
     }
     </style>
     
     <div style="text-align: center;">
         <h1 class="emoji-top">Dziękujemy za uwagę!</h1> 
-        <h2> Weronika Kępińska, Julia Kruk, Zuzanna Sulecka</h2>
+        <h2> class="h2-style">Weronika Kępińska, Julia Kruk, Zuzanna Sulecka</h2>
     </div>
     """, 
     unsafe_allow_html=True
