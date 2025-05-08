@@ -88,7 +88,6 @@ category_positions = {
     "III stopień otyłości": 92
 }
 
-
 position_percent = category_positions[category]
 
 st.markdown(f"""
