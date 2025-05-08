@@ -22,7 +22,7 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-st.title("Kalkulator BMI i zapotrzebowania energetycznego")
+st.title("🍏 Kalkulator BMI i zapotrzebowania energetycznego")
 
 gender = st.selectbox("Płeć", ["Mężczyzna", "Kobieta"])
 age = st.number_input("Wiek", min_value=10, max_value=100, value=25)
