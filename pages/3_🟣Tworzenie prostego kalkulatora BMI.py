@@ -142,8 +142,8 @@ def get_bmi_category(bmi):
 category = get_bmi_category(bmi)
 
 st.markdown(f"### **{category} (BMI {bmi:.2f})**")
-st.markdown(f"### **{ppm} (PPM {ppm:.2f})**")
-st.markdown(f"### **{cpm} (CPM {cpm:.2f})**")
+st.markdown(f"### **{ppm} (PPM {ppm:.0f}) kcal**")
+st.markdown(f"### **{cpm} (CPM {cpm:.0f}) kcal**")
 
 '''
 
