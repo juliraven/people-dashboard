@@ -36,7 +36,7 @@ st.markdown(
     
     <div style="text-align: center;">
         <h1 class="emoji-top">Dziękujemy za uwagę!</h1> 
-        <h2></h2>
+        <h2> Weronika Kępińska, Julia Kruk, Zuzanna Sulecka</h2>
     </div>
     """, 
     unsafe_allow_html=True
