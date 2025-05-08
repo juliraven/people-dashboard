@@ -23,4 +23,4 @@ body {
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
 
-st.baloons()
+st.balloons()
