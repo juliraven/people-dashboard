@@ -1,11 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Moja Strona", page_icon=":guardsman:", layout="wide", initial_sidebar_state="collapsed")
-
-# Treść strony
-st.title("Strona bez Sidebaru")
-st.write("Ten tekst jest widoczny, ale sidebar jest ukryty.")
-
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 page_bg_img_sidebar = """
 <style>
@@ -40,7 +35,7 @@ st.markdown(
     </style>
     
     <div style="text-align: center;">
-        <h1 class="emoji-top"></h1> 
+        <h1 class="emoji-top">Dziękujemy za uwagę!</h1> 
         <h2></h2>
     </div>
     """, 
