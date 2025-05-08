@@ -24,11 +24,6 @@ st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
 st.title("🍏 Kalkulator BMI i zapotrzebowania energetycznego")
 
-gender = st.selectbox("Płeć", ["Mężczyzna", "Kobieta"])
-age = st.number_input("Wiek", min_value=10, max_value=100, value=25)
-height = st.number_input("Wzrost (m)", min_value=1.0, max_value=2.5, value=1.75)
-weight = st.number_input("Waga (kg)", min_value=30, max_value=300, value=70)
-
 activity_options = {
     "Siedzący tryb życia. Brak regularnej aktywności fizycznej, typowe dzienne zajęcia niewymagające dużego wysiłku, jak np.: mycie naczyń, robienie zakupów, praca biurowa, jazda samochodem.": 1.4,
     "Niska aktywność fizyczna. Do aktywności typowej dla siedzącego trybu życia dochodzi 30-60 minut umiarkowanego wysiłku fizycznego, jak np. spokojna jazda rowerem, spacer (5-6 km/h).": 1.5,
@@ -38,7 +33,23 @@ activity_options = {
     "Ekstremalnie wysoka aktywność fizyczna, np. wyczynowe uprawianie sportu.": 2.2
 }
 
-activity_label = st.selectbox("Poziom aktywności", list(activity_options.keys()))
+col1, col2, col3, col4, col5 = st.columns(5)
+
+with col1:
+    gender = st.selectbox("Płeć", ["Mężczyzna", "Kobieta"])
+
+with col2:
+    age = st.number_input("Wiek", min_value=10, max_value=100, value=25)
+
+with col3:
+    height = st.number_input("Wzrost (m)", min_value=1.0, max_value=2.5, value=1.75)
+
+with col4:
+    weight = st.number_input("Waga (kg)", min_value=30, max_value=300, value=70)
+
+with col5:
+    activity_label = st.selectbox("Poziom aktywności", list(activity_options.keys()))
+    
 activity_level = activity_options[activity_label] 
 
 bmi = weight/height**2
