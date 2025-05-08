@@ -43,7 +43,7 @@ st.markdown(
     }
     .h2-style {
         font-size: 14px; /* Zmniejszenie czcionki dla h2 */
-        color: #4CAF50; /* Zmiana koloru czcionki na zielony */
+        color: #4CAF50 !important; /* Zmiana koloru czcionki na zielony */
     }
     </style>
     
