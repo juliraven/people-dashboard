@@ -29,18 +29,29 @@ st.balloons()
 st.markdown(
     """
     <style>
+    .container {
+        display: flex;
+        justify-content: center; /* Wyrównanie poziome */
+        align-items: center; /* Wyrównanie pionowe */
+        height: 100vh; /* Ustawia wysokość na 100% wysokości okna przeglądarki */
+        text-align: center;
+    }
     .emoji-top {
         margin-top: -20px; /* Zmniejszenie marginesu górnego */
+        font-size: 20px; /* Zmniejszenie czcionki dla h1 */
+        color: #ff5733; /* Zmiana koloru czcionki na pomarańczowy */
     }
     .h2-style {
-        font-size: 15px; 
-        color: #4CAF50;
+        font-size: 16px; /* Zmniejszenie czcionki dla h2 */
+        color: #4CAF50; /* Zmiana koloru czcionki na zielony */
     }
     </style>
     
-    <div style="text-align: center;">
-        <h1 class="emoji-top">Dziękujemy za uwagę!</h1> 
-        <h2 class="h2-style">Weronika Kępińska, Julia Kruk, Zuzanna Sulecka</h2>
+    <div class="container">
+        <div>
+            <h1 class="emoji-top">Dziękujemy za uwagę!</h1> 
+            <h2 class="h2-style">tu</h2>
+        </div>
     </div>
     """, 
     unsafe_allow_html=True
