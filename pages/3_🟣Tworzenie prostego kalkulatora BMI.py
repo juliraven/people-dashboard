@@ -148,3 +148,14 @@ st.markdown(f"### **{cpm} (CPM {cpm:.0f}) kcal**")
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Utworzony w ten sposób i ulepszony wizualnie kalkulator znajduje się w zakładce 🟣Kalkulator.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+st.page_link("pages/4_🟣Kalkulator.py", label="➡️ Przejdź do zakładki:  **Kalkulator**")
