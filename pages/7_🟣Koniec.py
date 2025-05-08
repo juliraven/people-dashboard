@@ -33,7 +33,7 @@ st.markdown(
         display: flex;
         justify-content: center; /* Wyrównanie poziome */
         align-items: center; /* Wyrównanie pionowe */
-        height: 80vh; /* Ustawia wysokość na 100% wysokości okna przeglądarki */
+        height: 70vh; /* Ustawia wysokość na 100% wysokości okna przeglądarki */
         text-align: center;
     }
     .emoji-top {
