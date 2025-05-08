@@ -50,7 +50,7 @@ st.markdown(
     <div class="container">
         <div>
             <h1 class="emoji-top">Dziękujemy za uwagę!</h1> 
-            <h2 class="h2-style">tu</h2>
+            <h2 class="h2-style">Weronika Kępińska, Julia Kruk, Zuzanna Sulecka</h2>
         </div>
     </div>
     """, 
