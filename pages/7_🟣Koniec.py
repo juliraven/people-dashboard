@@ -32,6 +32,10 @@ st.markdown(
     .emoji-top {
         margin-top: -20px; /* Zmniejszenie marginesu górnego */
     }
+    .h2-style {
+        font-size: 16px; /* Zmniejszenie czcionki dla h2 */
+        color: #4CAF50; /* Zmiana koloru czcionki na zielony (możesz podać inny kolor) */
+    }
     </style>
     
     <div style="text-align: center;">
