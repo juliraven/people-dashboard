@@ -252,7 +252,7 @@ with col[0]:
         st.metric(
         label=top_loss["Country"],
         value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
+        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
     st.markdown(
     """
