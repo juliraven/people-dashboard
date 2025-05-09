@@ -82,7 +82,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
                         scale=alt.Scale(scheme=input_color_theme)),
         stroke=alt.value('black'),
         strokeWidth=alt.value(0.25),
-    ).properties(width=900, height=600).configure_axis(
+    ).properties(width=900, height=400).configure_axis(
         labelFontSize=12,
         titleFontSize=12
     )
