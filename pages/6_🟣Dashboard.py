@@ -209,7 +209,7 @@ fig2.update_geos(
 )
 
 fig2.update_layout(
-    margin=dict(l=0, r=150, t=30, b=30), 
+    margin=dict(l=0, r=150, t=10, b=30), 
     height=800,
     template="plotly_dark",
     plot_bgcolor="#111111",
