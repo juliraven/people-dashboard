@@ -75,7 +75,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
             title="", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
         color=alt.Color(f'{input_color}:Q',
                         legend=alt.Legend(title="Liczba ludności"),
-                        scale=alt.Scale(scheme=input_color_theme, reverse=True)),
+                        scale=alt.Scale(scheme=input_color_theme)),
         stroke=alt.value('black'),
         strokeWidth=alt.value(0.25),
     ).properties(width=900).configure_axis(
