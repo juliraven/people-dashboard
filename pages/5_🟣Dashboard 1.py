@@ -261,15 +261,15 @@ with col[2]:
         st.markdown(f"<h3 style='text-align: center;'>Top 10 państw pod względem liczby ludności</h3>",unsafe_allow_html=True)
         st.dataframe(
         df_map.head(10),
-        column_order=["Country", "Population"],
+        column_order=["Country", "Population_M"],
         hide_index=True,
         column_config={
         "Country": st.column_config.TextColumn("Kraj"),
-        "Population": st.column_config.ProgressColumn(
-            "Populacja",
-            format="%d",
-            min_value=0,
-            max_value=int(df_map["Population_M"].max())  
+        "Population_M": st.column_config.ProgressColumn(
+            "Populacja (mln)",
+            format="%.1f M",
+            min_value=0.0,
+            max_value=df_map["Population_M"].max()
         )
     }
 )
