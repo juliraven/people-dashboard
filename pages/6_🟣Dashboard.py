@@ -166,8 +166,6 @@ color_map = {
 
 df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels, ordered=True)
 
-color_map = dict(zip(labels, colors))
-
 fig2 = px.choropleth(
     df_map,
     locations="ISO3",
