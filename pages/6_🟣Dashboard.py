@@ -230,11 +230,13 @@ df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
 with col[1]:
-    st.markdown(f"### Populacja świata w roku {selected_year_for_map}")
-    st.plotly_chart(fig2, use_container_width=True)
-    
-    st.markdown(f"### Populacja Europy {selected_years[0]} - {selected_years[1]}")
-    st.altair_chart(fig1, use_container_width=True)
+    with st.container():
+        st.markdown(f"### Populacja świata w roku {selected_year_for_map}")
+        st.plotly_chart(fig2, use_container_width=True)
+
+    with st.container():
+        st.markdown(f"### Populacja Europy {selected_years[0]} - {selected_years[1]}")
+        st.altair_chart(fig1, use_container_width=True)
     
 
 with col[2]:
