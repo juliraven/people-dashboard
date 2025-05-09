@@ -234,6 +234,20 @@ top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
 
+
+with col[0]:
+    with st.container(border=True):
+        st.metric(
+        label=top_gain["Country"],
+        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
+
+        st.metric(
+        label=top_loss["Country"],
+        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
+
+
 with col[1]:
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
@@ -269,15 +283,4 @@ with col[2]:
     unsafe_allow_html=True)
 
 
-with col[0]:
-    with st.container(border=True):
-        st.metric(
-        label=top_gain["Country"],
-        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
-
-        st.metric(
-        label=top_loss["Country"],
-        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
