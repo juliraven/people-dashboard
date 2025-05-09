@@ -204,3 +204,5 @@ scikit-learn
 '''
 
 st.code(code, language='python')
+
+st.title("Przydatne funkcje")
