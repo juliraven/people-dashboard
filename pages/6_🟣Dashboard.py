@@ -216,9 +216,21 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
+min_year_for_comparison = 2001
+
+selected_year_min = st.sidebar.selectbox(
+    "Wybierz rok (dla mapy):", 
+    sorted(df1["Year"].unique()), 
+    index=sorted(df1["Year"].unique()).index(min_year_for_comparison)  #
+)
+
+# Upewniamy się, że wybrany rok nie jest wcześniejszy niż 2001
+if selected_year_min < min_year_for_comparison:
+    selected_year_min = min_year_for_comparison 
+
 # Łączenie danych z bieżącego roku i poprzedniego roku:
-df_this_year = df2[df2["Year"] == selected_year_for_map]
-df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
+df_this_year = df2[df2["Year"] == selected_year_min]
+df_prev_year = df2[df2["Year"] == (selected_year_min - 1)]
 
 # Łączenie po kraju, aby obliczyć różnice populacji:
 df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
@@ -232,7 +244,6 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 # Największy wzrost i spadek:
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
-
 
 
 with col[0]:
