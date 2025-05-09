@@ -158,9 +158,9 @@ fig2.add_trace(
         locations="ISO3",
         locationmode="ISO-3",
         scope="europe",
-        color_discrete_sequence=["#a0a0a0"], 
+        color_discrete_sequence=["#a0a0a0"],  
         hover_name="Country",  
-        hover_data=["Country"], 
+        hover_data=["Country"],
     ).data[0]
 )
 
