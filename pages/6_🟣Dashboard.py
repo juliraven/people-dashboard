@@ -82,7 +82,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
                         scale=alt.Scale(scheme=input_color_theme)),
         stroke=alt.value('black'),
         strokeWidth=alt.value(0.25),
-    ).properties(width=900).configure_axis(
+    ).properties(width=900, height=600).configure_axis(
         labelFontSize=12,
         titleFontSize=12
     )
@@ -222,7 +222,7 @@ with col[1]:
         st.plotly_chart(fig2, use_container_width=True)
 
     with st.container(border=True):
-        st.markdown(f"<h3 style='text-align: center;'>Populacja EEuropy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center;'>Populacja Europy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
         st.altair_chart(fig1, use_container_width=True)
     
 
