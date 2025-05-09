@@ -147,6 +147,7 @@ fig2.update_geos(
     scope="world",
     projection_type="orthographic",
     showland=True,
+    projection_rotation=dict(lat=45, lon=10),
     landcolor="#f5f2d6",
     showframe=False,
     showcoastlines=True,
