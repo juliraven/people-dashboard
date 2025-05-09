@@ -258,7 +258,7 @@ with col[0]:
     """
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
-        background: linear-gradient(135deg, rgba(122,0,255,0.35), rgba(0,255,240,0.25));
+        background: linear-gradient(135deg, rgba(122,0,255,0.1), rgba(0,255,240,0.2));
         border: 2px solid rgba(255, 0, 255, 0.4);
         border-radius: 20px;
         padding: 24px;
