@@ -228,7 +228,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Przykłowe dane:
 df = pd.DataFrame({
     'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
     'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
@@ -236,17 +235,14 @@ df = pd.DataFrame({
     'PKB per capita': [150000, 120000, 110000, 130000]
 })
 
-# Tworzenie kolumn:
 col1, col2 = st.columns([2.5, 3])
 
-# Pierwsza kolumna - tabela:
 with col1:
     st.subheader("📋 Tabela danych")
     st.dataframe(df)
 
-# Druga kolumna - wykres bąbelkowy:
 with col2:
-    st.subheader("📈 Wykres bąbelkowy (Plotly)")
+    st.subheader("📈 Wykres bąbelkowy")
     fig = px.scatter(
         df,
         x='Powierzchnia (km²)',
@@ -290,7 +286,7 @@ with col1:
     st.dataframe(df)
 
 with col2:
-    st.subheader("📈 Wykres bąbelkowy (Plotly)")
+    st.subheader("📈 Wykres bąbelkowy")
     fig = px.scatter(
         df,
         x='Powierzchnia (km²)',
