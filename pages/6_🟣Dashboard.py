@@ -216,13 +216,13 @@ fig2.update_layout(
     paper_bgcolor="#111111",
 
     legend=dict(
-        title=dict(text="Liczba ludności", font=dict(size=22)),
+        title=dict(text="Liczba ludności", font=dict(size=18)),
         orientation="v",              
         yanchor="middle",
         y=0.5,                        
         xanchor="right",
         x=1.2,                        
-        font=dict(size=18)
+        font=dict(size=16)
     )
 )
 
