@@ -162,6 +162,7 @@ fig2.add_trace(
         color_discrete_sequence=["#a0a0a0"],  
         hover_name="Country",  
         hover_data=["Country"],
+        hover_data={"ISO3": False}
     ).data[0]
 )
 
