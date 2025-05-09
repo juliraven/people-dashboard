@@ -228,15 +228,15 @@ fig2.update_layout(
     )
 )
 
+df_map["Population"] = df_map["Population"].astype(int)
+df_map = df_map.sort_values(by="Population", ascending=False)
+
 with col[1]:
     st.plotly_chart(fig2)
     st.altair_chart(fig1, use_container_width=True)
 
 with col[2]:
     st.markdown('#### Top państw pod względem liczby ludności')
-
-    df_map["Population"] = df_map["Population"].astype(int)
-    df_map = df_map.sort_values(by="Population", ascending=False)
 
     st.dataframe(
     df_map,
