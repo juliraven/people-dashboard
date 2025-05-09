@@ -26,9 +26,11 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_excel('plik.xlsx', header=True)
+df = pd.read_excel('plik.xlsx')
 
 st.dataframe(df)
+
+
 
 
 
