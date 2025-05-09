@@ -151,7 +151,7 @@ labels = [
     "100–250 mln", "250–500 mln", "500 mln – 1 mld", "1+ mld"
 ]
 
-df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels)
+df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels, ordered=True)
 
 color_map = dict(zip(labels, colors))
 
