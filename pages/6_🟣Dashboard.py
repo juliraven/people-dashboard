@@ -209,7 +209,7 @@ fig2.update_geos(
 )
 
 fig2.update_layout(
-    margin=dict(l=0, r=150, t=30, b=30), 
+    margin=dict(l=0, r=0, t=30, b=100), 
     height=600,
     template="plotly_dark",
     plot_bgcolor="#111111",
@@ -217,11 +217,11 @@ fig2.update_layout(
 
     legend=dict(
         title=dict(text="Liczba ludności", font=dict(size=16)),
-        orientation="v",              
-        yanchor="middle",
-        y=0.5,                        
-        xanchor="right",
-        x=1.25,                        
+        orientation="h",              
+        yanchor="bottom",
+        y=-0.2,                        
+        xanchor="center",
+        x=0.5,                        
         font=dict(size=14)
     )
 )
