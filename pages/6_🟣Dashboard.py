@@ -248,10 +248,7 @@ with col[2]:
             "Population",
             format="%d",
             min_value=0,
-            max_value=df_map["Population"].max()
-        )
-    }
-)
+            max_value=max_value=int(df_map["Population"].max()))})
 
 
 
