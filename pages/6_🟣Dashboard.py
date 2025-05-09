@@ -161,6 +161,8 @@ fig2.add_trace(
         locationmode="ISO-3",
         scope="europe",
         color_discrete_sequence=["#a0a0a0"],
+        hover_name="Country", 
+        hover_data=["Country"], 
     ).data[0]
 )
 
@@ -170,7 +172,7 @@ fig2.add_trace(
         locationmode="ISO-3",
         hover_name="label",
         text="label"
-    ).update_traces(marker=dict(color="white", size=10), showlegend=True, name="Brak danych").data[0]
+    ).update_traces(marker=dict(color="gray", size=10), showlegend=True, name="Brak danych").data[0]
 )
 
 st.plotly_chart(fig2)
