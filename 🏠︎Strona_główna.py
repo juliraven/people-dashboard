@@ -208,8 +208,6 @@ st.code(code, language='python')
 st.title("Przydatne funkcje")
 
 st.markdown("""
-### Njabardziej przydatne na początku budowania aplikacji są poniższe funkcje:
-
 1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
    **Przykłady**:
         - `st.write("Hello, world!")` - wyświetlenie tesktu
