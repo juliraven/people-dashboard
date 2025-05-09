@@ -189,7 +189,7 @@ fig2.update_geos(
     showcoastlines=True,
     bgcolor="#111111",
     showocean=True,
-    oceancolor="rgba(149, 189, 255, 0.7)",
+    oceancolor="rgba(149, 189, 255, 0.8)",
     showlakes=False
 )
 
