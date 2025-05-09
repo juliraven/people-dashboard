@@ -233,8 +233,8 @@ with col[1]:
     st.markdown(f"### Populacja świata w roku {selected_year_for_map}")
     st.markdown(
         """
-        <div style="border: 2px solid #444; padding: 10px; border-radius: 5px;">
-            <h3>Populacja Polski</h3>
+        <div style="border: 2px solid #444; padding: 20px; border-radius: 10px; background-color: #222;">
+            <h3 style="color: white;">Populacja Polski</h3>
             """, unsafe_allow_html=True)
     st.plotly_chart(fig2)
     st.markdown("</div>", unsafe_allow_html=True)
