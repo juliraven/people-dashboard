@@ -57,7 +57,7 @@ selected_years = st.sidebar.slider(
     step=1
 )
 
-color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis', 'purples']
 selected_color_theme = st.sidebar.selectbox('Wybierz kolorystykę dashboardu:', color_theme_list)
 
 # Filtrowanie danych:
