@@ -238,36 +238,18 @@ top_loss = df_diff.sort_values("Population_Change").iloc[0]
 with col[0]:
     with st.container(border=True):
         st.markdown(
-        """
-        <div style="
-            background: radial-gradient(circle at 51% 50%, #ff5e62, #ff9966, #ff3366);
-            background-blend-mode: multiply;
-            background-size: cover;
-            overflow: hidden;
-            padding: 20px;
-            border-radius: 10px;
-        ">
-            <h3 style="color: white; text-align: center;">Jasny kontener z czerwonym gradientem</h3>
-            <p style="color: white; text-align: center;">Treść wewnątrz kontenera z rozjaśnionym tłem o odcieniach czerwieni.</p>
-            <h3 style="color: white; text-align: center;">Wzrosty/spadki w roku {selected_year_for_map}</h3>
-            
-            <div style="text-align: center;">
-                <div>
-                    <p style="color: white;">{top_gain["Country"]}</p>
-                    <p style="color: white;">{top_gain["Population_now"] / 1_000_000:.1f} M</p>
-                    <p style="color: white;">Delta: {int(top_gain["Population_Change"] / 1_000):,} K</p>
-                </div>
-                
-                <div>
-                    <p style="color: white;">{top_loss["Country"]}</p>
-                    <p style="color: white;">{top_loss["Population_now"] / 1_000_000:.1f} M</p>
-                    <p style="color: white;">Delta: {int(top_loss["Population_Change"] / 1_000):,} K</p>
-                </div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    """
+    <div style="
+        background: radial-gradient(circle at 51% 50%, #ff5e62, #ff9966, #ff3366);
+        background-blend-mode: multiply;
+        background-size: cover;
+        padding: 20px;
+        border-radius: 10px;
+    ">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.metric(
         label=top_gain["Country"],
