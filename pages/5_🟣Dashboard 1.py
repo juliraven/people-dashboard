@@ -318,38 +318,37 @@ with st.container():
         delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
     )
 
+
+
 import streamlit as st
 
-# Tworzymy kontener z gradientowym tłem
-with st.container():
-    # Stylizowanie całego kontenera za pomocą HTML
-    st.markdown(
-        """
-        <div style="
-            background: radial-gradient(circle at 51% 50%, rgb(160, 0, 240), rgb(52, 3, 43), rgb(28, 2, 75), rgb(152, 19, 119));
-            background-blend-mode: multiply;
-            background-size: cover;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        ">
-            <h3 style="text-align: center; color: white;">Wzrosty/spadki w roku {selected_year_for_map}</h3>
-            
-            <!-- Stylizowanie kontenera na metryki -->
-            <div style="color: white; margin-top: 20px;">
-                <div style="margin-bottom: 15px;">
-                    <h4>{top_gain['Country']}</h4>
-                    <p>Populacja teraz: {top_gain['Population_now'] / 1_000_000:.1f} M</p>
-                    <p>Zmienność: {int(top_gain['Population_Change'] / 1_000):,} K</p>
-                </div>
-                <div>
-                    <h4>{top_loss['Country']}</h4>
-                    <p>Populacja teraz: {top_loss['Population_now'] / 1_000_000:.1f} M</p>
-                    <p>Zmienność: {int(top_loss['Population_Change'] / 1_000):,} K</p>
-                </div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+# Tworzymy kontener, który chcemy ostylować
+plh = st.container()
+
+# Osadzamy znacznik identyfikujący ten kontener
+script = """<div id='my_gradient_container'></div>"""
+st.markdown(script, unsafe_allow_html=True)
+
+with plh:
+    st.markdown("""<div id='inner_marker'></div>""", unsafe_allow_html=True)
+
+    # Zawartość kontenera
+    st.markdown("### Wzrosty/spadki w roku 2024")
+    st.metric(label="Kraj A", value="10.2 M", delta="+150 K")
+    st.metric(label="Kraj B", value="8.7 M", delta="-120 K")
+
+# Stylowanie tylko tego kontenera z gradientem
+gradient_style = """
+<style>
+div[data-testid='stVerticalBlock']:has(div#inner_marker):not(:has(div#my_gradient_container)) {
+    background: radial-gradient(circle at 51% 50%, rgb(160, 0, 240), rgb(52, 3, 43), rgb(28, 2, 75), rgb(152, 19, 119));
+    background-blend-mode: multiply;
+    background-size: cover;
+    border-radius: 12px;
+    padding: 20px;
+}
+</style>
+"""
+
+st.markdown(gradient_style, unsafe_allow_html=True)
 
