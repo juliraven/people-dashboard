@@ -39,7 +39,7 @@ df1 = df1[(df1["Year"] >= 2000) & (df1["Year"] <= 2023)]
 
 # Filtr wyboru kraju/krajów:
 countries = df["Country"].unique().tolist()
-st.sidebar.multiselect("Wybierz kraj(e):", countries, default=["Poland"])
+selected_countries = st.sidebar.multiselect("Wybierz kraj(e):", countries, default=["Poland"])
 
 # Filtr zakresu lat:
 min_year = df1["Year"].min()
