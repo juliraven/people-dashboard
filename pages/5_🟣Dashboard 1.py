@@ -233,19 +233,6 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
-from streamlit_extras.stylable_container import stylable_container
-
-with stylable_container(
-    key="colorful_container",
-    css_styles="""
-        div {
-            background-color: #ffcccb;
-            padding: 20px;
-            border-radius: 10px;
-        }
-    """,
-):
-
 with col[0]:
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
