@@ -234,6 +234,42 @@ top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
 with col[0]:
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(
+        f"<h3 style='text-align: center; color: white;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",
+        unsafe_allow_html=True)
+
+        st.metric(
+        label=top_gain["Country"],
+        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
+    )
+
+        st.metric(
+        label=top_loss["Country"],
+        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
+    )
+
+    st.markdown(
+    """
+    <style>
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
+        background: radial-gradient(circle at 51% 50%, rgb(160, 0, 240), rgb(52, 3, 43), rgb(28, 2, 75), rgb(152, 19, 119));
+        background-blend-mode: multiply;
+        background-size: cover;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True)
+
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.metric(
@@ -282,73 +318,4 @@ with col[2]:
                         '<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>',
     unsafe_allow_html=True)
 
-
-import streamlit as st
-
-# Tworzymy kontener z dynamicznymi elementami
-with st.container():
-    # Stylizowanie kontenera za pomocą HTML
-    st.markdown(
-        """
-        <div style="
-            background: radial-gradient(circle at 51% 50%, rgb(160, 0, 240), rgb(52, 3, 43), rgb(28, 2, 75), rgb(152, 19, 119));
-            background-blend-mode: multiply;
-            background-size: cover;
-            overflow: hidden;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        ">
-            <h3 style="text-align: center; color: white;">Wzrosty/spadki w roku {selected_year_for_map}</h3>
-        </div>
-    """,
-        unsafe_allow_html=True
-    )
-
-    # Teraz metryki poniżej nagłówka - one będą w tym samym kontenerze
-    st.metric(
-        label=top_gain["Country"],
-        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
-    )
-
-    st.metric(
-        label=top_loss["Country"],
-        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
-    )
-
-
-
-import streamlit as st
-
-# Tworzymy kontener, który chcemy ostylować
-plh = st.container()
-
-# Osadzamy znacznik identyfikujący ten kontener
-script = """<div id='my_gradient_container'></div>"""
-st.markdown(script, unsafe_allow_html=True)
-
-with plh:
-    st.markdown("""<div id='inner_marker'></div>""", unsafe_allow_html=True)
-
-    # Zawartość kontenera
-    st.markdown("### Wzrosty/spadki w roku 2024")
-    st.metric(label="Kraj A", value="10.2 M", delta="+150 K")
-    st.metric(label="Kraj B", value="8.7 M", delta="-120 K")
-
-# Stylowanie tylko tego kontenera z gradientem
-gradient_style = """
-<style>
-div[data-testid='stVerticalBlock']:has(div#inner_marker):not(:has(div#my_gradient_container)) {
-    background: radial-gradient(circle at 51% 50%, rgb(160, 0, 240), rgb(52, 3, 43), rgb(28, 2, 75), rgb(152, 19, 119));
-    background-blend-mode: multiply;
-    background-size: cover;
-    border-radius: 12px;
-    padding: 20px;
-}
-</style>
-"""
-
-st.markdown(gradient_style, unsafe_allow_html=True)
 
