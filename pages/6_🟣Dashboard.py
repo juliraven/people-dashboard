@@ -248,7 +248,7 @@ top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
 with col[0]:
     with st.container(border=True):
-        st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spaki w roku {selected_year_min}</h3>",unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spaki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.metric(
         label=top_gain["Country"],
         value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
