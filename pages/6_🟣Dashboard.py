@@ -30,16 +30,32 @@ st.title("📊 Dashboard ludności Europy (2015–2024)")
 
 df = pd.read_excel('plik.xlsx')
 
-# Transspozycja danych do wykresów:
+# Transpozycja danych do wykresów:
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
 
 # Filtr wyboru kraju/krajów:
 countries = df["Country"].unique()
-selected = st.sidebar.multiselect("Wybierz kraj(e)", countries, default=["Poland"])
+selected_countries = st.sidebar.multiselect("Wybierz kraj(e):", countries, default=["Poland"])
+
+# Filtr zakresu lat:
+min_year = df1["Year"].min()
+max_year = df1["Year"].max()
+
+selected_years = st.sidebar.slider(
+    "Wybierz zakres lat:",
+    min_value=int(min_year),
+    max_value=int(max_year),
+    value=(int(min_year), int(max_year)),
+    step=1
+)
 
 # Filtrowanie danych:
-df2 = df1[df1["Country"].isin(selected)]
+df2 = df1[(df1["Country"].isin(selected_countries)) &
+    (df1["Year"] >= selected_years[0]) &
+    (df1["Year"] <= selected_years[1])
+]
+
 
 
 
