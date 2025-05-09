@@ -233,6 +233,18 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
+st.markdown("""
+    <style>
+        .custom-container {
+            background-color: #f0f2f6;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 with col[0]:
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
@@ -248,8 +260,10 @@ with col[0]:
 
 with col[1]:
     with st.container(border=True):
+        st.markdown('<div class="custom-container">', unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig2, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Populacja Europy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
