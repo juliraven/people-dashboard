@@ -132,8 +132,11 @@ geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria
        'Venezuela': 'VEN', 'Vietnam': 'VNM', 'Wallis and Futuna Islands': 'WLF', 'Western Sahara': 'ESH', 'Yemen': 'YEM', 
        'Zambia': 'ZMB', 'Zimbabwe': 'ZWE', 'North Macedonia': 'MKD', 'Kosovo': 'XK', 'Taiwan': 'TWN'}
 
-# Suwak do wyboru konkretnego roku:
-selected_year_for_map = st.sidebar.selectbox("Wybierz rok (dla mapy):", sorted(df1["Year"].unique()))
+excluded_year = 1999
+years_available = sorted(df1["Year"].unique())
+years_available = [year for year in years_available if year != excluded_year]
+
+selected_year_for_map = st.sidebar.selectbox("Wybierz rok (dla mapy):", years_available)
 
 df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
