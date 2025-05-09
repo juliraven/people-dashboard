@@ -100,7 +100,7 @@ geo = {
     'Denmark': 'DNK', 'Estonia': 'EST', 'Finland': 'FIN', 'France': 'FRA',
     'Georgia': 'GEO', 'Germany': 'DEU', 'Greece': 'GRC', 'Hungary': 'HUN',
     'Iceland': 'ISL', 'Ireland': 'IRL', 'Italy': 'ITA', 'Kazakhstan': 'KAZ',
-    'Kosovo': 'XKX', 'Latvia': 'LVA', 'Liechtenstein': 'LIE', 'Lithuania': 'LTU',
+    'Kosovo': 'XK', 'Latvia': 'LVA', 'Liechtenstein': 'LIE', 'Lithuania': 'LTU',
     'Luxembourg': 'LUX', 'Malta': 'MLT', 'Moldova': 'MDA', 'Monaco': 'MCO',
     'Montenegro': 'MNE', 'Netherlands': 'NLD', 'North Macedonia': 'MKD',
     'Norway': 'NOR', 'Poland': 'POL', 'Portugal': 'PRT', 'Romania': 'ROU',
@@ -189,7 +189,10 @@ fig2.update_geos(
     showcoastlines=True,
     bgcolor="#111111",
     showocean=True,
-    oceancolor="#00bfff"
+    oceancolor="#95bdff",
+    showrivers=True,
+    showlakes=True,
+    
 )
 
 st.plotly_chart(fig2)
