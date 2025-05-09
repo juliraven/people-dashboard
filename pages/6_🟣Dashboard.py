@@ -134,7 +134,9 @@ fig2.update_layout(
     title=f"Populacja w Europie w roku {selected_year_for_map}",
     margin=dict(l=0, r=0, t=30, b=0),
     height=600,
-    template="none"
+    template="none",
+    plot_bgcolor="#202125",    
+    paper_bgcolor="#202125", 
 )
 
 
