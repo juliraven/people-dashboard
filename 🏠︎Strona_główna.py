@@ -219,9 +219,6 @@ st.markdown("""
 
    
         - `st.write("Hello, world!")` - wyświetlenie tesktu
-
-
-
         
         - `st.write(df)` — wyświetlenie ramki danych
 
