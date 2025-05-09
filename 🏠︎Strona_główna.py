@@ -293,8 +293,8 @@ with col2:
     st.subheader("📈 Wykres bąbelkowy (Plotly)")
     fig = px.scatter(
         df,
-        x='Powierzchnia (km²)',
-        y='Liczba mieszkańców (mln)',
+        y='Powierzchnia (km²)',
+        x='Liczba mieszkańców (mln)',
         size='PKB',
         color='PKB',
         hover_name='Miasto',
