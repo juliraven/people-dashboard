@@ -48,13 +48,13 @@ european_countries = [
 # Transpozycja danych do wykresów:
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
-df1 = df1[(df1["Year"] >= 2000) & (df1["Year"] <= 2023)]
+df1 = df1[(df1["Year"] >= 1999) & (df1["Year"] <= 2023)]
 
 # Wybór krajów europejskich::
 df2 = df1[df1["Country"].isin(european_countries)]
 
 # Filtr zakresu lat:
-min_year = df2["Year"].min()
+min_year = df2["Year"].min() + 1
 max_year = df2["Year"].max()
 
 selected_years = st.sidebar.slider(
@@ -216,21 +216,21 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
-min_year_for_comparison = 2001
+min_year_for_comparison = 2000
 
-selected_year_min = st.sidebar.selectbox(
+selected_year_for_map = st.sidebar.selectbox(
     "Wybierz rok (dla mapy):", 
     sorted(df1["Year"].unique()), 
-    index=sorted(df1["Year"].unique()).index(min_year_for_comparison)  #
+    index=sorted(df1["Year"].unique()).index(min_year_for_comparison)  
 )
 
 # Upewniamy się, że wybrany rok nie jest wcześniejszy niż 2001
-if selected_year_min < min_year_for_comparison:
-    selected_year_min = min_year_for_comparison 
+if selected_year_for_map < min_year_for_comparison:
+    selected_year_for_map = min_year_for_comparison 
 
 # Łączenie danych z bieżącego roku i poprzedniego roku:
-df_this_year = df2[df2["Year"] == selected_year_min]
-df_prev_year = df2[df2["Year"] == (selected_year_min - 1)]
+df_this_year = df2[df2["Year"] == selected_year_for_map]
+df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
 
 # Łączenie po kraju, aby obliczyć różnice populacji:
 df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
@@ -248,7 +248,7 @@ top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
 with col[0]:
     with st.container(border=True):
-        st.markdown(f"<h3 style='text-align: center;'>Największe wzrosty/spaki liczby ludności</h3>",unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spaki w roku {selected_year_min}</h3>",unsafe_allow_html=True)
         st.metric(
         label=top_gain["Country"],
         value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
