@@ -184,15 +184,12 @@ fig2.update_geos(
     lataxis_range=[30, 72],   
     lonaxis_range=[-25, 60], 
     showland=True,
-    landcolor="#111111",
+    landcolor="#f5f2d6",
     showframe=False,
     showcoastlines=True,
     bgcolor="#111111",
     showocean=True,
-    oceancolor="#95bdff",
-    showrivers=True,
-    showlakes=True,
-    
+    oceancolor="#95bdff"
 )
 
 st.plotly_chart(fig2)
