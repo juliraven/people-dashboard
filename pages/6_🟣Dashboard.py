@@ -114,7 +114,7 @@ selected_year_for_map = st.sidebar.selectbox("Wybierz rok (dla mapy):", sorted(d
 
 df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
-df_map["ISO"] = df_map["Country"].map(geo)
+df_map["ISO3"] = df_map["Country"].map(geo)
 
 # Usunięcie braków:
 df_map = df_map.dropna(subset=["ISO3"])
