@@ -181,9 +181,9 @@ fig2 = px.choropleth(
 )
 
 frames = []
-frame_count = 60 
+frame_count = 360 
 for i in range(frame_count):
-    angle = 360 * i / frame_count  
+    angle = (i*1)
     frames.append(go.Frame(
         data=[go.Choropleth(
             z=df_map["Population"],
