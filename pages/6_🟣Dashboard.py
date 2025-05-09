@@ -216,13 +216,18 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
-# Dane z wybranego roku i poprzedniego roku:
+# Łączenie danych z bieżącego roku i poprzedniego roku:
 df_this_year = df2[df2["Year"] == selected_year_for_map]
 df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
 
-# Łączenie po kraju, aby obliczyć różnice:
+# Łączenie po kraju, aby obliczyć różnice populacji:
 df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
+
+# Obliczanie różnicy w populacji:
 df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
+
+# Upewnienie się, że nie ma brakujących danych w kolumnach populacji:
+df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
 
 # Największy wzrost i spadek:
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
@@ -269,12 +274,10 @@ with col[0]:
         st.metric(
         label=top_gain["Country"],
         value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
-    )
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
 
-    st.metric(
+        st.metric(
         label=top_loss["Country"],
         value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
-    )
+        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
