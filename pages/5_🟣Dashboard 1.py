@@ -247,8 +247,23 @@ with col[0]:
             padding: 20px;
             border-radius: 10px;
         ">
-            <h3 style="color: white;">Jasny kontener z czerwonym gradientem</h3>
-            <p style="color: white;">Treść wewnątrz kontenera z rozjaśnionym tłem o odcieniach czerwieni.</p>
+            <h3 style="color: white; text-align: center;">Jasny kontener z czerwonym gradientem</h3>
+            <p style="color: white; text-align: center;">Treść wewnątrz kontenera z rozjaśnionym tłem o odcieniach czerwieni.</p>
+            <h3 style="color: white; text-align: center;">Wzrosty/spadki w roku {selected_year_for_map}</h3>
+            
+            <div style="text-align: center;">
+                <div>
+                    <p style="color: white;">{top_gain["Country"]}</p>
+                    <p style="color: white;">{top_gain["Population_now"] / 1_000_000:.1f} M</p>
+                    <p style="color: white;">Delta: {int(top_gain["Population_Change"] / 1_000):,} K</p>
+                </div>
+                
+                <div>
+                    <p style="color: white;">{top_loss["Country"]}</p>
+                    <p style="color: white;">{top_loss["Population_now"] / 1_000_000:.1f} M</p>
+                    <p style="color: white;">Delta: {int(top_loss["Population_Change"] / 1_000):,} K</p>
+                </div>
+            </div>
         </div>
         """,
         unsafe_allow_html=True
