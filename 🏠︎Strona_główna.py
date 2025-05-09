@@ -242,7 +242,7 @@ col1, col2 = st.columns([2.5, 3])
 # Pierwsza kolumna - tabela:
 with col1:
     st.subheader("📋 Tabela danych")
-    st.table(df)
+    st.dataframe(df)
 
 # Druga kolumna - wykres bąbelkowy:
 with col2:
