@@ -143,7 +143,17 @@ df_map["ISO3"] = df_map["Country"].map(geo)
 # Usunięcie braków:
 df_map = df_map.dropna(subset=["ISO3"])
 
+# Kategoryzowanie populacji:
 colors = ['#fcbec0', '#faa9b8', '#f98faf', '#f571a5', '#ec539d', '#db3695', '#c41b8a', '#a90880', '#8d0179']
+bins = [0, 5_000_000, 10_000_000, 25_000_000, 50_000_000, 100_000_000, 250_000_000, 500_000_000, 1_000_000_000, float('inf')]
+labels = [
+    "0–5 mln", "5–10 mln", "10–25 mln", "25–50 mln", "50–100 mln",
+    "100–250 mln", "250–500 mln", "500 mln – 1 mld", "1+ mld"
+]
+
+df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels)
+
+color_map = dict(zip(labels, colors))
 
 fig2 = px.choropleth(
     df_map,
@@ -152,7 +162,7 @@ fig2 = px.choropleth(
     hover_name="Country",
     locationmode="ISO-3",
     scope="world",
-    color_continuous_scale=colors,
+    color_discrete_map=color_map,
     range_color=(df_map["Population"].min(), df_map["Population"].max()),
     hover_data={"ISO3": False},
     width=1000,  
