@@ -287,7 +287,7 @@ col1, col2 = st.columns([2.5, 3])
 with col1:
     st.subheader("📋 Tabela danych")
     df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
-    st.table(df)
+    st.dataframe(df)
 
 with col2:
     st.subheader("📈 Wykres bąbelkowy (Plotly)")
