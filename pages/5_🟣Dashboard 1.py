@@ -246,8 +246,7 @@ with col[0]:
         value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
         delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
-    with stylable_container(
-    key="stylized_container",
+    with stylable_container(key="stylized_container",
     css_styles="""
         div {
             background-color: #f0f0f0;
