@@ -183,7 +183,7 @@ fig2 = px.choropleth(
 
 
 fig2.update_layout(
-    margin=dict(l=0, r=0, t=20, b=0),
+    margin=dict(l=0, r=0, t=30, b=0),
     height=600,
     template="plotly_dark",
     plot_bgcolor="#111111",    
@@ -209,8 +209,8 @@ fig2.update_geos(
 )
 
 fig2.update_layout(
-    margin=dict(l=0, r=150, t=10, b=30), 
-    height=800,
+    margin=dict(l=0, r=150, t=30, b=30), 
+    height=600,
     template="plotly_dark",
     plot_bgcolor="#111111",
     paper_bgcolor="#111111",
