@@ -224,30 +224,39 @@ st.markdown("""
 ```python
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 
-df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
-st.dataframe(df)
+# Przykłowe dane:
+df = pd.DataFrame({
+    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław', 'Poznań'],
+    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6, 0.5],
+    'Powierzchnia (km²)': [517, 327, 262, 293, 262],
+    'PKB per capita': [150000, 120000, 110000, 130000, 125000]
+})
 
+# Tworzenie kolumn:
 col1, col2 = st.columns(2)
-chart_data = {'x': [1, 2, 3], 'y': [4, 5, 6]}
-fig, ax = plt.subplots()
-ax.plot(chart_data['x'], chart_data['y'])
 
+# Pierwsza kolumna - tabela:
 with col1:
-    st.pyplot(fig)
+    st.subheader("📋 Tabela danych")
+    st.table(df)
 
+# Druga kolumna - wykres bąbelkowy:
 with col2:
-    st.write("To jest treść w drugiej kolumnie.")
+    st.subheader("📈 Wykres bąbelkowy (Plotly)")
+    fig = px.scatter(
+        df,
+        x='Powierzchnia (km²)',
+        y='Liczba mieszkańców (mln)',
+        size='PKB per capita',
+        color='PKB per capita',
+        hover_name='Miasto',
+        size_max=60,
+        color_continuous_scale='Viridis'
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
-with st.expander("Zobacz więcej"):
-    st.write("Więcej szczegółów tutaj...")
-
-if 'my_variable' not in st.session_state:
-    st.session_state['my_variable'] = 0
-
-st.write("Stan sesji:", st.session_state['my_variable'])
-st.session_state['my_variable'] += 1
 """)
 
 st.markdown(
@@ -260,29 +269,34 @@ st.markdown(
 )
 
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 
-df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
-st.dataframe(df)
+df = pd.DataFrame({
+    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław', 'Poznań'],
+    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6, 0.5],
+    'Powierzchnia (km²)': [517, 327, 262, 293, 262],
+    'PKB': [150000, 120000, 110000, 130000, 125000]
+})
 
 col1, col2 = st.columns(2)
-chart_data = {'x': [1, 2, 3], 'y': [4, 5, 6]}
-fig, ax = plt.subplots()
-ax.plot(chart_data['x'], chart_data['y'])
 
 with col1:
-    st.pyplot(fig)
+    st.subheader("📋 Tabela danych")
+    st.table(df)
 
 with col2:
-    st.write("To jest treść w drugiej kolumnie.")
+    st.subheader("📈 Wykres bąbelkowy (Plotly)")
+    fig = px.scatter(
+        df,
+        x='Powierzchnia (km²)',
+        y='Liczba mieszkańców (mln)',
+        size='PKB per capita',
+        color='PKB per capita',
+        hover_name='Miasto',
+        size_max=60,
+        color_continuous_scale='Viridis'
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
-with st.expander("Zobacz więcej"):
-    st.write("Więcej szczegółów tutaj...")
-
-if 'my_variable' not in st.session_state:
-    st.session_state['my_variable'] = 0
-
-st.write("Stan sesji:", st.session_state['my_variable'])
-st.session_state['my_variable'] += 1
 
 
