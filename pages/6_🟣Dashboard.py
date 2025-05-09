@@ -243,12 +243,16 @@ with col[2]:
     column_order=["Country", "Population"],
     hide_index=True,
     column_config={
-        "Country": st.column_config.TextColumn("Country"),
+        "Country": st.column_config.TextColumn("Kraj"),
         "Population": st.column_config.ProgressColumn(
-            "Population",
+            "Populacja",
             format="%d",
             min_value=0,
-            max_value=max_value=int(df_map["Population"].max()))})
+            max_value=int(df_map["Population"].max())  
+        )
+    }
+)
+
 
 
 
