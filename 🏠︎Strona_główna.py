@@ -276,10 +276,10 @@ import pandas as pd
 import plotly.express as px
 
 df = pd.DataFrame({
-    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław', 'Poznań'],
-    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6, 0.5],
-    'Powierzchnia (km²)': [517, 327, 262, 293, 262],
-    'PKB': [150000, 120000, 110000, 130000, 125000]
+    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
+    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
+    'Powierzchnia (km²)': [517, 327, 262, 293],
+    'PKB': [150000, 120000, 110000, 130000]
 })
 
 col1, col2 = st.columns([2.5, 3])
@@ -293,8 +293,8 @@ with col2:
     st.subheader("📈 Wykres bąbelkowy (Plotly)")
     fig = px.scatter(
         df,
-        y='Powierzchnia (km²)',
-        x='Liczba mieszkańców (mln)',
+        x='Powierzchnia (km²)',
+        y='Liczba mieszkańców (mln)',
         size='PKB',
         color='PKB',
         hover_name='Miasto',
