@@ -146,8 +146,6 @@ fig2.update_layout(
 fig2.update_geos(
     scope="world",
     projection_type="orthographic",
-    lataxis_range=[30, 72],   
-    lonaxis_range=[-25, 60], 
     showland=True,
     landcolor="#f5f2d6",
     showframe=False,
