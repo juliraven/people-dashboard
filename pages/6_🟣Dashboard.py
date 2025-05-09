@@ -62,8 +62,7 @@ selected_years = st.sidebar.slider(
 )
 
 # Filtrowanie danych:
-df3 = df2[(df1["Country"].isin(selected_countries)) &
-    (df2["Year"] >= selected_years[0]) &
+df3 = df2[(df2["Year"] >= selected_years[0]) &
     (df2["Year"] <= selected_years[1])
 ]
 
