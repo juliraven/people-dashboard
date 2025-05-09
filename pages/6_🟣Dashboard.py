@@ -72,7 +72,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
             title="", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
         color=alt.Color(f'{input_color}:Q',
                         legend=alt.Legend(title="Ludność"),
-                        scale=alt.Scale(scheme=input_color_theme)),
+                        scale=alt.Scale(scheme=input_color_theme, reverse=True)),
         stroke=alt.value('black'),
         strokeWidth=alt.value(0.25),
     ).properties(width=900).configure_axis(
@@ -86,7 +86,7 @@ fig1 = make_heatmap(
     input_y="Year",
     input_x="Country",
     input_color="Population",
-    input_color_theme="darkgreen"
+    input_color_theme="redpurple"
 )
 
 st.altair_chart(fig1, use_container_width=True)
