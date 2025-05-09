@@ -132,7 +132,8 @@ fig2 = px.choropleth(
     locationmode="ISO-3",
     scope="europe",
     color_continuous_scale=colors,
-    range_color=(df_map["Population"].min(), df_map["Population"].max())
+    range_color=(df_map["Population"].min(), df_map["Population"].max()),
+    hover_data={"ISO3": False}
 )
 
 fig2.update_layout(
