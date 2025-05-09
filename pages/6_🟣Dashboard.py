@@ -134,8 +134,8 @@ fig2.update_layout(
     margin=dict(l=0, r=0, t=30, b=0),
     height=600,
     template="plotly_dark",
-    plot_bgcolor="#202125",    
-    paper_bgcolor="#202125", 
+    plot_bgcolor="#111111",    
+    paper_bgcolor="#111111", 
     coloraxis_colorbar=dict(
         title="Population",
         ticks="outside"
