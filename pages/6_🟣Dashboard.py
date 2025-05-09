@@ -235,6 +235,7 @@ with col[1]:
 with col[2]:
     st.markdown('#### Top państw pod względem liczby ludności')
 
+    df_map["Population"] = df_map["Population"].astype(int)
     df_map = df_map.sort_values(by="Population", ascending=False)
 
     st.dataframe(
