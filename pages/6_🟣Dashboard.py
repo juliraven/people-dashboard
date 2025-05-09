@@ -148,12 +148,8 @@ fig2.update_layout(
     )
 )
 
-df_missing = df1[df1["Year"] == selected_year_for_map].copy()
-df_missing["ISO3"] = df_missing["Country"].map(geo)
-df_missing = df_missing[df_missing["ISO3"].notna()]
-df_missing["Country"] = df_missing["ISO3"].map({v: k for k, v in geo.items()})
-missing_iso = set(geo.values()) - set(df_map["ISO3"])
 df_missing = pd.DataFrame({"ISO3": list(missing_iso)})
+df_missing["Country"] = df_missing["ISO3"].map({v: k for k, v in geo.items()})
 
 fig2.add_trace(
     px.choropleth(
