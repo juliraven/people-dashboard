@@ -239,7 +239,7 @@ with col[2]:
     st.markdown('#### Top państw pod względem liczby ludności')
 
     st.dataframe(
-    df_map,
+    df_map.head(10),
     column_order=["Country", "Population"],
     hide_index=True,
     column_config={
