@@ -210,7 +210,7 @@ fig2.update_layout(
         yanchor="middle",
         y=0.5,                        
         xanchor="right",
-        x=1,                        
+        x=1.5,                        
         font=dict(size=14)
     )
 )
