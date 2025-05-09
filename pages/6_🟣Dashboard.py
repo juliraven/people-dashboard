@@ -127,7 +127,9 @@ fig2 = px.choropleth(
     scope="world",
     color_continuous_scale=colors,
     range_color=(df_map["Population"].min(), df_map["Population"].max()),
-    hover_data={"ISO3": False}
+    hover_data={"ISO3": False},
+    width=1000,  
+    height=700
 )
 
 fig2.update_layout(
@@ -154,9 +156,7 @@ fig2.update_geos(
     bgcolor="#111111",
     showocean=True,
     oceancolor="rgba(149, 189, 255, 0.9)",
-    showlakes=False,
-    width=1000,  
-    height=700
+    showlakes=False
 )
 
 st.plotly_chart(fig2)
