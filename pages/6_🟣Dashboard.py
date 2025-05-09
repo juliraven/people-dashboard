@@ -75,11 +75,11 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
         x=alt.X(f'{input_x}:O', axis=alt.Axis(
             title="", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
         color=alt.Color(f'{input_color}:Q',
-                        legend=alt.Legend(title="Liczba ludności"),
+                        legend=alt.Legend(title="Liczba ludności", titlePadding=20),
                         scale=alt.Scale(scheme=input_color_theme)),
         stroke=alt.value('black'),
         strokeWidth=alt.value(0.25),
-    ).properties(width=900).configure_axis(
+    ).properties(width=900, title=f"Populacja Europy {selected_years}").configure_axis(
         labelFontSize=12,
         titleFontSize=12
     )
