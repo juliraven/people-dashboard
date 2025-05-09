@@ -268,6 +268,7 @@ with col[0]:
         background-size: cover;
         padding: 20px;
         border-radius: 12px;
+        backdrop-filter: brightness(1.2);
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
     </style>
