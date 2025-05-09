@@ -218,22 +218,23 @@ df_map = df_map.sort_values(by="Population", ascending=False)
 
 with col[1]:
     with st.container(border=True):
-        st.markdown(f"### Populacja świata w roku {selected_year_for_map}")
+        st.markdown(f"<h3 style='text-align: center;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig2, use_container_width=True)
 
     with st.container(border=True):
-        st.markdown(f"### Populacja Europy {selected_years[0]} - {selected_years[1]}")
+        st.markdown(f"<h3 style='text-align: center;'>Populacja EEuropy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
         st.altair_chart(fig1, use_container_width=True)
     
 
 with col[2]:
-    st.markdown('#### Top 10 państw pod względem liczby ludności')
+    with st.container(border=true):
+        st.markdown('#### Top 10 państw pod względem liczby ludności')
 
-    st.dataframe(
-    df_map.head(10),
-    column_order=["Country", "Population"],
-    hide_index=True,
-    column_config={
+        st.dataframe(
+        df_map.head(10),
+        column_order=["Country", "Population"],
+        hide_index=True,
+        column_config={
         "Country": st.column_config.TextColumn("Kraj"),
         "Population": st.column_config.ProgressColumn(
             "Populacja",
