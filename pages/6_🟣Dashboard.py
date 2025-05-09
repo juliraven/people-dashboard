@@ -51,7 +51,7 @@ selected_years = st.sidebar.slider(
 )
 
 color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
-selected_color_theme = st.sidebar('Wybierz kolorystykę dashboardu:', color_theme_list)
+selected_color_theme = st.sidebar.selectbox('Wybierz kolorystykę dashboardu:', color_theme_list)
 
 # Filtrowanie danych:
 df2 = df1[(df1["Country"].isin(selected_countries)) &
