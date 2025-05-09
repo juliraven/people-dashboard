@@ -196,6 +196,25 @@ fig2.update_geos(
     showlakes=False
 )
 
+fig2.update_layout(
+    title=f"Populacja świata w roku {selected_year_for_map}",
+    margin=dict(l=0, r=0, t=30, b=30),  
+    height=700,
+    template="plotly_dark",
+    plot_bgcolor="#111111",    
+    paper_bgcolor="#111111",
+
+    legend=dict(
+        title=dict(text="Przedział populacji", font=dict(size=14)),
+        orientation="h",             
+        yanchor="bottom",
+        y=-0.2,                     
+        xanchor="center",
+        x=0.5,
+        font=dict(size=12)
+    )
+)
+
 st.plotly_chart(fig2)
 
 
