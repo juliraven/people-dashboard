@@ -126,7 +126,7 @@ fig2 = px.choropleth(
     hover_name="Country",
     locationmode="ISO-3",
     scope="europe",
-    color_continuous_scale="redpurple",
+    color_continuous_scale="teal",
     labels={"Population": "Populacja"},
 )
 
