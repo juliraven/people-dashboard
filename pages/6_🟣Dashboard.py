@@ -234,6 +234,7 @@ with col[1]:
     st.plotly_chart(fig2)
     st.markdown(f"### Populacja Europy {selected_years[0]} - {selected_years[1]}")
     st.altair_chart(fig1, use_container_width=True)
+    st.markdown("<hr style='border: 1px solid #444; margin: 20px 0;'>", unsafe_allow_html=True)
 
 with col[2]:
     st.markdown('#### Top 10 państw pod względem liczby ludności')
