@@ -179,6 +179,45 @@ fig2 = px.choropleth(
     category_orders={"Population_Category": labels}
 )
 
+frames = []
+frame_count = 60 
+for i in range(frame_count):
+    angle = 360 * i / frame_count  
+    frames.append(go.Frame(
+        data=[go.Choropleth(
+            z=df_map["Population"],
+            locations=df_map["ISO3"],
+            colorbar_title="Populacja"
+        )],
+        layout=go.Layout(
+            geo=dict(
+                projection=dict(
+                    type="orthographic",
+                    rotation=dict(lat=30, lon=angle)  
+                ),
+            )
+        )
+    ))
+
+fig2.frames = frames
+fig2.update_layout(
+    updatemenus=[dict(
+        type="buttons",
+        x=0.1,
+        y=-0.1,
+        buttons=[dict(
+            label="Play",
+            method="animate",
+            args=[None, dict(frame=dict(duration=50, redraw=True), fromcurrent=True)]
+        )]
+    )],
+    geo=dict(
+        scope="world",
+        projection_type="orthographic",
+        showland=True
+    )
+)
+
 fig2.update_layout(
     title=f"Populacja świata w roku {selected_year_for_map}",
     margin=dict(l=0, r=0, t=30, b=0),
