@@ -260,11 +260,10 @@ with col[0]:
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
         background: radial-gradient(
-        circle at center,
-        rgb(160, 0, 240) 0%,
-        rgb(152, 19, 119) 50%,
-        rgb(28, 2, 75) 80%,
-        rgb(52, 3, 43) 100%);
+        rgba(160, 0, 240, 0.4) 0%,
+        rgba(152, 19, 119, 0.4) 50%,
+        rgba(28, 2, 75, 0.5) 80%,
+        rgba(52, 3, 43, 0.6) 100%);
         background-blend-mode: multiply;
         background-size: cover;
         padding: 20px;
