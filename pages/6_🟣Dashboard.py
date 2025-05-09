@@ -181,12 +181,12 @@ fig2.add_trace(
 fig2.update_geos(
     scope="world",
     projection_type="natural earth",
-    lataxis_range=[30, 72],   # Szerokość geograficzna
-    lonaxis_range=[-25, 60],  # Długość geograficzna
+    lataxis_range=[30, 72],   
+    lonaxis_range=[-25, 60], 
     showland=True,
     landcolor="#111111",
     showframe=False,
-    showcoastlines=False,
+    showcoastlines=True,
     bgcolor="#111111"
 )
 
