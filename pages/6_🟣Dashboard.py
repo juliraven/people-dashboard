@@ -166,7 +166,7 @@ fig2 = px.choropleth(
     range_color=(df_map["Population"].min(), df_map["Population"].max()),
     hover_data={"ISO3": False, "Population": True},
     width=1000,  
-    height=700
+    height=1000
 )
 
 fig2.update_layout(
