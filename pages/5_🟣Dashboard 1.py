@@ -258,30 +258,35 @@ with col[0]:
     """
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
-        background: linear-gradient(135deg, rgba(122,0,255,0.2), rgba(0,255,240,0.1));
-        border: 2px solid rgba(255, 0, 255, 0.4);
+        background: radial-gradient(circle at top left,
+            rgba(180, 0, 255, 0.3),
+            rgba(120, 0, 100, 0.4),
+            rgba(60, 0, 80, 0.5),
+            rgba(30, 0, 40, 0.6));
+        border: 2px solid rgba(255, 0, 180, 0.4);
         border-radius: 20px;
         padding: 24px;
         box-shadow:
-            0 0 10px rgba(255, 0, 255, 0.3),
-            0 0 20px rgba(0, 255, 240, 0.2),
-            0 4px 20px rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(8px) brightness(1.1);
+            0 0 15px rgba(255, 0, 180, 0.3),
+            0 0 25px rgba(180, 0, 255, 0.2),
+            0 8px 30px rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px) brightness(1.1);
         background-blend-mode: overlay;
-        transition: all 0.3s ease;
+        transition: all 0.3s ease-in-out;
     }
 
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
-        transform: translateY(-6px);
+        transform: translateY(-5px);
         box-shadow:
-            0 0 15px rgba(255, 0, 255, 0.3),
-            0 0 30px rgba(0, 255, 240, 0.3),
-            0 8px 30px rgba(0, 0, 0, 0.3);
+            0 0 20px rgba(255, 0, 180, 0.6),
+            0 0 35px rgba(180, 0, 255, 0.4),
+            0 10px 40px rgba(0, 0, 0, 0.7);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
