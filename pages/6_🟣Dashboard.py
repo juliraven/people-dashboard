@@ -198,22 +198,23 @@ fig2.update_geos(
 
 fig2.update_layout(
     title=f"Populacja świata w roku {selected_year_for_map}",
-    margin=dict(l=0, r=0, t=30, b=30),  
-    height=700,
+    margin=dict(l=0, r=0, t=30, b=100),  
+    height=800,
     template="plotly_dark",
-    plot_bgcolor="#111111",    
+    plot_bgcolor="#111111",
     paper_bgcolor="#111111",
 
     legend=dict(
         title=dict(text="Liczba ludności", font=dict(size=18)),
-        orientation="h",             
-        yanchor="bottom",
-        y=-0.2,                     
+        orientation="v",              
+        yanchor="top",
+        y=0,                        
         xanchor="center",
-        x=0.5,
+        x=0.5,                        
         font=dict(size=14)
     )
 )
+
 
 st.plotly_chart(fig2)
 
