@@ -122,7 +122,7 @@ df_map["ISO3"] = df_map["Country"].map(geo)
 # Usunięcie braków:
 df_map = df_map.dropna(subset=["ISO3"])
 
-colors = ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"]
+colors = ['#fcbec0', '#faa9b8', '#f98faf', '#f571a5', '#ec539d', '#db3695', '#c41b8a', '#a90880', '#8d0179']
 
 fig2 = px.choropleth(
     df_map,
