@@ -26,10 +26,22 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
+st.title("📊 Dashboard ludności Europy (2015–2024)")
+
 df = pd.read_excel('plik.xlsx')
 
-st.dataframe(df)
-st.write(df.columns)
+# Transspozycja danych do wykresów:
+df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
+df1["Year"] = df1["Year"].astype(int)
+
+# Filtr wyboru kraju/krajów:
+countries = df["Country"].unique()
+selected = st.sidebar.multiselect("Wybierz kraj(e)", countries, default=["Poland"])
+
+# Filtrowanie danych:
+df2 = df1[df1["Country"].isin(selected)]
+
+
 
 
 
