@@ -216,18 +216,6 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
-min_year_for_comparison = 2000
-
-selected_year_for_map = st.sidebar.selectbox(
-    "Wybierz rok (dla mapy):", 
-    sorted(df1["Year"].unique()), 
-    index=sorted(df1["Year"].unique()).index(min_year_for_comparison)  
-)
-
-# Upewniamy się, że wybrany rok nie jest wcześniejszy niż 2001
-if selected_year_for_map < min_year_for_comparison:
-    selected_year_for_map = min_year_for_comparison 
-
 # Łączenie danych z bieżącego roku i poprzedniego roku:
 df_this_year = df2[df2["Year"] == selected_year_for_map]
 df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
