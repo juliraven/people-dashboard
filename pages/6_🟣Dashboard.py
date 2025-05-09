@@ -189,7 +189,8 @@ fig2.update_geos(
     showcoastlines=True,
     bgcolor="#111111",
     showocean=True,
-    oceancolor="#95bdff"
+    oceancolor="#95bdff",
+    showlakes=False
 )
 
 st.plotly_chart(fig2)
