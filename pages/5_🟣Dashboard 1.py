@@ -262,6 +262,35 @@ with col[0]:
         value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
         delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
+    with stylable_container(
+    key="stylized_container",
+    css_styles="""
+        div {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+    """
+):
+    st.markdown(f"<h3>Wzrosty/spadki w roku {selected_year_for_map}</h3>", unsafe_allow_html=True)
+
+    st.metric(
+        label=top_gain["Country"],
+        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
+    )
+
+    st.metric(
+        label=top_loss["Country"],
+        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
+    )
+
 with col[1]:
     with st.container(border=True):
         st.markdown('<div class="custom-container">', unsafe_allow_html=True)
