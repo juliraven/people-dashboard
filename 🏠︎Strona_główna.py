@@ -209,8 +209,20 @@ st.title("Przydatne funkcje")
 
 st.markdown("""
 1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
+
+
+
+
    **Przykłady**:
+
+
+
+   
         - `st.write("Hello, world!")` - wyświetlenie tesktu
+
+
+
+        
         - `st.write(df)` — wyświetlenie ramki danych
 
 2. **`st.dataframe()` i `st.table()`** - funkcje służące do wyświetlania ramek danych i tabel, przy czym:
@@ -233,7 +245,7 @@ st.markdown("""
 5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów
 ---  
 
-### Przykład użycia (fragment kodu)
+### Przykład użycia 
 
 ```python
 import streamlit as st
