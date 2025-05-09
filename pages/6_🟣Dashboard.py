@@ -244,6 +244,10 @@ with col[2]:
     }
 )
 
+    with st.container(border=True):
+        with st.expander('Żródło danych:', expanded=True):
+        st.write('''[World Population](<https://ourworldindata.org/population-growth>)''')
+
 
 
 
