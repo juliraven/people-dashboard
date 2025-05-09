@@ -236,7 +236,7 @@ with col[1]:
     st.altair_chart(fig1, use_container_width=True)
 
 with col[2]:
-    st.markdown('#### Top państw pod względem liczby ludności')
+    st.markdown('#### Top 10 państw pod względem liczby ludności')
 
     st.dataframe(
     df_map.head(10),
