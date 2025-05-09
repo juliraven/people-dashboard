@@ -237,19 +237,6 @@ top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
 with col[0]:
     with st.container(border=True):
-        st.markdown(
-    """
-    <div style="
-        background: radial-gradient(circle at 51% 50%, #ff5e62, #ff9966, #ff3366);
-        background-blend-mode: multiply;
-        background-size: cover;
-        padding: 20px;
-        border-radius: 10px;
-    ">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.metric(
         label=top_gain["Country"],
