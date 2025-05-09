@@ -148,6 +148,30 @@ fig2.update_layout(
     )
 )
 
+df_missing = df1[df1["Year"] == selected_year_for_map].copy()
+df_missing["ISO3"] = df_missing["Country"].map(geo)
+df_missing = df_missing[df_missing["ISO3"].notna()]
+missing_iso = set(geo.values()) - set(df_map["ISO3"])
+df_missing = pd.DataFrame({"ISO3": list(missing_iso)})
+
+fig2.add_trace(
+    px.choropleth(
+        df_missing,
+        locations="ISO3",
+        locationmode="ISO-3",
+        scope="europe",
+        color_discrete_sequence=["#a0a0a0"],
+    ).data[0]
+)
+
+fig2.add_trace(
+    px.scatter_geo(
+        pd.DataFrame({"ISO3": [None], "Population": [None], "label": ["Brak danych"]}),
+        locationmode="ISO-3",
+        text="label"
+    ).update_traces(marker=dict(color="#a0a0a0", size=10), showlegend=True, name="Brak danych").data[0]
+)
+
 st.plotly_chart(fig2)
 
 
