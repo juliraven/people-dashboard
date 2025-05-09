@@ -36,8 +36,14 @@ df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
 
 # Filtr wyboru kraju/krajów:
-countries = df["Country"].unique()
-selected_countries = st.sidebar.multiselect("Wybierz kraj(e):", countries, default=["Poland"])
+countries = df["Country"].unique().tolist()
+
+select_all = st.sidebar.checkbox("wszystkie kraje", value=True)
+
+if select_all:
+    selected_countries = countries
+else:
+    selected_countries = st.sidebar.multiselect("Wybierz kraj(e):", countries, default=["Poland"])
 
 # Filtr zakresu lat:
 min_year = df1["Year"].min()
