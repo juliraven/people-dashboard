@@ -219,8 +219,8 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
-df_this_year = df2[df2["Year"] == selected_year_for_map]
-df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
+df_this_year = df1[df1["Year"] == selected_year_for_map]
+df_prev_year = df1[df1["Year"] == (selected_year_for_map - 1)]
     
 df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
 df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
@@ -228,7 +228,6 @@ df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_p
 df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
-
 
 with col[0]:
     with st.container(border=True):
