@@ -74,9 +74,9 @@ df3 = df2[(df2["Year"] >= selected_years[0]) &
 def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     heatmap = alt.Chart(input_df).mark_rect().encode(
         y=alt.Y(f'{input_y}:O', axis=alt.Axis(
-            title="Year", titleFontSize=18, titlePadding=15, titleFontWeight=900, labelAngle=0)),
+            title="Rok", titleFontSize=18, titlePadding=15, titleFontWeight=900, labelAngle=0)),
         x=alt.X(f'{input_x}:O', axis=alt.Axis(
-            title="", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
+            title="Kraj", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
         color=alt.Color(f'{input_color}:Q',
                         legend=alt.Legend(title="Liczba ludności", titlePadding=20),
                         scale=alt.Scale(scheme=input_color_theme)),
