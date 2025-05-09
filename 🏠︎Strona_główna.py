@@ -249,11 +249,11 @@ with col2:
         df,
         x='Powierzchnia (km²)',
         y='Liczba mieszkańców (mln)',
-        size='PKB per capita',
-        color='PKB per capita',
+        size='PKB',
+        color='PKB',
         hover_name='Miasto',
         size_max=60,
-        color_continuous_scale='Viridis'
+        color_continuous_scale='PuRd'
     )
     st.plotly_chart(fig, use_container_width=True)
 
