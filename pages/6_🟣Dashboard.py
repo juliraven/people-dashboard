@@ -228,10 +228,34 @@ fig2.update_layout(
     )
 )
 
-
 with col[1]:
     st.plotly_chart(fig2)
     st.altair_chart(fig1, use_container_width=True)
 
+with col[2]:
+    st.markdown('#### Top państw pod względem liczby ludności')
 
+    st.dataframe(
+    df_selected_year_sorted,
+    column_order=["Country", "Population"],  
+    hide_index=True,
+    column_config={
+        "Country": st.column_config.TextColumn(
+            "Country Name",
+        ),
+        "Population": st.column_config.ProgressColumn(
+            "Population",
+            format="%d",  
+            min_value=0,
+            max_value=df_selected_year_sorted["Population"].max(),  #
+        )
+    }
+)
+    
+    with st.expander('About', expanded=True):
+        st.write('''
+            - Data: [U.S. Census Bureau](<https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html>).
+            - :orange[**Gains/Losses**]: states with high inbound/ outbound migration for selected year
+            - :orange[**States Migration**]: percentage of states with annual inbound/ outbound migration > 50,000
+            ''')
 
