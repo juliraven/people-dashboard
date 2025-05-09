@@ -216,6 +216,19 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
+# Dane z wybranego roku i poprzedniego roku:
+df_this_year = df2[df2["Year"] == selected_year_for_map]
+df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
+
+# Łączenie po kraju, aby obliczyć różnice:
+df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
+df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
+
+# Największy wzrost i spadek:
+top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
+top_loss = df_diff.sort_values("Population_Change").iloc[0]
+
+
 with col[1]:
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
@@ -251,5 +264,12 @@ with col[2]:
     unsafe_allow_html=True)
 
 
+with col[0]:
+    with st.container(border=True):
+        st.metric(
+        label=top_gain["Country"],
+        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
+    )
 
 
