@@ -31,6 +31,8 @@ import altair as alt
 st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Dashboard ludności świata (2000–2023)</h1>", unsafe_allow_html=True)
 st.markdown('#')
 
+col = st.columns((1.5, 5, 2), gap='medium')
+
 df = pd.read_excel('plik.xlsx')
 
 european_countries = [
@@ -93,8 +95,6 @@ fig1 = make_heatmap(
     input_color="Population",
     input_color_theme="redpurple"
 )
-
-st.altair_chart(fig1, use_container_width=True)
 
 geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria': 'DZA', 'American Samoa': 'ASM', 'Andorra': 'AND', 
        'Angola': 'AGO', 'Anguilla': 'AIA', 'Antigua and Barbuda': 'ATG', 'Argentina': 'ARG', 'Armenia': 'ARM', 'Aruba': 'ABW', 
@@ -229,10 +229,9 @@ fig2.update_layout(
 )
 
 
-st.plotly_chart(fig2)
-
-
-
+with col[1]:
+    st.plotly_chart(fig2)
+    st.altair_chart(fig1, use_container_width=True)
 
 
 
