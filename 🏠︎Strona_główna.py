@@ -278,7 +278,7 @@ df = pd.DataFrame({
     'PKB': [150000, 120000, 110000, 130000]
 })
 
-col1, col2 = st.columns([2.5, 3])
+col1, col2 = st.columns([1, 3])
 
 with col1:
     st.subheader("📋 Tabela danych")
