@@ -112,10 +112,10 @@ geo = {
 # Suwak do wyboru konkretnego roku:
 selected_year_for_map = st.sidebar.selectbox("Wybierz rok (dla mapy):", sorted(df1["Year"].unique()))
 
+df_map = df1[df1["Year"] == selected_year_for_map].copy()
+
 df_map["Population"] = pd.to_numeric(df_map["Population"], errors="coerce")
 df_map = df_map.dropna(subset=["Population"])
-
-df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
 df_map["ISO3"] = df_map["Country"].map(geo)
 
