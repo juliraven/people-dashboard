@@ -219,31 +219,29 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
+df_this_year = df2[df2["Year"] == selected_year_for_map]
+df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
+    
+df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
+df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
+
+df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
+top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
+top_loss = df_diff.sort_values("Population_Change").iloc[0]
+
 
 with col[0]:
     with st.container(border=True):
-        if selected_year_for_map > 2000:
-            df_this_year = df2[df2["Year"] == selected_year_for_map]
-            df_prev_year = df2[df2["Year"] == (selected_year_for_map - 1)]
-    
-            df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
-            df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
+        st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spaki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
+        st.metric(
+        label=top_gain["Country"],
+        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
 
-            df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
-
-            top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
-            top_loss = df_diff.sort_values("Population_Change").iloc[0]
-            st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spaki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
-            st.metric(
-            label=top_gain["Country"],
-            value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
-            delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
-
-            st.metric(
-            label=top_loss["Country"],
-            value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
-            delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
-
+        st.metric(
+        label=top_loss["Country"],
+        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
 with col[1]:
     with st.container(border=True):
@@ -252,8 +250,7 @@ with col[1]:
 
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Populacja Europy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
-        st.altair_chart(fig1, use_container_width=True)
-    
+        st.altair_chart(fig1, use_container_width=True) 
 
 with col[2]:
     with st.container(border=True):
