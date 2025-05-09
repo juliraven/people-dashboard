@@ -112,6 +112,9 @@ geo = {
 # Suwak do wyboru konkretnego roku:
 selected_year_for_map = st.sidebar.selectbox("Wybierz rok (dla mapy):", sorted(df1["Year"].unique()))
 
+df_map["Population"] = pd.to_numeric(df_map["Population"], errors="coerce")
+df_map = df_map.dropna(subset=["Population"])
+
 df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
 df_map["ISO3"] = df_map["Country"].map(geo)
@@ -126,7 +129,8 @@ fig2 = px.choropleth(
     hover_name="Country",
     locationmode="ISO-3",
     scope="europe",
-    color_continuous_scale="teal"
+    color_continuous_scale="teal",
+    range_color=(df_map["Population"].min(), df_map["Population"].max())
 )
 
 fig2.update_layout(
