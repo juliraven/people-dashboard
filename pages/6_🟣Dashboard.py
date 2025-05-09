@@ -89,7 +89,7 @@ fig1 = make_heatmap(
     input_y="Year",
     input_x="Country",
     input_color="Population",
-    input_color_theme=selected_color_theme
+    input_color_theme="PuRd"
 )
 
 st.altair_chart(fig1, use_container_width=True)
