@@ -82,7 +82,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
                         scale=alt.Scale(scheme=input_color_theme)),
         stroke=alt.value('black'),
         strokeWidth=alt.value(0.25),
-    ).properties(width=900, title=f"Populacja Europy {selected_years[0]} - {selected_years[1]}").configure_axis(
+    ).properties(width=900).configure_axis(
         labelFontSize=12,
         titleFontSize=12
     )
@@ -183,7 +183,6 @@ fig2 = px.choropleth(
 
 
 fig2.update_layout(
-    title=f"Populacja świata w roku {selected_year_for_map}",
     margin=dict(l=0, r=0, t=30, b=0),
     height=600,
     template="plotly_dark",
@@ -210,7 +209,6 @@ fig2.update_geos(
 )
 
 fig2.update_layout(
-    title=f"Populacja świata w roku {selected_year_for_map}",
     margin=dict(l=0, r=150, t=30, b=30), 
     height=800,
     template="plotly_dark",
@@ -232,7 +230,9 @@ df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
 with col[1]:
+    st.markdown("### Populacja świata w roku {selected_year_for_map}")
     st.plotly_chart(fig2)
+    st.markdown("### Populacja Europy {selected_years[0]} - {selected_years[1]}")
     st.altair_chart(fig1, use_container_width=True)
 
 with col[2]:
