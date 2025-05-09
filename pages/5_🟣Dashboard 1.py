@@ -240,15 +240,15 @@ with col[0]:
         st.markdown(
         """
         <div style="
-            background: radial-gradient(circle at 51% 50%, #202125, #2d035e, #b444fb);
+            background: radial-gradient(circle at 51% 50%, #ff5e62, #ff9966, #ff3366);
             background-blend-mode: multiply;
             background-size: cover;
             overflow: hidden;
             padding: 20px;
             border-radius: 10px;
         ">
-            <h3 style="color: white;">Stylizowany kontener z gradientem</h3>
-            <p style="color: white;">Treść wewnątrz kontenera z gradientowym tłem i efektem blendowania.</p>
+            <h3 style="color: white;">Jasny kontener z czerwonym gradientem</h3>
+            <p style="color: white;">Treść wewnątrz kontenera z rozjaśnionym tłem o odcieniach czerwieni.</p>
         </div>
         """,
         unsafe_allow_html=True
