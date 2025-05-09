@@ -158,7 +158,7 @@ color_map = dict(zip(labels, colors))
 fig2 = px.choropleth(
     df_map,
     locations="ISO3",
-    color="Population",
+    color="Population_Category",
     hover_name="Country",
     locationmode="ISO-3",
     scope="world",
