@@ -122,6 +122,8 @@ df_map["ISO3"] = df_map["Country"].map(geo)
 # Usunięcie braków:
 df_map = df_map.dropna(subset=["ISO3"])
 
+colors = ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"]
+
 fig2 = px.choropleth(
     df_map,
     locations="ISO3",
@@ -129,7 +131,7 @@ fig2 = px.choropleth(
     hover_name="Country",
     locationmode="ISO-3",
     scope="europe",
-    color_continuous_scale="teal",
+    color_continuous_scale=colors,
     range_color=(df_map["Population"].min(), df_map["Population"].max())
 )
 
