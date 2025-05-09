@@ -206,3 +206,99 @@ scikit-learn
 st.code(code, language='python')
 
 st.title("Przydatne funkcje")
+
+st.markdown("""
+### Njabardziej przydatne na początku budowania aplikacji są poniższe funkcje:
+
+1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
+   **Przykłady**:
+        - `st.write("Hello, world!")` - wyświetlenie tesktu
+        - `st.write(df)` — wyświetlenie ramki danych
+
+2. **`st.dataframe()` i `st.table()`** - funkcje służące do wyświetlania ramek danych i tabel, przy czym:
+        - `st.dataframe()` — interaktywna tabela
+        - `st.table()` — statyczna tabela
+
+3. **`st.columns()`** - funkcja pozwalająca wyświetlać widżety obok siebie w układzie siatki
+   **Przykład**:
+        ```python
+        col1, col2 = st.columns(2)
+        ```
+        
+4. **`st.expander()`** - funkcja tworząca rozwijany element, który może ukrywać lub pokazywać treść
+   **Przykład**:
+        ```python
+        with st.expander("Zobacz więcej"):
+            st.write("Dodatkowe informacje...")
+        ```
+
+5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów
+---  
+
+### Przykład użycia (fragment kodu)
+
+```python
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
+st.dataframe(df)
+
+col1, col2 = st.columns(2)
+chart_data = {'x': [1, 2, 3], 'y': [4, 5, 6]}
+fig, ax = plt.subplots()
+ax.plot(chart_data['x'], chart_data['y'])
+
+with col1:
+    st.pyplot(fig)
+
+with col2:
+    st.write("To jest treść w drugiej kolumnie.")
+
+with st.expander("Zobacz więcej"):
+    st.write("Więcej szczegółów tutaj...")
+
+if 'my_variable' not in st.session_state:
+    st.session_state['my_variable'] = 0
+
+st.write("Stan sesji:", st.session_state['my_variable'])
+st.session_state['my_variable'] += 1
+""")
+
+st.markdown(
+    '''
+    <p>
+    A oto rezultat działania powyższego kodu:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6]})
+st.dataframe(df)
+
+col1, col2 = st.columns(2)
+chart_data = {'x': [1, 2, 3], 'y': [4, 5, 6]}
+fig, ax = plt.subplots()
+ax.plot(chart_data['x'], chart_data['y'])
+
+with col1:
+    st.pyplot(fig)
+
+with col2:
+    st.write("To jest treść w drugiej kolumnie.")
+
+with st.expander("Zobacz więcej"):
+    st.write("Więcej szczegółów tutaj...")
+
+if 'my_variable' not in st.session_state:
+    st.session_state['my_variable'] = 0
+
+st.write("Stan sesji:", st.session_state['my_variable'])
+st.session_state['my_variable'] += 1
+
+
