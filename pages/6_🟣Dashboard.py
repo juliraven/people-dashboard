@@ -96,7 +96,7 @@ st.dataframe(df)
 geo = {
     'Albania': 'ALB', 'Andorra': 'AND', 'Armenia': 'ARM', 'Austria': 'AUT',
     'Azerbaijan': 'AZE', 'Belarus': 'BLR', 'Belgium': 'BEL', 'Bosnia and Herzegovina': 'BIH',
-    'Bulgaria': 'BGR', 'Croatia': 'HRV', 'Cyprus': 'CYP', 'Czech Republic': 'CZE',
+    'Bulgaria': 'BGR', 'Croatia': 'HRV', 'Cyprus': 'CYP', 'Czechia': 'CZE',
     'Denmark': 'DNK', 'Estonia': 'EST', 'Finland': 'FIN', 'France': 'FRA',
     'Georgia': 'GEO', 'Germany': 'DEU', 'Greece': 'GRC', 'Hungary': 'HUN',
     'Iceland': 'ISL', 'Ireland': 'IRL', 'Italy': 'ITA', 'Kazakhstan': 'KAZ',
@@ -106,7 +106,7 @@ geo = {
     'Norway': 'NOR', 'Poland': 'POL', 'Portugal': 'PRT', 'Romania': 'ROU',
     'Russia': 'RUS', 'San Marino': 'SMR', 'Serbia': 'SRB', 'Slovakia': 'SVK',
     'Slovenia': 'SVN', 'Spain': 'ESP', 'Sweden': 'SWE', 'Switzerland': 'CHE',
-    'Turkey': 'TUR', 'Ukraine': 'UKR', 'United Kingdom': 'GBR'
+    'Türkiye': 'TUR', 'Ukraine': 'UKR', 'United Kingdom': 'GBR'
 }
 
 # Suwak do wyboru konkretnego roku:
