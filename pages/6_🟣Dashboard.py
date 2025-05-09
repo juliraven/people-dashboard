@@ -28,5 +28,6 @@ import plotly.express as px
 
 df = pd.read_csv('plik.tsv', sep='\t')
 
+st.dataframe(df)
 
 
