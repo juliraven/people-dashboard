@@ -318,4 +318,38 @@ with st.container():
         delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
     )
 
+import streamlit as st
+
+# Tworzymy kontener z gradientowym tłem
+with st.container():
+    # Stylizowanie całego kontenera za pomocą HTML
+    st.markdown(
+        """
+        <div style="
+            background: radial-gradient(circle at 51% 50%, rgb(160, 0, 240), rgb(52, 3, 43), rgb(28, 2, 75), rgb(152, 19, 119));
+            background-blend-mode: multiply;
+            background-size: cover;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        ">
+            <h3 style="text-align: center; color: white;">Wzrosty/spadki w roku {selected_year_for_map}</h3>
+            
+            <!-- Stylizowanie kontenera na metryki -->
+            <div style="color: white; margin-top: 20px;">
+                <div style="margin-bottom: 15px;">
+                    <h4>{top_gain['Country']}</h4>
+                    <p>Populacja teraz: {top_gain['Population_now'] / 1_000_000:.1f} M</p>
+                    <p>Zmienność: {int(top_gain['Population_Change'] / 1_000):,} K</p>
+                </div>
+                <div>
+                    <h4>{top_loss['Country']}</h4>
+                    <p>Populacja teraz: {top_loss['Population_now'] / 1_000_000:.1f} M</p>
+                    <p>Zmienność: {int(top_loss['Population_Change'] / 1_000):,} K</p>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
