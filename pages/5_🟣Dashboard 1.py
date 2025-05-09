@@ -259,18 +259,17 @@ with col[0]:
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
         background: radial-gradient(circle at top left,
-            rgba(180, 0, 255, 0.3),
-            rgba(120, 0, 100, 0.4),
-            rgba(60, 0, 80, 0.5),
-            rgba(30, 0, 40, 0.6));
-        border: 2px solid rgba(255, 0, 180, 0.4);
+            rgba(180, 0, 255, 0.15),
+            rgba(120, 0, 100, 0.1),
+            rgba(60, 0, 80, 0.1),
+            rgba(30, 0, 40, 0.15));
+        border: 1px solid rgba(255, 0, 180, 0.2);
         border-radius: 20px;
         padding: 24px;
         box-shadow:
-            0 0 15px rgba(255, 0, 180, 0.3),
-            0 0 25px rgba(180, 0, 255, 0.2),
-            0 8px 30px rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(10px) brightness(1.1);
+            0 0 10px rgba(255, 0, 180, 0.1),
+            0 4px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(15px) brightness(1.15);
         background-blend-mode: overlay;
         transition: all 0.3s ease-in-out;
     }
@@ -278,14 +277,14 @@ with col[0]:
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
         transform: translateY(-5px);
         box-shadow:
-            0 0 20px rgba(255, 0, 180, 0.6),
-            0 0 35px rgba(180, 0, 255, 0.4),
-            0 10px 40px rgba(0, 0, 0, 0.7);
+            0 0 15px rgba(255, 0, 180, 0.25),
+            0 8px 30px rgba(0, 0, 0, 0.3);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 
     with st.container(border=True):
