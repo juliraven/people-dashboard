@@ -263,7 +263,7 @@ st.markdown(
     '''
     <p>
     
-    A oto rezultat działania powyższego kodu:
+    ### Rezultat działania kodu:
     
     </p>
     ''',
@@ -292,8 +292,8 @@ with col2:
         df,
         x='Powierzchnia (km²)',
         y='Liczba mieszkańców (mln)',
-        size='PKB per capita',
-        color='PKB per capita',
+        size='PKB',
+        color='PKB',
         hover_name='Miasto',
         size_max=60,
         color_continuous_scale='Viridis'
