@@ -164,7 +164,7 @@ fig2 = px.choropleth(
     scope="world",
     color_discrete_map=color_map,
     range_color=(df_map["Population"].min(), df_map["Population"].max()),
-    hover_data={"ISO3": False, "Population": True},
+    hover_data={"ISO3": False, "Population": True, "Population_Category": False},
     width=1000,  
     height=1000
 )
@@ -205,7 +205,7 @@ fig2.update_layout(
     paper_bgcolor="#111111",
 
     legend=dict(
-        title=dict(text="Przedział populacji", font=dict(size=14)),
+        title=dict(text="Liczba ludności", font=dict(size=14)),
         orientation="h",             
         yanchor="bottom",
         y=-0.2,                     
