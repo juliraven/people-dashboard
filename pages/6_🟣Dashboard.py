@@ -50,7 +50,7 @@ min_year = df1["Year"].min()
 max_year = df1["Year"].max()
 
 selected_years = st.sidebar.slider(
-    "Wybierz zakres lat:",
+    "Wybierz zakres lat (dla heatmapy):",
     min_value=int(min_year),
     max_value=int(max_year),
     value=(int(min_year), int(max_year)),
@@ -93,7 +93,53 @@ st.altair_chart(fig1, use_container_width=True)
 
 st.dataframe(df)
 
-geo = ['AD', 'AL', 'AM', 'AT', 'AZ', 'BA', 'BE', 'BG', 'BY', 'CH', 'CY', 'CZ', 'DE', 'DK', 'EA19', 'EA20', 'EE', 'EL', 'ES', 'EU27_2020', 'FI', 'FR', 'FX', 'GE', 'HR', 'HU', 'IE', 'IS', 'IT', 'LI', 'LT', 'LU', 'LV', 'MC', 'MD', 'ME', 'MK', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'RU', 'SE', 'SI', 'SK', 'SM', 'TR', 'UA', 'UK', 'XK']
+geo = {
+    'Albania': 'ALB', 'Andorra': 'AND', 'Armenia': 'ARM', 'Austria': 'AUT',
+    'Azerbaijan': 'AZE', 'Belarus': 'BLR', 'Belgium': 'BEL', 'Bosnia and Herzegovina': 'BIH',
+    'Bulgaria': 'BGR', 'Croatia': 'HRV', 'Cyprus': 'CYP', 'Czech Republic': 'CZE',
+    'Denmark': 'DNK', 'Estonia': 'EST', 'Finland': 'FIN', 'France': 'FRA',
+    'Georgia': 'GEO', 'Germany': 'DEU', 'Greece': 'GRC', 'Hungary': 'HUN',
+    'Iceland': 'ISL', 'Ireland': 'IRL', 'Italy': 'ITA', 'Kazakhstan': 'KAZ',
+    'Kosovo': 'XKX', 'Latvia': 'LVA', 'Liechtenstein': 'LIE', 'Lithuania': 'LTU',
+    'Luxembourg': 'LUX', 'Malta': 'MLT', 'Moldova': 'MDA', 'Monaco': 'MCO',
+    'Montenegro': 'MNE', 'Netherlands': 'NLD', 'North Macedonia': 'MKD',
+    'Norway': 'NOR', 'Poland': 'POL', 'Portugal': 'PRT', 'Romania': 'ROU',
+    'Russia': 'RUS', 'San Marino': 'SMR', 'Serbia': 'SRB', 'Slovakia': 'SVK',
+    'Slovenia': 'SVN', 'Spain': 'ESP', 'Sweden': 'SWE', 'Switzerland': 'CHE',
+    'Turkey': 'TUR', 'Ukraine': 'UKR', 'United Kingdom': 'GBR'
+}
+
+# Suwak do wyboru konkretnego roku:
+selected_year_for_map = st.sidebar.selectbox("Wybierz rok (dla mapy):", sorted(df1["Year"].unique()))
+
+df_map = df1[df1["Year"] == selected_year_for_map].copy()
+
+df_map["ISO"] = df_map["Country"].map(geo)
+
+# Usunięcie braków:
+df_map = df_map.dropna(subset=["ISO3"])
+
+fig_map = px.choropleth(
+    df_map,
+    locations="ISO3",
+    color="Population",
+    hover_name="Country",
+    locationmode="ISO-3",
+    scope="europe",
+    color_continuous_scale="redpurple",
+    labels={"Population": "Populacja"},
+)
+
+fig_map.update_layout(
+    title=f"Populacja w Europie w roku {selected_year_for_map}",
+    margin=dict(l=0, r=0, t=30, b=0),
+    height=600,
+    template="plotly_white"
+)
+
+# Wyświetlenie mapy:
+st.plotly_chart(fig_map)
+
 
 
 
