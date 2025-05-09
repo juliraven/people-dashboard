@@ -245,9 +245,6 @@ with stylable_container(
         }
     """,
 ):
-    st.markdown("<h3 style='color: black;'>Stylizowany kontener z różowym tłem</h3>", unsafe_allow_html=True)
-    st.markdown("<p style='color: black;'>Treść w kontenerze z tłem w kolorze różowym.</p>", unsafe_allow_html=True)
-
 
 with col[0]:
     with st.container(border=True):
@@ -269,7 +266,6 @@ with col[0]:
             background-color: #f0f0f0;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h3 {
             text-align: center;
