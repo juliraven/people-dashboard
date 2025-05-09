@@ -257,6 +257,7 @@ with col[1]:
 
 with col[2]:
     with st.container(border=True):
+        df_map["Population_M"] = df_map["Population"] / 1_000_000
         st.markdown(f"<h3 style='text-align: center;'>Top 10 państw pod względem liczby ludności</h3>",unsafe_allow_html=True)
         st.dataframe(
         df_map.head(10),
@@ -268,7 +269,7 @@ with col[2]:
             "Populacja",
             format="%d",
             min_value=0,
-            max_value=int(df_map["Population"].max())  
+            max_value=int(df_map["Population_M"].max())  
         )
     }
 )
