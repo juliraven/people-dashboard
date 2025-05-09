@@ -119,7 +119,7 @@ df_map["ISO3"] = df_map["Country"].map(geo)
 # Usunięcie braków:
 df_map = df_map.dropna(subset=["ISO3"])
 
-fig_map = px.choropleth(
+fig2 = px.choropleth(
     df_map,
     locations="ISO3",
     color="Population",
@@ -130,15 +130,16 @@ fig_map = px.choropleth(
     labels={"Population": "Populacja"},
 )
 
-fig_map.update_layout(
+fig2.update_layout(
     title=f"Populacja w Europie w roku {selected_year_for_map}",
     margin=dict(l=0, r=0, t=30, b=0),
     height=600,
-    template="plotly_white"
+    template="none"
 )
 
+
 # Wyświetlenie mapy:
-st.plotly_chart(fig_map)
+st.plotly_chart(fig2)
 
 
 
