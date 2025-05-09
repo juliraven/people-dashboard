@@ -233,6 +233,20 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
+from streamlit_extras.stylable_container import stylable_container
+
+with stylable_container(
+    key="colorful_container",
+    css_styles="""
+        div {
+            background-color: #ffcccb;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    """,
+):
+    st.markdown("<h3 style='color: black;'>Stylizowany kontener z różowym tłem</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='color: black;'>Treść w kontenerze z tłem w kolorze różowym.</p>", unsafe_allow_html=True)
 
 
 with col[0]:
