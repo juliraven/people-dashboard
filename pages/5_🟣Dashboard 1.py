@@ -253,28 +253,36 @@ with col[0]:
         label=top_loss["Country"],
         value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
         delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
-    )
 
     st.markdown(
     """
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
-        background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+        background: linear-gradient(135deg, rgba(122,0,255,0.35), rgba(0,255,240,0.25));
+        border: 2px solid rgba(255, 0, 255, 0.4);
+        border-radius: 20px;
         padding: 24px;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        border: 1px solid #dbeafe;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow:
+            0 0 10px rgba(255, 0, 255, 0.3),
+            0 0 20px rgba(0, 255, 240, 0.2),
+            0 4px 20px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px) brightness(1.1);
+        background-blend-mode: overlay;
+        transition: all 0.3s ease;
     }
 
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        transform: translateY(-6px);
+        box-shadow:
+            0 0 15px rgba(255, 0, 255, 0.5),
+            0 0 30px rgba(0, 255, 240, 0.3),
+            0 8px 30px rgba(0, 0, 0, 0.5);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 
     with st.container(border=True):
