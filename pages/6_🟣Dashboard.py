@@ -163,7 +163,6 @@ fig2 = px.choropleth(
     locationmode="ISO-3",
     scope="world",
     color_discrete_map=color_map,
-    range_color=(df_map["Population"].min(), df_map["Population"].max()),
     hover_data={"ISO3": False, "Population": True, "Population_Category": False},
     width=1000,  
     height=1000
