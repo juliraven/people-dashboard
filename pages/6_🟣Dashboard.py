@@ -175,7 +175,8 @@ fig2 = px.choropleth(
     color_discrete_map=color_map,
     hover_data={"ISO3": False, "Population": True, "Population_Category": False},
     width=1000,  
-    height=1000
+    height=1000,
+    category_orders={"Population_Category": labels}
 )
 
 fig2.update_layout(
