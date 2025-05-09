@@ -262,7 +262,9 @@ with col2:
 st.markdown(
     '''
     <p>
+    
     A oto rezultat działania powyższego kodu:
+    
     </p>
     ''',
     unsafe_allow_html=True
