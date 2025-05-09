@@ -275,7 +275,7 @@ with col[2]:
 
     with st.container(border=True):
         with st.expander('Żródło danych:', expanded=True):
-            st.markdown('<span style="color: purple; font-weight: bold;">World population</span>: '
+            st.markdown('<span style="color: purple; font-weight: bold;">World population:</span> '
     '<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>',
     unsafe_allow_html=True)
 
