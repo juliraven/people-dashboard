@@ -230,10 +230,10 @@ import plotly.express as px
 
 # Przykłowe dane:
 df = pd.DataFrame({
-    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław', 'Poznań'],
-    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6, 0.5],
-    'Powierzchnia (km²)': [517, 327, 262, 293, 262],
-    'PKB per capita': [150000, 120000, 110000, 130000, 125000]
+    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
+    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
+    'Powierzchnia (km²)': [517, 327, 262, 293],
+    'PKB per capita': [150000, 120000, 110000, 130000]
 })
 
 # Tworzenie kolumn:
@@ -299,7 +299,8 @@ with col2:
         color='PKB',
         hover_name='Miasto',
         size_max=50,
-        color_continuous_scale='PuRd'
+        color_continuous_scale='PuRd',
+        height=300
     )
     st.plotly_chart(fig, use_container_width=True)
 
