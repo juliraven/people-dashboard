@@ -151,6 +151,19 @@ labels = [
     "100–250 mln", "250–500 mln", "500 mln – 1 mld", "1+ mld"
 ]
 
+# Tworzymy słownik, który przypisuje etykiety do kolorów
+color_map = {
+    "0–5 mln": "#fcbec0", 
+    "5–10 mln": "#faa9b8", 
+    "10–25 mln": "#f98faf", 
+    "25–50 mln": "#f571a5", 
+    "50–100 mln": "#ec539d", 
+    "100–250 mln": "#db3695", 
+    "250–500 mln": "#c41b8a", 
+    "500 mln – 1 mld": "#a90880", 
+    "1+ mld": "#8d0179"
+}
+
 df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels, ordered=True)
 
 color_map = dict(zip(labels, colors))
@@ -162,7 +175,7 @@ fig2 = px.choropleth(
     hover_name="Country",
     locationmode="ISO-3",
     scope="world",
-    color_discrete_map=color_map,
+    color_discrete_sequence=color_map,
     hover_data={"ISO3": False, "Population": True, "Population_Category": False},
     width=1000,  
     height=1000
