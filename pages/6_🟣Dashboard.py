@@ -143,22 +143,6 @@ fig2.update_layout(
     )
 )
 
-missing_iso = set(geo.values()) - set(df_map["ISO3"])
-df_missing = pd.DataFrame({"ISO3": list(missing_iso)})
-df_missing["Country"] = df_missing["ISO3"].map({v: k for k, v in geo.items()})
-
-fig2.add_trace(
-    px.choropleth(
-        df_missing,
-        locations="ISO3",
-        locationmode="ISO-3",
-        scope="europe",
-        color_discrete_sequence=["#a0a0a0"],  
-        hover_name="Country",  
-        hover_data={"ISO3": False, "Country": False}
-    ).data[0]
-)
-
 fig2.update_geos(
     scope="world",
     projection_type="orthographic",
