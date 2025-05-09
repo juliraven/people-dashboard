@@ -235,23 +235,23 @@ with col[1]:
 with col[2]:
     st.markdown('#### Top państw pod względem liczby ludności')
 
+    df_map = df_map.sort_values(by="Population", ascending=False)
+
     st.dataframe(
-    df1,
-    column_order=["Country", "Population"],  
+    df_map,
+    column_order=["Country", "Population"],
     hide_index=True,
     column_config={
-        "Country": st.column_config.TextColumn(
-            "Country Name",
-        ),
+        "Country": st.column_config.TextColumn("Country"),
         "Population": st.column_config.ProgressColumn(
             "Population",
-            format="%d",  
+            format="%d",
             min_value=0,
-            max_value=df1["Population"].max(),  #
+            max_value=df_map["Population"].max()
         )
     }
 )
-    
+
     with st.expander('About', expanded=True):
         st.write('''
             - Data: [U.S. Census Bureau](<https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html>).
