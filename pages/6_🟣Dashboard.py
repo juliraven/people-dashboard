@@ -126,8 +126,7 @@ fig2 = px.choropleth(
     hover_name="Country",
     locationmode="ISO-3",
     scope="europe",
-    color_continuous_scale="teal",
-    labels={"Population": "Populacja"},
+    color_continuous_scale="teal"
 )
 
 fig2.update_layout(
@@ -137,6 +136,10 @@ fig2.update_layout(
     template="plotly_dark",
     plot_bgcolor="#202125",    
     paper_bgcolor="#202125", 
+    coloraxis_colorbar=dict(
+        title="Population",
+        ticks="outside"
+    )
 )
 
 st.plotly_chart(fig2)
