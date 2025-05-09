@@ -31,19 +31,27 @@ st.title("📊 Dashboard ludności świata (2000–2023)")
 
 df = pd.read_excel('plik.xlsx')
 
+european_countries = [
+    "Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina",
+    "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland",
+    "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo",
+    "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco",
+    "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal",
+    "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain",
+    "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"
+]
+
 # Transpozycja danych do wykresów:
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
-
 df1 = df1[(df1["Year"] >= 2000) & (df1["Year"] <= 2023)]
 
-# Filtr wyboru kraju/krajów:
-countries = df["Country"].unique().tolist()
-selected_countries = st.sidebar.multiselect("Wybierz kraj(e):", countries, default=["Poland"])
+# Wybór krajów europejskich::
+df2 = df1[df1["Country"].isin(european_countries)]
 
 # Filtr zakresu lat:
-min_year = df1["Year"].min()
-max_year = df1["Year"].max()
+min_year = df2["Year"].min()
+max_year = df2["Year"].max()
 
 selected_years = st.sidebar.slider(
     "Wybierz zakres lat (dla heatmapy):",
@@ -54,9 +62,9 @@ selected_years = st.sidebar.slider(
 )
 
 # Filtrowanie danych:
-df2 = df1[(df1["Country"].isin(selected_countries)) &
-    (df1["Year"] >= selected_years[0]) &
-    (df1["Year"] <= selected_years[1])
+df3 = df2[(df1["Country"].isin(selected_countries)) &
+    (df2["Year"] >= selected_years[0]) &
+    (df2["Year"] <= selected_years[1])
 ]
 
 # Heatmapa:
@@ -78,7 +86,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     return heatmap
 
 fig1 = make_heatmap(
-    input_df=df2,
+    input_df=df3,
     input_y="Year",
     input_x="Country",
     input_color="Population",
