@@ -283,7 +283,7 @@ col1, col2 = st.columns([2, 2])
 with col1:
     st.subheader("📋 Tabela danych")
     df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
-    st.markdown(##)
+    st.markdown('##')
     st.dataframe(df)
 
 with col2:
