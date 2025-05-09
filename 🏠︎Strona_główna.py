@@ -217,6 +217,8 @@ st.markdown("""
 4. **`st.expander()`** - funkcja tworząca rozwijany element, który może ukrywać lub pokazywać treść.
  
 5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów.
+
+6. **``st.line_chart()`, `st.area_chart()`, 'st.plotly_chart()** - funkcje do wyświetlania wykresów.
 ---  
 
 ### Przykład użycia 
@@ -280,7 +282,7 @@ df = pd.DataFrame({
     'PKB': [150000, 120000, 110000, 130000, 125000]
 })
 
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([2,1])
 
 with col1:
     st.subheader("📋 Tabela danych")
