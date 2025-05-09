@@ -247,7 +247,7 @@ with col[2]:
             "Population",
             format="%d",  
             min_value=0,
-            max_value=df_selected_year_sorted["Population"].max(),  #
+            max_value=df1["Population"].max(),  #
         )
     }
 )
