@@ -27,7 +27,7 @@ import pandas as pd
 import plotly.express as px
 import altair as alt
 
-st.title("📊 Dashboard ludności Europy (2015–2024)")
+st.title("📊 Dashboard ludności świata (2000–2023)")
 
 df = pd.read_excel('plik.xlsx')
 
@@ -131,7 +131,7 @@ fig2 = px.choropleth(
 )
 
 fig2.update_layout(
-    title=f"Populacja w Europie w roku {selected_year_for_map}",
+    title=f"Populacja świata w roku {selected_year_for_map}",
     margin=dict(l=0, r=0, t=30, b=0),
     height=600,
     template="plotly_dark",
