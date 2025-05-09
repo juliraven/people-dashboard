@@ -26,18 +26,9 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from pandasdmx import Request
+df = pd.read_excel('plik.xlsx', header=True)
 
-# Tworzymy obiekt zapytania do Eurostat
-estat = Request('ESTAT')
-
-# Pobieramy dane (może to chwilę potrwać)
-response = estat.data(resource_id='tps00001')
-
-# Konwertujemy dane do DataFrame
-data = response.to_pandas()
-
-st.dataframe(data.head())
+st.dataframe(df)
 
 
 
