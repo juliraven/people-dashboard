@@ -178,6 +178,18 @@ fig2.add_trace(
     ).data[0]
 )
 
+fig2.update_geos(
+    scope="world",
+    projection_type="natural earth",
+    lataxis_range=[30, 72],   # Szerokość geograficzna
+    lonaxis_range=[-25, 60],  # Długość geograficzna
+    showland=True,
+    landcolor="#111111",
+    showframe=False,
+    showcoastlines=False,
+    bgcolor="#111111"
+)
+
 st.plotly_chart(fig2)
 
 
