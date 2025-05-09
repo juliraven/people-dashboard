@@ -28,7 +28,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import altair as alt
 
-st.title("📊 Dashboard ludności świata (2000–2023)")
+st.markdown("<h1 style='text-align: center;'>📊 Dashboard ludności świata (2000–2023)</h1>", unsafe_allow_html=True)
 
 df = pd.read_excel('plik.xlsx')
 
