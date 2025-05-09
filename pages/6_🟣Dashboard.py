@@ -91,8 +91,6 @@ fig1 = make_heatmap(
 
 st.altair_chart(fig1, use_container_width=True)
 
-st.dataframe(df)
-
 geo = {
     'Albania': 'ALB', 'Andorra': 'AND', 'Armenia': 'ARM', 'Austria': 'AUT',
     'Azerbaijan': 'AZE', 'Belarus': 'BLR', 'Belgium': 'BEL', 'Bosnia and Herzegovina': 'BIH',
