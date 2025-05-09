@@ -270,17 +270,16 @@ with col[0]:
         h3 {
             text-align: center;
             color: #333;
-        }
-    """):
-        st.markdown(f"<h3>Wzrosty/spadki w roku {selected_year_for_map}</h3>", unsafe_allow_html=True)
+        }"""):
+            st.markdown(f"<h3>Wzrosty/spadki w roku {selected_year_for_map}</h3>", unsafe_allow_html=True)
 
-        st.metric(
+            st.metric(
         label=top_gain["Country"],
         value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
         delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
     )
 
-        st.metric(
+            st.metric(
         label=top_loss["Country"],
         value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
         delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
