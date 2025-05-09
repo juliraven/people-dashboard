@@ -198,7 +198,7 @@ fig2.update_geos(
 
 fig2.update_layout(
     title=f"Populacja świata w roku {selected_year_for_map}",
-    margin=dict(l=150, r=0, t=30, b=30), 
+    margin=dict(l=0, r=150, t=30, b=30), 
     height=800,
     template="plotly_dark",
     plot_bgcolor="#111111",
@@ -209,8 +209,8 @@ fig2.update_layout(
         orientation="v",              
         yanchor="middle",
         y=0.5,                        
-        xanchor="left",
-        x=0,                        
+        xanchor="right",
+        x=1,                        
         font=dict(size=14)
     )
 )
