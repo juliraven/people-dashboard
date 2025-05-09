@@ -9,3 +9,4 @@ scikit-learn
 st_pages
 streamlit-extras
 openpyxl
+altair
