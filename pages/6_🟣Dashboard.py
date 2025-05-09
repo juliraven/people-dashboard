@@ -50,6 +50,9 @@ selected_years = st.sidebar.slider(
     step=1
 )
 
+color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+selected_color_theme = st.selectbox('Wybierz kolorystykę sashboardu:', color_theme_list)
+
 # Filtrowanie danych:
 df2 = df1[(df1["Country"].isin(selected_countries)) &
     (df1["Year"] >= selected_years[0]) &
