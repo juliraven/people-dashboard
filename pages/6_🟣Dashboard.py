@@ -125,7 +125,7 @@ geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria
        'Spain': 'ESP', 'Sri Lanka': 'LKA', 'Sudan': 'SDN', 'Suriname': 'SUR', 'Svalbard and Jan Mayen Islands': 'SJM', 'Swaziland': 'SWZ', 'Sweden': 'SWE', 'Switzerland': 'CHE', 
        'Syrian Arab Republic': 'SYR', 'Tajikistan': 'TJK', 'Thailand': 'THA', 'The former Yugoslav Republic of Macedonia': 'MKD', 'Timor-Leste': 'TLS', 'Togo': 'TGO', 'Tokelau': 'TKL', 
        'Tonga': 'TON', 'Trinidad and Tobago': 'TTO', 'Tunisia': 'TUN', 'Turkey': 'TUR', 'Turkmenistan': 'TKM', 'Turks and Caicos Islands': 'TCA', 'Tuvalu': 'TUV', 'Uganda': 'UGA', 
-       'Ukraine': 'UKR', 'United Arab Emirates': 'ARE', 'United Kingdom of Great Britain and Northern Ireland': 'GBR', 'United Republic of Tanzania': 'TZA', 
+       'Ukraine': 'UKR', 'United Arab Emirates': 'ARE', 'United Kingdom': 'GBR', 'United Republic of Tanzania': 'TZA', 
        'United States of America': 'USA', 'United States Virgin Islands': 'VIR', 'Uruguay': 'URY', 'Uzbekistan': 'UZB', 'Vanuatu': 'VUT', 
        'Venezuela (Bolivarian Republic of)': 'VEN', 'Viet Nam': 'VNM', 'Wallis and Futuna Islands': 'WLF', 'Western Sahara': 'ESH', 'Yemen': 'YEM', 
        'Zambia': 'ZMB', 'Zimbabwe': 'ZWE'}
