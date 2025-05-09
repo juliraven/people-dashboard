@@ -239,6 +239,7 @@ col1, col2 = st.columns([2.5, 3])
 
 with col1:
     st.subheader("📋 Tabela danych")
+    st.markdown(##)
     st.dataframe(df)
 
 with col2:
