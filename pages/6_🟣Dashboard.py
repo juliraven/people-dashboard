@@ -231,10 +231,17 @@ df_map = df_map.sort_values(by="Population", ascending=False)
 
 with col[1]:
     st.markdown(f"### Populacja świata w roku {selected_year_for_map}")
+    st.markdown(
+        """
+        <div style="border: 2px solid #444; padding: 10px; border-radius: 5px;">
+            <h3>Populacja Polski</h3>
+            """, unsafe_allow_html=True)
     st.plotly_chart(fig2)
+    st.markdown("</div>", unsafe_allow_html=True)
+    
     st.markdown(f"### Populacja Europy {selected_years[0]} - {selected_years[1]}")
     st.altair_chart(fig1, use_container_width=True)
-    st.markdown("<hr style='border: 1px solid #444; margin: 20px 0;'>", unsafe_allow_html=True)
+    
 
 with col[2]:
     st.markdown('#### Top 10 państw pod względem liczby ludności')
