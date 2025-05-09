@@ -259,21 +259,23 @@ with col[0]:
     """
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
-        background: radial-gradient(
-        rgba(160, 0, 240, 0.4) 0%,
-        rgba(152, 19, 119, 0.4) 50%,
-        rgba(28, 2, 75, 0.5) 80%,
-        rgba(52, 3, 43, 0.6) 100%);
-        background-blend-mode: multiply;
-        background-size: cover;
-        padding: 20px;
-        border-radius: 12px;
-        backdrop-filter: brightness(1.2);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dbeafe;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
     </style>
     """,
-    unsafe_allow_html=True)
+    unsafe_allow_html=True
+)
+
 
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
