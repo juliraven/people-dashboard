@@ -168,7 +168,7 @@ fig2.add_trace(
     px.scatter_geo(
         pd.DataFrame({"ISO3": [None], "Population": [None], "label": ["Brak danych"]}),
         locationmode="ISO-3",
-        hover_name="Country",
+        hover_name="label",
         text="label"
     ).update_traces(marker=dict(color="white", size=10), showlegend=True, name="Brak danych").data[0]
 )
