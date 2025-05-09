@@ -37,7 +37,7 @@ european_countries = [
     "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo",
     "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco",
     "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal",
-    "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain",
+    "Romania", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain",
     "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"
 ]
 
