@@ -37,7 +37,7 @@ response = estat.data(resource_id='tps00001')
 # Konwertujemy dane do DataFrame
 data = response.to_pandas()
 
-print(data.head())
+st.dataframe(data.head())
 
 
 
