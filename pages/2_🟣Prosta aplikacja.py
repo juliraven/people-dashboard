@@ -61,6 +61,7 @@ movies_per_year = (
         .count()
         .reset_index(name="liczba_filmów")
     )
+
 fig1 = px.bar(movies_per_year, x="release_year", y="liczba_filmów",
                   title="Liczba wyprodukowanych filmów wg roku", labels={"release_year": "Rok", "liczba_filmów": "Liczba filmów"})
 fig1.update_layout(title_x=0.4)
