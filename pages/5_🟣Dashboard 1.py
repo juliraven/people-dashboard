@@ -233,20 +233,26 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
-st.markdown("""
-    <style>
-        .custom-container {
-            background-color: #f0f2f6;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-    </style>
-""", unsafe_allow_html=True)
+
 
 with col[0]:
     with st.container(border=True):
+        st.markdown(
+        """
+        <div style="
+            background: radial-gradient(circle at 51% 50%, #202125, #2d035e, #b444fb);
+            background-blend-mode: multiply;
+            background-size: cover;
+            overflow: hidden;
+            padding: 20px;
+            border-radius: 10px;
+        ">
+            <h3 style="color: white;">Stylizowany kontener z gradientem</h3>
+            <p style="color: white;">Treść wewnątrz kontenera z gradientowym tłem i efektem blendowania.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.metric(
         label=top_gain["Country"],
