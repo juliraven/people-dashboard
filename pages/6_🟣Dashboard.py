@@ -77,7 +77,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
         ) 
     return heatmap
     
-heatmap_chart = make_heatmap(
+fig1 = make_heatmap(
     input_df=df1,
     input_y="Year",
     input_x="Country",
