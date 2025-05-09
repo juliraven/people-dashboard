@@ -151,7 +151,6 @@ labels = [
     "100–250 mln", "250–500 mln", "500 mln – 1 mld", "1+ mld"
 ]
 
-# Tworzymy słownik, który przypisuje etykiety do kolorów
 color_map = {
     "0–5 mln": "#fcbec0", 
     "5–10 mln": "#faa9b8", 
