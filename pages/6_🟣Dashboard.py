@@ -227,9 +227,8 @@ with col[1]:
     
 
 with col[2]:
-    with st.container(border=true):
-        st.markdown('#### Top 10 państw pod względem liczby ludności')
-
+    with st.container(border=True):
+        st.markdown(f"<h3 style='text-align: center;'>Top 10 państw pod względem liczby ludności</h3>",unsafe_allow_html=True)
         st.dataframe(
         df_map.head(10),
         column_order=["Country", "Population"],
