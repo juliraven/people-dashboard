@@ -221,7 +221,7 @@ st.markdown("""
 6. **`st.line_chart()`, `st.area_chart()`, 'st.plotly_chart()** - funkcje do wyświetlania wykresów.
 ---  
 
-### Przykład użycia 
+### Przykład użycia:
 
 ```python
 import streamlit as st
@@ -286,6 +286,7 @@ col1, col2 = st.columns([2.5, 3])
 
 with col1:
     st.subheader("📋 Tabela danych")
+    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
     st.table(df)
 
 with col2:
