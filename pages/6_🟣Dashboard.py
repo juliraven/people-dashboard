@@ -57,9 +57,6 @@ selected_years = st.sidebar.slider(
     step=1
 )
 
-color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis', 'purples']
-selected_color_theme = st.sidebar.selectbox('Wybierz kolorystykę dashboardu:', color_theme_list)
-
 # Filtrowanie danych:
 df2 = df1[(df1["Country"].isin(selected_countries)) &
     (df1["Year"] >= selected_years[0]) &
@@ -89,7 +86,7 @@ fig1 = make_heatmap(
     input_y="Year",
     input_x="Country",
     input_color="Population",
-    input_color_theme="PuRd"
+    input_color_theme="purplered"
 )
 
 st.altair_chart(fig1, use_container_width=True)
