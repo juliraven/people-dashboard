@@ -31,7 +31,7 @@ import altair as alt
 st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Dashboard ludności świata (2000–2023)</h1>", unsafe_allow_html=True)
 st.markdown(' ')
 
-col = st.columns((1.8, 4.9, 2.1), gap='medium')
+col = st.columns((1.8, 4.9, 2.2), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
@@ -267,7 +267,7 @@ with col[2]:
         "Country": st.column_config.TextColumn("Kraj"),
         "Population_M": st.column_config.ProgressColumn(
             "Populacja (mln)",
-            format="%.1f M",
+            format="%.1f mln",
             min_value=0.0,
             max_value=df_map["Population_M"].max()
         )
