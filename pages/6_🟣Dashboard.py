@@ -60,6 +60,7 @@ df2 = df1[(df1["Country"].isin(selected_countries)) &
     (df1["Year"] <= selected_years[1])
 ]
 
+# Heatmapa:
 def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     heatmap = alt.Chart(input_df).mark_rect().encode(
             y=alt.Y(f'{input_y}:O', axis=alt.Axis(title="Year", titleFontSize=18, titlePadding=15, titleFontWeight=900, labelAngle=0)),
@@ -74,8 +75,18 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
         labelFontSize=12,
         titleFontSize=12
         ) 
-    # height=300
     return heatmap
+    
+heatmap_chart = make_heatmap(
+    input_df=df1,
+    input_y="Year",
+    input_x="Country",
+    input_color="Population",
+    input_color_theme=selected_color_theme
+)
+
+st.altair_chart(fig1, use_container_width=True)
+
 
 
 
