@@ -71,7 +71,7 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
         x=alt.X(f'{input_x}:O', axis=alt.Axis(
             title="", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
         color=alt.Color(f'{input_color}:Q',
-                        legend=alt.Legend(title="Ludność"),
+                        legend=alt.Legend(title="Liczba ludności"),
                         scale=alt.Scale(scheme=input_color_theme, reverse=True)),
         stroke=alt.value('black'),
         strokeWidth=alt.value(0.25),
@@ -143,7 +143,7 @@ fig2.update_layout(
     plot_bgcolor="#111111",    
     paper_bgcolor="#111111", 
     coloraxis_colorbar=dict(
-        title="Population",
+        title="Liczba ludności",
         ticks="outside"
     )
 )
@@ -169,7 +169,7 @@ fig2.add_trace(
         pd.DataFrame({"ISO3": [None], "Population": [None], "label": ["Brak danych"]}),
         locationmode="ISO-3",
         text="label"
-    ).update_traces(marker=dict(color="#a0a0a0", size=10), showlegend=True, name="Brak danych").data[0]
+    ).update_traces(marker=dict(color="white", size=10), showlegend=True, name="Brak danych").data[0]
 )
 
 st.plotly_chart(fig2)
