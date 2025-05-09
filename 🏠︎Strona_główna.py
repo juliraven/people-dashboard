@@ -295,7 +295,7 @@ with col2:
         color='PKB',
         hover_name='Miasto',
         size_max=50,
-        color_continuous_scale='Plasma'
+        color_continuous_scale='PuRd'
     )
     st.plotly_chart(fig, use_container_width=True)
 
