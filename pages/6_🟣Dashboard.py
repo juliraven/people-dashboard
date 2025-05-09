@@ -29,7 +29,7 @@ import plotly.express as px
 df = pd.read_excel('plik.xlsx')
 
 st.dataframe(df)
-
+st.write(df.columns)
 
 
 
