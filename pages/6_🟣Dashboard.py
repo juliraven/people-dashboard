@@ -230,7 +230,7 @@ df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
 with col[1]:
-    with st.container():
+    with st.container(border=True):
         st.markdown(f"### Populacja świata w roku {selected_year_for_map}")
         st.plotly_chart(fig2, use_container_width=True)
 
