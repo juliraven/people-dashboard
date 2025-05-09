@@ -35,6 +35,8 @@ df = pd.read_excel('plik.xlsx')
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
 
+df1 = df1[(df1["Year"] >= 2000) & (df1["Year"] <= 2023)]
+
 # Filtr wyboru kraju/krajów:
 countries = df["Country"].unique().tolist()
 
