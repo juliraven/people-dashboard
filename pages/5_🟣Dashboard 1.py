@@ -283,4 +283,46 @@ with col[2]:
     unsafe_allow_html=True)
 
 
+from streamlit_extras.stylable_container import stylable_container
+
+# Stylizowanie kontenera z gradientem w kolorach RGB
+with stylable_container(
+    key="stylized_container_with_gradient",
+    css_styles="""
+        div {
+            background: radial-gradient(circle at 51% 50%, rgb(160, 0, 240), rgb(52, 3, 43), rgb(28, 2, 75), rgb(152, 19, 119));
+            background-blend-mode: multiply;
+            background-size: cover;
+            overflow: hidden;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            text-align: center;
+            color: white;
+        }
+        .metric-container {
+            margin-top: 20px;
+            color: white;
+        }
+    """
+):
+    # Nagłówek
+    st.markdown(f"<h3>Wzrosty/spadki w roku {selected_year_for_map}</h3>", unsafe_allow_html=True)
+
+    # Metryki w kontenerze z gradientem
+    st.markdown("<div class='metric-container'>", unsafe_allow_html=True)
+    st.metric(
+        label=top_gain["Country"],
+        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
+    )
+
+    st.metric(
+        label=top_loss["Country"],
+        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K"
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
 
