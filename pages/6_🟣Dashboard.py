@@ -219,8 +219,12 @@ fig2.update_layout(
 df_map["Population"] = df_map["Population"].astype(int)
 df_map = df_map.sort_values(by="Population", ascending=False)
 
-df_this_year = df_map[df_map["Year"] == selected_year_for_map]
-df_prev_year = df_map[df_map["Year"] == (selected_year_for_map - 1)]
+df4 = df1[df1["Country"].isin(geo.keys())].copy()
+df4["Population"] = pd.to_numeric(df4["Population"], errors="coerce")
+df4 = df4.dropna(subset=["Population"])
+
+df_this_year = df4[df4["Year"] == selected_year_for_map]
+df_prev_year = df4[df4["Year"] == (selected_year_for_map - 1)]
     
 df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
 df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
