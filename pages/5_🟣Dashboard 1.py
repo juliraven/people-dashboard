@@ -274,16 +274,14 @@ with col[0]:
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
         transform: translateY(-6px);
         box-shadow:
-            0 0 15px rgba(255, 0, 255, 0.5),
+            0 0 15px rgba(255, 0, 255, 0.3),
             0 0 30px rgba(0, 255, 240, 0.3),
-            0 8px 30px rgba(0, 0, 0, 0.5);
+            0 8px 30px rgba(0, 0, 0, 0.3);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
-
-
 
     with st.container(border=True):
         st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
