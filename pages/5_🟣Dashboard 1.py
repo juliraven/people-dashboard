@@ -327,7 +327,9 @@ with col[1]:
     unsafe_allow_html=True
 )
 
-with col[1]:
+
+st.write("")  # pusty wiersz
+    
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja Europy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
