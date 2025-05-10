@@ -248,13 +248,6 @@ import matplotlib.image as mpimg
 
 def load_data(file_path):
     return pd.read_csv(file_path)
-    
-def display_icons(gender):
-    if gender == 'Kobieta':
-        img = mpimg.imread('female.png')
-    else:
-        img = mpimg.imread('male.png')
-    return img
 
 data_famela = load_data("female.csv")
 data_male = load_data("male.csv")
@@ -264,11 +257,10 @@ data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Męż
 selected_data = data[data['Year'] == selected_year_for_map]
 
 def format_number_to_billions(number):
-    return f"{number / 1_000_000_000:.1f}B"
+    return return f"{number / 1_000_000_000:.1f} mld"
 
-emoji_kobieta = "👩‍🦰"
-emoji_mezczyzna = "👨‍🦰"
-
+icon_kobieta = 'female.png'
+icon_mezczyzna = 'male.png'
 
 st.markdown(
     """
@@ -332,7 +324,8 @@ with col[0]:
         st.markdown(
         f"<h4 style='text-align: left; color: white;'>Liczba kobiet i mężczyzn na świecie w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
-        st.markdown(f"### {emoji_kobieta} {format_number_to_billions(selected_data['all years_Kobiety'].values[0])}")
+        st.image(icon_kobieta, width=50)
+        st.markdown(f"###{format_number_to_billions(selected_data['all years_Kobiety'].values[0])}")
         st.markdown(f"### {emoji_mezczyzna} {format_number_to_billions(selected_data['all years_Mężczyźni'].values[0])}")
 
 with col[1]:
