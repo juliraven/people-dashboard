@@ -263,14 +263,6 @@ data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Męż
 
 selected_data = data[data['Year'] == selected_year_for_map]
 
-with col1:
-    st.subheader(f"Liczba Kobiet w {year}: {selected_data['all years_Kobiety'].values[0]}")
-    st.image(display_icons('Kobieta'), width=50)
-
-with col2:
-    st.subheader(f"Liczba Mężczyzn w {year}: {selected_data['all years_Mężczyźni'].values[0]}")
-    st.image(display_icons('Mężczyzna'), width=50)
-
 
 st.markdown(
     """
