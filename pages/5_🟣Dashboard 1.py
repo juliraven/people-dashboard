@@ -257,8 +257,8 @@ selected_data = data[data['Year'] == selected_year_for_map]
 def format_number_to_billions(number):
     return f"{number / 1_000_000_000:.1f} mld"
 
-icon_kobieta = 'female.png'
-icon_mezczyzna = 'male.png'
+icon_kobieta = 'female.jpg'
+icon_mezczyzna = 'male.jpg'
 
 st.markdown(
     """
