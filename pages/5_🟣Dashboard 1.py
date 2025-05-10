@@ -325,13 +325,13 @@ with col[0]:
         
         col1, col2 = st.columns([5, 1])
         with col1:
-            st.image(icon_kobieta, width=300)
+            st.image(icon_kobieta, width=250)
         with col2:
             st.markdown(f"{format_number_to_billions(selected_data['all years_Kobiety'].values[0])}")
             
         col1, col2 = st.columns([5, 1])
         with col1:
-            st.image(icon_mezczyzna, width=300)
+            st.image(icon_mezczyzna, width=250)
         with col2:
             st.markdown(f"{format_number_to_billions(selected_data['all years_Mężczyźni'].values[0])}")
 
