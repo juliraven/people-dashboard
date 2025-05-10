@@ -244,8 +244,6 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
-import matplotlib.image as mpimg
-
 def load_data(file_path):
     return pd.read_csv(file_path)
 
@@ -257,7 +255,7 @@ data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Męż
 selected_data = data[data['Year'] == selected_year_for_map]
 
 def format_number_to_billions(number):
-    return return f"{number / 1_000_000_000:.1f} mld"
+    return f"{number / 1_000_000_000:.1f} mld"
 
 icon_kobieta = 'female.png'
 icon_mezczyzna = 'male.png'
