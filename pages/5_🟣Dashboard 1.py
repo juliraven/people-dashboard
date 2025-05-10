@@ -307,8 +307,6 @@ with col[1]:
         st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
 
-    st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
-
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     
