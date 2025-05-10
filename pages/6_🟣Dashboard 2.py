@@ -68,3 +68,5 @@ def display_icons(gender):
     else:
         st.error(f"Plik {icon_path} nie został znaleziony!")
         return None
+
+display_icons('Kobieta')
