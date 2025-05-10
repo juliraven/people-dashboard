@@ -200,7 +200,7 @@ fig2.update_geos(
     landcolor="#f5f2d6",
     showframe=False,
     showcoastlines=True,
-    bgcolor="#111111",
+    bgcolor='rgba(0,0,0,0)',
     showocean=True,
     oceancolor="rgba(149, 189, 255, 0.9)",
     showlakes=False
