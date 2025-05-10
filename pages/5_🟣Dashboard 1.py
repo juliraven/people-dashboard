@@ -85,7 +85,10 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     ).properties(width=900, height=400).configure_axis(
         labelFontSize=12,
         titleFontSize=12
-    ).configure(background=None)
+    ).configure_view(
+        fill=None, 
+        stroke=None
+    )
     return heatmap
 
 fig1 = make_heatmap(
