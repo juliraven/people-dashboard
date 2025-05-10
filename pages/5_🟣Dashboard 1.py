@@ -213,7 +213,7 @@ fig2.update_geos(
 
 fig2.update_layout(
     margin=dict(l=0, r=0, t=30, b=100), 
-    height=800,
+    height=700,
     template="plotly_dark",
 
     legend=dict(
@@ -291,8 +291,7 @@ with col[0]:
         st.metric(
         label=top_gain["Country"],
         value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K"
-    )
+        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
 
         st.metric(
         label=top_loss["Country"],
@@ -309,6 +308,9 @@ with col[1]:
         st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
 
     st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
+
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
@@ -337,6 +339,9 @@ with col[2]:
         )
     }
 )
+
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
