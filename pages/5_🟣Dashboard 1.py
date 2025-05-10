@@ -88,6 +88,8 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     ).configure_view(
         fill=None, 
         stroke=None
+    ).configure(
+        background=None 
     )
     return heatmap
 
