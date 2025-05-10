@@ -192,7 +192,6 @@ fig2.update_layout(
     )
 )
 
-
 fig2.update_geos(
     scope="world",
     projection_type="orthographic",
@@ -211,8 +210,6 @@ fig2.update_layout(
     margin=dict(l=0, r=0, t=30, b=100), 
     height=800,
     template="plotly_dark",
-    plot_bgcolor="#111111",
-    paper_bgcolor="#111111",
 
     legend=dict(
         title=dict(text="Liczba ludności<br>", font=dict(size=16)),
