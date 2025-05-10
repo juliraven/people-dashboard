@@ -86,10 +86,10 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
         labelFontSize=12,
         titleFontSize=12
     ).configure_view(
-        fill=None, 
+        fill="rgba(0, 0, 0, 0)", 
         stroke=None
     ).configure(
-        background=None 
+        background="rgba(0, 0, 0, 0)"
     )
     return heatmap
 
