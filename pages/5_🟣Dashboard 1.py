@@ -285,7 +285,7 @@ with col[0]:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(
-        f"<h3 style='text-align: center; color: white;'>Wzrosty/spadki w {selected_year_for_map}</h3>",
+        f"<h3 style='text-align: center; color: white;'>Największe wzrosty/spadki liczby ludności w {selected_year_for_map}</h3>",
         unsafe_allow_html=True)
 
         st.metric(
