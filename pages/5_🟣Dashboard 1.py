@@ -328,7 +328,12 @@ with col[1]:
 
 
 with col[2]:
-    with st.container(border=True):
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         df_map["Population_M"] = df_map["Population"] / 1_000_000
         st.markdown(f"<h3 style='text-align: center;'>Top 10 państw pod względem liczby ludności</h3>",unsafe_allow_html=True)
         st.dataframe(
@@ -346,10 +351,44 @@ with col[2]:
     }
 )
 
-    with st.container(border=True):
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         with st.expander('Żródło danych:', expanded=True):
             st.markdown('<span style="color: purple; font-weight: bold;">World population:</span> '
                         '<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>',
     unsafe_allow_html=True)
+
+
+    st.markdown(
+    """
+    <style>
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
+        background: linear-gradient(
+            135deg,
+            rgba(180, 68, 251, 0.25),
+            rgba(45, 3, 94, 0.2),
+            rgba(32, 33, 37, 0.1)
+        );
+        border: 1px solid rgba(180, 68, 251, 0.4);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow:
+            0 0 10px rgba(180, 68, 251, 0.25),
+            0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(14px) brightness(1.1);
+        background-blend-mode: overlay;
+        transition: all 0.3s ease-in-out;
+    }
+
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 0 18px rgba(180, 68, 251, 0.4),
+            0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 
