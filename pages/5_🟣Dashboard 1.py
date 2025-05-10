@@ -379,7 +379,7 @@ def display_icons(gender):
     return img
 
 # Przetworzenie danych
-data_famela = load_data("famela.csv")
+data_famela = load_data("female.csv")
 data_male = load_data("male.csv")
 
 # Łączenie danych (zakładając, że oba pliki mają tę samą strukturę i lata)
