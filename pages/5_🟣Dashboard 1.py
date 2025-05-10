@@ -328,7 +328,7 @@ with col[1]:
 )
 
 
-st.write("")  # pusty wiersz
+    st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
     
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
