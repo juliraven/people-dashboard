@@ -285,7 +285,7 @@ with col[0]:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(
-        f"<h3 style='text-align: left; color: white;'>Największe wzrosty/spadki liczby ludności w {selected_year_for_map}</h3>",
+        f"<h4 style='text-align: left; color: white;'>Największe wzrosty/spadki liczby ludności w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
 
         st.metric(
@@ -322,7 +322,7 @@ with col[2]:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         df_map["Population_M"] = df_map["Population"] / 1_000_000
-        st.markdown(f"<h3 style='text-align: center;'>Top 10 państw pod względem liczby ludności w {selected_year_for_map}</h3>",unsafe_allow_html=True)
+        st.markdown(f"<h4 style='text-align: center;'>Top 10 państw pod względem liczby ludności w {selected_year_for_map}</h4>",unsafe_allow_html=True)
         st.dataframe(
         df_map.head(10),
         column_order=["Country", "Population_M"],
