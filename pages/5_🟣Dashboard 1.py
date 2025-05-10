@@ -373,9 +373,9 @@ def load_data(file_path):
 # Funkcja do wyświetlania ikon
 def display_icons(gender):
     if gender == 'Kobieta':
-        img = mpimg.imread('female.png')  # Ikona kobiety
+        img = 'female.png'
     else:
-        img = mpimg.imread('male.png')  # Ikona mężczyzny
+        img = 'male.png'
     return img
 
 # Przetworzenie danych
