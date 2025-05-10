@@ -244,6 +244,33 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
+import matplotlib.image as mpimg
+
+def load_data(file_path):
+    return pd.read_csv(file_path)
+    
+def display_icons(gender):
+    if gender == 'Kobieta':
+        img = mpimg.imread('female.png')
+    else:
+        img = mpimg.imread('male.png')
+    return img
+
+data_famela = load_data("female.csv")
+data_male = load_data("male.csv")
+
+data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Mężczyźni'))
+
+selected_data = data[data['Year'] == selected_year_for_map]
+
+with col1:
+    st.subheader(f"Liczba Kobiet w {year}: {selected_data['all years_Kobiety'].values[0]}")
+    st.image(display_icons('Kobieta'), width=50)
+
+with col2:
+    st.subheader(f"Liczba Mężczyzn w {year}: {selected_data['all years_Mężczyźni'].values[0]}")
+    st.image(display_icons('Mężczyzna'), width=50)
+
 
 st.markdown(
     """
@@ -307,6 +334,8 @@ with col[0]:
         st.markdown(
         f"<h4 style='text-align: left; color: white;'>Liczba kobiet i mężczyzn na świecie w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
+        st.write(f"**Kobiety w {year}:** {selected_data['all years_Kobiety'].values[0]}")
+        st.write(f"**Mężczyźni w {year}:** {selected_data['all years_Mężczyźni'].values[0]}")
 
 with col[1]:
     styled_container = st.container()
@@ -361,60 +390,6 @@ with col[2]:
 
 
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-
-# Załaduj dane
-def load_data(file_path):
-    return pd.read_csv(file_path)
-
-# Funkcja do wyświetlania ikon
-def display_icons(gender):
-    if gender == 'Kobieta':
-        img = mpimg.imread('female.png')
-    else:
-        img = mpimg.imread('male.png')
-    return img
-
-# Przetworzenie danych
-data_famela = load_data("female.csv")
-data_male = load_data("male.csv")
-
-# Łączenie danych (zakładając, że oba pliki mają tę samą strukturę i lata)
-data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Mężczyźni'))
-
-# Streamlit interfejs
-st.title('Ludność: Kobiety i Mężczyźni na przestrzeni lat')
-
-# Wybór roku
-year = st.slider('Wybierz rok', min_value=1999, max_value=2023, step=1)
-
-# Filtracja danych
-selected_data = data[data['Year'] == year]
-
-# Wyświetlanie liczb i ikon
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader(f"Liczba Kobiet w {year}: {selected_data['all years_Kobiety'].values[0]}")
-    st.image(display_icons('Kobieta'), width=50)
-
-with col2:
-    st.subheader(f"Liczba Mężczyzn w {year}: {selected_data['all years_Mężczyźni'].values[0]}")
-    st.image(display_icons('Mężczyzna'), width=50)
-
-# Wyświetlanie wykresu
-fig, ax = plt.subplots()
-ax.bar(['Kobiety', 'Mężczyźni'], 
-       [selected_data['all years_Kobiety'].values[0], selected_data['all years_Mężczyźni'].values[0]], 
-       color=['#FF69B4', '#1E90FF'])
-
-ax.set_title(f"Liczba kobiet i mężczyzn w {year}")
-ax.set_ylabel("Liczba osób")
-
-st.pyplot(fig)
 
 
 
