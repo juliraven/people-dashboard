@@ -213,7 +213,7 @@ fig2.update_geos(
 
 fig2.update_layout(
     margin=dict(l=0, r=0, t=30, b=100), 
-    height=700,
+    height=600,
     template="plotly_dark",
 
     legend=dict(
