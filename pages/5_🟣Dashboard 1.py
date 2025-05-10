@@ -184,6 +184,15 @@ fig2 = px.choropleth(
     category_orders={"Population_Category": labels}
 )
 
+fig2.update_layout(
+    paper_bgcolor='rgba(0,0,0,0)', 
+    plot_bgcolor='rgba(0,0,0,0)',
+    geo=dict(
+        bgcolor='rgba(0,0,0,0)'  
+    )
+)
+
+
 fig2.update_geos(
     scope="world",
     projection_type="orthographic",
