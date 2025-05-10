@@ -31,7 +31,7 @@ import altair as alt
 st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Dashboard ludności świata (2000–2023)</h1>", unsafe_allow_html=True)
 st.markdown(' ')
 
-col = st.columns((1.8, 4.9, 2.3), gap='medium')
+col = st.columns((1.9, 4.9, 2.3), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
