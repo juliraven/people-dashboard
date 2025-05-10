@@ -58,9 +58,9 @@ import os
 
 def display_icons(gender):
     if gender == 'Kobieta':
-        icon_path = 'images/female.png'  # Ścieżka do ikony kobiety
+        icon_path = 'female.png'  # Ścieżka do ikony kobiety
     else:
-        icon_path = 'images/male.png'  # Ścieżka do ikony mężczyzny
+        icon_path = 'male.png'  # Ścieżka do ikony mężczyzny
 
     # Sprawdzenie, czy plik istnieje
     if os.path.exists(icon_path):
