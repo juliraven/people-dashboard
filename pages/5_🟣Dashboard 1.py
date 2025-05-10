@@ -311,7 +311,6 @@ with col[1]:
             0 0 10px rgba(180, 68, 251, 0.25),
             0 4px 20px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(14px) brightness(1.1);
-        background-blend-mode: overlay;
         transition: all 0.3s ease-in-out;
     }
 
@@ -325,6 +324,7 @@ with col[1]:
     """,
     unsafe_allow_html=True
 )
+
 
 with col[2]:
     with st.container(border=True):
