@@ -326,8 +326,8 @@ with col[0]:
         st.markdown(
         f"<h4 style='text-align: left; color: white;'>Liczba kobiet i mężczyzn na świecie w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
-        st.write(f"**Kobiety w {year}:** {selected_data['all years_Kobiety'].values[0]}")
-        st.write(f"**Mężczyźni w {year}:** {selected_data['all years_Mężczyźni'].values[0]}")
+        st.write(f"**Kobiety w {selected_year_for_map}:** {selected_data['all years_Kobiety'].values[0]}")
+        st.write(f"**Mężczyźni w {selected_year_for_map}:** {selected_data['all years_Mężczyźni'].values[0]}")
 
 with col[1]:
     styled_container = st.container()
