@@ -333,7 +333,6 @@ with col[2]:
 
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         df_map["Population_M"] = df_map["Population"] / 1_000_000
         st.markdown(f"<h3 style='text-align: center;'>Top 10 państw pod względem liczby ludności</h3>",unsafe_allow_html=True)
         st.dataframe(
