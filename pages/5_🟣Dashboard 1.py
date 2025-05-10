@@ -28,7 +28,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import altair as alt
 
-st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Dashboard ludności świata (2000–2023)</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata (2000–2023)</h1>", unsafe_allow_html=True)
 st.markdown(' ')
 
 col = st.columns((2, 4.9, 2.5), gap='medium')
