@@ -239,10 +239,11 @@ df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Populatio
 top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
 top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
+
 st.markdown(
     """
     <style>
-    div[data-testid="stVerticalBlock"] {
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
         background: linear-gradient(
             135deg,
             rgba(180, 68, 251, 0.25),
@@ -256,10 +257,11 @@ st.markdown(
             0 0 10px rgba(180, 68, 251, 0.25),
             0 4px 20px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(14px) brightness(1.1);
+        background-blend-mode: overlay;
         transition: all 0.3s ease-in-out;
     }
 
-    div[data-testid="stVerticalBlock"]:hover {
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
         transform: translateY(-6px);
         box-shadow:
             0 0 18px rgba(180, 68, 251, 0.4),
@@ -269,7 +271,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 
 with col[0]:
