@@ -10,4 +10,4 @@ st_pages
 streamlit-extras
 openpyxl
 altair
-PIL
+Pillow
