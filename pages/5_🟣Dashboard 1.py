@@ -305,7 +305,7 @@ with col[0]:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(
-        f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci na świecie w {selected_year_for_map}</h4>",
+        f"<h4 style='text-align: left; color: white;'>Liczba kobiet i mężczyzn na świecie w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
 
 with col[1]:
