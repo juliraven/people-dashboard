@@ -54,5 +54,17 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-st.title("Tworzenie dashboardu")
+import os
 
+def display_icons(gender):
+    if gender == 'Kobieta':
+        icon_path = 'images/female.png'  # Ścieżka do ikony kobiety
+    else:
+        icon_path = 'images/male.png'  # Ścieżka do ikony mężczyzny
+
+    # Sprawdzenie, czy plik istnieje
+    if os.path.exists(icon_path):
+        return icon_path  # Zwróć ścieżkę do obrazu
+    else:
+        st.error(f"Plik {icon_path} nie został znaleziony!")
+        return None
