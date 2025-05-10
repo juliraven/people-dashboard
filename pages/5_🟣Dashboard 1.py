@@ -261,7 +261,7 @@ with col[0]:
         background: linear-gradient(
             135deg,
             rgba(180, 68, 251, 0.25),
-            rgba(45, 3, 94, 0.3),
+            rgba(45, 3, 94, 0.2),
             rgba(32, 33, 37, 0.1)
         );
         border: 1px solid rgba(180, 68, 251, 0.4);
