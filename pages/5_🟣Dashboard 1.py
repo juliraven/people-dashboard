@@ -304,12 +304,6 @@ with col[1]:
     """
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
-        background: linear-gradient(
-            135deg,
-            rgba(180, 68, 251, 0.25),
-            rgba(45, 3, 94, 0.2),
-            rgba(32, 33, 37, 0.1)
-        );
         border: 1px solid rgba(180, 68, 251, 0.4);
         border-radius: 20px;
         padding: 24px;
