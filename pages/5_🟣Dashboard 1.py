@@ -263,6 +263,12 @@ data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Męż
 
 selected_data = data[data['Year'] == selected_year_for_map]
 
+def format_number_to_billions(number):
+    return f"{number / 1_000_000_000:.1f}B"
+
+emoji_kobieta = "👩‍🦰"
+emoji_mezczyzna = "👨‍🦰"
+
 
 st.markdown(
     """
@@ -326,8 +332,8 @@ with col[0]:
         st.markdown(
         f"<h4 style='text-align: left; color: white;'>Liczba kobiet i mężczyzn na świecie w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
-        st.write(f"**Kobiety w {selected_year_for_map}:** {selected_data['all years_Kobiety'].values[0]}")
-        st.write(f"**Mężczyźni w {selected_year_for_map}:** {selected_data['all years_Mężczyźni'].values[0]}")
+        st.markdown(f"### Kobiety w {selected_year_for_map}: {emoji_kobieta} {format_number_to_billions(selected_data['all years_Kobiety'].values[0])}")
+        st.markdown(f"### Mężczyźni w {selected_year_for_map}: {emoji_mezczyzna} {format_number_to_billions(selected_data['all years_Mężczyźni'].values[0])}")
 
 with col[1]:
     styled_container = st.container()
