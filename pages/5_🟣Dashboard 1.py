@@ -323,15 +323,15 @@ with col[0]:
         f"<h4 style='text-align: left; color: white;'>Liczba kobiet i mężczyzn na świecie w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
         
-        col1, col2 = st.columns([5, 1])
+        col1, col2 = st.columns([4, 2])
         with col1:
-            st.image(icon_kobieta, width=250)
+            st.image(icon_kobieta, width=400)
         with col2:
             st.markdown(f"{format_number_to_billions(selected_data['all years_Kobiety'].values[0])}")
             
-        col1, col2 = st.columns([5, 1])
+        col1, col2 = st.columns([4, 2])
         with col1:
-            st.image(icon_mezczyzna, width=250)
+            st.image(icon_mezczyzna, width=400)
         with col2:
             st.markdown(f"{format_number_to_billions(selected_data['all years_Mężczyźni'].values[0])}")
 
