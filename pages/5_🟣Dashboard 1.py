@@ -260,8 +260,8 @@ with col[0]:
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
         background: linear-gradient(
             135deg,
-            rgba(180, 68, 251, 0.15),
-            rgba(45, 3, 94, 0.1),
+            rgba(180, 68, 251, 0.25),
+            rgba(45, 3, 94, 0.3),
             rgba(32, 33, 37, 0.1)
         );
         border: 1px solid rgba(180, 68, 251, 0.4);
@@ -285,21 +285,6 @@ with col[0]:
     """,
     unsafe_allow_html=True
 )
-
-
-
-
-    with st.container(border=True):
-        st.markdown(f"<h3 style='text-align: center;'>Wzrosty/spadki w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
-        st.metric(
-        label=top_gain["Country"],
-        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
-
-        st.metric(
-        label=top_loss["Country"],
-        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
 with col[1]:
     with st.container(border=True):
