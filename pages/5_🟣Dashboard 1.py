@@ -298,6 +298,16 @@ with col[0]:
         value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
         delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
+
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(
+        f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci na świecie w {selected_year_for_map}</h4>",
+        unsafe_allow_html=True)
+
 with col[1]:
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
@@ -347,6 +357,9 @@ with col[2]:
             st.markdown('<span style="color: purple; font-weight: bold;">World population:</span> '
                         '<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>',
     unsafe_allow_html=True)
+
+
+    
 
 
     
