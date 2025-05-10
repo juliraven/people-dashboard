@@ -301,6 +301,32 @@ with col[1]:
         st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig2, use_container_width=True)
 
+    st.markdown(
+    """
+    <style>
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
+        background-color: transparent !important;
+        border: 1px solid rgba(180, 68, 251, 0.4);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow:
+            0 0 10px rgba(180, 68, 251, 0.25),
+            0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(14px) brightness(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 0 18px rgba(180, 68, 251, 0.4),
+            0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja Europy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
