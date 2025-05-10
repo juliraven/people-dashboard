@@ -287,15 +287,50 @@ with col[0]:
 )
 
 with col[1]:
-    with st.container(border=True):
-        st.markdown('<div class="custom-container">', unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
-        st.plotly_chart(fig2, use_container_width=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
-    with st.container(border=True):
-        st.markdown(f"<h3 style='text-align: center;'>Populacja Europy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
+        st.plotly_chart(fig2, use_container_width=True)
+
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja Europy {selected_years[0]} - {selected_years[1]}</h3>",unsafe_allow_html=True)
         st.altair_chart(fig1, use_container_width=True) 
+
+    st.markdown(
+    """
+    <style>
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
+        background: linear-gradient(
+            135deg,
+            rgba(180, 68, 251, 0.25),
+            rgba(45, 3, 94, 0.2),
+            rgba(32, 33, 37, 0.1)
+        );
+        border: 1px solid rgba(180, 68, 251, 0.4);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow:
+            0 0 10px rgba(180, 68, 251, 0.25),
+            0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(14px) brightness(1.1);
+        background-blend-mode: overlay;
+        transition: all 0.3s ease-in-out;
+    }
+
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 0 18px rgba(180, 68, 251, 0.4),
+            0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 with col[2]:
     with st.container(border=True):
