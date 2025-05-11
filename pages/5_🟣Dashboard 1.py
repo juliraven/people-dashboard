@@ -357,7 +357,7 @@ with styled_container:
     st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
     st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
     col1, col2 = st.columns([2, 2])
-    wybrane_obszary = ccol1.multiselect('Wybierz kontynenty', obszary, default=obszary)
+    wybrane_obszary = col1.multiselect('Wybierz kontynenty', obszary, default=obszary)
 
     min_rok = df1['Year'].min()
     max_rok = df1['Year'].max()
