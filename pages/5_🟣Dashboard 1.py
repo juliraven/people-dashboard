@@ -36,70 +36,36 @@ col = st.columns((2.2, 4.9, 2.5), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
-european_countries = [
-    "Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina",
-    "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland",
-    "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo",
-    "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco",
-    "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal",
-    "Romania", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain",
-    "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"
-]
+obszary = ['World', 'Africa (UN)', 'Asia (UN)', 'Europe (UN)', 'Latin America and the Caribbean (UN)', 'Northern America (UN)', 'Oceania (UN)', 'Australia', 'Americcas (UN)']
 
-# Transpozycja danych do wykresów:
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
 df1 = df1[(df1["Year"] >= 1999) & (df1["Year"] <= 2023)]
 
-# Wybór krajów europejskich::
-df2 = df1[df1["Country"].isin(european_countries)]
+df2 = df1[df1["Country"].isin(obszary)]
 
-# Filtr zakresu lat:
-min_year = df2["Year"].min() + 1
-max_year = df2["Year"].max()
+df2 = df2[df2["Year"] <= 2000]
 
-selected_years = st.sidebar.slider(
-    "Wybierz zakres lat (dla heatmapy):",
-    min_value=int(min_year),
-    max_value=int(max_year),
-    value=(int(min_year), int(max_year)),
-    step=1
+fig1 = px.line(df2, 
+              x="Year", 
+              y="Population", 
+              color="Country", 
+              labels={"Population": "Populacja", "Year": "Rok", "Country": "Kontynent"}, 
+              title="Populacja różnych obszarów w latach 1999-2000")
+
+fig1.update_layout(
+    legend_title="Kontynenty", 
+    xaxis_title="Rok", 
+    yaxis_title="Populacja",  
+    template="plotly_dark"  
 )
 
-# Filtrowanie danych:
-df3 = df2[(df2["Year"] >= selected_years[0]) &
-    (df2["Year"] <= selected_years[1])
-]
-
-# Heatmapa:
-def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
-    heatmap = alt.Chart(input_df).mark_rect().encode(
-        y=alt.Y(f'{input_y}:O', axis=alt.Axis(
-            title="Rok", titleFontSize=18, titlePadding=15, titleFontWeight=900, labelAngle=0)),
-        x=alt.X(f'{input_x}:O', axis=alt.Axis(
-            title="Kraj", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
-        color=alt.Color(f'{input_color}:Q',
-                        legend=alt.Legend(title="Liczba ludności", titlePadding=20),
-                        scale=alt.Scale(scheme=input_color_theme)),
-        stroke=alt.value('black'),
-        strokeWidth=alt.value(0.25),
-    ).properties(width=900, height=400).configure_axis(
-        labelFontSize=12,
-        titleFontSize=12
-    ).configure_view(
-        fill="rgba(0, 0, 0, 0)", 
-        stroke=None
-    ).configure(
-        background="rgba(0, 0, 0, 0)"
+fig1.update_layout(
+    paper_bgcolor='rgba(0,0,0,0)', 
+    plot_bgcolor='rgba(0,0,0,0)',
+    geo=dict(
+        bgcolor='rgba(0,0,0,0)'  
     )
-    return heatmap
-
-fig1 = make_heatmap(
-    input_df=df3,
-    input_y="Year",
-    input_x="Country",
-    input_color="Population",
-    input_color_theme="redpurple"
 )
 
 geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria': 'DZA', 'American Samoa': 'ASM', 'Andorra': 'AND', 
@@ -142,7 +108,7 @@ excluded_year = 1999
 years_available = sorted(df1["Year"].unique())
 years_available = [year for year in years_available if year != excluded_year]
 
-selected_year_for_map = st.sidebar.selectbox("Wybierz rok (dla mapy):", years_available)
+selected_year_for_map = st.selectbox("Wybierz rok:", years_available)
 
 df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
