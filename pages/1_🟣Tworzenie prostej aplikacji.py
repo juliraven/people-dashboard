@@ -119,22 +119,22 @@ st.markdown(
 code = '''
 def load_data():
 
-    # wczytanie danych z pliku csv:
+    # Wczytanie danych z pliku csv:
     df = pd.read_csv("data.csv")
 
-    # ujednolicenie nazw kolumn (zamiana wszystkich liter na małe i usunięcie białych znaków):
+    # Ujednolicenie nazw kolumn (zamiana wszystkich liter na małe i usunięcie białych znaków):
     df.columns = [x.lower().strip() for x in df.columns]
 
-    # utworzenie kolumny z rokiem premiery filmu na podstawie kolumny release_date:
+    # Utworzenie kolumny z rokiem premiery filmu na podstawie kolumny release_date:
     df["release_year"] = pd.to_datetime(df["release_date"], errors="coerce").dt.year
 
-    # pozostawienie filmów, które mają przypisany plakat (poster_path nie jest pusty ani NaN):
+    # Pozostawienie filmów, które mają przypisany plakat (poster_path nie jest pusty ani NaN):
     df = df[df["poster_path"].notna() & (df["poster_path"].str.strip() != "")]
 
-    # dodanie pełnego url do plakatu filmu na podstawie ścieżki poster_path:
+    # Dodanie pełnego url do plakatu filmu na podstawie ścieżki poster_path:
     df["poster_url"] = "https://image.tmdb.org/t/p/w200" + df["poster_path"]
 
-    # usunięcie wierszy, w których brakuje tytułu, roku premiery lub oceny:
+    # Usunięcie wierszy, w których brakuje tytułu, roku premiery lub oceny:
     df = df.dropna(subset=["title", "release_year", "vote_average"])
 
     return df
@@ -154,28 +154,28 @@ st.markdown(
 )
 
 code = '''
-# nagłówek filtrów:
+# Nagłówek filtrów:
 st.sidebar.header("🎛️ Filtry")
 
-# pobranie minimalnego i maksymalnego roku z danych:
+# Pobranie minimalnego i maksymalnego roku z danych:
 year_min, year_max = int(df["release_year"].min()), int(df["release_year"].max())
 
-# suwak do wyboru zakresu lat produkcji filmów:
+# Suwak do wyboru zakresu lat produkcji filmów:
 years = st.sidebar.slider("Zakres lat:", year_min, year_max, (2000, 2020))
 
-# suwak do wyboru minimalnej oceny filmu:
+# Suwak do wyboru minimalnej oceny filmu:
 min_rating = st.sidebar.slider("Minimalna ocena:", 0.0, 10.0, 5.0, 0.1)
 
-# lista rozwijana do wyboru języka oryginalnego (z opcją "wszystkie"):
+# Lista rozwijana do wyboru języka oryginalnego (z opcją "wszystkie"):
 lang = st.sidebar.selectbox("Język oryginalny:", options=["wszystkie"] + sorted(df["original_language"].dropna().unique().tolist()))
 
-# filtrowanie danych wg wybranych wartości (rok, ocena, język):
+# Filtrowanie danych wg wybranych wartości (rok, ocena, język):
 filtered_df = df[
     (df["release_year"] >= years[0]) & (df["release_year"] <= years[1]) &
     (df["vote_average"] >= min_rating)
 ]
 
-# dodatkowe filtrowanie po języku, jeśli użytkownik nie wybrał "wszystkie":
+# Dodatkowe filtrowanie po języku, jeśli użytkownik nie wybrał "wszystkie":
 if lang != "wszystkie":
     filtered_df = filtered_df[filtered_df["original_language"] == lang]
 '''
@@ -242,16 +242,16 @@ st.markdown(
 )
 
 code = '''
-# nagłówek sekcji:
+# Nagłówek sekcji:
 st.subheader("⭐ Top filmy wg oceny")
 
-# suwak do wyboru liczby filmów do pokazania:
+# Suwak do wyboru liczby filmów do pokazania:
 top_n = st.slider("Ile filmów pokazać:", 5, 50, 10)
 
-# sortowanie filmów malejąco wg oceny i wybranie top N filmów:
+# Sortowanie filmów malejąco wg oceny i wybranie top N filmów:
 top_movies = filtered_df.sort_values(by="vote_average", ascending=False).head(top_n)
 
-# wyświetlanie każdego filmu z listy top N:
+# Wyświetlanie każdego filmu z listy top N:
 for _, row in top_movies.iterrows():
     cols = st.columns([1, 4])
     with cols[0]:
@@ -259,7 +259,7 @@ for _, row in top_movies.iterrows():
     with cols[1]:
         st.markdown(f"**{row['title']}** ({int(row['release_year'])}) — {row['vote_average']}⭐")
         
-        # jeśli jest dostępny opis (overview), pokaż go:
+        # Jeśli jest dostępny opis (overview), pokaż go:
         if pd.notna(row.get("overview", "")):
             st.caption(row["overview"])
 '''
