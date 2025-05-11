@@ -29,7 +29,7 @@ import plotly.graph_objects as go
 import altair as alt
 import base64
 
-st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata (2000–2023)</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata na przestrzeni lat</h1>", unsafe_allow_html=True)
 st.markdown(' ')
 
 col1, col2, col3 = st.columns([2, 2, 2])
@@ -344,7 +344,7 @@ styled_container = st.container()
 st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 with styled_container:
     st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-    st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności</h3>",unsafe_allow_html=True)
     col1, col2, col3 = st.columns([2, 0.6, 2])
     ob = pd.read_csv('population.csv')
 
