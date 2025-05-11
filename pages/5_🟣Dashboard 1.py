@@ -32,7 +32,7 @@ import base64
 st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata (2000–2023)</h1>", unsafe_allow_html=True)
 st.markdown(' ')
 
-col = st.columns((2, 4.9, 2.5), gap='medium')
+col = st.columns((2.2, 4.9, 2.5), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
