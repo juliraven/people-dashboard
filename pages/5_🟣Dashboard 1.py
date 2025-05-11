@@ -385,8 +385,6 @@ with styled_container:
         font=dict(size=14)
     )
 )
-    fig1.update_layout(
-    displayModeBar=False)
 
     fig1.update_traces(mode='lines+markers', 
                   marker=dict(size=6, symbol='circle'),
@@ -400,7 +398,7 @@ with styled_container:
     )
 )
 
-    st.plotly_chart(fig1, use_container_width=True) 
+    st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": False}) 
 
 
 
