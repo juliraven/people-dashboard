@@ -368,13 +368,13 @@ with col[2]:
     unsafe_allow_html=True)
 
 
+
 styled_container = st.container()
 st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-    
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
-        st.plotly_chart(fig1, use_container_width=True) 
+with styled_container:
+    st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
+    st.plotly_chart(fig1, use_container_width=True) 
 
 
 
