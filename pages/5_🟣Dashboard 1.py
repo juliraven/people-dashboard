@@ -327,15 +327,15 @@ with col[0]:
         f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
         
-        col1, col2 = st.columns([4, 2])
+        col1, col2 = st.columns([3, 2])
         with col1:
-            st.image(icon_kobieta, width=400)
+            st.image(icon_kobieta, width=300)
         with col2:
             st.markdown(f"Kobiety: {procent_kobiet:.1f}%")
             
-        col1, col2 = st.columns([4, 2])
+        col1, col2 = st.columns([3, 2])
         with col1:
-            st.image(icon_mezczyzna, width=400)
+            st.image(icon_mezczyzna, width=300)
         with col2:
             st.markdown(f"Mężczyźni: {procent_mezczyzn:.1f}%")
 
