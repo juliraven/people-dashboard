@@ -336,7 +336,7 @@ with col[0]:
         unsafe_allow_html=True)
         
         
-        col1, col2 = st.columns([2.2, 2])
+        col1, col2 = st.columns([2, 2])
         with col1:
             st.markdown(
     f"""
@@ -353,7 +353,7 @@ with col[0]:
     f"""
     <div style='border: 2px solid #1E90FF; border-radius: 10px; padding: 10px; text-align: center;'>
         <img src="data:image/jpg;base64,{icon_m}" width="100"><br>
-        <span>Kobiety: <span style='color: #1E90FF; font-weight: bold;'>{procent_mezczyzn:.1f}%</span></span>
+        <span>Mężczyźni: <span style='color: #1E90FF; font-weight: bold;'>{procent_mezczyzn:.1f}%</span></span>
     </div>
     """,
     unsafe_allow_html=True
