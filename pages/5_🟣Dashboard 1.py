@@ -37,7 +37,7 @@ col = st.columns((2.2, 4.9, 2.5), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
-obszary = ['World', 'Africa (UN)', 'Asia (UN)', 'Europe (UN)', 'Latin America and the Caribbean (UN)', 'Northern America (UN)', 'Oceania (UN)', 'Australia', 'Americcas (UN)']
+obszary = ['World', 'Africa (UN)', 'Asia (UN)', 'Europe (UN)', 'Latin America and the Caribbean (UN)', 'Oceania (UN)', 'Australia', 'Americas (UN)']
 
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
@@ -46,6 +46,8 @@ df1 = df1[(df1["Year"] >= 1999) & (df1["Year"] <= 2023)]
 df2 = df1[df1["Country"].isin(obszary)]
 
 df2 = df2[df2["Year"] <= 2000]
+
+df2["Country"] = df2["Country"].str.replace(" \(UN\)", "", regex=True)
 
 fig1 = px.line(df2, 
               x="Year", 
