@@ -32,6 +32,7 @@ import base64
 st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata (2000–2023)</h1>", unsafe_allow_html=True)
 st.markdown(' ')
 
+col1, col2, col3 = st.columns([2, 2, 2])
 col = st.columns((2.2, 4.9, 2.5), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
@@ -107,7 +108,6 @@ excluded_year = 1999
 years_available = sorted(df1["Year"].unique())
 years_available = [year for year in years_available if year != excluded_year]
 
-col1, col2, col3 = st.columns([2, 2, 2])
 with col2:
     selected_year_for_map = st.selectbox("Wybierz rok:", years_available)
 
