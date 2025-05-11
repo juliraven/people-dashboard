@@ -329,13 +329,13 @@ with col[0]:
         
         col1, col2 = st.columns([2, 2])
         with col1:
-            st.image(icon_kobieta, width=400)
+            st.image(icon_kobieta, width=500)
         with col2:
             st.markdown(f"Kobiety: {procent_kobiet:.1f}%")
             
         col1, col2 = st.columns([2, 2])
         with col1:
-            st.image(icon_mezczyzna, width=400)
+            st.image(icon_mezczyzna, width=500)
         with col2:
             st.markdown(f"Mężczyźni: {procent_mezczyzn:.1f}%")
 
