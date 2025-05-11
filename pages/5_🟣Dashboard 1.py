@@ -389,8 +389,16 @@ with styled_container:
     displayModeBar=False)
 
     fig1.update_traces(mode='lines+markers', 
-                  marker=dict(size=6, symbol='circle')
+                  marker=dict(size=6, symbol='circle'),
                   line=dict(width=2))
+
+    fig.update_layout(
+    xaxis=dict(
+        tickmode='array', 
+        tickvals=list(range(ob['Year'].min(), ob['Year'].max() + 1, 50)),  
+        ticktext=[str(i) for i in range(ob['Year'].min(), dob['Year'].max() + 1, 50)] 
+    )
+)
 
     st.plotly_chart(fig1, use_container_width=True) 
 
