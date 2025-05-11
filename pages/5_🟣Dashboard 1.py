@@ -344,7 +344,7 @@ with col[2]:
 
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        with st.expander('Żródło danych:', expanded=False):
+        with st.expander('Żródła danych:', expanded=False):
             st.markdown('<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>', unsafe_allow_html=True)
             st.markdown('<a href="https://ourworldindata.org/grapher/population" target="_blank">https://ourworldindata.org/grapher/population</a>', unsafe_allow_html=True)
 
