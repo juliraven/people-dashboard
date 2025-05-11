@@ -394,7 +394,7 @@ with styled_container:
     xaxis=dict(
         tickmode='array', 
         tickvals=list(range(ob['Year'].min(), ob['Year'].max() + 1, 50)),  
-        ticktext=[str(i) for i in range(ob['Year'].min(), dob['Year'].max() + 1, 50)] 
+        ticktext=[str(i) for i in range(ob['Year'].min(), ob['Year'].max() + 1, 50)] 
     )
 )
 
