@@ -254,8 +254,12 @@ data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Męż
 
 selected_data = data[data['Year'] == selected_year_for_map]
 
-def format_number_to_billions(number):
-    return f"{number / 1_000_000_000:.1f} mld"
+liczba_kobiet = selected_data['all years_Kobiety'].values[0]
+liczba_mezczyzn = selected_data['all years_Mężczyźni'].values[0]
+
+suma = liczba_kobiet + liczba_mezczyzn
+procent_kobiet = (liczba_kobiet / suma) * 100
+procent_mezczyzn = (liczba_mezczyzn / suma) * 100
 
 icon_kobieta = 'female.png'
 icon_mezczyzna = 'male.png'
@@ -320,20 +324,20 @@ with col[0]:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(
-        f"<h4 style='text-align: left; color: white;'>Liczba kobiet i mężczyzn na świecie w {selected_year_for_map}</h4>",
+        f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
         
         col1, col2 = st.columns([4, 2])
         with col1:
             st.image(icon_kobieta, width=400)
         with col2:
-            st.markdown(f"{format_number_to_billions(selected_data['all years_Kobiety'].values[0])}")
+            st.markdown(f"{procent_kobiet:.1f}%")
             
         col1, col2 = st.columns([4, 2])
         with col1:
             st.image(icon_mezczyzna, width=400)
         with col2:
-            st.markdown(f"{format_number_to_billions(selected_data['all years_Mężczyźni'].values[0])}")
+            st.markdown(f"{procent_mezczyzn:.1f}%")
 
 with col[1]:
     styled_container = st.container()
