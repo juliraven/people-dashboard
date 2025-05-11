@@ -340,7 +340,7 @@ with col[1]:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
-        st.altair_chart(fig1, use_container_width=True) 
+        st.plotly_chart(fig1, use_container_width=True) 
 
 with col[2]:
     styled_container = st.container()
