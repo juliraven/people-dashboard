@@ -107,7 +107,8 @@ excluded_year = 1999
 years_available = sorted(df1["Year"].unique())
 years_available = [year for year in years_available if year != excluded_year]
 
-with col[1]:
+col1, col2, col3 = st.columns([2, 2, 2])
+with col2:
     selected_year_for_map = st.selectbox("Wybierz rok:", years_available)
 
 df_map = df1[df1["Year"] == selected_year_for_map].copy()
