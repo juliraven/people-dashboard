@@ -395,15 +395,30 @@ with col[2]:
 
 
 
+import streamlit as st
+import base64
+
+# Funkcja do konwersji obrazu na base64
+def image_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode()
+
+# Ścieżka do lokalnego obrazka .jpg
+icon_kobieta = "path_to_image/icon_kobieta.jpg"  # Zmień na odpowiednią ścieżkę
+
+# Konwertowanie obrazu na base64
+img_base64 = image_to_base64(icon_kobieta)
+
+# Wyświetlanie obrazka w HTML
 st.markdown(
     f"""
     <div style='border: 2px solid #FF69B4; border-radius: 10px; padding: 10px; text-align: center;'>
-        <img src="{icon_kobieta}" width="100"><br>
+        <img src="data:image/jpg;base64,{img_base64}" width="100"><br>
         <span>Kobiety: <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span></span>
     </div>
     """,
     unsafe_allow_html=True
 )
-    
+
 
 
