@@ -37,17 +37,9 @@ col = st.columns((2.2, 4.9, 2.8), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
-obszary = ['World', 'Africa (UN)', 'Asia (UN)', 'Europe (UN)', 'Latin America and the Caribbean (UN)', 'Australia', 'Americas (UN)']
-
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
 df1 = df1[(df1["Year"] >= 1959) & (df1["Year"] <= 2023)]
-
-df2 = df1[df1["Country"].isin(obszary)]
-
-df2 = df2[df2["Year"] <= 1960]
-
-df2["Country"] = df2["Country"].str.replace(" \(UN\)", "", regex=True)
 
 geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria': 'DZA', 'American Samoa': 'ASM', 'Andorra': 'AND', 
        'Angola': 'AGO', 'Anguilla': 'AIA', 'Antigua and Barbuda': 'ATG', 'Argentina': 'ARG', 'Armenia': 'ARM', 'Aruba': 'ABW', 
@@ -354,6 +346,8 @@ with styled_container:
     st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
     st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
     col1, col2, col3 = st.columns([2, 0.6, 2])
+    ob = pd.read_csv('population.csv')
+
     wybrane_obszary = col1.multiselect('Wybierz kontynenty:', obszary, default=obszary)
 
     min_rok = df1['Year'].min()
