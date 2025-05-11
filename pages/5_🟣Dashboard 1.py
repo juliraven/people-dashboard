@@ -349,7 +349,7 @@ with styled_container:
     ob = pd.read_csv('population.csv')
 
     obszary = ob["Entity"].unique().tolist()
-    wybrane_obszary = col1.multiselect('Wybierz obszary:', obszary, default=['Africa', 'Europe', 'North America', 'South America', 'Oceania'])
+    wybrane_obszary = col1.multiselect('Wybierz obszary:', obszary, default=['Africa', 'Europe', 'North America', 'South America', 'Oceania', 'Australia'])
 
     min_rok = ob['Year'].min()
     max_rok = ob['Year'].max()
