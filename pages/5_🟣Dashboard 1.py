@@ -336,7 +336,7 @@ with col[0]:
         unsafe_allow_html=True)
         
         
-        col1, col2 = st.columns([2.2, 2])
+        col1, col2 = st.columns([2.2, 2.2])
         with col1:
             st.markdown(
     f"""
