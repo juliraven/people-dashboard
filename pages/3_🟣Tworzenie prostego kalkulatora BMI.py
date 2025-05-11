@@ -67,11 +67,14 @@ st.markdown(
 
 code = '''
 activity_options = {
-    "Siedzący tryb życia. Brak regularnej aktywności fizycznej, typowe dzienne zajęcia niewymagające dużego wysiłku, jak np.: mycie naczyń, robienie zakupów, praca biurowa, jazda samochodem.": 1.4,
-    "Niska aktywność fizyczna. Do aktywności typowej dla siedzącego trybu życia dochodzi 30-60 minut umiarkowanego wysiłku fizycznego, jak np. spokojna jazda rowerem, spacer (5-6 km/h).": 1.5,
+    "Siedzący tryb życia. Brak regularnej aktywności fizycznej, typowe dzienne zajęcia niewymagające dużego wysiłku.": 1.4,
+    "Niska aktywność fizyczna. Do aktywności typowej dla siedzącego trybu życia dochodzi 30-60 minut umiarkowanego wysiłku fizycznego, 
+    jak np. spokojna jazda rowerem, spacer (5-6 km/h).": 1.5,
     "Umiarkowana aktywność fizyczna. Co najmniej godzinny wysiłek o średnim stopniu nasilenia kilka razy w tygodniu.": 1.7,
-    "Umiarkowana aktywność fizyczna. Co najmniej godzinny wysiłek o średnim stopniu nasilenia każdego dnia lub wykonywanie pracy fizycznej.": 1.9,
-    "Aktywny tryb życia. Minimum 60-minutowy wysiłek o średnim stopniu nasilenia każdego dnia i co najmniej godzina energicznej aktywności fizycznej, jak np. jogging, pływanie, wspinaczka górska, gra w tenisa ziemnego czy szybki marsz (8 km/h).": 2.0,
+    "Umiarkowana aktywność fizyczna. Co najmniej godzinny wysiłek o średnim stopniu nasilenia każdego dnia lub 
+    wykonywanie pracy fizycznej.": 1.9,
+    "Aktywny tryb życia. Minimum 60-minutowy wysiłek o średnim stopniu nasilenia każdego dnia i co najmniej godzina energicznej 
+    aktywności fizycznej, jak np. jogging, pływanie, wspinaczka górska, gra w tenisa ziemnego czy szybki marsz (8 km/h).": 2.0,
     "Ekstremalnie wysoka aktywność fizyczna, np. wyczynowe uprawianie sportu.": 2.2
 }
 
