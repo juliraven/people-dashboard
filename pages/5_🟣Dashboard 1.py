@@ -390,7 +390,7 @@ with styled_container:
                   marker=dict(size=6, symbol='circle'),
                   line=dict(width=2))
 
-    fig.update_layout(
+    fig1.update_layout(
     xaxis=dict(
         tickmode='array', 
         tickvals=list(range(ob['Year'].min(), ob['Year'].max() + 1, 50)),  
