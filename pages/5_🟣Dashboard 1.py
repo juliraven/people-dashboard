@@ -41,11 +41,11 @@ obszary = ['World', 'Africa (UN)', 'Asia (UN)', 'Europe (UN)', 'Latin America an
 
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
-df1 = df1[(df1["Year"] >= 1999) & (df1["Year"] <= 2023)]
+df1 = df1[(df1["Year"] >= 1949) & (df1["Year"] <= 2023)]
 
 df2 = df1[df1["Country"].isin(obszary)]
 
-df2 = df2[df2["Year"] <= 2000]
+df2 = df2[df2["Year"] <= 1950]
 
 df2["Country"] = df2["Country"].str.replace(" \(UN\)", "", regex=True)
 
@@ -85,7 +85,7 @@ geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria
        'Venezuela': 'VEN', 'Vietnam': 'VNM', 'Wallis and Futuna Islands': 'WLF', 'Western Sahara': 'ESH', 'Yemen': 'YEM', 
        'Zambia': 'ZMB', 'Zimbabwe': 'ZWE', 'North Macedonia': 'MKD', 'Kosovo': 'XK', 'Taiwan': 'TWN'}
 
-excluded_year = 1999
+excluded_year = 1949
 years_available = sorted(df1["Year"].unique())
 years_available = [year for year in years_available if year != excluded_year]
 
