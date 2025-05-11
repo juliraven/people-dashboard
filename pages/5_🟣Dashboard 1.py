@@ -392,8 +392,8 @@ with styled_container:
     fig1.update_layout(
     xaxis=dict(
         tickmode='array', 
-        tickvals=list(range(ob['Year'].min(), ob['Year'].max() + 1, 50)),  
-        ticktext=[str(i) for i in range(ob['Year'].min(), ob['Year'].max() + 1, 50)] 
+        tickvals=list(range(ob['Year'].min(), ob['Year'].max() + 1, 50)) + ['2023'],  
+        ticktext=[str(i) for i in range(ob['Year'].min(), ob['Year'].max() + 1, 50)] + ['2023']
     )
 )
 
