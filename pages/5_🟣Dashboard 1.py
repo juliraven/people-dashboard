@@ -33,7 +33,7 @@ st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność �
 st.markdown(' ')
 
 col1, col2, col3 = st.columns([2, 2, 2])
-col = st.columns((2.2, 4.9, 2.6), gap='medium')
+col = st.columns((2.2, 4.9, 2.7), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
