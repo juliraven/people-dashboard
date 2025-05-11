@@ -326,26 +326,19 @@ with col[0]:
         st.markdown(
         f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
-        
-        col1, col2 = st.columns([2.2, 2])
-        with col1:
-            st.image(icon_kobieta, width=500)
-            
-            st.markdown(
-            f"""
-            <img src="{"icon_kobieta}" width="100">
-            """,
-            unsafe_allow_html=True
-                            )
 
-        with col2:
-            st.markdown(f"Kobiety <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span> &nbsp;&nbsp; ", unsafe_allow_html=True)
-            
-        col1, col2 = st.columns([2.2, 2])
-        with col1:
-            st.image(icon_mezczyzna, width=500)
-        with col2:
-            st.markdown(f"Mężczyźni <span style='color: #1E90FF; font-weight: bold;'>{procent_mezczyzn:.1f}%</span> &nbsp;&nbsp; ", unsafe_allow_html=True)
+        with st.container(border=True):
+            col1, col2 = st.columns([2.2, 2])
+            with col1:
+                st.image(icon_kobieta, width=500)
+            with col2:
+                st.markdown(f"Kobiety <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span> &nbsp;&nbsp; ", unsafe_allow_html=True)
+        with st.container(border=True):
+            col1, col2 = st.columns([2.2, 2])
+            with col1:
+                st.image(icon_mezczyzna, width=500)
+            with col2:
+                st.markdown(f"Mężczyźni <span style='color: #1E90FF; font-weight: bold;'>{procent_mezczyzn:.1f}%</span> &nbsp;&nbsp; ", unsafe_allow_html=True)
 
 with col[1]:
     styled_container = st.container()
