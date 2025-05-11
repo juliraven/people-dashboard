@@ -358,6 +358,8 @@ with styled_container:
     df_filtered = ob[ob["Entity"].isin(wybrane_obszary)]
     df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
+    df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
+
     fig1 = px.line(df_filtered, 
               x="Year", 
               y="Population (historical)", 
