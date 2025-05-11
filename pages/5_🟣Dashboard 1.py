@@ -387,7 +387,7 @@ with styled_container:
 )
 
     fig1.update_traces(mode='lines+markers', 
-                  marker=dict(size=6, symbol='circle'))
+                  marker=dict(size=4, symbol='circle'))
 
     fig1.update_layout(
     xaxis=dict(
