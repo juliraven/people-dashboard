@@ -37,7 +37,7 @@ col = st.columns((2.2, 4.9, 2.5), gap='medium')
 
 df = pd.read_excel('plik.xlsx')
 
-obszary = ['World', 'Africa (UN)', 'Asia (UN)', 'Europe (UN)', 'Latin America and the Caribbean (UN)', 'Oceania (UN)', 'Australia', 'Americas (UN)']
+obszary = ['World', 'Africa (UN)', 'Asia (UN)', 'Europe (UN)', 'Latin America and the Caribbean (UN)', 'Australia', 'Americas (UN)']
 
 df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
 df1["Year"] = df1["Year"].astype(int)
