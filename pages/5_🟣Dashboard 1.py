@@ -70,7 +70,7 @@ fig1.update_layout(
     )
 )
 
-fig2.update_layout(
+fig1.update_layout(
     legend=dict(
         title=dict(font=dict(size=16))                      
         font=dict(size=14)
