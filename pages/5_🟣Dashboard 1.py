@@ -387,7 +387,7 @@ with styled_container:
 )
 
     fig1.update_traces(mode='lines+markers', 
-                  marker=dict(size=4, symbol='circle'))
+                  marker=dict(size=4, symbol='circle'), line=dict(width=2))
 
     fig1.update_layout(
     xaxis=dict(
@@ -396,6 +396,7 @@ with styled_container:
         ticktext=[str(i) for i in range(ob['Year'].min(), ob['Year'].max() + 1, 50)] + ['2023']
     )
 )
+    fig1.update_layout(height=600)
 
     st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": False}) 
 
