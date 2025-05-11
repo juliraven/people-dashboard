@@ -395,7 +395,15 @@ with col[2]:
 
 
 
-
+st.markdown(
+    f"""
+    <div style='border: 2px solid #FF69B4; border-radius: 10px; padding: 10px; text-align: center;'>
+        <img src="{icon_kobieta}" width="100"><br>
+        <span>Kobiety: <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span></span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
     
 
 
