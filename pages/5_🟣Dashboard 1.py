@@ -27,6 +27,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import altair as alt
+import base64
 
 st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata (2000–2023)</h1>", unsafe_allow_html=True)
 st.markdown(' ')
@@ -264,6 +265,13 @@ procent_mezczyzn = (liczba_mezczyzn / suma) * 100
 icon_kobieta = 'female.png'
 icon_mezczyzna = 'male.png'
 
+def image_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode()
+
+icon_k = image_to_base64(icon_kobieta)
+icon_m = image_to_base64(icon_mezczyzna)
+
 st.markdown(
     """
     <style>
@@ -326,19 +334,30 @@ with col[0]:
         st.markdown(
         f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
+        
+        
+        col1, col2 = st.columns([2.2, 2])
+        with col1:
+            st.markdown(
+    f"""
+    <div style='border: 2px solid #FF69B4; border-radius: 10px; padding: 10px; text-align: center;'>
+        <img src="data:image/jpg;base64,{icon_k}" width="100"><br>
+        <span>Kobiety: <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span></span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
-        with st.container(border=True):
-            col1, col2 = st.columns([2.2, 2])
-            with col1:
-                st.image(icon_kobieta, width=500)
-            with col2:
-                st.markdown(f"Kobiety <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span> &nbsp;&nbsp; ", unsafe_allow_html=True)
-        with st.container(border=True):
-            col1, col2 = st.columns([2.2, 2])
-            with col1:
-                st.image(icon_mezczyzna, width=500)
-            with col2:
-                st.markdown(f"Mężczyźni <span style='color: #1E90FF; font-weight: bold;'>{procent_mezczyzn:.1f}%</span> &nbsp;&nbsp; ", unsafe_allow_html=True)
+        with col2:
+            st.markdown(
+    f"""
+    <div style='border: 2px solid #1E90FF; border-radius: 10px; padding: 10px; text-align: center;'>
+        <img src="data:image/jpg;base64,{icon_m}" width="100"><br>
+        <span>Kobiety: <span style='color: #1E90FF; font-weight: bold;'>{procent_mezczyzn:.1f}%</span></span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 with col[1]:
     styled_container = st.container()
@@ -395,27 +414,7 @@ with col[2]:
 
 
 
-import streamlit as st
-import base64
 
-# Funkcja do konwersji obrazu na base64
-def image_to_base64(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode()
-
-# Konwertowanie obrazu na base64
-img_base64 = image_to_base64(icon_kobieta)
-
-# Wyświetlanie obrazka w HTML
-st.markdown(
-    f"""
-    <div style='border: 2px solid #FF69B4; border-radius: 10px; padding: 10px; text-align: center;'>
-        <img src="data:image/jpg;base64,{img_base64}" width="100"><br>
-        <span>Kobiety: <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span></span>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
 
 
