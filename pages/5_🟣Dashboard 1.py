@@ -348,24 +348,24 @@ with styled_container:
     col1, col2, col3 = st.columns([2, 0.6, 2])
     ob = pd.read_csv('population.csv')
 
-    wybrane_obszary = col1.multiselect('Wybierz kontynenty:', obszary, default=obszary)
+    obszary = ob["Entity"].unique().tolist()
+    wybrane_obszary = col1.multiselect('Wybierz obszary:', obszary, default=obszary)
 
-    min_rok = df1['Year'].min()
-    max_rok = df1['Year'].max()
-
+    min_rok = ob['Year'].min()
+    max_rok = ob['Year'].max()
     zakres_lat = col3.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 
-    df2 = df1[df1["Country"].isin(wybrane_obszary)]
-    df2 = df2[(df2["Year"] >= zakres_lat[0]) & (df2["Year"] <= zakres_lat[1])]
+    df_filtered = ob[ob["Entity"].isin(wybrane_obszary)]
+    df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
-    fig1 = px.line(df2, 
+    fig1 = px.line(df_filtered, 
               x="Year", 
-              y="Population", 
-              color="Country",  
-              labels={"Population": "Populacja", "Year": "Rok", "Country": "Kontynent"})
+              y="Population (historical)", 
+              color="Entity",  
+              labels={"Population": "Populacja", "Year": "Rok", "Country": "Obszar"})
 
     fig1.update_layout(
-    legend_title="Kontynenty",
+    legend_title="Obszary",
     xaxis_title="Rok", 
     yaxis_title="Populacja", 
     template="plotly_dark")
