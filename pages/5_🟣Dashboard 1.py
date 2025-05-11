@@ -403,9 +403,6 @@ def image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode()
 
-# Ścieżka do lokalnego obrazka .jpg
-icon_kobieta = "path_to_image/icon_kobieta.jpg"  # Zmień na odpowiednią ścieżkę
-
 # Konwertowanie obrazu na base64
 img_base64 = image_to_base64(icon_kobieta)
 
