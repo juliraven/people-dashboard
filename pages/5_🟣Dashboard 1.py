@@ -49,34 +49,6 @@ df2 = df2[df2["Year"] <= 2000]
 
 df2["Country"] = df2["Country"].str.replace(" \(UN\)", "", regex=True)
 
-fig1 = px.line(df2, 
-              x="Year", 
-              y="Population", 
-              color="Country", 
-              labels={"Population": "Populacja", "Year": "Rok", "Country": "Kontynent"})
-
-fig1.update_layout(
-    legend_title="Kontynenty", 
-    xaxis_title="Rok", 
-    yaxis_title="Populacja",  
-    template="plotly_dark"  
-)
-
-fig1.update_layout(
-    paper_bgcolor='rgba(0,0,0,0)', 
-    plot_bgcolor='rgba(0,0,0,0)',
-    geo=dict(
-        bgcolor='rgba(0,0,0,0)'  
-    )
-)
-
-fig1.update_layout(
-    legend=dict(
-        title=dict(font=dict(size=16)),                     
-        font=dict(size=14)
-    )
-)
-
 geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria': 'DZA', 'American Samoa': 'ASM', 'Andorra': 'AND', 
        'Angola': 'AGO', 'Anguilla': 'AIA', 'Antigua and Barbuda': 'ATG', 'Argentina': 'ARG', 'Armenia': 'ARM', 'Aruba': 'ABW', 
        'Australia': 'AUS', 'Austria': 'AUT', 'Azerbaijan': 'AZE', 'Bahamas': 'BHS', 'Bahrain': 'BHR', 'Bangladesh': 'BGD', 
@@ -384,6 +356,45 @@ st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 with styled_container:
     st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
     st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
+    col1, col2 = st.columns([2, 2])
+    wybrane_obszary = ccol1.multiselect('Wybierz kontynenty', obszary, default=obszary)
+
+    min_rok = df1['Year'].min()
+    max_rok = df1['Year'].max()
+
+    zakres_lat = col2.slider('Wybierz zakres lat', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+
+    df2 = df1[df1["Country"].isin(wybrane_obszary)]
+    df2 = df2[(df2["Year"] >= zakres_lat[0]) & (df2["Year"] <= zakres_lat[1])]
+
+    fig1 = px.line(df2, 
+              x="Year", 
+              y="Population", 
+              color="Country",  
+              labels={"Population": "Populacja", "Year": "Rok", "Country": "Kontynent"})
+
+    fig1.update_layout(
+    legend_title="Kontynenty",
+    xaxis_title="Rok", 
+    yaxis_title="Populacja", 
+    template="plotly_dark")
+
+    
+    fig1.update_layout(
+    paper_bgcolor='rgba(0,0,0,0)', 
+    plot_bgcolor='rgba(0,0,0,0)',
+    geo=dict(
+        bgcolor='rgba(0,0,0,0)'  
+    )
+)
+
+    fig1.update_layout(
+    legend=dict(
+        title=dict(font=dict(size=16)),                     
+        font=dict(size=14)
+    )
+)
+
     st.plotly_chart(fig1, use_container_width=True) 
 
 
