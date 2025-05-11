@@ -396,7 +396,7 @@ with styled_container:
         ticktext=[str(i) for i in range(ob['Year'].min(), ob['Year'].max() + 1, 50)] + ['2023']
     )
 )
-    fig1.update_layout(height=800)
+    fig1.update_layout(height=1000)
 
     st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": False}) 
 
