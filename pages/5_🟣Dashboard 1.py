@@ -330,6 +330,18 @@ with col[0]:
         col1, col2 = st.columns([2.2, 2])
         with col1:
             st.image(icon_kobieta, width=500)
+
+        with col1:
+            st.markdown(
+        f"""
+        <div style='border: 2px solid #FF69B4; border-radius: 10px; padding: 10px; text-align: center;'>
+            <img src='{icon_kobieta}' width='100'><br>
+            <span>Kobiety: <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span></span>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
         with col2:
             st.markdown(f"Kobiety <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span> &nbsp;&nbsp; ", unsafe_allow_html=True)
             
