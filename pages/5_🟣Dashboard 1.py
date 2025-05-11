@@ -50,8 +50,7 @@ fig1 = px.line(df2,
               x="Year", 
               y="Population", 
               color="Country", 
-              labels={"Population": "Populacja", "Year": "Rok", "Country": "Kontynent"}, 
-              title="Populacja różnych obszarów w latach 1999-2000")
+              labels={"Population": "Populacja", "Year": "Rok", "Country": "Kontynent"})
 
 fig1.update_layout(
     legend_title="Kontynenty", 
@@ -108,7 +107,8 @@ excluded_year = 1999
 years_available = sorted(df1["Year"].unique())
 years_available = [year for year in years_available if year != excluded_year]
 
-selected_year_for_map = st.selectbox("Wybierz rok:", years_available)
+with col[1]:
+    selected_year_for_map = st.selectbox("Wybierz rok:", years_available)
 
 df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
@@ -334,14 +334,6 @@ with col[1]:
         st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w roku {selected_year_for_map}</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
 
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-    
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
-        st.plotly_chart(fig1, use_container_width=True) 
-
 with col[2]:
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
@@ -376,9 +368,13 @@ with col[2]:
     unsafe_allow_html=True)
 
 
-
-
-
+styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności na przestrzeni lat</h3>",unsafe_allow_html=True)
+        st.plotly_chart(fig1, use_container_width=True) 
 
 
 
