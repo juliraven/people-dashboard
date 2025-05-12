@@ -1,4 +1,4 @@
-Entity,Code,Year,Deaths - Sex: all - Age: 100+ - Variant: estimates,Deaths - Sex: all - Age: 90-99 - Variant: estimates,Deaths - Sex: all - Age: 80-89 - Variant: estimates,Deaths - Sex: all - Age: 70-79 - Variant: estimates,Deaths - Sex: all - Age: 60-69 - Variant: estimates,Deaths - Sex: all - Age: 50-59 - Variant: estimates,Deaths - Sex: all - Age: 40-49 - Variant: estimates,Deaths - Sex: all - Age: 30-39 - Variant: estimates,Deaths - Sex: all - Age: 20-29 - Variant: estimates,Deaths - Sex: all - Age: 10-19 - Variant: estimates,Deaths - Sex: all - Age: 0-9 - Variant: estimates
+Entity,Code,Year,100+,90-99,80-89,70-79,60-69,50-59,40-49,30-39,20-29,10-19,0-9
 Africa (UN),,1950,355,16045,140991,336785,348927,290451,281583,302780,337407,296834,3774076
 Africa (UN),,1951,358,15325,142334,339611,351098,293711,283502,304621,338784,296432,3774693
 Africa (UN),,1952,359,14873,143802,343348,354046,297461,285843,307512,341426,296788,3785846
