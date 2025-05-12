@@ -443,6 +443,15 @@ with col11:
         st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": False}) 
 
 
+with col22:
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności</h3>",unsafe_allow_html=True)
+
+       
+
 
 
 
