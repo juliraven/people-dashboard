@@ -448,7 +448,7 @@ with col22:
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia</h3>",unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia w {selected_year_for_map}</h3>",unsafe_allow_html=True)
 
         le = pd.read_csv('life-expectancy.csv')
         
@@ -457,9 +457,14 @@ with col22:
 
         df_le = le[le["Year"] == selected_year_for_map].copy()
 
-        df_le = df_le.sort_values(by=['Life expectancy'], ascending=False).head(10)
+        df_le = df_le.sort_values(by=['Life expectancy'], ascending=False).head(20)
 
-        st.dataframe(df_le)
+        fig = px.bar(df_le, x="Entity", y="Life expectancy", labels={"Entity": "Kraj", "Life expectancy": "Oczekiwana długość życia"})
+        fig.update_layout(title_x=0.4)
+        fig.update_traces(marker_color="rgba(180, 68, 251, 0.2)", 
+                      marker_line_color="rgba(180, 68, 251, 1)",
+                      marker_line_width=2)
+        st.plotly_chart(fig, use_container_width=True)
 
        
 
