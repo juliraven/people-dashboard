@@ -451,10 +451,12 @@ with col22:
         st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia</h3>",unsafe_allow_html=True)
 
         le = pd.read_csv('life-expentancy.csv')
+        
+        le["Year"] = le["Year"].astype(int)
+        le = le[(le["Year"] >= 1959) & (le["Year"] <= 2023)]
 
-        le1 = le.melt(id_vars=["Country"], var_name="Year", value_name="Population")
-        le1["Year"] = le1["Year"].astype(int)
-        le1 = le1[(le1["Year"] >= 1959) & (le1["Year"] <= 2023)]
+        
+
        
 
 
