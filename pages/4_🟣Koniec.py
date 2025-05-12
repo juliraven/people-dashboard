@@ -6,13 +6,6 @@ page_bg_img_sidebar = """
 <style>
 /* Ustawienie szerokości sidebaru */
 section[data-testid="stSidebar"] {
-    width: 240px !important;
-    min-width: 240px !important;
-    max-width: 240px !important;
-    display: flex;
-    align-items: center;       /* Wyśrodkowanie w pionie */
-    justify-content: center;   /* Wyśrodkowanie w poziomie */
-    flex-direction: column;
     height: 100vh;             /* Wysokość całego widoku */
     padding-top: 10px;
 }
