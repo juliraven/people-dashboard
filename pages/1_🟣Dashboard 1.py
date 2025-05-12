@@ -19,8 +19,8 @@ section[data-testid="stSidebar"] {
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
-        rgba(0, 0, 0, 0.4),  /* Czarne tło z przezroczystością */
         rgba(255, 255, 255, 0.4),  /* Białe tło z przezroczystością */
+        rgba(0, 0, 0, 0.4),        /* Czarne tło z przezroczystością */
         rgba(192, 192, 192, 0.5)   /* Szarość z przezroczystością */
     );
     border: 1px solid rgba(0, 0, 0, 0.3);  /* Ciemniejsza ramka */
