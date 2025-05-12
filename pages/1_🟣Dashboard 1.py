@@ -2,28 +2,29 @@ import streamlit as st
 
 page_bg_img_sidebar = """
 <style>
-/* Sidebar ze stylizacją i oryginalną kolorystyką */
 [data-testid="stSidebar"] {
-    background: radial-gradient(circle at 51% 50%, #202125, #2d035e, #b444fb);
-    background-blend-mode: overlay;
-    background-size: cover;
+    background: linear-gradient(
+        135deg,
+        rgba(32, 33, 37, 0.6),
+        rgba(45, 3, 94, 0.5),
+        rgba(180, 68, 251, 0.4)
+    );
     border: 1px solid rgba(180, 68, 251, 0.3);
-    border-radius: 20px;
+    border-radius: 0px; /* brak zaokrągleń */
     padding: 24px;
     box-shadow:
         0 0 10px rgba(180, 68, 251, 0.2),
         0 4px 16px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(12px) brightness(1.05);
+    background-blend-mode: overlay;
     transition: none;
     overflow: hidden;
 }
 
-/* Nagłówek przezroczysty */
 header[data-testid="stHeader"] {
     background-color: rgba(0, 0, 0, 0);
 }
 
-/* Ciało strony z ciemnym tłem */
 body {
     background-color: #202125;
 }
