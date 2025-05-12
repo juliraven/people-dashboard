@@ -5,15 +5,15 @@ page_bg_img_sidebar = """
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
-        rgba(180, 68, 251, 0.4),
-        rgba(45, 3, 94, 0.5),
-        rgba(32, 33, 37, 0.6)
+        rgba(50, 205, 50, 0.4),     /* limonka */
+        rgba(0, 100, 0, 0.5),       /* ciemna zieleń */
+        rgba(18, 24, 20, 0.6)       /* bardzo ciemna zieleń (tło) */
     );
-    border: 1px solid rgba(180, 68, 251, 0.3);
+    border: 1px solid rgba(50, 205, 50, 0.3);
     border-radius: 0px;
     padding: 24px;
     box-shadow:
-        0 0 10px rgba(180, 68, 251, 0.2),
+        0 0 10px rgba(50, 205, 50, 0.2),
         0 4px 16px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(12px) brightness(1.05);
     background-blend-mode: overlay;
@@ -26,7 +26,7 @@ header[data-testid="stHeader"] {
 }
 
 body {
-    background-color: #202125;
+    background-color: #121814; /* bardzo ciemna zieleń jako tło */
 }
 </style>
 """
@@ -93,7 +93,7 @@ years_available = sorted(df1["Year"].unique())
 years_available = [year for year in years_available if year != excluded_year]
 
 with col2:
-    selected_year_for_map = st.selectbox("Wybierz rok:", years_available, default="2023")
+    selected_year_for_map = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
 
 df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
