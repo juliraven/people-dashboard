@@ -5,17 +5,17 @@ page_bg_img_sidebar = """
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
-        rgba(50, 205, 50, 0.4),     /* limonka */
-        rgba(0, 100, 0, 0.5),       /* ciemna zieleń */
-        rgba(18, 24, 20, 0.6)       /* bardzo ciemna zieleń (tło) */
+        rgba(200, 100, 255, 0.4),   /* jaśniejszy fiolet */
+        rgba(90, 30, 150, 0.5),     /* lżejszy granat z fioletem */
+        rgba(50, 50, 60, 0.6)       /* jaśniejszy szarawy odcień */
     );
-    border: 1px solid rgba(50, 205, 50, 0.3);
+    border: 1px solid rgba(200, 100, 255, 0.3);
     border-radius: 0px;
     padding: 24px;
     box-shadow:
-        0 0 10px rgba(50, 205, 50, 0.2),
+        0 0 10px rgba(200, 100, 255, 0.25),
         0 4px 16px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px) brightness(1.05);
+    backdrop-filter: blur(12px) brightness(1.08);
     background-blend-mode: overlay;
     transition: none;
     overflow: hidden;
@@ -26,7 +26,7 @@ header[data-testid="stHeader"] {
 }
 
 body {
-    background-color: #121814; /* bardzo ciemna zieleń jako tło */
+    background-color: #1c1c24;  /* delikatnie jaśniejsze tło niż #202125 */
 }
 </style>
 """
