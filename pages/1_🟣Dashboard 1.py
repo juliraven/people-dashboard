@@ -2,7 +2,19 @@ import streamlit as st
 
 page_bg_img_sidebar = """
 <style>
-/* Stylowanie sidebaru */
+/* Ustawienie szerokości sidebaru */
+section[data-testid="stSidebar"] {
+    width: 240px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
+    display: flex;
+    align-items: center;       /* Wyśrodkowanie w pionie */
+    justify-content: center;   /* Wyśrodkowanie w poziomie */
+    flex-direction: column;
+    height: 100vh;             /* Wysokość całego widoku */
+}
+
+/* Styl samego wnętrza sidebaru */
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
@@ -13,14 +25,7 @@ page_bg_img_sidebar = """
     border: 1px solid rgba(180, 68, 251, 0.3);
     border-radius: 0px;
     padding: 24px;
-    width: 240px !important;            /* Ustawienie szerokości sidebaru */
-    min-width: 240px !important;
-    max-width: 240px !important;
-    display: flex;
-    align-items: center;       /* Wyśrodkowanie w pionie */
-    justify-content: center;   /* Wyśrodkowanie w poziomie */
-    flex-direction: column;
-    height: 100vh;  
+    width: 100%;
     box-shadow:
         0 0 10px rgba(180, 68, 251, 0.25),
         0 4px 16px rgba(0, 0, 0, 0.25);
@@ -28,24 +33,27 @@ page_bg_img_sidebar = """
     background-blend-mode: overlay;
     transition: none;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  /* Wyśrodkowanie zawartości */
 }
 
-/* Ukrycie białej linii między paskiem a treścią */
+/* Główna treść */
 section.main > div {
     padding-left: 220px !important;
 }
 
-/* Przezroczysty nagłówek */
+/* Nagłówek przezroczysty */
 header[data-testid="stHeader"] {
     background-color: rgba(0, 0, 0, 0);
 }
 
-/* Kolor tła strony */
+/* Tło strony */
 body {
     background-color: #202125;
 }
 </style>
-
 """
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
