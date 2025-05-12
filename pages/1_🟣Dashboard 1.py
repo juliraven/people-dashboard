@@ -16,6 +16,11 @@ page_bg_img_sidebar = """
     width: 240px !important;            /* Ustawienie szerokości sidebaru */
     min-width: 240px !important;
     max-width: 240px !important;
+    display: flex;
+    align-items: center;       /* Wyśrodkowanie w pionie */
+    justify-content: center;   /* Wyśrodkowanie w poziomie */
+    flex-direction: column;
+    height: 100vh;  
     box-shadow:
         0 0 10px rgba(180, 68, 251, 0.25),
         0 4px 16px rgba(0, 0, 0, 0.25);
