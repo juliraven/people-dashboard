@@ -455,7 +455,9 @@ with col22:
         le["Year"] = le["Year"].astype(int)
         le = le[(le["Year"] >= 1959) & (le["Year"] <= 2023)]
 
-        
+        df_le = le[le["Year"] == selected_year_for_map].copy()
+
+        st.dataframe(df_le)
 
        
 
