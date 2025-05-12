@@ -2,33 +2,45 @@ import streamlit as st
 
 page_bg_img_sidebar = """
 <style>
+/* Stylowanie sidebaru */
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
-        rgba(200, 100, 255, 0.4),   /* jaśniejszy fiolet */
-        rgba(90, 30, 150, 0.5),     /* lżejszy granat z fioletem */
-        rgba(50, 50, 60, 0.6)       /* jaśniejszy szarawy odcień */
+        rgba(32, 33, 37, 0.6),
+        rgba(45, 3, 94, 0.5),
+        rgba(180, 68, 251, 0.4)
     );
-    border: 1px solid rgba(200, 100, 255, 0.3);
+    border: 1px solid rgba(180, 68, 251, 0.3);
     border-radius: 0px;
     padding: 24px;
+    width: 150px !important;            /* Ustawienie szerokości sidebaru */
+    min-width: 220px !important;
+    max-width: 220px !important;
     box-shadow:
-        0 0 10px rgba(200, 100, 255, 0.25),
+        0 0 10px rgba(180, 68, 251, 0.25),
         0 4px 16px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px) brightness(1.08);
+    backdrop-filter: blur(12px) brightness(1.05);
     background-blend-mode: overlay;
     transition: none;
     overflow: hidden;
 }
 
+/* Ukrycie białej linii między paskiem a treścią */
+section.main > div {
+    padding-left: 220px !important;
+}
+
+/* Przezroczysty nagłówek */
 header[data-testid="stHeader"] {
     background-color: rgba(0, 0, 0, 0);
 }
 
+/* Kolor tła strony */
 body {
-    background-color: #1c1c24;  /* delikatnie jaśniejsze tło niż #202125 */
+    background-color: #202125;
 }
 </style>
+
 """
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
