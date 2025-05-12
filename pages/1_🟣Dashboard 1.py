@@ -457,6 +457,8 @@ with col22:
 
         df_le = le[le["Year"] == selected_year_for_map].copy()
 
+        df_le = df_le.sort_values(by=['Life expectancy']).head(10)
+
         st.dataframe(df_le)
 
        
