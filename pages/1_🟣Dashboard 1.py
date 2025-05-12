@@ -385,15 +385,15 @@ with col11:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności</h3>",unsafe_allow_html=True)
-        col1, col2, col3 = st.columns([2, 0.6, 2])
+
         ob = pd.read_csv('population.csv')
 
         obszary = ob["Entity"].unique().tolist()
-        wybrane_obszary = col1.multiselect('Wybierz obszary:', obszary, default=['Africa', 'Europe', 'North America', 'South America', 'Oceania', 'Australia'])
+        wybrane_obszary = cst.multiselect('Wybierz obszary:', obszary, default=['Africa', 'Europe', 'North America', 'South America', 'Oceania', 'Australia'])
 
         min_rok = ob['Year'].min()
         max_rok = ob['Year'].max()
-        zakres_lat = col3.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+        zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 
         df_filtered = ob[ob["Entity"].isin(wybrane_obszary)]
         df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
