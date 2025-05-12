@@ -450,7 +450,7 @@ with col22:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia</h3>",unsafe_allow_html=True)
 
-        le = pd.read_csv('life-expentancy.csv')
+        le = pd.read_csv('life-expectancy.csv')
         
         le["Year"] = le["Year"].astype(int)
         le = le[(le["Year"] >= 1959) & (le["Year"] <= 2023)]
