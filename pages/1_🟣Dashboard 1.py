@@ -5,12 +5,12 @@ page_bg_img_sidebar = """
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
-        rgba(32, 33, 37, 0.6),
+        rgba(180, 68, 251, 0.4),
         rgba(45, 3, 94, 0.5),
-        rgba(180, 68, 251, 0.4)
+        rgba(32, 33, 37, 0.6)
     );
     border: 1px solid rgba(180, 68, 251, 0.3);
-    border-radius: 0px; /* brak zaokrągleń */
+    border-radius: 0px;
     padding: 24px;
     box-shadow:
         0 0 10px rgba(180, 68, 251, 0.2),
@@ -29,7 +29,6 @@ body {
     background-color: #202125;
 }
 </style>
-
 """
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
