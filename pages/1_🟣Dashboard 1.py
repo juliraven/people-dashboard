@@ -13,9 +13,9 @@ page_bg_img_sidebar = """
     border: 1px solid rgba(180, 68, 251, 0.3);
     border-radius: 0px;
     padding: 24px;
-    width: 220px !important;            /* Ustawienie szerokości sidebaru */
-    min-width: 220px !important;
-    max-width: 220px !important;
+    width: 230px !important;            /* Ustawienie szerokości sidebaru */
+    min-width: 230px !important;
+    max-width: 230px !important;
     box-shadow:
         0 0 10px rgba(180, 68, 251, 0.25),
         0 4px 16px rgba(0, 0, 0, 0.25);
