@@ -12,6 +12,7 @@ section[data-testid="stSidebar"] {
     justify-content: center;   /* Wyśrodkowanie w poziomie */
     flex-direction: column;
     height: 100vh;             /* Wysokość całego widoku */
+    padding-top: 100px;
 }
 
 /* Styl samego wnętrza sidebaru */
