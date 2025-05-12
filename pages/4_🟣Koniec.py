@@ -14,16 +14,16 @@ section[data-testid="stSidebar"] {
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
-        rgba(32, 33, 37, 0.6),
-        rgba(45, 3, 94, 0.5),
-        rgba(180, 68, 251, 0.4)
+        rgba(0, 0, 0, 0.6),  /* Czarne tło z przezroczystością */
+        rgba(0, 0, 0, 0.7),  /* Ciemniejszy odcień czerni */
+        rgba(0, 0, 0, 0.8)   /* Jeszcze ciemniejszy odcień czerni */
     );
-    border: 1px solid rgba(180, 68, 251, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);  /* Ciemniejsza ramka */
     border-radius: 0px;
     padding: 24px;
     width: 100%;
     box-shadow:
-        0 0 10px rgba(180, 68, 251, 0.25),
+        0 0 10px rgba(0, 0, 0, 0.25),   /* Ciemniejszy cień */
         0 4px 16px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(12px) brightness(1.05);
     background-blend-mode: overlay;
