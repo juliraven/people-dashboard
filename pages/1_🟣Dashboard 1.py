@@ -2,40 +2,28 @@ import streamlit as st
 
 page_bg_img_sidebar = """
 <style>
-/* Stylowanie paska bocznego (sidebar) */
+/* Sidebar ze stylizacją i oryginalną kolorystyką */
 [data-testid="stSidebar"] {
-    background: linear-gradient(
-        135deg,
-        rgba(180, 68, 251, 0.25),
-        rgba(45, 3, 94, 0.2),
-        rgba(32, 33, 37, 0.1)
-    );
-    border: 1px solid rgba(180, 68, 251, 0.4);
+    background: radial-gradient(circle at 51% 50%, #202125, #2d035e, #b444fb);
+    background-blend-mode: overlay;
+    background-size: cover;
+    border: 1px solid rgba(180, 68, 251, 0.3);
     border-radius: 20px;
     padding: 24px;
     box-shadow:
-        0 0 10px rgba(180, 68, 251, 0.25),
-        0 4px 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(14px) brightness(1.1);
-    background-blend-mode: overlay;
-    transition: all 0.3s ease-in-out;
+        0 0 10px rgba(180, 68, 251, 0.2),
+        0 4px 16px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px) brightness(1.05);
+    transition: none;
     overflow: hidden;
 }
 
-/* Opcjonalny efekt na hover */
-[data-testid="stSidebar"]:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 0 18px rgba(180, 68, 251, 0.4),
-        0 8px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Przezroczysty nagłówek */
+/* Nagłówek przezroczysty */
 header[data-testid="stHeader"] {
     background-color: rgba(0, 0, 0, 0);
 }
 
-/* Tło całego ciała */
+/* Ciało strony z ciemnym tłem */
 body {
     background-color: #202125;
 }
