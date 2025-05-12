@@ -448,7 +448,7 @@ with col22:
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'></h3>",unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia</h3>",unsafe_allow_html=True)
 
        
 
