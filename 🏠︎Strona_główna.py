@@ -541,8 +541,4 @@ st.info("To jest informacja")
 st.warning("To jest ostrzeżenie")
 st.error("To jest błąd")
 
-try:
-    x = 1 / 0
-except Exception as e:
-    st.exception(e)
 
