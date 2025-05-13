@@ -381,6 +381,8 @@ with col[2]:
 
 de = pd.read_csv('deaths-by-age-group.csv')
 
+de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
+
 df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
                   var_name="Age_group", value_name="Deaths")
 
@@ -415,8 +417,10 @@ with styled_container:
               y="Deaths", 
               color="Age_group", 
               line_group="Entity", 
-              facet_col="Entity", title='', category_orders={"Age_group": age_order})
+              facet_col="Entity",category_orders={"Age_group": age_order})
 
+    fig.update_layout(title_text="")
+    
     fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
             plot_bgcolor='rgba(0,0,0,0)',
