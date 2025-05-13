@@ -411,7 +411,7 @@ with col11:
               y="Deaths", 
               color="Age_group", 
               line_group="Entity", 
-              facet_col="Entity")
+              facet_col="Entity", title='')
 
         fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
@@ -420,7 +420,16 @@ with col11:
 
         fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
 
-        st.plotly_chart(fig)
+        fig.update_layout(legend=dict(
+        title=dict(text="Grupa wiekowa<br>", font=dict(size=16)),
+        orientation="h",              
+        yanchor="bottom",
+        y=-0.2,                        
+        xanchor="center",
+        x=0.5,                        
+        font=dict(size=14)))
+
+        st.plotly_chart(fig, config={"displayModeBar": False})
        
 
 
