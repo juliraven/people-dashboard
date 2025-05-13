@@ -400,8 +400,6 @@ zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_r
 df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
 df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
-df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
-
 df_filtered = df_filtered.sort_values("Age_group")
 
 col11, col22 = st.columns([3,2])
