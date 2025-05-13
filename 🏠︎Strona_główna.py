@@ -344,81 +344,9 @@ st.markdown("""
 
 """)
 
-
-st.markdown(""" 
----  
-
-### Przykład 1
-
-```python
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-
-df = pd.DataFrame({
-    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
-    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
-    'Powierzchnia (km²)': [517, 327, 262, 293],
-    'PKB per capita': [150000, 120000, 110000, 130000]
-})
-
-col1, col2 = st.columns([2.5, 3])
-
-with col1:
-    st.subheader("📋 Tabela danych")
-    st.dataframe(df)
-
-with col2:
-    st.subheader("📈 Wykres bąbelkowy")
-    fig = px.scatter(
-        df,
-        x='Powierzchnia (km²)',
-        y='Liczba mieszkańców (mln)',
-        size='PKB',
-        color='PKB',
-        hover_name='Miasto',
-        size_max=60,
-        color_continuous_scale='PuRd'
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
-""")
-
-import pandas as pd
-import plotly.express as px
-
-df = pd.DataFrame({
-    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
-    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
-    'Powierzchnia (km²)': [517, 327, 262, 293],
-    'PKB': [150000, 120000, 110000, 130000]
-})
-
-col1, col2 = st.columns([2.5, 3])
-
-with col1:
-    st.subheader("📋 Tabela danych")
-    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
-    st.markdown('##')
-    st.dataframe(df)
-
-with col2:
-    st.subheader("📈 Wykres bąbelkowy")
-    fig = px.scatter(
-        df,
-        x='Powierzchnia (km²)',
-        y='Liczba mieszkańców (mln)',
-        size='PKB',
-        color='PKB',
-        hover_name='Miasto',
-        size_max=50,
-        color_continuous_scale='PuRd'
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
 st.markdown(''' 
 ---
-### Przykład 2
+### Przykłady użycia wybrnaych funkcji:
 ''')
 
 st.markdown('''
@@ -426,6 +354,7 @@ st.markdown('''
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly.express as px
 from datetime import time, date
 
 st.title("📘 Przegląd funkcji Streamlit")
@@ -435,8 +364,6 @@ st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
 st.caption("To jest podpis np. pod wykresem")
 st.latex(r"e^{i\pi} + 1 = 0")
 st.write("Lista:", [1, 2, 3])
-st.write("DataFrame:")
-st.write(pd.DataFrame({"A": [1, 2], "B": [3, 4]}))
 st.code("for i in range(5):\n    print(i)", language="python")
 
 st.header("2. Kolumny i zakładki")
@@ -444,7 +371,12 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Dane")
-    df = pd.DataFrame(np.random.randn(10, 3), columns=["a", "b", "c"])
+    df = pd.DataFrame({
+    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
+    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
+    'Powierzchnia (km²)': [517, 327, 262, 293],
+    'PKB': [150000, 120000, 110000, 130000]})
+    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
     st.dataframe(df)
     st.json({'name': 'Streamlit', 'type': 'framework'})
     
@@ -453,6 +385,19 @@ with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
     st.metric(label="Temperatura", value="22°C", delta="1.2°C")
+
+st.subheader("Wykres")
+fig = px.scatter(
+        df,
+        x='Powierzchnia (km²)',
+        y='Liczba mieszkańców (mln)',
+        size='PKB',
+        color='PKB',
+        hover_name='Miasto',
+        size_max=50,
+        color_continuous_scale='PuRd'
+    )
+st.plotly_chart(fig, use_container_width=True)
 
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
 with tab1:
@@ -495,6 +440,7 @@ st.error("To jest błąd")
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly.express as px
 from datetime import time, date
 
 st.title("📘 Przegląd funkcji Streamlit")
@@ -504,8 +450,6 @@ st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
 st.caption("To jest podpis np. pod wykresem")
 st.latex(r"e^{i\pi} + 1 = 0")
 st.write("Lista:", [1, 2, 3])
-st.write("DataFrame:")
-st.write(pd.DataFrame({"A": [1, 2], "B": [3, 4]}))
 st.code("for i in range(5):\n    print(i)", language="python")
 
 st.header("2. Kolumny i zakładki")
@@ -513,7 +457,12 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Dane")
-    df = pd.DataFrame(np.random.randn(10, 3), columns=["a", "b", "c"])
+    df = pd.DataFrame({
+    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
+    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
+    'Powierzchnia (km²)': [517, 327, 262, 293],
+    'PKB': [150000, 120000, 110000, 130000]})
+    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
     st.dataframe(df)
     st.json({'name': 'Streamlit', 'type': 'framework'})
     
@@ -522,6 +471,19 @@ with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
     st.metric(label="Temperatura", value="22°C", delta="1.2°C")
+
+st.subheader("Wykres")
+fig = px.scatter(
+        df,
+        x='Powierzchnia (km²)',
+        y='Liczba mieszkańców (mln)',
+        size='PKB',
+        color='PKB',
+        hover_name='Miasto',
+        size_max=50,
+        color_continuous_scale='PuRd'
+    )
+st.plotly_chart(fig, use_container_width=True)
 
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
 with tab1:
