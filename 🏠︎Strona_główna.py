@@ -279,7 +279,17 @@ col1.markdown("""
 
 """)
 
+col1.subheader('Układ kolumnowy')
 
+col1.markdown("""
+| Funkcja / składnia                           | Opis                                                                 |
+|----------------------------------------------|----------------------------------------------------------------------|
+| `col1, col2 = st.columns(2)`                 | tworzy dwie kolumny o równej szerokości  |
+| `col1.write('Kolumna 1')`<br>`col2.write('Kolumna 2')` | umieszcza zawartość w odpowiednich kolumnach.                       |
+| `st.columns([3, 1, 1])`                      | tworzy trzy kolumny o niestandardowych proporcjach szerokości (np. 3:1:1)|
+| `with col1:`<br>`st.write('To jest kolumna 1')` | alternatywna składnia z `with`, pozwala lepiej grupować kod wewnątrz kolumny |
+
+""")
 
 
 
