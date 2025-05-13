@@ -418,6 +418,8 @@ with col11:
             plot_bgcolor='rgba(0,0,0,0)',
             geo=dict(bgcolor='rgba(0,0,0,0)'))
 
+        fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
+
         st.plotly_chart(fig)
        
 
