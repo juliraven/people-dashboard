@@ -579,7 +579,6 @@ with col2:
 
 with col3:
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
-    st.data_editor("Edytuj dane", data)
     st.camera_input("Zrób zdjęcie 📸")
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
 
