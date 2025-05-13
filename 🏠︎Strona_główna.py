@@ -420,38 +420,96 @@ st.markdown('''
 ---
 ''')
 
+st.markdown('''
+```python
 import streamlit as st
 import pandas as pd
 import numpy as np
-from datetime import date
+from datetime import time, date
 
-# 1. Slider
-st.slider("Pick a number", 0, 100)
+# --- Tytuły i tekst ---
+st.title("📘 Przegląd funkcji Streamlit")
+st.header("1. Teksty i formatowanie")
+st.subheader("Podsekcja: formatowanie")
+st.text("To jest tekst monospace (stała szerokość)")
+st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
+st.caption("To jest podpis np. pod wykresem")
+st.latex(r"e^{i\pi} + 1 = 0")
 
-# 2. File uploader
-st.file_uploader("Pick a file")
+# --- Uniwersalny write ---
+st.write("Lista:", [1, 2, 3])
+st.write("DataFrame:")
+st.write(pd.DataFrame({"A": [1, 2], "B": [3, 4]}))
 
-# 3. Color picker
-st.color_picker("Pick a color", "#FF4B4B")
+# --- Kod źródłowy ---
+st.code("for i in range(5):\n    print(i)", language="python")
 
-# 4. Bar chart
-# Tworzymy przykładowe dane
-df = pd.DataFrame({
-    "category": list("ABCDEFGH"),
-    "sales": [25, 55, 45, 95, 80, 55, 20, 88]
-})
-st.bar_chart(df, x="category", y="sales")
+# --- Kolumny i zakładki ---
+col1, col2 = st.columns(2)
 
-# 5. Radio buttons
-st.radio("Pick a pet", ["Dog", "Cat", "Bird"])
+with col1:
+    st.subheader("Dane")
+    df = pd.DataFrame(np.random.randn(10, 3), columns=["a", "b", "c"])
+    st.dataframe(df)
+    st.table(df.head(5))
+    st.json({'name': 'Streamlit', 'type': 'framework'})
+    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
 
-# 6. Date picker
-st.date_input("Pick a date", value=date.today())
+with col2:
+    st.subheader("Multimedia")
+    st.image("https://placekitten.com/200/300", caption="Obrazek kota")
+    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+    st.video("https://www.youtube.com/watch?v=5qap5aO4i9A")
 
+# --- Zakładki ---
+tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
+with tab1:
+    st.write("To jest zakładka 1")
+with tab2:
+    st.write("To jest zakładka 2")
 
+# --- Widżety interaktywne ---
+st.header("2. Widżety interaktywne")
 
+col1, col2, col3 = st.columns(3)
 
+with col1:
+    st.button("Kliknij mnie")
+    st.checkbox("Zaznacz mnie")
+    st.radio("Wybierz zwierzę", ["Kot", "Pies"])
+    st.selectbox("Wybierz liczbę", [1, 2, 3])
+    st.multiselect("Wybierz wiele", ["A", "B", "C"])
+    st.slider("Przesuń", 0, 100)
+    st.select_slider("Przesuń, aby wybrać", options=["Mało", "Średnio", "Dużo"])
 
+with col2:
+    st.text_input("Wpisz imię")
+    st.number_input("Wpisz liczbę", step=1)
+    st.text_area("Opisz swój dzień")
+    st.date_input("Wybierz datę", value=date.today())
+    st.time_input("Wpisz godzinę", value=time(12, 0))
+    st.file_uploader("Prześlij plik")
+    st.color_picker("Wybierz kolor")
+
+with col3:
+    data = pd.DataFrame({"kolumna": [1, 2, 3]})
+    st.data_editor("Edytuj dane", data)
+    st.camera_input("Zrób zdjęcie 📸")
+    st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
+
+# --- Statusy i paski ---
+st.header("3. Status i postęp")
+with st.spinner("⏳ Ładowanie..."):
+    st.success("✅ Gotowe!")
+
+progress_bar = st.progress(0)
+for i in range(1, 101):
+    progress_bar.progress(i)
+
+st.info("To jest informacja")
+st.warning("To jest ostrzeżenie")
+st.error("To jest błąd")
+''')
 
 import streamlit as st
 import pandas as pd
