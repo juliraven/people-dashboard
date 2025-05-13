@@ -239,7 +239,7 @@ st.title("Przydatne funkcje")
 
 col1, col2, col3 = st.columns([2.5, 2, 2])
 
-col1.subheader('Wyświetlanie tekstu')
+st.subheader('Wyświetlanie tekstu')
 
 st.markdown("""
 | Funkcja                         | Opis                                                                 |
@@ -256,7 +256,7 @@ st.markdown("""
 
 """)
 
-col1.subheader('Wyświetlanie interaktywnych widżetów')
+st.subheader('Wyświetlanie interaktywnych widżetów')
 
 st.markdown("""
 | Funkcja                                          | Opis                                                                 |
