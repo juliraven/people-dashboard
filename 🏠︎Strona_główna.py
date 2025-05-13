@@ -291,7 +291,7 @@ col1.markdown("""
 
 """)
 
-col1.subheader('Zakładki)
+col1.subheader('Zakładki')
 
 col1.markdown("""
 | Funkcja                                     | Opis                                                                 |
@@ -302,7 +302,47 @@ col1.markdown("""
 
 """)
 
+col2.subheader('Wyświetlanie interaktywnych widżetów')
 
+col2.markdown("""
+| Funkcja                                          | Opis                                                                 |
+|--------------------------------------------------|----------------------------------------------------------------------|
+| `st.button('Kliknij')`                       | tworzy przycisk, który użytkownik może kliknąć                      |
+| `st.data_editor('Edytuj dane', data)`            | edytor danych - umożliwia użytkownikowi modyfikację danych w aplikacji |
+| `st.checkbox('Zaznacz')`                    | tworzy pole wyboru (checkbox) – można je zaznaczyć lub odznaczyć.    |
+| `st.radio('Wybierz jedną opcję:', ['cat', 'dog'])`| tworzy grupę opcji wyboru (radio buttons) – umożliwia wybór jednej z opcji |
+| `st.selectbox('Wybierz', [1, 2, 3])`             | tworzy rozwijane menu, w którym użytkownik wybiera jedną z opcji   |
+| `st.multiselect('Wybór wielu opcji', [1, 2, 3])` | tworzy rozwijane menu umożliwiające wybór wielu opcji                |
+| `st.slider('Przesuń', min_value=0, max_value=10)` | tworzy suwak do wyboru wartości w określonym zakresie             |
+| `st.select_slider('Przesuń, aby wybrać', options=[1, '2'])` | tworzy suwak z listą opcji do wyboru                              |
+| `st.text_input('Wpisz tekst')`                   | tworzy pole tekstowe, w którym użytkownik może wprowadzić dane     |
+| `st.number_input('Wpisz liczbę')`                | tworzy pole do wprowadzania liczb                                   |
+| `st.text_area('Wpisz tekst w większym polu')`    | tworzy pole tekstowe z możliwością wprowadzania dłuższych danych (wielowierszowe) |
+| `st.date_input('Wybierz datę')`                  | tworzy pole do wprowadzania daty                                    |
+| `st.time_input('Wpisz godzinę')`                 | tworzy pole do wprowadzania godziny                                |
+| `st.file_uploader('Prześlij plik')`              | tworzy widżet do przesyłania plików przez użytkownika               |
+| `st.download_button('Pobierz dane', data)`      | tworzy przycisk do pobierania danych (np. pliku)                    |
+| `st.camera_input("Kliknij, aby zrobić zdjęcie!")`| tworzy widżet do robienia zdjęć za pomocą kamery  |
+| `st.color_picker('Wybierz kolor')`              | tworzy widżet do wybierania koloru                                  |
+
+""")
+
+col3.subheader('Wyświetlanie postępu i statusu')
+
+col3.markdown("""
+| Funkcja / składnia                                    | Opis                                                                 |
+|-------------------------------------------------------|----------------------------------------------------------------------|
+| `with st.spinner(text='W trakcie...'):`               | wyświetla spinner podczas trwającego procesu |
+| `st.success('Ukończono')`                             | wyświetla komunikat o sukcesie, np. po zakończeniu procesu          |
+| `bar = st.progress(50)`                              | wyświetla pasek postępu ustawiony na wartość 50%                     |
+| `bar.progress(100)`                                   | aktualizuje pasek postępu do wartości 100%                          |
+| `st.error('Wiadomość o błędzie')`                      | wyświetla komunikat o błędzie                                       |
+| `st.warning('Wiadomość ostrzegawcza')`                 | wyświetla komunikat ostrzegawczy                                    |
+| `st.info('Wiadomość informacyjna')`                   | wyświetla komunikat informacyjny                                    |
+| `st.success('Wiadomość o sukcesie')`                  | wyświetla komunikat o sukcesie                                      |
+| `st.exception(e)`                                     | wyświetla szczegóły wyjątku, np. w przypadku błędu w kodzie         |
+
+""")
 
 
 st.markdown(""" 
