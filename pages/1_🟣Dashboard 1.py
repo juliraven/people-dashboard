@@ -452,15 +452,12 @@ with col22:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia w {selected_year_for_map}</h3>",unsafe_allow_html=True)
 
-        le = pd.read_csv('deaths-by-age-group.csv')
-        
-        le["Year"] = le["Year"].astype(int)
-        le = le[(le["Year"] >= 1959) & (le["Year"] <= 2023)]
+        de = pd.read_csv('deaths-by-age-group.csv')
 
-        df_le = le[le["Year"] == selected_year_for_map].copy()
+        df_filtered = de[de["Entity"].isin(wybrane_obszary)]
+        df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
-        df_le = df_le.sort_values(by=['Life expectancy'], ascending=False).head(20)
-
+        df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
         
 
        
