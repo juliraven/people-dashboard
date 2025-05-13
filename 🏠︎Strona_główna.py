@@ -237,9 +237,11 @@ st.image('second.png', caption="Wdrażanie", use_container_width=True)
 
 st.title("Przydatne funkcje")
 
-st.subheader('Wyświetlanie tekstu')
+col1, col2 = st.columns([3, 2])
 
-st.markdown("""
+col1.subheader('Wyświetlanie tekstu')
+
+col1.markdown("""
 | Funkcja                         | Opis                                                                 |
 |---------------------------------|----------------------------------------------------------------------|
 | `st.text('Tekst')`              | wyświetla zwykły tekst o stałej szerokości                           |
@@ -251,6 +253,17 @@ st.markdown("""
 | `st.header('Nagłówek')`        | wyświetla średni nagłówek – mniejszy niż `title`, większy niż `subheader`    |
 | `st.subheader('Podnagłówek')`  | wyświetla mniejszy nagłówek, np. dla sekcji w aplikacji                   |
 | `st.code('for i in range(8):')`| pokazuje blok kodu z zachowaniem formatowania                      |
+
+""")
+
+col2.subheader('Wyświetlanie multimediów')
+
+col2.markdown("""
+| Funkcja                        | Opis                                                                 |
+|--------------------------------|----------------------------------------------------------------------|
+| `st.image('image.png')`     | wyświetla obrazek, może to być plik lokalny, URL lub obiekt w pamięci  |
+| `st.audio(data)`               | odtwarza plik audio. `data` może być ścieżką, URL lub bajtami (np. z pliku `.mp3`) |
+| `st.video(data)`               | odtwarza wideo, obsługuje pliki lokalne, URL lub strumienie danych|
 
 """)
 
@@ -289,17 +302,6 @@ col1.markdown("""
 | `st.table(data.iloc[0:10])`                  | pokazuje dane jako statyczną tabelę – bez możliwości przewijania czy sortowania |
 | `st.json({'foo': 'bar', 'fu': 'ba'})`        | wyświetla dane w formacie JSON w przejrzystej strukturze drzewa    |
 | `st.metric(label="Temp", value="273 K", delta="1.2 K")` | prezentuje wartość liczbową z etykietą i zmianą (delta) – idealne do metryk |
-
-""")
-
-col1.subheader('Wyświetlanie multimediów')
-
-col1.markdown("""
-| Funkcja                        | Opis                                                                 |
-|--------------------------------|----------------------------------------------------------------------|
-| `st.image('image.png')`     | wyświetla obrazek, może to być plik lokalny, URL lub obiekt w pamięci  |
-| `st.audio(data)`               | odtwarza plik audio. `data` może być ścieżką, URL lub bajtami (np. z pliku `.mp3`) |
-| `st.video(data)`               | odtwarza wideo, obsługuje pliki lokalne, URL lub strumienie danych|
 
 """)
 
