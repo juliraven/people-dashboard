@@ -428,24 +428,18 @@ import pandas as pd
 import numpy as np
 from datetime import time, date
 
-# --- Tytuły i tekst ---
 st.title("📘 Przegląd funkcji Streamlit")
 st.header("1. Teksty i formatowanie")
-st.subheader("Podsekcja: formatowanie")
-st.text("To jest tekst monospace (stała szerokość)")
-st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
+st.text("To jest tekst")
+st.markdown("**pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
 st.caption("To jest podpis np. pod wykresem")
 st.latex(r"e^{i\pi} + 1 = 0")
-
-# --- Uniwersalny write ---
 st.write("Lista:", [1, 2, 3])
 st.write("DataFrame:")
 st.write(pd.DataFrame({"A": [1, 2], "B": [3, 4]}))
-
-# --- Kod źródłowy ---
 st.code("for i in range(5):\n    print(i)", language="python")
 
-# --- Kolumny i zakładki ---
+st.header("2. Kolumny i zakładki")
 col1, col2 = st.columns(2)
 
 with col1:
@@ -460,15 +454,13 @@ with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
 
-# --- Zakładki ---
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
 with tab1:
     st.write("To jest zakładka 1")
 with tab2:
     st.write("To jest zakładka 2")
 
-# --- Widżety interaktywne ---
-st.header("2. Widżety interaktywne")
+st.header("3. Widżety interaktywne")
 
 col1, col2, col3 = st.columns(3)
 
@@ -494,8 +486,7 @@ with col3:
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
 
-# --- Statusy i paski ---
-st.header("3. Status i postęp")
+st.header("4. Status i postęp")
 with st.spinner("⏳ Ładowanie..."):
     st.success("✅ Gotowe!")
 
@@ -513,24 +504,18 @@ import pandas as pd
 import numpy as np
 from datetime import time, date
 
-# --- Tytuły i tekst ---
 st.title("📘 Przegląd funkcji Streamlit")
 st.header("1. Teksty i formatowanie")
-st.subheader("Podsekcja: formatowanie")
-st.text("To jest tekst monospace (stała szerokość)")
-st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
+st.text("To jest tekst")
+st.markdown("**pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
 st.caption("To jest podpis np. pod wykresem")
 st.latex(r"e^{i\pi} + 1 = 0")
-
-# --- Uniwersalny write ---
 st.write("Lista:", [1, 2, 3])
 st.write("DataFrame:")
 st.write(pd.DataFrame({"A": [1, 2], "B": [3, 4]}))
-
-# --- Kod źródłowy ---
 st.code("for i in range(5):\n    print(i)", language="python")
 
-# --- Kolumny i zakładki ---
+st.header("2. Kolumny i zakładki")
 col1, col2 = st.columns(2)
 
 with col1:
@@ -545,15 +530,13 @@ with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
 
-# --- Zakładki ---
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
 with tab1:
     st.write("To jest zakładka 1")
 with tab2:
     st.write("To jest zakładka 2")
 
-# --- Widżety interaktywne ---
-st.header("2. Widżety interaktywne")
+st.header("3. Widżety interaktywne")
 
 col1, col2, col3 = st.columns(3)
 
@@ -579,8 +562,7 @@ with col3:
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
 
-# --- Statusy i paski ---
-st.header("3. Status i postęp")
+st.header("4. Status i postęp")
 with st.spinner("⏳ Ładowanie..."):
     st.success("✅ Gotowe!")
 
@@ -591,11 +573,3 @@ for i in range(1, 101):
 st.info("To jest informacja")
 st.warning("To jest ostrzeżenie")
 st.error("To jest błąd")
-
-
-import streamlit as st
-
-with st.container():
-    st.subheader("Pick a number")
-    value = st.slider("Pick a number", 0, 100)
-    st.code('number = st.slider("Pick a number", 0, 100)')
