@@ -268,28 +268,17 @@ col1.markdown("""
 
 """)
 
+col1.subheader('Wyświetlanie multimediów')
 
+col1.markdown("""
+| Funkcja                        | Opis                                                                 |
+|--------------------------------|----------------------------------------------------------------------|
+| `st.image('image.png')`     | wyświetla obrazek, może to być plik lokalny, URL lub obiekt w pamięci  |
+| `st.audio(data)`               | odtwarza plik audio. `data` może być ścieżką, URL lub bajtami (np. z pliku `.mp3`) |
+| `st.video(data)`               | odtwarza wideo, obsługuje pliki lokalne, URL lub strumienie danych|
 
-
-
-
-
-
-
-st.markdown(""" 
-
-1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
-
-2. **`st.dataframe()` i `st.table()`** - funkcje służące do wyświetlania ramek danych i tabel, przy czym: `st.dataframe()` — interaktywna tabela, `st.table()` — statyczna tabela.
-
-3. **`st.columns()`** - funkcja pozwalająca wyświetlać widżety obok siebie w układzie siatki.
-        
-4. **`st.expander()`** - funkcja tworząca rozwijany element, który może ukrywać lub pokazywać treść.
- 
-5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów.
-
-6. **`st.line_chart()`, `st.area_chart()`, `st.plotly_chart()`** - funkcje do wyświetlania wykresów.
 """)
+
 
 
 
