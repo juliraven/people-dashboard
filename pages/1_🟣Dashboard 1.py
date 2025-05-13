@@ -381,7 +381,7 @@ with col[2]:
 
 de = pd.read_csv('deaths-by-age-group.csv')
 
-df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29",, "10-19", "0-9"],
+df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
                   var_name="Age_group", value_name="Deaths")
 
 obszary = de["Entity"].unique().tolist()
