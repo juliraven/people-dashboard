@@ -382,7 +382,7 @@ with col[2]:
 ob = pd.read_csv('population.csv')
 
 obszary = ob["Entity"].unique().tolist()
-wybrane_obszary = st.multiselect('Wybierz obszary:', obszary, default=['Africa', 'Europe', 'North America', 'South America', 'Oceania', 'Australia'])
+wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, default=['World'])
 
 min_rok = ob['Year'].min()
 max_rok = ob['Year'].max()
@@ -458,8 +458,19 @@ with col22:
         df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
         df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
-        
-        st.dataframe(df_filtered)
+
+        df_long = df.melt(id_vars=["entity", "year"], value_vars=["100+", "90-89", "80-79", "70-69"],
+                  var_name="age_group", value_name="deaths")
+
+        fig = px.area(df_filtered, 
+              x="Year", 
+              y="Deaths", 
+              color="Age Group", 
+              line_group="Entity", 
+              facet_col="Entity", 
+              title="Liczba zgonów w różnych grupach wiekowych")
+
+        st.plotly_chart(fig)
        
 
 
