@@ -146,7 +146,7 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>:
+    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
     </p>
     ''',
     unsafe_allow_html=True
@@ -163,11 +163,17 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    W powyższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
+    Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
     </p>
     ''',
     unsafe_allow_html=True
 )
 
+code = '''
+min_rok = df1['Year'].min()
+max_rok = df1['Year'].max()
+zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+'''
 
+st.code(code, language='python')
 
