@@ -60,21 +60,21 @@ st.title("Czym jest Streamlit?")
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     <span style="color:red; font-weight:bold;">Streamlit</span> umożliwia tworzenie interaktywnych aplikacji internetowych opartych na danych.
     Aplikacje można tworzyć wyłącznie z użyciem Pythona i bez konieczności używania innych technologii, takich jak JavaScript, HTML, CSS.
     Dokumentacja dostępna jest na stronie: 
     <a href="https://docs.streamlit.io" style="color:#66ccff; font-weight:bold;">dokumentacja</a>.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://docs.streamlit.io/" style="color:#66ccff; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -83,9 +83,9 @@ st.title("Pierwsze kroki")
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy najpierw ją zainstalować za pomocą polecenia:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -98,9 +98,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     W celu uruchomienia przykładowej aplikacji należy wywołać polecenie:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -113,9 +113,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Aplikację można utworzyć w dowolnym edytorze tekstowym. Należy ją zapisać następnie do pliku z rozszerzeniem <code>.py</code>, np. <code>app.py</code>. W pliku tym wpisujemy przykładowy kod:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -130,9 +130,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Następnie w terminalu wiersza poleceń wpisujemy:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -145,9 +145,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Powinno to uruchomić przeglądarkę, która wyświetli aplikację.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -156,18 +156,18 @@ st.title("Udostępnianie aplikacji")
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Utworzoną aplikację można udostępnić do publicznego użytku przy pomocy <a href="https://github.com/" style="color:#66ccff; font-weight:bold;">GitHuba</a>. Wystarczy utworzyć konto i repozytorium, które można użyć do udostępnienia aplikacji za pomocą wyżej wspomnianej chmury.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Przykładowa struktura repoozytorium może wyglądać następująco:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -185,9 +185,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     W pliku <code>requirements.txt</code> umieszczamy używane w aplikacji biblioteki. Może on wyglądać w następujący sposób:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -206,18 +206,18 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Gdy mamy już gotowy przynajmniej plik <code>home.py</code>, możemy udostępnić aplikację. W tym celu należy wejść na stronę: <a href="https://streamlit.io/" style="color:#66ccff; font-weight:bold;">streamlit</a> i założyć na niej konto, np. za pośrednictwem GitHuba lub Google.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Następnie należy wybrać opcję <code>Create app</code> i pierwszą z dostępnych opcji wdrożenia, czyli z użyciem GitHuba.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -226,9 +226,9 @@ st.image('first.png', caption="Opcje wdrażania aplikacji", use_container_width=
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Pojawią się pola, które należy wypełnić, a następnie kliknąć przycisk <code>Deploy</code>. Nasza aplikacja jest od tego momentu dostępna pod przypisanym (lub wskazanym przez nas) linkiem.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -238,17 +238,19 @@ st.image('second.png', caption="Wdrażanie", use_container_width=True)
 st.title("Przydatne funkcje")
 
 st.markdown(""" 
-##### 1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
+<p style='font-size: 20px; font-weight: normal;'>
+1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
 
-##### 2. **`st.dataframe()` i `st.table()`** - funkcje służące do wyświetlania ramek danych i tabel, przy czym: `st.dataframe()` — interaktywna tabela, `st.table()` — statyczna tabela.
+2. **`st.dataframe()` i `st.table()`** - funkcje służące do wyświetlania ramek danych i tabel, przy czym: `st.dataframe()` — interaktywna tabela, `st.table()` — statyczna tabela.
 
-##### 3. **`st.columns()`** - funkcja pozwalająca wyświetlać widżety obok siebie w układzie siatki.
+3. **`st.columns()`** - funkcja pozwalająca wyświetlać widżety obok siebie w układzie siatki.
         
-##### 4. **`st.expander()`** - funkcja tworząca rozwijany element, który może ukrywać lub pokazywać treść.
+4. **`st.expander()`** - funkcja tworząca rozwijany element, który może ukrywać lub pokazywać treść.
  
-##### 5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów.
+5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów.
 
-##### 6. **`st.line_chart()`, `st.area_chart()`, `st.plotly_chart()`** - funkcje do wyświetlania wykresów.
+6. **`st.line_chart()`, `st.area_chart()`, `st.plotly_chart()`** - funkcje do wyświetlania wykresów.
+</p>
 ---  
 
 ### Przykład użycia:
