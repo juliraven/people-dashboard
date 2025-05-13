@@ -247,7 +247,7 @@ col1.markdown("""
 | `st.text('Tekst')`              | wyświetla zwykły tekst o stałej szerokości                           |
 | `st.markdown('Markdown')`       | wyświetla tekst sformatowany za pomocą Markdown (np. _kursywa_)      |
 | `st.caption('Opis')`            | pokazuje opis, np. do obrazka                                        |
-| `st.latex(r'e^{i\\pi} + 1 = 0')` | wyświetla wzór matematyczny w składni LaTeX                         |
+| `st.latex(r'e^{x}')` | wyświetla wzór matematyczny w składni LaTeX                         |
 | `st.write('Dowolny obiekt')`   | uniwersalna funkcja – obsługuje tekst, liczby, listy, DataFrame itp.  |
 | `st.title('Tytuł')`            | wyświetla duży nagłówek (tytuł)                             |
 | `st.header('Nagłówek')`        | wyświetla średni nagłówek – mniejszy niż `title`, większy niż `subheader`    |
