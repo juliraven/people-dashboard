@@ -416,5 +416,36 @@ with col2:
     )
     st.plotly_chart(fig, use_container_width=True)
 
+st.markdown(''' 
+---
+''')
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+from datetime import date
+
+# 1. Slider
+st.slider("Pick a number", 0, 100)
+
+# 2. File uploader
+st.file_uploader("Pick a file")
+
+# 3. Color picker
+st.color_picker("Pick a color", "#FF4B4B")
+
+# 4. Bar chart
+# Tworzymy przykładowe dane
+df = pd.DataFrame({
+    "category": list("ABCDEFGH"),
+    "sales": [25, 55, 45, 95, 80, 55, 20, 88]
+})
+st.bar_chart(df, x="category", y="sales")
+
+# 5. Radio buttons
+st.radio("Pick a pet", ["Dog", "Cat", "Bird"])
+
+# 6. Date picker
+st.date_input("Pick a date", value=date.today())
 
 
