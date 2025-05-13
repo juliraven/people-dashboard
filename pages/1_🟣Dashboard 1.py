@@ -378,6 +378,21 @@ with col[2]:
             st.markdown('<a href="https://ourworldindata.org/grapher/population" target="_blank">https://ourworldindata.org/grapher/population</a>', unsafe_allow_html=True)
             st.markdown('<a href="https://ourworldindata.org/grapher/deaths-by-age-group" target="_blank">https://ourworldindata.org/grapher/deaths-by-age-group</a>', unsafe_allow_html=True)
 
+
+ob = pd.read_csv('population.csv')
+
+obszary = ob["Entity"].unique().tolist()
+wybrane_obszary = st.multiselect('Wybierz obszary:', obszary, default=['Africa', 'Europe', 'North America', 'South America', 'Oceania', 'Australia'])
+
+min_rok = ob['Year'].min()
+max_rok = ob['Year'].max()
+zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+
+df_filtered = ob[ob["Entity"].isin(wybrane_obszary)]
+df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
+
+df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
+
 col11, col22 = st.columns([2,2])
 
 with col11:
@@ -386,20 +401,6 @@ with col11:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności</h3>",unsafe_allow_html=True)
-
-        ob = pd.read_csv('population.csv')
-
-        obszary = ob["Entity"].unique().tolist()
-        wybrane_obszary = st.multiselect('Wybierz obszary:', obszary, default=['Africa', 'Europe', 'North America', 'South America', 'Oceania', 'Australia'])
-
-        min_rok = ob['Year'].min()
-        max_rok = ob['Year'].max()
-        zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
-
-        df_filtered = ob[ob["Entity"].isin(wybrane_obszary)]
-        df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
-
-        df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
 
         fig1 = px.line(df_filtered, 
               x="Year", 
