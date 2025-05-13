@@ -399,28 +399,27 @@ df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
 
 col11, col22 = st.columns([3,2])
 
-with col11:
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
+styled_container = st.container()
+st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+with styled_container:
+    st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
 
-        fig = px.area(df_filtered, 
+    fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
               color="Age_group", 
               line_group="Entity", 
               facet_col="Entity", title='')
 
-        fig.update_layout(
+    fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
             plot_bgcolor='rgba(0,0,0,0)',
             geo=dict(bgcolor='rgba(0,0,0,0)'))
 
-        fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
+    fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
 
-        fig.update_layout(margin=dict(l=0, r=0, t=30, b=120), 
+    fig.update_layout(margin=dict(l=0, r=0, t=30, b=120), 
         height=500,
         legend=dict(
         title=dict(text="Grupa wiekowa<br>", font=dict(size=16)),
@@ -431,7 +430,7 @@ with col11:
         x=0.4,                        
         font=dict(size=14)))
 
-        st.plotly_chart(fig, config={"displayModeBar": False})
+    st.plotly_chart(fig, config={"displayModeBar": False})
        
 
 
