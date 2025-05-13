@@ -420,7 +420,9 @@ with col11:
 
         fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
 
-        fig.update_layout(legend=dict(
+        fig.update_layout(margin=dict(l=0, r=0, t=30, b=100), 
+        height=600,
+        legend=dict(
         title=dict(text="Grupa wiekowa<br>", font=dict(size=16)),
         orientation="h",              
         yanchor="bottom",
