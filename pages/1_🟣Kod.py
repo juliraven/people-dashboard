@@ -177,3 +177,19 @@ zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_r
 
 st.code(code, language='python')
 
+st.markdown(
+    '''
+    <p>
+    Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizację. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+with st.container():
+    st.dataframe(df1)
+'''
+
+st.code(code, language='python')
+
