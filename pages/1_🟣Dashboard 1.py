@@ -426,6 +426,7 @@ with styled_container:
     '#FF97FF',  # różowy (jasny)
     '#FECB52', "rgb(152, 19, 119)"]
 
+    age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"]
     fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
