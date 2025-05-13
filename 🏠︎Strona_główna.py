@@ -216,13 +216,15 @@ st.markdown(
 st.markdown(
     '''
     <p>
-    Następnie należy wybrać opcję <code>Create app</code> i pierwszą z dostępnych opcji wdrożenia, czyli za pomocą GitHuba.
+    Następnie należy wybrać opcję <code>Create app</code> i pierwszą z dostępnych opcji wdrożenia, czyli z użyciem GitHuba.
     </p>
     ''',
     unsafe_allow_html=True
 )
 
-st.image('first.png')
+st.image('first.png', caption="Opcje wdrażania aplikacji")
+
+
 
 st.title("Przydatne funkcje")
 
