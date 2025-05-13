@@ -157,12 +157,11 @@ st.title("Udostępnianie aplikacji")
 st.markdown(
     '''
     <p>
-    Utworzoną aplikację można udostępnić do publicznego użytku przy pomocy <a href="https://github.com/" style="color:#66ccff; font-weight:bold;">Githuba</a>. Wystarczy utworzyć konto i repozytorium, które można użyć do udostępnienia aplikacji za pomocą wyżej wspomnianej chmury.
+    Utworzoną aplikację można udostępnić do publicznego użytku przy pomocy <a href="https://github.com/" style="color:#66ccff; font-weight:bold;">GitHuba</a>. Wystarczy utworzyć konto i repozytorium, które można użyć do udostępnienia aplikacji za pomocą wyżej wspomnianej chmury.
     </p>
     ''',
     unsafe_allow_html=True
 )
-
 
 st.markdown(
     '''
@@ -204,6 +203,15 @@ scikit-learn
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Gdy mamy już gotowy przynajmniej plik <code>jome.py</code>, możemy udostępnić aplikację. W tym celu należy wejść na stronę: <a href="https://streamlit.io/" style="color:#66ccff; font-weight:bold;">streamlit</a> i założyć na niej konto, np. za pośrednictwem GitHuba lub Google.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
 
 st.title("Przydatne funkcje")
 
