@@ -72,9 +72,9 @@ st.markdown(
 
 st.markdown(
     '''
-    <p>
+    <h4>
     Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://docs.streamlit.io/" style="color:#66ccff; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
-    </p>
+    </h4>
     ''',
     unsafe_allow_html=True
 )
@@ -83,9 +83,9 @@ st.title("Pierwsze kroki")
 
 st.markdown(
     '''
-    <p>
+    <h4>
     Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy najpierw ją zainstalować za pomocą polecenia:
-    </p>
+    </h4>
     ''',
     unsafe_allow_html=True
 )
@@ -98,9 +98,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h4>
     W celu uruchomienia przykładowej aplikacji należy wywołać polecenie:
-    </p>
+    </h4>
     ''',
     unsafe_allow_html=True
 )
