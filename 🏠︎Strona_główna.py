@@ -492,8 +492,6 @@ with col2:
 
 with col3:
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
-    st.data_editor("Edytuj dane", data)
-    st.camera_input("Zrób zdjęcie 📸")
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
 
 # --- Statusy i paski ---
@@ -579,7 +577,6 @@ with col2:
 
 with col3:
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
-    st.camera_input("Zrób zdjęcie 📸")
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
 
 # --- Statusy i paski ---
@@ -596,3 +593,9 @@ st.warning("To jest ostrzeżenie")
 st.error("To jest błąd")
 
 
+import streamlit as st
+
+with st.container():
+    st.subheader("Pick a number")
+    value = st.slider("Pick a number", 0, 100)
+    st.code('number = st.slider("Pick a number", 0, 100)')
