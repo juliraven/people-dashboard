@@ -237,7 +237,7 @@ st.image('second.png', caption="Wdrażanie", use_container_width=True)
 
 st.title("Przydatne funkcje")
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns([2.5, 2, 2])
 
 col1.subheader('Wyświetlanie tekstu')
 
