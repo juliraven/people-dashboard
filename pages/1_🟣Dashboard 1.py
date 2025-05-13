@@ -414,7 +414,7 @@ with styled_container:
               x="Year", 
               y="Deaths", 
               color="Age_group", 
-              facet_col="Entity",category_orders={"Age_group": age_order})
+              category_orders={"Age_group": age_order})
 
     fig.update_layout(title_text="")
     
