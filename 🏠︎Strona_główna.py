@@ -379,12 +379,12 @@ with col1:
     df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
     st.dataframe(df)
     st.json({'name': 'Streamlit', 'type': 'framework'})
+    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
     
 
 with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
-    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
 
 st.subheader("Wykres")
 fig = px.scatter(
@@ -465,12 +465,12 @@ with col1:
     df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
     st.dataframe(df)
     st.json({'name': 'Streamlit', 'type': 'framework'})
+    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
     
 
 with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
-    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
 
 st.subheader("Wykres")
 fig = px.scatter(
