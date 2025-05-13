@@ -60,12 +60,12 @@ st.title("Czym jest Streamlit?")
 
 st.markdown(
     '''
-    <p>
+    <h1>
     <span style="color:red; font-weight:bold;">Streamlit</span> umożliwia tworzenie interaktywnych aplikacji internetowych opartych na danych.
     Aplikacje można tworzyć wyłącznie z użyciem Pythona i bez konieczności używania innych technologii, takich jak JavaScript, HTML, CSS.
     Dokumentacja dostępna jest na stronie: 
     <a href="https://docs.streamlit.io" style="color:#66ccff; font-weight:bold;">dokumentacja</a>.
-    </p>
+    </h1>
     ''',
     unsafe_allow_html=True
 )
