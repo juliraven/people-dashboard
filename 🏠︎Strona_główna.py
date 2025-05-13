@@ -60,21 +60,21 @@ st.title("Czym jest Streamlit?")
 
 st.markdown(
     '''
-    <h4>
+    <h5>
     <span style="color:red; font-weight:bold;">Streamlit</span> umożliwia tworzenie interaktywnych aplikacji internetowych opartych na danych.
     Aplikacje można tworzyć wyłącznie z użyciem Pythona i bez konieczności używania innych technologii, takich jak JavaScript, HTML, CSS.
     Dokumentacja dostępna jest na stronie: 
     <a href="https://docs.streamlit.io" style="color:#66ccff; font-weight:bold;">dokumentacja</a>.
-    </h4>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
 
 st.markdown(
     '''
-    <h4>
+    <h5>
     Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://docs.streamlit.io/" style="color:#66ccff; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
-    </h4>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -83,9 +83,9 @@ st.title("Pierwsze kroki")
 
 st.markdown(
     '''
-    <h4>
+    <h5>
     Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy najpierw ją zainstalować za pomocą polecenia:
-    </h4>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -98,9 +98,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h4>
+    <h5>
     W celu uruchomienia przykładowej aplikacji należy wywołać polecenie:
-    </h4>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -113,9 +113,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Aplikację można utworzyć w dowolnym edytorze tekstowym. Należy ją zapisać następnie do pliku z rozszerzeniem <code>.py</code>, np. <code>app.py</code>. W pliku tym wpisujemy przykładowy kod:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -130,9 +130,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Następnie w terminalu wiersza poleceń wpisujemy:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -145,9 +145,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Powinno to uruchomić przeglądarkę, która wyświetli aplikację.
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -156,18 +156,18 @@ st.title("Udostępnianie aplikacji")
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Utworzoną aplikację można udostępnić do publicznego użytku przy pomocy <a href="https://github.com/" style="color:#66ccff; font-weight:bold;">GitHuba</a>. Wystarczy utworzyć konto i repozytorium, które można użyć do udostępnienia aplikacji za pomocą wyżej wspomnianej chmury.
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Przykładowa struktura repoozytorium może wyglądać następująco:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -185,9 +185,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     W pliku <code>requirements.txt</code> umieszczamy używane w aplikacji biblioteki. Może on wyglądać w następujący sposób:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -206,18 +206,18 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Gdy mamy już gotowy przynajmniej plik <code>home.py</code>, możemy udostępnić aplikację. W tym celu należy wejść na stronę: <a href="https://streamlit.io/" style="color:#66ccff; font-weight:bold;">streamlit</a> i założyć na niej konto, np. za pośrednictwem GitHuba lub Google.
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Następnie należy wybrać opcję <code>Create app</code> i pierwszą z dostępnych opcji wdrożenia, czyli z użyciem GitHuba.
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -226,9 +226,9 @@ st.image('first.png', caption="Opcje wdrażania aplikacji", use_container_width=
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Pojawią się pola, które należy wypełnić, a następnie kliknąć przycisk <code>Deploy</code>. Nasza aplikacja jest od tego momentu dostępna pod przypisanym (lub wskazanym przez nas) linkiem.
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
