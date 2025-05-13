@@ -426,8 +426,7 @@ with styled_container:
     fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
-              color="Age_group", 
-              category_orders={"Age_group": age_order},
+              color="Age_group",
               color_discrete_sequence=cs)
 
     fig.update_layout(title_text="")
