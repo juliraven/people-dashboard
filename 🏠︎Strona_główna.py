@@ -431,7 +431,7 @@ from datetime import time, date
 st.title("📘 Przegląd funkcji Streamlit")
 st.header("1. Teksty i formatowanie")
 st.text("To jest tekst")
-st.markdown("**pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
+st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
 st.caption("To jest podpis np. pod wykresem")
 st.latex(r"e^{i\pi} + 1 = 0")
 st.write("Lista:", [1, 2, 3])
@@ -462,7 +462,7 @@ with tab2:
 
 st.header("3. Widżety interaktywne")
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
 with col1:
     st.button("Kliknij mnie")
@@ -481,18 +481,12 @@ with col2:
     st.time_input("Wpisz godzinę", value=time(12, 0))
     st.file_uploader("Prześlij plik")
     st.color_picker("Wybierz kolor")
-
-with col3:
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
-
+    
 st.header("4. Status i postęp")
 with st.spinner("⏳ Ładowanie..."):
     st.success("✅ Gotowe!")
-
-progress_bar = st.progress(0)
-for i in range(1, 101):
-    progress_bar.progress(i)
 
 st.info("To jest informacja")
 st.warning("To jest ostrzeżenie")
@@ -507,7 +501,7 @@ from datetime import time, date
 st.title("📘 Przegląd funkcji Streamlit")
 st.header("1. Teksty i formatowanie")
 st.text("To jest tekst")
-st.markdown("**pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
+st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
 st.caption("To jest podpis np. pod wykresem")
 st.latex(r"e^{i\pi} + 1 = 0")
 st.write("Lista:", [1, 2, 3])
@@ -538,7 +532,7 @@ with tab2:
 
 st.header("3. Widżety interaktywne")
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
 with col1:
     st.button("Kliknij mnie")
@@ -557,18 +551,12 @@ with col2:
     st.time_input("Wpisz godzinę", value=time(12, 0))
     st.file_uploader("Prześlij plik")
     st.color_picker("Wybierz kolor")
-
-with col3:
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
-
+    
 st.header("4. Status i postęp")
 with st.spinner("⏳ Ładowanie..."):
     st.success("✅ Gotowe!")
-
-progress_bar = st.progress(0)
-for i in range(1, 101):
-    progress_bar.progress(i)
 
 st.info("To jest informacja")
 st.warning("To jest ostrzeżenie")
