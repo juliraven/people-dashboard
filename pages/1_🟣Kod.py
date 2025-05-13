@@ -130,7 +130,7 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig<\code> wystarczy użyć struktury:
+    Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
     </p>
     ''',
     unsafe_allow_html=True
@@ -146,7 +146,7 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()<\cdoe>:
+    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>:
     </p>
     ''',
     unsafe_allow_html=True
