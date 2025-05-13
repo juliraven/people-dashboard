@@ -237,8 +237,6 @@ st.image('second.png', caption="Wdrażanie", use_container_width=True)
 
 st.title("Przydatne funkcje")
 
-col1, col2, col3 = st.columns([2.5, 2, 2])
-
 st.subheader('Wyświetlanie tekstu')
 
 st.markdown("""
@@ -280,6 +278,7 @@ st.markdown("""
 | `st.color_picker('Wybierz kolor')`              | tworzy widżet do wybierania koloru                                  |
 
 """)
+col1, col2, col3 = st.columns([2.5, 2, 2])
 
 col1.subheader('Wyświetlanie danych')
 
