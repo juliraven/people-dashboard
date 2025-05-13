@@ -410,13 +410,27 @@ with styled_container:
     st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
     st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
 
-    custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", "rgb(51, 157, 152)", "rgb(129, 8, 8)", "rgb(160, 0, 240)"]
+    custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", 
+                     "rgb(51, 157, 152)", "rgb(129, 8, 8)", "rgb(160, 0, 240)"]
+
+    cs = [ "rgb(245, 242, 214)",
+    '#636EFA',  # niebieski
+    '#EF553B',  # czerwony/pomarańczowy
+    '#00CC96',  # zielony
+    '#AB63FA',  # fioletowy
+    '#FFA15A',  # pomarańcz
+    '#19D3F3',  # jasny niebieski
+    '#FF6692',  # różowy
+    '#B6E880',  # zielono-żółty
+    '#FF97FF',  # różowy (jasny)
+    '#FECB52' ]
+
     fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
               color="Age_group", 
               category_orders={"Age_group": age_order},
-              color_discrete_sequence=custom_colors)
+              color_discrete_sequence=cs)
 
     fig.update_layout(title_text="")
     
