@@ -111,3 +111,63 @@ st.title("Dashboard")
 '''
 
 st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+col1, col2, col3 = st.columns([2, 2, 2])
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig<\code> wystarczy użyć struktury:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+with col1:
+    st.plotly_chart(fig)
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()<\cdoe>:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+years_available = sorted(df1["Year"].unique())
+selected_year = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
+df_map = df1[df1["Year"] == selected_year].copy()
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    W powyższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+
+
