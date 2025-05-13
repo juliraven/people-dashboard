@@ -377,7 +377,7 @@ with col[2]:
             st.markdown('<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>', unsafe_allow_html=True)
             st.markdown('<a href="https://ourworldindata.org/grapher/population" target="_blank">https://ourworldindata.org/grapher/population</a>', unsafe_allow_html=True)
             st.markdown('<a href="https://ourworldindata.org/grapher/deaths-by-age-group" target="_blank">https://ourworldindata.org/grapher/deaths-by-age-group</a>', unsafe_allow_html=True)
-
+            st.markdown('<a href="https://ourworldindata.org/grapher/population-by-age-group-with-projections" target="_blank">https://ourworldindata.org/grapher/population-by-age-group-with-projections</a>', unsafe_allow_html=True)
 
 de = pd.read_csv('deaths-by-age-group.csv')
 
