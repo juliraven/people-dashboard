@@ -348,7 +348,7 @@ st.markdown("""
 st.markdown(""" 
 ---  
 
-### Przykład użycia:
+### Przykłady użycia wybranych funkcji:
 
 ```python
 import streamlit as st
