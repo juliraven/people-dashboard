@@ -446,13 +446,13 @@ with col1:
     st.subheader("Dane")
     df = pd.DataFrame(np.random.randn(10, 3), columns=["a", "b", "c"])
     st.dataframe(df)
-    st.table(df.head(5))
     st.json({'name': 'Streamlit', 'type': 'framework'})
-    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
+    
 
 with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
+    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
 
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
 with tab1:
@@ -480,7 +480,6 @@ with col2:
     st.date_input("Wybierz datę", value=date.today())
     st.time_input("Wpisz godzinę", value=time(12, 0))
     st.file_uploader("Prześlij plik")
-    st.color_picker("Wybierz kolor")
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
     
@@ -516,13 +515,13 @@ with col1:
     st.subheader("Dane")
     df = pd.DataFrame(np.random.randn(10, 3), columns=["a", "b", "c"])
     st.dataframe(df)
-    st.table(df.head(5))
     st.json({'name': 'Streamlit', 'type': 'framework'})
-    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
+    
 
 with col2:
     st.subheader("Multimedia")
     st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
+    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
 
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
 with tab1:
@@ -550,7 +549,6 @@ with col2:
     st.date_input("Wybierz datę", value=date.today())
     st.time_input("Wpisz godzinę", value=time(12, 0))
     st.file_uploader("Prześlij plik")
-    st.color_picker("Wybierz kolor")
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
     
