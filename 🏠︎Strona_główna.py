@@ -224,7 +224,16 @@ st.markdown(
 
 st.image('first.png', caption="Opcje wdrażania aplikacji", use_container_width=True)
 
+st.markdown(
+    '''
+    <p>
+    Pojawią się pola, które należy wypełnić, a następnie kliknąć przycisk <code>Deploy</code>. Nasza aplikacja jest od tego momentu dostępna pod przypisanym (lub wskazanym przez nas) linkiem.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
 
+st.image('second.png', caption="Wdrażanie", use_container_width=True)
 
 st.title("Przydatne funkcje")
 
