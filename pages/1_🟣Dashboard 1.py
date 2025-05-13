@@ -459,7 +459,7 @@ with col22:
 
         df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
         
-
+        st.dataframe(df_filtered)
        
 
 
