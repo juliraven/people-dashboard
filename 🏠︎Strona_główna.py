@@ -239,6 +239,7 @@ st.title("Przydatne funkcje")
 
 st.markdown(""" 
 <p style='font-size: 20px; font-weight: normal;'>
+
 1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
 
 2. **`st.dataframe()` i `st.table()`** - funkcje służące do wyświetlania ramek danych i tabel, przy czym: `st.dataframe()` — interaktywna tabela, `st.table()` — statyczna tabela.
