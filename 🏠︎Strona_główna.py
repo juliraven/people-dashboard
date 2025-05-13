@@ -222,7 +222,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image('first.png', caption="Opcje wdrażania aplikacji")
+st.image('first.png', caption="Opcje wdrażania aplikacji", width=500)
 
 
 
