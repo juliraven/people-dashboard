@@ -81,9 +81,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Po dodaniu danych można zacząć tworzyć aplikację w pliku <code>home.py</code>. Na samym początku zwykle umieszcza się importy niezbędnych bibliotek, np.:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -99,9 +99,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -114,9 +114,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -129,9 +129,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -145,9 +145,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -162,9 +162,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -179,9 +179,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizację. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
@@ -195,9 +195,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <h5>
+    <p style='font-size: 20px; font-weight: normal;'>
     Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanaych w ramach tworzenia dashboardu danych:
-    </h5>
+    </p>
     ''',
     unsafe_allow_html=True
 )
