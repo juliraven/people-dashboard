@@ -379,17 +379,20 @@ with col[2]:
             st.markdown('<a href="https://ourworldindata.org/grapher/deaths-by-age-group" target="_blank">https://ourworldindata.org/grapher/deaths-by-age-group</a>', unsafe_allow_html=True)
 
 
-ob = pd.read_csv('population.csv')
+de = pd.read_csv('deaths-by-age-group.csv')
 
-obszary = ob["Entity"].unique().tolist()
+df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29",, "10-19", "0-9"],
+                  var_name="age_group", value_name="deaths")
+
+obszary = de["Entity"].unique().tolist()
 wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, index=obszary.index('World'))
 wybrane_obszary = [wybrane_obszary]
 
-min_rok = ob['Year'].min()
-max_rok = ob['Year'].max()
+min_rok = de['Year'].min()
+max_rok = de['Year'].max()
 zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 
-df_filtered = ob[ob["Entity"].isin(wybrane_obszary)]
+df_filtered = df_long[df_long["Entity"] == wybrany_obszar]
 df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
 df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
@@ -402,66 +405,6 @@ with col11:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Zmiana liczby ludności</h3>",unsafe_allow_html=True)
-
-        fig1 = px.line(df_filtered, 
-              x="Year", 
-              y="Population (historical)", 
-              color="Entity",  
-              labels={"Population": "Populacja", "Year": "Rok", "Country": "Obszar"})
-
-        fig1.update_layout(
-        legend_title="Obszary",
-        xaxis_title="Rok", 
-        yaxis_title="Populacja", 
-        template="plotly_dark")
-
-    
-        fig1.update_layout(
-        paper_bgcolor='rgba(0,0,0,0)', 
-        plot_bgcolor='rgba(0,0,0,0)',
-        geo=dict(
-        bgcolor='rgba(0,0,0,0)'  
-    )
-)
-
-        fig1.update_layout(
-        legend=dict(
-        title=dict(font=dict(size=16)),                     
-        font=dict(size=14)
-    )
-)
-
-        fig1.update_traces(mode='lines+markers', 
-                  marker=dict(size=4, symbol='circle'), line=dict(width=2))
-
-        fig1.update_layout(
-        xaxis=dict(
-        tickmode='array', 
-        tickvals=list(range(ob['Year'].min(), ob['Year'].max() + 1, 50)) + ['2023'],  
-        ticktext=[str(i) for i in range(ob['Year'].min(), ob['Year'].max() + 1, 50)] + ['2023']
-    )
-)
-        fig1.update_layout(height=600)
-
-        st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": False}) 
-
-
-with col22:
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia w {selected_year_for_map}</h3>",unsafe_allow_html=True)
-
-        de = pd.read_csv('deaths-by-age-group.csv')
-
-        df_filtered = de[de["Entity"].isin(wybrane_obszary)]
-        df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
-
-        df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
-
-        df_long = df.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29",, "10-19", "0-9"],
-                  var_name="age_group", value_name="deaths")
 
         fig = px.area(df_filtered, 
               x="Year", 
