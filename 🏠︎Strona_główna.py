@@ -241,7 +241,7 @@ col1, col2, col3 = st.columns([2.5, 2, 2])
 
 col1.subheader('Wyświetlanie tekstu')
 
-col1.markdown("""
+st.markdown("""
 | Funkcja                         | Opis                                                                 |
 |---------------------------------|----------------------------------------------------------------------|
 | `st.text('Tekst')`              | wyświetla zwykły tekst o stałej szerokości                           |
@@ -253,6 +253,31 @@ col1.markdown("""
 | `st.header('Nagłówek')`        | wyświetla średni nagłówek – mniejszy niż `title`, większy niż `subheader`    |
 | `st.subheader('Podnagłówek')`  | wyświetla mniejszy nagłówek, np. dla sekcji w aplikacji                   |
 | `st.code('for i in range(8):')`| pokazuje blok kodu z zachowaniem formatowania                      |
+
+""")
+
+col1.subheader('Wyświetlanie interaktywnych widżetów')
+
+st.markdown("""
+| Funkcja                                          | Opis                                                                 |
+|--------------------------------------------------|----------------------------------------------------------------------|
+| `st.button('Kliknij')`                       | tworzy przycisk, który użytkownik może kliknąć                      |
+| `st.data_editor('Edytuj dane', data)`            | edytor danych - umożliwia użytkownikowi modyfikację danych w aplikacji |
+| `st.checkbox('Zaznacz')`                    | tworzy pole wyboru (checkbox) – można je zaznaczyć lub odznaczyć.    |
+| `st.radio('Wybierz jedną opcję:', ['cat', 'dog'])`| tworzy grupę opcji wyboru (radio buttons) – umożliwia wybór jednej z opcji |
+| `st.selectbox('Wybierz', [1, 2, 3])`             | tworzy rozwijane menu, w którym użytkownik wybiera jedną z opcji   |
+| `st.multiselect('Wybór wielu opcji', [1, 2, 3])` | tworzy rozwijane menu umożliwiające wybór wielu opcji                |
+| `st.slider('Przesuń', min_value=0, max_value=10)` | tworzy suwak do wyboru wartości w określonym zakresie             |
+| `st.select_slider('Przesuń, aby wybrać', options=[1, '2'])` | tworzy suwak z listą opcji do wyboru                              |
+| `st.text_input('Wpisz tekst')`                   | tworzy pole tekstowe, w którym użytkownik może wprowadzić dane     |
+| `st.number_input('Wpisz liczbę')`                | tworzy pole do wprowadzania liczb                                   |
+| `st.text_area('Wpisz tekst w większym polu')`    | tworzy pole tekstowe z możliwością wprowadzania dłuższych danych (wielowierszowe) |
+| `st.date_input('Wybierz datę')`                  | tworzy pole do wprowadzania daty                                    |
+| `st.time_input('Wpisz godzinę')`                 | tworzy pole do wprowadzania godziny                                |
+| `st.file_uploader('Prześlij plik')`              | tworzy widżet do przesyłania plików przez użytkownika               |
+| `st.download_button('Pobierz dane', data)`      | tworzy przycisk do pobierania danych (np. pliku)                    |
+| `st.camera_input("Kliknij, aby zrobić zdjęcie!")`| tworzy widżet do robienia zdjęć za pomocą kamery  |
+| `st.color_picker('Wybierz kolor')`              | tworzy widżet do wybierania koloru                                  |
 
 """)
 
@@ -299,31 +324,6 @@ col1.markdown("""
 | `tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])` | tworzy dwie zakładki z nazwami „Zakładka 1” i „Zakładka 2”          |
 | `tab1.write("To jest zakładka 1")`          | wyświetla zawartość wewnątrz wybranje zakładki                    |
 | `with tab1:`                                | składnia `with` do grupowania kodu wewnątrz konkretnej zakładki    |
-
-""")
-
-col2.subheader('Wyświetlanie interaktywnych widżetów')
-
-col2.markdown("""
-| Funkcja                                          | Opis                                                                 |
-|--------------------------------------------------|----------------------------------------------------------------------|
-| `st.button('Kliknij')`                       | tworzy przycisk, który użytkownik może kliknąć                      |
-| `st.data_editor('Edytuj dane', data)`            | edytor danych - umożliwia użytkownikowi modyfikację danych w aplikacji |
-| `st.checkbox('Zaznacz')`                    | tworzy pole wyboru (checkbox) – można je zaznaczyć lub odznaczyć.    |
-| `st.radio('Wybierz jedną opcję:', ['cat', 'dog'])`| tworzy grupę opcji wyboru (radio buttons) – umożliwia wybór jednej z opcji |
-| `st.selectbox('Wybierz', [1, 2, 3])`             | tworzy rozwijane menu, w którym użytkownik wybiera jedną z opcji   |
-| `st.multiselect('Wybór wielu opcji', [1, 2, 3])` | tworzy rozwijane menu umożliwiające wybór wielu opcji                |
-| `st.slider('Przesuń', min_value=0, max_value=10)` | tworzy suwak do wyboru wartości w określonym zakresie             |
-| `st.select_slider('Przesuń, aby wybrać', options=[1, '2'])` | tworzy suwak z listą opcji do wyboru                              |
-| `st.text_input('Wpisz tekst')`                   | tworzy pole tekstowe, w którym użytkownik może wprowadzić dane     |
-| `st.number_input('Wpisz liczbę')`                | tworzy pole do wprowadzania liczb                                   |
-| `st.text_area('Wpisz tekst w większym polu')`    | tworzy pole tekstowe z możliwością wprowadzania dłuższych danych (wielowierszowe) |
-| `st.date_input('Wybierz datę')`                  | tworzy pole do wprowadzania daty                                    |
-| `st.time_input('Wpisz godzinę')`                 | tworzy pole do wprowadzania godziny                                |
-| `st.file_uploader('Prześlij plik')`              | tworzy widżet do przesyłania plików przez użytkownika               |
-| `st.download_button('Pobierz dane', data)`      | tworzy przycisk do pobierania danych (np. pliku)                    |
-| `st.camera_input("Kliknij, aby zrobić zdjęcie!")`| tworzy widżet do robienia zdjęć za pomocą kamery  |
-| `st.color_picker('Wybierz kolor')`              | tworzy widżet do wybierania koloru                                  |
 
 """)
 
