@@ -63,7 +63,7 @@ st.title("Tworzenie dashboardu")
 
 st.markdown(
     '''
-    <p style='font-size: 16px; font-weight: normal;'>
+    <p style='font-size: 20px; font-weight: normal;'>
     W celu utworzenia dashboardu zawierającego wizualizacje danych np. zawartych w pliku z rozszerzeniem <code>.csv</code>, należy ten plik umieścić w repozytorium wraz z innymi plikami. Repozytorium będzie miało wtedy następującą strukturę:
     </p>
     ''',
