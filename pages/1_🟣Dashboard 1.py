@@ -415,7 +415,7 @@ with styled_container:
               y="Deaths", 
               color="Age_group", 
               line_group="Entity", 
-              facet_col="Entity", title='')
+              facet_col="Entity", title='', category_orders={"Age_group": age_order})
 
     fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
