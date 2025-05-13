@@ -383,6 +383,7 @@ ob = pd.read_csv('population.csv')
 
 obszary = ob["Entity"].unique().tolist()
 wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, index=obszary.index('World'))
+wybrane_obszary = [wybrane_obszary]
 
 min_rok = ob['Year'].min()
 max_rok = ob['Year'].max()
