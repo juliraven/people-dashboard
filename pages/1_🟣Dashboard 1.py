@@ -428,7 +428,7 @@ with col11:
         yanchor="bottom",
         y=-0.5,                        
         xanchor="center",
-        x=0.3,                        
+        x=0.4,                        
         font=dict(size=14)))
 
         st.plotly_chart(fig, config={"displayModeBar": False})
