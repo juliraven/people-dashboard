@@ -3,7 +3,7 @@ from streamlit_extras.app_logo import add_logo
 
 st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
-add_logo('logo.png', height=250)
+add_logo('logo.png', height=350)
 
 st.sidebar.markdown(
     """
@@ -237,7 +237,7 @@ st.image('second.png', caption="Wdrażanie", use_container_width=True)
 
 st.title("Przydatne funkcje")
 
-col1, col2 = st.columns([3, 2])
+col1, col2 = st.columns([2, 2])
 
 col1.subheader('Wyświetlanie tekstu')
 
