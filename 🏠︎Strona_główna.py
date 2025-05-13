@@ -256,6 +256,17 @@ col1.markdown("""
 
 """)
 
+col1.subheader('Wyświetlanie danych')
+
+col1.markdown("""
+| Funkcja                                       | Opis                                                                 |
+|-----------------------------------------------|----------------------------------------------------------------------|
+| `st.dataframe(my_dataframe)`                 | wyświetla ramkę danych (np. Pandas DataFrame) w formie interaktywnej tabeli |
+| `st.table(data.iloc[0:10])`                  | pokazuje dane jako statyczną tabelę – bez możliwości przewijania czy sortowania |
+| `st.json({'foo': 'bar', 'fu': 'ba'})`        | wyświetla dane w formacie JSON w przejrzystej strukturze drzewa    |
+| `st.metric(label="Temp", value="273 K", delta="1.2 K")` | prezentuje wartość liczbową z etykietą i zmianą (delta) – idealne do metryk |
+
+""")
 
 
 
