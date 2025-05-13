@@ -427,8 +427,7 @@ with styled_container:
     '#FECB52', "rgb(152, 19, 119)"]
 
     age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"]
-    df_sorted = df.sort_values(by="Age_group", key=lambda x: x.cat.codes)
-    fig = px.area(df_fsorted, 
+    fig = px.area(df_filterred, 
               x="Year", 
               y="Deaths", 
               color="Age_group",
@@ -436,6 +435,11 @@ with styled_container:
               color_discrete_sequence=cs)
 
     fig.update_layout(title_text="")
+
+    fig.update_layout(
+    xaxis=dict(
+        categoryorder='array', 
+        categoryarray=age_order))
     
     fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
