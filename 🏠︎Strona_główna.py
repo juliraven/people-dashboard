@@ -252,6 +252,9 @@ st.markdown("""
 
 6. **`st.line_chart()`, `st.area_chart()`, `st.plotly_chart()`** - funkcje do wyświetlania wykresów.
 </p>
+""")
+
+st.markdown(""" 
 ---  
 
 ### Przykład użycia:
