@@ -262,8 +262,19 @@ col2.markdown("""
 | Funkcja                        | Opis                                                                 |
 |--------------------------------|----------------------------------------------------------------------|
 | `st.image('image.png')`     | wyświetla obrazek, może to być plik lokalny, URL lub obiekt w pamięci  |
-| `st.audio(data)`               | odtwarza plik audio. `data` może być ścieżką, URL lub bajtami (np. z pliku `.mp3`) |
+| `st.audio(data)`               | odtwarza plik audio, `data` może być ścieżką, URL lub bajtami (np. z pliku `.mp3`) |
 | `st.video(data)`               | odtwarza wideo, obsługuje pliki lokalne, URL lub strumienie danych|
+
+""")
+
+col2.subheader('Zakładki')
+
+col2.markdown("""
+| Funkcja                                     | Opis                                                                 |
+|---------------------------------------------|----------------------------------------------------------------------|
+| `tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])` | tworzy dwie zakładki z nazwami „Zakładka 1” i „Zakładka 2”          |
+| `tab1.write("To jest zakładka 1")`          | wyświetla zawartość wewnątrz wybranje zakładki                    |
+| `with tab1:`                                | składnia `with` do grupowania kodu wewnątrz konkretnej zakładki    |
 
 """)
 
@@ -314,17 +325,6 @@ col1.markdown("""
 | `col1.write('Kolumna 1')` | umieszcza zawartość w odpowiedniej kolumnie                       |
 | `st.columns([3, 1, 1])`                      | tworzy trzy kolumny o niestandardowych proporcjach szerokości (np. 3:1:1)|
 | `with col1:`                 | alternatywna składnia z `with`, pozwala lepiej grupować kod wewnątrz kolumny |
-
-""")
-
-col1.subheader('Zakładki')
-
-col1.markdown("""
-| Funkcja                                     | Opis                                                                 |
-|---------------------------------------------|----------------------------------------------------------------------|
-| `tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])` | tworzy dwie zakładki z nazwami „Zakładka 1” i „Zakładka 2”          |
-| `tab1.write("To jest zakładka 1")`          | wyświetla zawartość wewnątrz wybranje zakładki                    |
-| `with tab1:`                                | składnia `with` do grupowania kodu wewnątrz konkretnej zakładki    |
 
 """)
 
