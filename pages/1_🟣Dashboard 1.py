@@ -460,7 +460,7 @@ with col22:
 
         df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
 
-        df_long = df.melt(id_vars=["entity", "year"], value_vars=["100+", "90-89", "80-79", "70-69"],
+        df_long = df.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-89", "80-79", "70-69"],
                   var_name="age_group", value_name="deaths")
 
         fig = px.area(df_filtered, 
