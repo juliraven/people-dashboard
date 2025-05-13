@@ -409,7 +409,7 @@ with col11:
         fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
-              color="Age Group", 
+              color="Age_group", 
               line_group="Entity", 
               facet_col="Entity", 
               title="Liczba zgonów w różnych grupach wiekowych")
