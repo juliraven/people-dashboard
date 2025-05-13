@@ -410,7 +410,7 @@ with styled_container:
     st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
     st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
 
-    custom_colors = ["rgb(160, 0, 240)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", "rgb(51, 157, 152)", "rgb(129, 8, 8)"]
+    custom_colors = ["rgb(160, 0, 240)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", "rgb(51, 157, 152)", "rgb(129, 8, 8)", "rgb(245, 242, 214)"]
     fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
