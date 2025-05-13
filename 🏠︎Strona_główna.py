@@ -237,8 +237,35 @@ st.image('second.png', caption="Wdrażanie", use_container_width=True)
 
 st.title("Przydatne funkcje")
 
+col1, col2, col3 = st.columns(3)
+
+col1.subheader('Wyświetlanie tekstu')
+
+col1.markdown("""
+| Funkcja                         | Opis                                                                 |
+|---------------------------------|----------------------------------------------------------------------|
+| `st.text('Tekst')`              | wyświetla zwykły tekst o stałej szerokości                           |
+| `st.markdown('Markdown')`       | wyświetla tekst sformatowany za pomocą Markdown (np. _kursywa_)      |
+| `st.caption('Opis')`            | pokazuje opis, np. do obrazka                                        |
+| `st.latex(r'e^{i\\pi} + 1 = 0')` | wyświetla wzór matematyczny w składni LaTeX                         |
+| `st.write('Dowolny obiekt')`   | uniwersalna funkcja – obsługuje tekst, liczby, listy, DataFrame itp.  |
+| `st.title('Tytuł')`            | wyświetla duży nagłówek (tytuł)                             |
+| `st.header('Nagłówek')`        | wyświetla średni nagłówek – mniejszy niż `title`, większy niż `subheader`    |
+| `st.subheader('Podnagłówek')`  | wyświetla mniejszy nagłówek, np. dla sekcji w aplikacji                   |
+| `st.code('for i in range(8):')`| pokazuje blok kodu z zachowaniem formatowania                      |
+
+""")
+
+
+
+
+
+
+
+
+
+
 st.markdown(""" 
-<p style='font-size: 20px; font-weight: normal;'>
 
 1. **`st.write()`** - wszechstronna funkcja, może wyświetlać tekst, Markdown, LaTeX, dane w posatci tabeli (ramki danych Pandas), wykresy, emoji i inne.
 
@@ -251,8 +278,11 @@ st.markdown("""
 5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów.
 
 6. **`st.line_chart()`, `st.area_chart()`, `st.plotly_chart()`** - funkcje do wyświetlania wykresów.
-</p>
 """)
+
+
+
+
 
 st.markdown(""" 
 ---  
