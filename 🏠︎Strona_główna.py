@@ -207,11 +207,22 @@ st.code(code, language='python')
 st.markdown(
     '''
     <p>
-    Gdy mamy już gotowy przynajmniej plik <code>jome.py</code>, możemy udostępnić aplikację. W tym celu należy wejść na stronę: <a href="https://streamlit.io/" style="color:#66ccff; font-weight:bold;">streamlit</a> i założyć na niej konto, np. za pośrednictwem GitHuba lub Google.
+    Gdy mamy już gotowy przynajmniej plik <code>home.py</code>, możemy udostępnić aplikację. W tym celu należy wejść na stronę: <a href="https://streamlit.io/" style="color:#66ccff; font-weight:bold;">streamlit</a> i założyć na niej konto, np. za pośrednictwem GitHuba lub Google.
     </p>
     ''',
     unsafe_allow_html=True
 )
+
+st.markdown(
+    '''
+    <p>
+    Następnie należy wybrać opcję <code>Create app</code> i pierwszą z dostępnych opcji wdrożenia, czyli za pomocą GitHuba.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+st.image('first.png')
 
 st.title("Przydatne funkcje")
 
