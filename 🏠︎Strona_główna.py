@@ -458,9 +458,7 @@ with col1:
 
 with col2:
     st.subheader("Multimedia")
-    st.image("https://placekitten.com/200/300", caption="Obrazek kota")
-    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-    st.video("https://www.youtube.com/watch?v=5qap5aO4i9A")
+    st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
 
 # --- Zakładki ---
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
@@ -547,9 +545,7 @@ with col1:
 
 with col2:
     st.subheader("Multimedia")
-    st.image("https://placekitten.com/200/300", caption="Obrazek kota")
-    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-    st.video("https://www.youtube.com/watch?v=5qap5aO4i9A")
+    st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
 
 # --- Zakładki ---
 tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
