@@ -63,9 +63,9 @@ st.title("Tworzenie dashboardu")
 
 st.markdown(
     '''
-    <p>
+    <h5>
     W celu utworzenia dashboardu zawierającego wizualizacje danych np. zawartych w pliku z rozszerzeniem <code>.csv</code>, należy ten plik umieścić w repozytorium wraz z innymi plikami. Repozytorium będzie miało wtedy następującą strukturę:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -81,9 +81,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Po dodaniu danych można zacząć tworzyć aplikację w pliku <code>home.py</code>. Na samym początku zwykle umieszcza się importy niezbędnych bibliotek, np.:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -99,9 +99,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -114,9 +114,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -129,9 +129,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -145,9 +145,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -162,9 +162,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -179,9 +179,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizację. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
@@ -195,9 +195,9 @@ st.code(code, language='python')
 
 st.markdown(
     '''
-    <p>
+    <h5>
     Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanaych w ramach tworzenia dashboardu danych:
-    </p>
+    </h5>
     ''',
     unsafe_allow_html=True
 )
