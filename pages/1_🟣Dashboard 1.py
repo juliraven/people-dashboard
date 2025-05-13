@@ -423,7 +423,7 @@ with styled_container:
     '#FF6692',  # różowy
     '#B6E880',  # zielono-żółty
     '#FF97FF',  # różowy (jasny)
-    '#FECB52', "rgb(160, 0, 240)"]
+    '#FECB52', "rgb(152, 19, 119)"]
 
     fig = px.area(df_filtered, 
               x="Year", 
