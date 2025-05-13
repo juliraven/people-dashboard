@@ -285,7 +285,7 @@ col2.markdown("""
 | Funkcja                                     | Opis                                                                 |
 |---------------------------------------------|----------------------------------------------------------------------|
 | `tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])` | tworzy dwie zakładki z nazwami „Zakładka 1” i „Zakładka 2”          |
-| `tab1.write("To jest zakładka 1")`          | wyświetla zawartość wewnątrz wybranje zakładki                    |
+| `tab1.write("To zakładka 1")`          | wyświetla zawartość wewnątrz wybranej zakładki                    |
 | `with tab1:`                                | składnia `with` do grupowania kodu wewnątrz konkretnej zakładki    |
 
 """)
