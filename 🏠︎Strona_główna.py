@@ -290,6 +290,18 @@ col2.markdown("""
 
 """)
 
+col2.subheader('Układ kolumnowy')
+
+col2.markdown("""
+| Funkcja / składnia                           | Opis                                                                 |
+|----------------------------------------------|----------------------------------------------------------------------|
+| `col1, col2 = st.columns(2)`                 | tworzy dwie kolumny o równej szerokości  |
+| `col1.write('Kolumna 1')` | umieszcza zawartość w odpowiedniej kolumnie                       |
+| `st.columns([3, 1, 1])`                      | tworzy trzy kolumny o niestandardowych proporcjach szerokości (np. 3:1:1)|
+| `with col1:`                 | alternatywna składnia z `with`, pozwala lepiej grupować kod wewnątrz kolumny |
+
+""")
+
 st.subheader('Wyświetlanie interaktywnych widżetów')
 
 st.markdown("""
@@ -314,24 +326,10 @@ st.markdown("""
 | `st.color_picker('Wybierz kolor')`              | tworzy widżet do wybierania koloru                                  |
 
 """)
-col1, col2, col3 = st.columns([2.5, 2, 2])
 
+st.subheader('Wyświetlanie postępu i statusu')
 
-col1.subheader('Układ kolumnowy')
-
-col1.markdown("""
-| Funkcja / składnia                           | Opis                                                                 |
-|----------------------------------------------|----------------------------------------------------------------------|
-| `col1, col2 = st.columns(2)`                 | tworzy dwie kolumny o równej szerokości  |
-| `col1.write('Kolumna 1')` | umieszcza zawartość w odpowiedniej kolumnie                       |
-| `st.columns([3, 1, 1])`                      | tworzy trzy kolumny o niestandardowych proporcjach szerokości (np. 3:1:1)|
-| `with col1:`                 | alternatywna składnia z `with`, pozwala lepiej grupować kod wewnątrz kolumny |
-
-""")
-
-col3.subheader('Wyświetlanie postępu i statusu')
-
-col3.markdown("""
+st.markdown("""
 | Funkcja / składnia                                    | Opis                                                                 |
 |-------------------------------------------------------|----------------------------------------------------------------------|
 | `with st.spinner(text='W trakcie...'):`               | wyświetla spinner podczas trwającego procesu |
