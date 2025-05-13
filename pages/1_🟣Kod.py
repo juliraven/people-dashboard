@@ -193,3 +193,18 @@ with st.container():
 
 st.code(code, language='python')
 
+st.markdown(
+    '''
+    <p>
+    Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanaych w ramach tworzenia dashboardu danych:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code ='''
+with st.expander('Żródła danych:', expanded=False):
+    st.markdown('<a href="https://ourworldindata.org" target="_blank">https://ourworldindata.org</a>', unsafe_allow_html=True)
+'''
+
+st.code(code, language='python')
