@@ -287,17 +287,6 @@ with col2:
 
 """)
 
-st.markdown(
-    '''
-    <p>
-    
-    ### Rezultat działania kodu:
-    
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
 import pandas as pd
 import plotly.express as px
 
