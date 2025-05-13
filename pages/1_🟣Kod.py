@@ -59,7 +59,55 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
+st.title("Tworzenie dashboardu")
+
+st.markdown(
+    '''
+    <p>
+    W celu utworzenia dashboardu zawierającego wizualizacje danych np. zawartych w pliku z rozszerzeniem <code>.csv</code>, należy ten plik umieścić w repozytorium wraz z innymi plikami. Repozytorium będzie miało wtedy następującą strukturę:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+app/
+├── home.py
+├── requirements.txt
+├── data.csv
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Po dodaniu danych można zacząć tworzyć aplikację w pliku <code>home.py</code>. Na samym początku zwykle umieszcza się importy niezbędnych bibliotek, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
+'''
+
+st.code(code, language='python')
+
+st.markdown(
+    '''
+    <p>
+    Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+code = '''
+st.title("Dashboard")
+'''
+
+st.code(code, language='python')
