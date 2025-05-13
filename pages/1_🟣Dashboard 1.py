@@ -400,6 +400,8 @@ df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered[
 
 df_filtered = df_filtered[df_filtered["Year"] % 10 == 0]
 
+df_filtered = df_filtered.sort_values("Age_group")
+
 col11, col22 = st.columns([3,2])
 
 styled_container = st.container()
