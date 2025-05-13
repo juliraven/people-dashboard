@@ -248,7 +248,7 @@ st.markdown("""
  
 5. **`st.text_input()`, `st.slider()`, `st.selectbox()`** - funkcje do tworzenia filtrów, widżetów.
 
-6. **`st.line_chart()`, `st.area_chart()`, 'st.plotly_chart()** - funkcje do wyświetlania wykresów.
+6. **`st.line_chart()`, `st.area_chart()`, `st.plotly_chart()`** - funkcje do wyświetlania wykresów.
 ---  
 
 ### Przykład użycia:
