@@ -387,7 +387,8 @@ df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-8
                   var_name="Age_group", value_name="Deaths")
 
 
-age_order = ["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99", "100+"]
+age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
+             "40-49", "30-39", "20-29", "10-19", "0-9"]
 df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
 
 obszary = de["Entity"].unique().tolist()
