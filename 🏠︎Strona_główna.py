@@ -368,7 +368,6 @@ st.markdown("""
 """)
 
 st.markdown(''' 
----
 ### Przykłady użycia wybrnaych funkcji:
 ''')
 
@@ -408,6 +407,10 @@ st.caption("To jest podpis np. pod wykresem")
 st.latex(r"e^{i\pi} + 1 = 0")
 st.write("Lista:", [1, 2, 3])
 st.code("for i in range(5):\n    print(i)", language="python")
+
+st.markdown(''' 
+---
+''')
 
 code = '''
 st.header("2. Kolumny i zakładki")
@@ -489,6 +492,10 @@ with tab1:
 with tab2:
     st.write("To jest zakładka 2")
 
+st.markdown(''' 
+---
+''')
+
 code = '''
 st.header("3. Widżety interaktywne")
 
@@ -538,6 +545,10 @@ with col2:
     st.file_uploader("Prześlij plik")
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
+
+st.markdown(''' 
+---
+''')
 
 st.markdown('''
 ```python
