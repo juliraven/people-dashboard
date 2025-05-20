@@ -372,13 +372,33 @@ st.markdown('''
 ### Przykłady użycia wybrnaych funkcji:
 ''')
 
-st.markdown('''
-```python
+code = '''
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
 from datetime import time, date
+'''
+st.code(code, language='python')
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from datetime import time, date
+
+code = '''
+st.title("📘 Przegląd funkcji Streamlit")
+st.header("1. Teksty i formatowanie")
+st.text("To jest tekst")
+st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
+st.caption("To jest podpis np. pod wykresem")
+st.latex(r"e^{i\pi} + 1 = 0")
+st.write("Lista:", [1, 2, 3])
+st.code("for i in range(5):\n    print(i)", language="python")
+'''
+
+st.code(code, language='python')
 
 st.title("📘 Przegląd funkcji Streamlit")
 st.header("1. Teksty i formatowanie")
@@ -389,6 +409,7 @@ st.latex(r"e^{i\pi} + 1 = 0")
 st.write("Lista:", [1, 2, 3])
 st.code("for i in range(5):\n    print(i)", language="python")
 
+code = '''
 st.header("2. Kolumny i zakładki")
 col1, col2 = st.columns(2)
 
@@ -404,6 +425,46 @@ with col1:
     st.json({'name': 'Streamlit', 'type': 'framework'})
     st.metric(label="Temperatura", value="22°C", delta="1.2°C")
     
+with col2:
+    st.subheader("Multimedia")
+    st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
+
+st.subheader("Wykres")
+fig = px.scatter(
+        df,
+        x='Powierzchnia (km²)',
+        y='Liczba mieszkańców (mln)',
+        size='PKB',
+        color='PKB',
+        hover_name='Miasto',
+        size_max=50,
+        color_continuous_scale='PuRd'
+    )
+st.plotly_chart(fig, use_container_width=True)
+
+tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
+with tab1:
+    st.write("To jest zakładka 1")
+with tab2:
+    st.write("To jest zakładka 2")
+'''
+
+st.code(code, language='python')
+
+st.header("2. Kolumny i zakładki")
+col1, col2 = st.columns(2)
+
+with col1:
+    st.subheader("Dane")
+    df = pd.DataFrame({
+    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
+    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
+    'Powierzchnia (km²)': [517, 327, 262, 293],
+    'PKB': [150000, 120000, 110000, 130000]})
+    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
+    st.dataframe(df)
+    st.json({'name': 'Streamlit', 'type': 'framework'})
+    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
 
 with col2:
     st.subheader("Multimedia")
@@ -428,6 +489,7 @@ with tab1:
 with tab2:
     st.write("To jest zakładka 2")
 
+code = '''
 st.header("3. Widżety interaktywne")
 
 col1, col2 = st.columns(2)
@@ -450,7 +512,35 @@ with col2:
     st.file_uploader("Prześlij plik")
     data = pd.DataFrame({"kolumna": [1, 2, 3]})
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
-    
+'''
+
+st.code(code, language='python')
+
+st.header("3. Widżety interaktywne")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.button("Kliknij mnie")
+    st.checkbox("Zaznacz mnie")
+    st.radio("Wybierz zwierzę", ["Kot", "Pies"])
+    st.selectbox("Wybierz liczbę", [1, 2, 3])
+    st.multiselect("Wybierz wiele", ["A", "B", "C"])
+    st.slider("Przesuń", 0, 100)
+    st.select_slider("Przesuń, aby wybrać", options=["Mało", "Średnio", "Dużo"])
+
+with col2:
+    st.text_input("Wpisz imię")
+    st.number_input("Wpisz liczbę", step=1)
+    st.text_area("Opisz swój dzień")
+    st.date_input("Wybierz datę", value=date.today())
+    st.time_input("Wpisz godzinę", value=time(12, 0))
+    st.file_uploader("Prześlij plik")
+    data = pd.DataFrame({"kolumna": [1, 2, 3]})
+    st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
+
+st.markdown('''
+```python
 st.header("4. Status i postęp")
 with st.spinner("⏳ Ładowanie..."):
     st.success("✅ Gotowe!")
@@ -459,83 +549,6 @@ st.info("To jest informacja")
 st.warning("To jest ostrzeżenie")
 st.error("To jest błąd")
 ''')
-
-import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.express as px
-from datetime import time, date
-
-st.title("📘 Przegląd funkcji Streamlit")
-st.header("1. Teksty i formatowanie")
-st.text("To jest tekst")
-st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
-st.caption("To jest podpis np. pod wykresem")
-st.latex(r"e^{i\pi} + 1 = 0")
-st.write("Lista:", [1, 2, 3])
-st.code("for i in range(5):\n    print(i)", language="python")
-
-st.header("2. Kolumny i zakładki")
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("Dane")
-    df = pd.DataFrame({
-    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
-    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
-    'Powierzchnia (km²)': [517, 327, 262, 293],
-    'PKB': [150000, 120000, 110000, 130000]})
-    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
-    st.dataframe(df)
-    st.json({'name': 'Streamlit', 'type': 'framework'})
-    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
-    
-
-with col2:
-    st.subheader("Multimedia")
-    st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
-
-st.subheader("Wykres")
-fig = px.scatter(
-        df,
-        x='Powierzchnia (km²)',
-        y='Liczba mieszkańców (mln)',
-        size='PKB',
-        color='PKB',
-        hover_name='Miasto',
-        size_max=50,
-        color_continuous_scale='PuRd'
-    )
-st.plotly_chart(fig, use_container_width=True)
-
-tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
-with tab1:
-    st.write("To jest zakładka 1")
-with tab2:
-    st.write("To jest zakładka 2")
-
-st.header("3. Widżety interaktywne")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.button("Kliknij mnie")
-    st.checkbox("Zaznacz mnie")
-    st.radio("Wybierz zwierzę", ["Kot", "Pies"])
-    st.selectbox("Wybierz liczbę", [1, 2, 3])
-    st.multiselect("Wybierz wiele", ["A", "B", "C"])
-    st.slider("Przesuń", 0, 100)
-    st.select_slider("Przesuń, aby wybrać", options=["Mało", "Średnio", "Dużo"])
-
-with col2:
-    st.text_input("Wpisz imię")
-    st.number_input("Wpisz liczbę", step=1)
-    st.text_area("Opisz swój dzień")
-    st.date_input("Wybierz datę", value=date.today())
-    st.time_input("Wpisz godzinę", value=time(12, 0))
-    st.file_uploader("Prześlij plik")
-    data = pd.DataFrame({"kolumna": [1, 2, 3]})
-    st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
     
 st.header("4. Status i postęp")
 with st.spinner("⏳ Ładowanie..."):
