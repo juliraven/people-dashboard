@@ -3,7 +3,7 @@ from streamlit_extras.app_logo import add_logo
 
 st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
-add_logo('logo.png', height=350)
+add_logo('logo.png', height=320)
 
 st.sidebar.markdown(
     """
@@ -14,9 +14,9 @@ st.sidebar.markdown(
             padding: 10px;
             font-family: sans-serif;
             font-size: 18px;
-            width: 150px !important;
-            min-width: 150px !important;
-            max-width: 150px !important;
+            width: 160px !important;
+            min-width: 160px !important;
+            max-width: 160px !important;
         }
 
         [data-testid="stSidebarHeader"] {
