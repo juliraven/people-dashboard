@@ -37,20 +37,43 @@ st.sidebar.markdown(
 page_bg_img_sidebar = """
 <style>
 [data-testid="stSidebar"] {
-    background: radial-gradient(circle at 51% 40%, #b444fb, #a93068, #202125); 
-    background-blend-mode: multiply;
-    background-size: cover;
-    overflow: hidden; /* Prevent scrolling */
+    background: linear-gradient(
+        135deg,
+        rgba(32, 33, 37, 0.6),
+        rgba(45, 3, 94, 0.5),
+        rgba(180, 68, 251, 0.4)
+    );
+    border: 1px solid rgba(180, 68, 251, 0.3);
+    border-radius: 0px;
+    padding: 24px;
+    width: 100%;
+    box-shadow:
+        0 0 10px rgba(180, 68, 251, 0.25),
+        0 4px 16px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px) brightness(1.05);
+    background-blend-mode: overlay;
+    transition: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  /* Wyśrodkowanie zawartości */
 }
 
+/* Główna treść */
+section.main > div {
+    padding-left: 220px !important;
+}
+
+/* Nagłówek przezroczysty */
 header[data-testid="stHeader"] {
     background-color: rgba(0, 0, 0, 0);
 }
 
+/* Tło strony */
 body {
-    background-color: #202125; 
+    background-color: #202125;
 }
-
 </style>
 """
 
