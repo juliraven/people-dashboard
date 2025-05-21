@@ -79,9 +79,19 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-st.title("Czym jest Streamlit?")
+selected = option_menu(
+    menu_title=None,  
+    options=["O Streamlicie", "Przydatne funkcje", "Przykłady użycia wybranych funkcji"], 
+    menu_icon="cast", 
+    default_index=0, 
+    orientation="horizontal", 
+)
 
-st.markdown(
+if selected=="O Streamlicie":
+
+    st.title("Czym jest Streamlit?")
+
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     <span style="color:red; font-weight:bold;">Streamlit</span> umożliwia tworzenie interaktywnych aplikacji internetowych opartych na danych.
@@ -91,67 +101,67 @@ st.markdown(
     </p>
     ''',
     unsafe_allow_html=True
-)
+    )
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://docs.streamlit.io/" style="color:#66ccff; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
     </p>
     ''',
     unsafe_allow_html=True
-)
+    )
 
-st.title("Pierwsze kroki")
+    st.title("Pierwsze kroki")
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy najpierw ją zainstalować za pomocą polecenia:
     </p>
     ''',
     unsafe_allow_html=True
-)
+    )
 
-code = '''
-pip install streamlit
-'''
+    code = '''
+    pip install streamlit
+    '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     W celu uruchomienia przykładowej aplikacji należy wywołać polecenie:
     </p>
     ''',
     unsafe_allow_html=True
-)
+    )
 
-code = '''
-streamlit hello
-'''
+    code = '''
+    streamlit hello
+    '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Aplikację można utworzyć w dowolnym edytorze tekstowym. Należy ją zapisać następnie do pliku z rozszerzeniem <code>.py</code>, np. <code>app.py</code>. W pliku tym wpisujemy przykładowy kod:
     </p>
     ''',
     unsafe_allow_html=True
-)
+    )
 
-code = '''
+    code = '''
 import streamlit as st
 
 st.write("Hello world")
 '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Następnie w terminalu wiersza poleceń wpisujemy:
@@ -160,13 +170,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-code = '''
+    code = '''
 streamlit run app.py
 '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Powinno to uruchomić przeglądarkę, która wyświetli aplikację.
@@ -175,9 +185,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("Udostępnianie aplikacji")
+    st.title("Udostępnianie aplikacji")
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Utworzoną aplikację można udostępnić do publicznego użytku przy pomocy <a href="https://github.com/" style="color:#66ccff; font-weight:bold;">GitHuba</a>. Wystarczy utworzyć konto i repozytorium, które można użyć do udostępnienia aplikacji za pomocą wyżej wspomnianej chmury.
@@ -186,7 +196,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Przykładowa struktura repoozytorium może wyglądać następująco:
@@ -195,7 +205,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-code = '''
+    code = '''
 app/
 ├── home.py
 └── pages/
@@ -204,9 +214,9 @@ app/
 ├── requirements.txt
 '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     W pliku <code>requirements.txt</code> umieszczamy używane w aplikacji biblioteki. Może on wyglądać w następujący sposób:
@@ -215,7 +225,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-code = '''
+    code = '''
 streamlit
 pandas
 numpy
@@ -225,9 +235,9 @@ seaborn
 scikit-learn
 '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Gdy mamy już gotowy przynajmniej plik <code>home.py</code>, możemy udostępnić aplikację. W tym celu należy wejść na stronę: <a href="https://streamlit.io/" style="color:#66ccff; font-weight:bold;">streamlit</a> i założyć na niej konto, np. za pośrednictwem GitHuba lub Google.
@@ -236,7 +246,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Następnie należy wybrać opcję <code>Create app</code> i pierwszą z dostępnych opcji wdrożenia, czyli z użyciem GitHuba.
@@ -245,9 +255,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image('first.png', caption="Opcje wdrażania aplikacji", use_container_width=True)
+    st.image('first.png', caption="Opcje wdrażania aplikacji", use_container_width=True)
 
-st.markdown(
+    st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
     Pojawią się pola, które należy wypełnić, a następnie kliknąć przycisk <code>Deploy</code>. Nasza aplikacja jest od tego momentu dostępna pod przypisanym (lub wskazanym przez nas) linkiem.
@@ -256,15 +266,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image('second.png', caption="Wdrażanie", use_container_width=True)
+    st.image('second.png', caption="Wdrażanie", use_container_width=True)
 
-st.title("Przydatne funkcje")
+if selected=="Przydatne funkcje":
+    st.title("Przydatne funkcje")
 
-col1, col2 = st.columns([2, 2])
+    col1, col2 = st.columns([2, 2])
 
-col1.subheader('Wyświetlanie tekstu')
+    col1.subheader('Wyświetlanie tekstu')
 
-col1.markdown("""
+    col1.markdown("""
 | Funkcja                         | Opis                                                                 |
 |---------------------------------|----------------------------------------------------------------------|
 | `st.text('Tekst')`              | wyświetla zwykły tekst o stałej szerokości                           |
@@ -279,9 +290,9 @@ col1.markdown("""
 
 """)
 
-col1.subheader('Wyświetlanie danych')
+    col1.subheader('Wyświetlanie danych')
 
-col1.markdown("""
+    col1.markdown("""
 | Funkcja                                       | Opis                                                                 |
 |-----------------------------------------------|----------------------------------------------------------------------|
 | `st.dataframe(my_dataframe)`                 | wyświetla ramkę danych (np. Pandas DataFrame) w formie interaktywnej tabeli |
@@ -291,9 +302,9 @@ col1.markdown("""
 
 """)
 
-col2.subheader('Wyświetlanie multimediów')
+    col2.subheader('Wyświetlanie multimediów')
 
-col2.markdown("""
+    col2.markdown("""
 | Funkcja                        | Opis                                                                 |
 |--------------------------------|----------------------------------------------------------------------|
 | `st.image('image.png')`     | wyświetla obrazek, może to być plik lokalny, URL lub obiekt w pamięci  |
@@ -302,9 +313,9 @@ col2.markdown("""
 
 """)
 
-col2.subheader('Zakładki')
+    col2.subheader('Zakładki')
 
-col2.markdown("""
+    col2.markdown("""
 | Funkcja                                     | Opis                                                                 |
 |---------------------------------------------|----------------------------------------------------------------------|
 | `tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])` | tworzy dwie zakładki z nazwami „Zakładka 1” i „Zakładka 2”          |
@@ -313,9 +324,9 @@ col2.markdown("""
 
 """)
 
-col2.subheader('Układ kolumnowy')
+    col2.subheader('Układ kolumnowy')
 
-col2.markdown("""
+    col2.markdown("""
 | Funkcja / składnia                           | Opis                                                                 |
 |----------------------------------------------|----------------------------------------------------------------------|
 | `col1, col2 = st.columns(2)`                 | tworzy dwie kolumny o równej szerokości  |
@@ -325,9 +336,9 @@ col2.markdown("""
 
 """)
 
-st.subheader('Wyświetlanie interaktywnych widżetów')
+    st.subheader('Wyświetlanie interaktywnych widżetów')
 
-st.markdown("""
+    st.markdown("""
 | Funkcja                                          | Opis                                                                 |
 |--------------------------------------------------|----------------------------------------------------------------------|
 | `st.button('Kliknij')`                       | tworzy przycisk, który użytkownik może kliknąć                      |
@@ -350,9 +361,9 @@ st.markdown("""
 
 """)
 
-st.subheader('Wyświetlanie postępu i statusu')
+    st.subheader('Wyświetlanie postępu i statusu')
 
-st.markdown("""
+    st.markdown("""
 | Funkcja / składnia                                    | Opis                                                                 |
 |-------------------------------------------------------|----------------------------------------------------------------------|
 | `with st.spinner(text='W trakcie...'):`               | wyświetla spinner podczas trwającego procesu |
@@ -367,26 +378,28 @@ st.markdown("""
 
 """)
 
-st.markdown(''' 
-### Przykłady użycia wybrnaych funkcji:
+if selected=="Przykłady użycia wybranych funkcji":
+
+    st.markdown(''' 
+### Przykłady użycia wybranych funkcji:
 ''')
 
-code = '''
+    code = '''
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
 from datetime import time, date
 '''
-st.code(code, language='python')
+    st.code(code, language='python')
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.express as px
-from datetime import time, date
+    import streamlit as st
+    import pandas as pd
+    import numpy as np
+    import plotly.express as px
+    from datetime import time, date
 
-code = '''
+    code = '''
 st.title("📘 Przegląd funkcji Streamlit")
 st.header("1. Teksty i formatowanie")
 st.text("To jest tekst")
@@ -397,18 +410,18 @@ st.write("Lista:", [1, 2, 3])
 st.code("for i in range(5):\n    print(i)", language="python")
 '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.title("📘 Przegląd funkcji Streamlit")
-st.header("1. Teksty i formatowanie")
-st.text("To jest tekst")
-st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
-st.caption("To jest podpis np. pod wykresem")
-st.latex(r"e^{i\pi} + 1 = 0")
-st.write("Lista:", [1, 2, 3])
-st.code("for i in range(5):\n    print(i)", language="python")
+    st.title("📘 Przegląd funkcji Streamlit")
+    st.header("1. Teksty i formatowanie")
+    st.text("To jest tekst")
+    st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
+    st.caption("To jest podpis np. pod wykresem")
+    st.latex(r"e^{i\pi} + 1 = 0")
+    st.write("Lista:", [1, 2, 3])
+    st.code("for i in range(5):\n    print(i)", language="python")
 
-st.markdown(''' 
+    st.markdown(''' 
 ---
 ''')
 
@@ -452,29 +465,29 @@ with tab2:
     st.write("To jest zakładka 2")
 '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.header("2. Kolumny i zakładki")
-col1, col2 = st.columns(2)
+    st.header("2. Kolumny i zakładki")
+    col1, col2 = st.columns(2)
 
-with col1:
-    st.subheader("Dane")
-    df = pd.DataFrame({
-    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
-    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
-    'Powierzchnia (km²)': [517, 327, 262, 293],
-    'PKB': [150000, 120000, 110000, 130000]})
-    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
-    st.dataframe(df)
-    st.json({'name': 'Streamlit', 'type': 'framework'})
-    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
+    with col1:
+        st.subheader("Dane")
+        df = pd.DataFrame({
+        'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
+        'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
+        'Powierzchnia (km²)': [517, 327, 262, 293],
+        'PKB': [150000, 120000, 110000, 130000]})
+        df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
+        st.dataframe(df)
+        st.json({'name': 'Streamlit', 'type': 'framework'})
+        st.metric(label="Temperatura", value="22°C", delta="1.2°C")
 
-with col2:
-    st.subheader("Multimedia")
-    st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
+    with col2:
+        st.subheader("Multimedia")
+        st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
 
-st.subheader("Wykres")
-fig = px.scatter(
+    st.subheader("Wykres")
+    fig = px.scatter(
         df,
         x='Powierzchnia (km²)',
         y='Liczba mieszkańców (mln)',
@@ -483,20 +496,20 @@ fig = px.scatter(
         hover_name='Miasto',
         size_max=50,
         color_continuous_scale='PuRd'
-    )
-st.plotly_chart(fig, use_container_width=True)
+        )
+    st.plotly_chart(fig, use_container_width=True)
 
-tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
-with tab1:
-    st.write("To jest zakładka 1")
-with tab2:
-    st.write("To jest zakładka 2")
+    tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
+    with tab1:
+        st.write("To jest zakładka 1")
+    with tab2:
+        st.write("To jest zakładka 2")
 
-st.markdown(''' 
+    st.markdown(''' 
 ---
 ''')
 
-code = '''
+    code = '''
 st.header("3. Widżety interaktywne")
 
 col1, col2 = st.columns(2)
@@ -521,36 +534,36 @@ with col2:
     st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
 '''
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
-st.header("3. Widżety interaktywne")
+    st.header("3. Widżety interaktywne")
 
-col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
 
-with col1:
-    st.button("Kliknij mnie")
-    st.checkbox("Zaznacz mnie")
-    st.radio("Wybierz zwierzę", ["Kot", "Pies"])
-    st.selectbox("Wybierz liczbę", [1, 2, 3])
-    st.multiselect("Wybierz wiele", ["A", "B", "C"])
-    st.slider("Przesuń", 0, 100)
-    st.select_slider("Przesuń, aby wybrać", options=["Mało", "Średnio", "Dużo"])
+    with col1:
+        st.button("Kliknij mnie")
+        st.checkbox("Zaznacz mnie")
+        st.radio("Wybierz zwierzę", ["Kot", "Pies"])
+        st.selectbox("Wybierz liczbę", [1, 2, 3])
+        st.multiselect("Wybierz wiele", ["A", "B", "C"])
+        st.slider("Przesuń", 0, 100)
+        st.select_slider("Przesuń, aby wybrać", options=["Mało", "Średnio", "Dużo"])
 
-with col2:
-    st.text_input("Wpisz imię")
-    st.number_input("Wpisz liczbę", step=1)
-    st.text_area("Opisz swój dzień")
-    st.date_input("Wybierz datę", value=date.today())
-    st.time_input("Wpisz godzinę", value=time(12, 0))
-    st.file_uploader("Prześlij plik")
-    data = pd.DataFrame({"kolumna": [1, 2, 3]})
-    st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
+    with col2:
+        st.text_input("Wpisz imię")
+        st.number_input("Wpisz liczbę", step=1)
+        st.text_area("Opisz swój dzień")
+        st.date_input("Wybierz datę", value=date.today())
+        st.time_input("Wpisz godzinę", value=time(12, 0))
+        st.file_uploader("Prześlij plik")
+        data = pd.DataFrame({"kolumna": [1, 2, 3]})
+        st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
 
-st.markdown(''' 
+    st.markdown(''' 
 ---
 ''')
 
-st.markdown('''
+    st.markdown('''
 ```python
 st.header("4. Status i postęp")
 with st.spinner("⏳ Ładowanie..."):
@@ -561,10 +574,10 @@ st.warning("To jest ostrzeżenie")
 st.error("To jest błąd")
 ''')
     
-st.header("4. Status i postęp")
-with st.spinner("⏳ Ładowanie..."):
-    st.success("✅ Gotowe!")
+    st.header("4. Status i postęp")
+    with st.spinner("⏳ Ładowanie..."):
+        st.success("✅ Gotowe!")
 
-st.info("To jest informacja")
-st.warning("To jest ostrzeżenie")
-st.error("To jest błąd")
+    st.info("To jest informacja")
+    st.warning("To jest ostrzeżenie")
+    st.error("To jest błąd")
