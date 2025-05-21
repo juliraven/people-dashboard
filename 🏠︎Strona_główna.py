@@ -425,7 +425,7 @@ st.code("for i in range(5):\n    print(i)", language="python")
 ---
 ''')
 
-code = '''
+    code = '''
 st.header("2. Kolumny i zakładki")
 col1, col2 = st.columns(2)
 
