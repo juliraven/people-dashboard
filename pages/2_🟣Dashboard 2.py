@@ -522,7 +522,7 @@ with tab2:
             with styled_container:
                 st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
                 st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni</h3>",unsafe_allow_html=True)
-                st.plotly_chart(fig)
+                st.plotly_chart(fig, config={"displayModeBar": False})
        
 
 with tab3:
