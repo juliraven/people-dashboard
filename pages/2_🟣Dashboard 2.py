@@ -532,6 +532,8 @@ with tab2:
         st.plotly_chart(fig, config={"displayModeBar": False})
 
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
+    st.write(df.columns.tolist())
+
 
     all_countries = df['Entity'].unique()
 
