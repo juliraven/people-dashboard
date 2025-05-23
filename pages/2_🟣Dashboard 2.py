@@ -569,7 +569,6 @@ with tab2:
                 row["Period life expectancy - 65"].values[0],
                 row["Period life expectancy - 80"].values[0],
             ]
-            # Zamknięcie kształtu radaru
                 labels.append(labels[0])
                 values.append(values[0])
             
