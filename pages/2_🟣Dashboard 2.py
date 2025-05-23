@@ -66,19 +66,23 @@ import plotly.graph_objects as go
 import altair as alt
 import base64
 
-st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata na przestrzeni lat</h1>", unsafe_allow_html=True)
-st.markdown(' ')
+tab1, tab2, tab3 = st.tabs(["Ludność", "Śmiertelność", "Edukacja"])
 
-col1, col2, col3 = st.columns([2, 2, 2])
-col = st.columns((2.2, 4.9, 2.8), gap='medium')
+with tab1:
 
-df = pd.read_excel('plik.xlsx')
+    st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata na przestrzeni lat</h1>", unsafe_allow_html=True)
+    st.markdown(' ')
 
-df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
-df1["Year"] = df1["Year"].astype(int)
-df1 = df1[(df1["Year"] >= 1959) & (df1["Year"] <= 2023)]
+    col1, col2, col3 = st.columns([2, 2, 2])
+    col = st.columns((2.2, 4.9, 2.8), gap='medium')
 
-geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria': 'DZA', 'American Samoa': 'ASM', 'Andorra': 'AND', 
+    df = pd.read_excel('plik.xlsx')
+
+    df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
+    df1["Year"] = df1["Year"].astype(int)
+    df1 = df1[(df1["Year"] >= 1959) & (df1["Year"] <= 2023)]
+
+    geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria': 'DZA', 'American Samoa': 'ASM', 'Andorra': 'AND', 
        'Angola': 'AGO', 'Anguilla': 'AIA', 'Antigua and Barbuda': 'ATG', 'Argentina': 'ARG', 'Armenia': 'ARM', 'Aruba': 'ABW', 
        'Australia': 'AUS', 'Austria': 'AUT', 'Azerbaijan': 'AZE', 'Bahamas': 'BHS', 'Bahrain': 'BHR', 'Bangladesh': 'BGD', 
        'Barbados': 'BRB', 'Belarus': 'BLR', 'Belgium': 'BEL', 'Belize': 'BLZ', 'Benin': 'BEN', 'Bermuda': 'BMU', 'Bhutan': 'BTN', 
@@ -114,32 +118,32 @@ geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria
        'Venezuela': 'VEN', 'Vietnam': 'VNM', 'Wallis and Futuna Islands': 'WLF', 'Western Sahara': 'ESH', 'Yemen': 'YEM', 
        'Zambia': 'ZMB', 'Zimbabwe': 'ZWE', 'North Macedonia': 'MKD', 'Kosovo': 'XK', 'Taiwan': 'TWN'}
 
-excluded_year = 1959
-years_available = sorted(df1["Year"].unique())
-years_available = [year for year in years_available if year != excluded_year]
+    excluded_year = 1959
+    years_available = sorted(df1["Year"].unique())
+    years_available = [year for year in years_available if year != excluded_year]
 
-with col2:
-    selected_year_for_map = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
+    with col2:
+        selected_year_for_map = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
 
-df_map = df1[df1["Year"] == selected_year_for_map].copy()
+    df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
-df_map["Population"] = pd.to_numeric(df_map["Population"], errors="coerce")
-df_map = df_map.dropna(subset=["Population"])
+    df_map["Population"] = pd.to_numeric(df_map["Population"], errors="coerce")
+    df_map = df_map.dropna(subset=["Population"])
 
-df_map["ISO3"] = df_map["Country"].map(geo)
+    df_map["ISO3"] = df_map["Country"].map(geo)
 
-# Usunięcie braków:
-df_map = df_map.dropna(subset=["ISO3"])
+    # Usunięcie braków:
+    df_map = df_map.dropna(subset=["ISO3"])
 
-# Kategoryzowanie populacji:
-colors = ['#fcbec0', '#faa9b8', '#f98faf', '#f571a5', '#ec539d', '#db3695', '#c41b8a', '#a90880', '#8d0179']
-bins = [0, 5_000_000, 10_000_000, 25_000_000, 50_000_000, 100_000_000, 250_000_000, 500_000_000, 1_000_000_000, float('inf')]
-labels = [
+    # Kategoryzowanie populacji:
+    colors = ['#fcbec0', '#faa9b8', '#f98faf', '#f571a5', '#ec539d', '#db3695', '#c41b8a', '#a90880', '#8d0179']
+    bins = [0, 5_000_000, 10_000_000, 25_000_000, 50_000_000, 100_000_000, 250_000_000, 500_000_000, 1_000_000_000, float('inf')]
+    labels = [
     "0–5 mln", "5–10 mln", "10–25 mln", "25–50 mln", "50–100 mln",
     "100–250 mln", "250–500 mln", "500 mln – 1 mld", "1+ mld"
 ]
 
-color_map = {
+    color_map = {
     "0–5 mln": "#fcbec0", 
     "5–10 mln": "#faa9b8", 
     "10–25 mln": "#f98faf", 
@@ -151,9 +155,9 @@ color_map = {
     "1+ mld": "#8d0179"
 }
 
-df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels, ordered=True)
+    df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels, ordered=True)
 
-fig2 = px.choropleth(
+    fig2 = px.choropleth(
     df_map,
     locations="ISO3",
     color="Population_Category",
@@ -167,7 +171,7 @@ fig2 = px.choropleth(
     category_orders={"Population_Category": labels}
 )
 
-fig2.update_layout(
+    fig2.update_layout(
     paper_bgcolor='rgba(0,0,0,0)', 
     plot_bgcolor='rgba(0,0,0,0)',
     geo=dict(
@@ -175,7 +179,7 @@ fig2.update_layout(
     )
 )
 
-fig2.update_geos(
+    fig2.update_geos(
     scope="world",
     projection_type="orthographic",
     showland=True,
@@ -189,7 +193,7 @@ fig2.update_geos(
     showlakes=False
 )
 
-fig2.update_layout(
+    fig2.update_layout(
     margin=dict(l=0, r=0, t=30, b=100), 
     height=600,
     template="plotly_dark",
@@ -205,51 +209,51 @@ fig2.update_layout(
     )
 )
 
-df_map["Population"] = df_map["Population"].astype(int)
-df_map = df_map.sort_values(by="Population", ascending=False)
+    df_map["Population"] = df_map["Population"].astype(int)
+    df_map = df_map.sort_values(by="Population", ascending=False)
 
-df4 = df1[df1["Country"].isin(geo.keys())].copy()
-df4["Population"] = pd.to_numeric(df4["Population"], errors="coerce")
-df4 = df4.dropna(subset=["Population"])
+    df4 = df1[df1["Country"].isin(geo.keys())].copy()
+    df4["Population"] = pd.to_numeric(df4["Population"], errors="coerce")
+    df4 = df4.dropna(subset=["Population"])
 
-df_this_year = df4[df4["Year"] == selected_year_for_map]
-df_prev_year = df4[df4["Year"] == (selected_year_for_map - 1)]
+    df_this_year = df4[df4["Year"] == selected_year_for_map]
+    df_prev_year = df4[df4["Year"] == (selected_year_for_map - 1)]
     
-df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
-df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
+    df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
+    df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
 
-df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
-top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
-top_loss = df_diff.sort_values("Population_Change").iloc[0]
+    df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
+    top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
+    top_loss = df_diff.sort_values("Population_Change").iloc[0]
 
-def load_data(file_path):
-    return pd.read_csv(file_path)
+    def load_data(file_path):
+        return pd.read_csv(file_path)
 
-data_famela = load_data("female.csv")
-data_male = load_data("male.csv")
+    data_famela = load_data("female.csv")
+    data_male = load_data("male.csv")
 
-data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Mężczyźni'))
+    data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Mężczyźni'))
 
-selected_data = data[data['Year'] == selected_year_for_map]
+    selected_data = data[data['Year'] == selected_year_for_map]
 
-liczba_kobiet = selected_data['all years_Kobiety'].values[0]
-liczba_mezczyzn = selected_data['all years_Mężczyźni'].values[0]
+    liczba_kobiet = selected_data['all years_Kobiety'].values[0]
+    liczba_mezczyzn = selected_data['all years_Mężczyźni'].values[0]
 
-suma = liczba_kobiet + liczba_mezczyzn
-procent_kobiet = (liczba_kobiet / suma) * 100
-procent_mezczyzn = (liczba_mezczyzn / suma) * 100
+    suma = liczba_kobiet + liczba_mezczyzn
+    procent_kobiet = (liczba_kobiet / suma) * 100
+    procent_mezczyzn = (liczba_mezczyzn / suma) * 100
 
-icon_kobieta = 'female.png'
-icon_mezczyzna = 'male.png'
+    icon_kobieta = 'female.png'
+    icon_mezczyzna = 'male.png'
 
-def image_to_base64(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode()
+    def image_to_base64(image_path):
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode()
 
-icon_k = image_to_base64(icon_kobieta)
-icon_m = image_to_base64(icon_mezczyzna)
+    icon_k = image_to_base64(icon_kobieta)
+    icon_m = image_to_base64(icon_mezczyzna)
 
-st.markdown(
+    st.markdown(
     """
     <style>
     div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
@@ -282,40 +286,40 @@ st.markdown(
 )
 
 
-with col[0]:
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with col[0]:
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.markdown(
         f"<h4 style='text-align: left; color: white;'>Największe wzrosty/spadki liczby ludności w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
 
-        st.metric(
-        label=top_gain["Country"],
-        value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
+            st.metric(
+            label=top_gain["Country"],
+            value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+            delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
 
-        st.metric(
-        label=top_loss["Country"],
-        value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
-        delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
+            st.metric(
+            label=top_loss["Country"],
+            value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+            delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
 
 
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.markdown(
         f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci w {selected_year_for_map}</h4>",
         unsafe_allow_html=True)
         
         
-        col1, col2 = st.columns([2.2, 2.2])
-        with col1:
-            st.markdown(
+            col1, col2 = st.columns([2.2, 2.2])
+            with col1:
+                st.markdown(
     f"""
     <div style='border: 2px solid #FF69B4; border-radius: 10px; padding: 10px; width: 100px; height: 150px; text-align: center;'>
         <img src="data:image/jpg;base64,{icon_k}" width="200"><br>
@@ -325,8 +329,8 @@ with col[0]:
     unsafe_allow_html=True
 )
 
-        with col2:
-            st.markdown(
+            with col2:
+                st.markdown(
     f"""
     <div style='border: 2px solid #1E90FF; border-radius: 10px; padding: 10px; width: 100px; height: 150px; text-align: center;'>
         <img src="data:image/jpg;base64,{icon_m}" width="100"><br>
@@ -336,28 +340,28 @@ with col[0]:
     unsafe_allow_html=True
 )
 
-with col[1]:
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with col[1]:
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w {selected_year_for_map}</h3>",unsafe_allow_html=True)
-        st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w {selected_year_for_map}</h3>",unsafe_allow_html=True)
+            st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
 
-with col[2]:
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with col[2]:
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        df_map["Population_M"] = df_map["Population"] / 1_000_000
-        st.markdown(f"<h4 style='text-align: center;'>Top 10 państw pod względem liczby ludności w {selected_year_for_map}</h4>",unsafe_allow_html=True)
-        st.dataframe(
-        df_map.head(10),
-        column_order=["Country", "Population_M"],
-        hide_index=True,
-        column_config={
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            df_map["Population_M"] = df_map["Population"] / 1_000_000
+            st.markdown(f"<h4 style='text-align: center;'>Top 10 państw pod względem liczby ludności w {selected_year_for_map}</h4>",unsafe_allow_html=True)
+            st.dataframe(
+            df_map.head(10),
+            column_order=["Country", "Population_M"],
+            hide_index=True,
+            column_config={
         "Country": st.column_config.TextColumn("Kraj"),
         "Population_M": st.column_config.ProgressColumn(
             "Populacja (mln)",
@@ -368,53 +372,55 @@ with col[2]:
     }
 )
 
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        with st.expander('Żródła danych:', expanded=False):
-            st.markdown('<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>', unsafe_allow_html=True)
-            st.markdown('<a href="https://ourworldindata.org/grapher/population" target="_blank">https://ourworldindata.org/grapher/population</a>', unsafe_allow_html=True)
-            st.markdown('<a href="https://ourworldindata.org/grapher/deaths-by-age-group" target="_blank">https://ourworldindata.org/grapher/deaths-by-age-group</a>', unsafe_allow_html=True)
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            with st.expander('Żródła danych:', expanded=False):
+                st.markdown('<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>', unsafe_allow_html=True)
+                st.markdown('<a href="https://ourworldindata.org/grapher/population" target="_blank">https://ourworldindata.org/grapher/population</a>', unsafe_allow_html=True)
+                st.markdown('<a href="https://ourworldindata.org/grapher/deaths-by-age-group" target="_blank">https://ourworldindata.org/grapher/deaths-by-age-group</a>', unsafe_allow_html=True)
 
-de = pd.read_csv('deaths-by-age-group.csv')
 
-de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
+with tab2:
+    de = pd.read_csv('deaths-by-age-group.csv')
 
-df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
+    de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
+
+    df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
                   var_name="Age_group", value_name="Deaths")
 
 
-age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
+    age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
              "40-49", "30-39", "20-29", "10-19", "0-9"]
-df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
+    df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
 
-obszary = de["Entity"].unique().tolist()
-wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, index=obszary.index('World'))
-wybrane_obszary = [wybrane_obszary]
+    obszary = de["Entity"].unique().tolist()
+    wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, index=obszary.index('World'))
+    wybrane_obszary = [wybrane_obszary]
 
-min_rok = de['Year'].min()
-max_rok = de['Year'].max()
-zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+    min_rok = de['Year'].min()
+    max_rok = de['Year'].max()
+    zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 
-df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
-df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
+    df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
+    df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
-df_filtered = df_filtered.sort_values("Age_group")
+    df_filtered = df_filtered.sort_values("Age_group")
 
-col11, col22 = st.columns([3,2])
+    col11, col22 = st.columns([3,2])
 
-styled_container = st.container()
-st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-with styled_container:
-    st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-    st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
 
-    custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", 
+        custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", 
                      "rgb(51, 157, 152)", "rgb(129, 8, 8)", "rgb(160, 0, 240)"]
 
-    cs = [
+        cs = [
     '#636EFA',  # niebieski
     '#EF553B',  # czerwony/pomarańczowy
     '#00CC96',  # zielony
@@ -426,28 +432,28 @@ with styled_container:
     '#FF97FF',  # różowy (jasny)
     '#FECB52', "rgb(152, 19, 119)"]
 
-    fig = px.area(df_filtered, 
+        fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
               color="Age_group",
               category_orders={"Age_group": age_order},
               color_discrete_sequence=cs)
 
-    fig.update_layout(title_text="")
+        fig.update_layout(title_text="")
 
-    fig.update_layout(
-    xaxis=dict(
+        fig.update_layout(
+        xaxis=dict(
         categoryorder='array', 
         categoryarray=age_order))
     
-    fig.update_layout(
+        fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
             plot_bgcolor='rgba(0,0,0,0)',
             geo=dict(bgcolor='rgba(0,0,0,0)'))
 
-    fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
+        fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
 
-    fig.update_layout(margin=dict(l=0, r=0, t=30, b=120), 
+        fig.update_layout(margin=dict(l=0, r=0, t=30, b=120), 
         height=500,
         legend=dict(
         title=dict(text="Grupa wiekowa<br>", font=dict(size=16)),
@@ -458,15 +464,16 @@ with styled_container:
         x=0.4,                        
         font=dict(size=14)))
 
-    st.plotly_chart(fig, config={"displayModeBar": False})
+        st.plotly_chart(fig, config={"displayModeBar": False})
        
 
-styled_container = st.container()
-st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-with styled_container:
-    st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-    with st.expander('Ogólny schemat kodu tworzącego dashboard:', expanded=False):
-        st.markdown(
+with tab3:
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        with st.expander('Ogólny schemat kodu tworzącego dashboard:', expanded=False):
+            st.markdown(
     '''
     <p>
     Na samym początku zwykle umieszcza się importy niezbędnych bibliotek i wczytuje się plik w posatci ramki danych:
@@ -475,7 +482,7 @@ with styled_container:
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -484,9 +491,9 @@ import plotly.express as px
 df1 = pd.read_excel('plik.xlsx')
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
@@ -495,13 +502,13 @@ df1 = pd.read_excel('plik.xlsx')
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 st.title("Dashboard")
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
@@ -510,13 +517,13 @@ st.title("Dashboard")
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 col1, col2, col3 = st.columns([2, 2, 2])
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
@@ -525,14 +532,14 @@ col1, col2, col3 = st.columns([2, 2, 2])
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 with col1:
     st.plotly_chart(fig)
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
@@ -541,15 +548,15 @@ with col1:
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 years_available = sorted(df1["Year"].unique())
 selected_year = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
 df_map = df1[df1["Year"] == selected_year].copy()
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
@@ -558,15 +565,15 @@ df_map = df1[df1["Year"] == selected_year].copy()
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 min_rok = df1['Year'].min()
 max_rok = df1['Year'].max()
 zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizacje. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
@@ -575,14 +582,14 @@ zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_r
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 with st.container():
     st.dataframe(df1)
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Można zmieniać styl tych kafelków tworząc wcześniej odpowiedni kod HTML modyfikujący ich wygląd, który umieszcza się w <code>st.markdown()</code>, może on wyglądać np. tak:
@@ -591,7 +598,7 @@ with st.container():
     unsafe_allow_html=True
 )
 
-        code = '''
+            code = '''
 st.markdown(
     """
     <style>
@@ -611,16 +618,16 @@ st.markdown(
 )
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Aby zastosować wybrany przez nas styl do wybranego kafelka, należy użyć poleceń:
     </p>
     ''', unsafe_allow_html=True)
             
-        code = '''
+            code = '''
 styled_container = st.container()
 st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
@@ -629,9 +636,9 @@ with styled_container:
     st.dataframe(d1)
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
-        st.markdown(
+            st.markdown(
     '''
     <p>
     Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanych w ramach tworzenia dashboardu danych:
@@ -640,10 +647,10 @@ with styled_container:
     unsafe_allow_html=True
 )
 
-        code ='''
+            code ='''
 with st.expander('Żródła danych:', expanded=False):
     st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
 '''
 
-        st.code(code, language='python')
+            st.code(code, language='python')
 
