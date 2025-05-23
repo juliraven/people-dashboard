@@ -578,7 +578,7 @@ with tab2:
                     cause = causes_sorted[idx]
                     pct = percentages_sorted[idx]
                     option = {
-    "title": {"text": cause, "left": "center", "textStyle": {"color": "#fff"}},  # jasny róż
+    "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 18, "color": "#fff"}},  # jasny róż
     "series": [{
         "type": "liquidFill",
         "data": [pct],
@@ -599,7 +599,7 @@ with tab2:
         },
         "label": {
             "formatter": f"{pct*100:.2f}%",
-            "fontSize": 14,
+            "fontSize": 20,
             "color": "#f48fb1"  # biały napis
         }
     }]
