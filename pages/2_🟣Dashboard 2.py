@@ -581,17 +581,17 @@ with tab2:
         fig.add_trace(go.Scatter(x=[], y=[], mode="lines", name=f"{age_label}", line=dict(color=violet_colors[i])))
 
     for i, year in enumerate(years):
-    frame_data = []
-    df_year = df_country[df_country["Year"] <= year]  # Przenieś poza pętlę wieku, bo jest taka sama dla wszystkich
-    for j, (age_label, column_name) in enumerate(age_columns.items()):
-        frame_data.append(go.Scatter(
+        frame_data = []
+        df_year = df_country[df_country["Year"] <= year]  # Przenieś poza pętlę wieku, bo jest taka sama dla wszystkich
+        for j, (age_label, column_name) in enumerate(age_columns.items()):
+            frame_data.append(go.Scatter(
             x=df_year["Year"],
             y=df_year[column_name],
             mode="lines",
             line=dict(color=violet_colors[j]),
             name=f"{age_label}"
         ))
-    frames.append(go.Frame(data=frame_data, name=str(year)))
+        frames.append(go.Frame(data=frame_data, name=str(year)))
 
 
     fig.update(frames=frames)
