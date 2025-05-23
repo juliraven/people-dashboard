@@ -583,9 +583,9 @@ with tab2:
         "type": "liquidFill",
         "data": [pct, pct*0.9, pct*0.8],
         "color": [
-            "rgba(216, 27, 96, 0.8)",    # intensywny róż (fala 1)
-            "rgba(244, 143, 177, 0.6)",  # jasny róż (fala 2)
-            "rgba(255, 182, 193, 0.4)"   # bardzo jasny róż (fala 3)
+            "rgba(255, 20, 147, 0.9)",   # Deep Pink, mocny różowy
+            "rgba(255, 105, 180, 0.7)",  # Hot Pink, jasny różowy
+            "rgba(255, 182, 193, 0.5)" 
         ],
         "outline": {
             "borderDistance": 5,
@@ -595,7 +595,7 @@ with tab2:
             }
         },
         "backgroundStyle": {
-            "color": "rgba(255, 182, 193, 1)"  # jasne różowe tło (pastelowe)
+            "color": "#fff"  # jasne różowe tło (pastelowe)
         },
         "label": {
             "formatter": f"{pct*100:.2f}%",
