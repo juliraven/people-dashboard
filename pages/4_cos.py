@@ -6,7 +6,7 @@ df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
 excluded_regions = [
     "World", "Europe", "Asia", "Africa", "North America", "South America", 
-    "Oceania", "European Union", "High income", "Low income", "Upper middle income", "Lower middle income"
+    "Oceania", "European Union", "High income", "Low income", "Upper middle income", "Lower middle income", "Americas",
 ]
 
 countries = [c for c in df1["Entity"].unique() if c not in excluded_regions]
