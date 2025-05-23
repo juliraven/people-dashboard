@@ -218,8 +218,4 @@ with tab6:
     st.plotly_chart(fig, use_container_width=True)
 
 
-# In[ ]:
-
-
-get_ipython().system('streamlit run wiz_wykresy.py')
 
