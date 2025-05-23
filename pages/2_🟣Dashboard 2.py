@@ -603,11 +603,11 @@ with tab2:
        
 
 with tab3:
+    st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
         st.markdown(' ')
         st.markdown(
     '''
