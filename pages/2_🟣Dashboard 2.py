@@ -532,10 +532,8 @@ with tab2:
         st.plotly_chart(fig, config={"displayModeBar": False})
 
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
-    st.write(df.columns.tolist())
 
-
-    all_countries = df['Entity'].unique()
+    all_countries = df1['Entity'].unique()
 
     col1, col2, col3 = st.columns([2,2,2])
 
@@ -547,7 +545,7 @@ with tab2:
     max_selections=5
 )
 
-    available_years = df['Year'].unique()
+    available_years = df1['Year'].unique()
 
     with col3:
         selected_year = st.selectbox("Wybierz rok", sorted(available_years))
@@ -558,7 +556,7 @@ with tab2:
         fig = go.Figure()
     
         for country in selected_countries:
-            row = df[(df['Entity'] == country) & (df['Year'] == selected_year)]
+            row = df1[(df1['Entity'] == country) & (df1['Year'] == selected_year)]
             if not row.empty:
                 labels = [
                 "przy urodzeniu", "10 lat", "25 lat", "45 lat", "65 lat", "80 lat"
