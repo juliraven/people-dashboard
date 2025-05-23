@@ -63,8 +63,8 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-# ustawienia strony streamlit
-st.set_page_config(page_title="Analiza danych", layout="wide")
+
+st.title("Analiza danych")
 
 # tworzenie zakładek w aplikacji
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
