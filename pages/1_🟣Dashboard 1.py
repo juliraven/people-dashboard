@@ -68,7 +68,7 @@ import matplotlib.pyplot as plt
 import pycountry
 import numpy as np
 
-st.set_page_config(page_title="Dashboard 1", layout="wide")
+st.set_page_config(page_title="Dashboard", layout="wide")
 
 @st.cache_data
 def load_data():
