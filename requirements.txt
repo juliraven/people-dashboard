@@ -12,3 +12,4 @@ openpyxl
 altair
 Pillow
 pycountry
+streamlit_echarts
