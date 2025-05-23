@@ -1,6 +1,6 @@
+import streamlit as st
 from streamlit_echarts import st_echarts
 
-# Nazwy przyczyn (w kolejności tak jak dane)
 causes = [
     "Meningitis", "Dementia", "Parkinson's disease", "Nutritional deficiencies", "Malaria",
     "Drowning", "Homicide", "Maternal disorders", "HIV/AIDS", "Drug use disorders",
@@ -11,29 +11,26 @@ causes = [
     "Digestive diseases", "Fire", "Acute hepatitis", "Measles", "COVID-19"
 ]
 
-# Dane liczbowe (po usunięciu przecinków i zamianie na int)
 raw_data = "213,962 1,952,677 388,194 222,274 748,131 274,230 397,410 191,152 718,079 137,278 1,162,796 19,414,854 2,183,001 1,831,535 158,469 746,379 9,427 1,165,398 36,024 9,888,413 96,489 1,656,635 1,527,639 56,209 1,195,697 4,414,182 2,516,332 117,406 71,846 56,049 7,887,554"
 numbers = [int(x.replace(',', '')) for x in raw_data.split()]
-
 total_deaths = sum(numbers)
-
-# Oblicz procenty
 percentages = [n / total_deaths for n in numbers]
 
-# Pokaż każdy wykres liquidFill z procentem w pętli (np. w Streamlit)
-for cause, pct in zip(causes, percentages):
-    option = {
-        "title": {
-            "text": cause,
-            "left": "center"
-        },
-        "series": [{
-            "type": "liquidFill",
-            "data": [pct],
-            "label": {
-                "formatter": f"{pct*100:.2f}%",
-                "fontSize": 20
+for i in range(0, len(causes), 4):
+    cols = st.columns(4)  # tworzymy 4 kolumny
+    for j, col in enumerate(cols):
+        idx = i + j
+        if idx < len(causes):
+            cause = causes[idx]
+            pct = percentages[idx]
+            option = {
+                "title": {"text": cause, "left": "center"},
+                "series": [{
+                    "type": "liquidFill",
+                    "data": [pct],
+                    "label": {"formatter": f"{pct*100:.2f}%", "fontSize": 20}
+                }]
             }
-        }]
-    }
-    st_echarts(option, height=250)
+            with col:
+                st_echarts(option, height=250)
+
