@@ -66,6 +66,17 @@ import plotly.graph_objects as go
 import altair as alt
 import base64
 
+st.markdown(
+    """
+    <style>
+    .stTabs [data-baseweb="tab-list"] {
+        justify-content: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 tab1, tab2, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Schemat kodu"])
 
 with tab1:
@@ -596,8 +607,9 @@ with tab3:
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        with st.expander('Ogólny schemat kodu tworzącego dashboard:', expanded=False):
-            st.markdown(
+        st.markdown("<h1 style='text-align: center;'>📊 Ludność świata na przestrzeni lat</h1>", unsafe_allow_html=True)
+        st.markdown(' ')
+        st.markdown(
     '''
     <p>
     Na samym początku zwykle umieszcza się importy niezbędnych bibliotek i wczytuje się plik w posatci ramki danych:
@@ -606,7 +618,7 @@ with tab3:
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -615,9 +627,9 @@ import plotly.express as px
 df1 = pd.read_excel('plik.xlsx')
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
@@ -626,13 +638,13 @@ df1 = pd.read_excel('plik.xlsx')
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 st.title("Dashboard")
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
@@ -641,13 +653,13 @@ st.title("Dashboard")
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 col1, col2, col3 = st.columns([2, 2, 2])
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
@@ -656,14 +668,14 @@ col1, col2, col3 = st.columns([2, 2, 2])
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 with col1:
     st.plotly_chart(fig)
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
@@ -672,15 +684,15 @@ with col1:
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 years_available = sorted(df1["Year"].unique())
 selected_year = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
 df_map = df1[df1["Year"] == selected_year].copy()
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
@@ -689,15 +701,15 @@ df_map = df1[df1["Year"] == selected_year].copy()
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 min_rok = df1['Year'].min()
 max_rok = df1['Year'].max()
 zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizacje. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
@@ -706,14 +718,14 @@ zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_r
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 with st.container():
     st.dataframe(df1)
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Można zmieniać styl tych kafelków tworząc wcześniej odpowiedni kod HTML modyfikujący ich wygląd, który umieszcza się w <code>st.markdown()</code>, może on wyglądać np. tak:
@@ -722,7 +734,7 @@ with st.container():
     unsafe_allow_html=True
 )
 
-            code = '''
+        code = '''
 st.markdown(
     """
     <style>
@@ -742,16 +754,16 @@ st.markdown(
 )
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Aby zastosować wybrany przez nas styl do wybranego kafelka, należy użyć poleceń:
     </p>
     ''', unsafe_allow_html=True)
             
-            code = '''
+        code = '''
 styled_container = st.container()
 st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 
@@ -760,9 +772,9 @@ with styled_container:
     st.dataframe(d1)
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
-            st.markdown(
+        st.markdown(
     '''
     <p>
     Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanych w ramach tworzenia dashboardu danych:
@@ -771,10 +783,10 @@ with styled_container:
     unsafe_allow_html=True
 )
 
-            code ='''
+        code ='''
 with st.expander('Żródła danych:', expanded=False):
     st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
 '''
 
-            st.code(code, language='python')
+        st.code(code, language='python')
 
