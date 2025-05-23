@@ -469,7 +469,7 @@ with styled_container:
         st.markdown(
     '''
     <p>
-    Na samym początku zwykle umieszcza się importy niezbędnych bibliotek, np.:
+    Na samym początku zwykle umieszcza się importy niezbędnych bibliotek i wczytuje się plik w posatci ramki danych:
     </p>
     ''',
     unsafe_allow_html=True
@@ -480,6 +480,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.express as px
+
+df1 = pd.read_excel('plik.xlsx')
 '''
 
         st.code(code, language='python')
