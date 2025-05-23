@@ -545,62 +545,45 @@ with tab2:
 
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
-    all_countries = df1['Entity'].unique()
+    category_columns = [
+    "Period life expectancy at birth - 0",
+    "Period life expectancy - 10",
+    "Period life expectancy - 25",
+    "Period life expectancy - 45",
+    "Period life expectancy - 65",
+    "Period life expectancy - 80"
+]
 
-    col1, col2, col3 = st.columns([2,2,2])
+# Mapa nazw do czytelnych etykiet
+    category_labels = {
+    "Period life expectancy at birth - 0": "Przy urodzeniu",
+    "Period life expectancy - 10": "W wieku 10 lat",
+    "Period life expectancy - 25": "W wieku 25 lat",
+    "Period life expectancy - 45": "W wieku 45 lat",
+    "Period life expectancy - 65": "W wieku 65 lat",
+    "Period life expectancy - 80": "W wieku 80 lat",
+}
 
-    with col1:
-        selected_countries = st.multiselect(
-    "Wybierz od 1 do 5 krajów:", 
-    options=all_countries,
-    default=[all_countries[0]],
-    max_selections=5
+# Wybór kraju i kategorii
+    selected_country = st.selectbox("Wybierz kraj", sorted(df1["Entity"].unique()))
+    selected_category = st.selectbox("Wybierz kategorię life expectancy", category_columns, format_func=lambda x: category_labels[x])
+
+# Filtrowanie danych
+    filtered_df = df1[df1["Entity"] == selected_country]
+
+# Przygotowanie danych do wykresu
+    fig = px.line_polar(
+    filtered_df,
+    r=filtered_df[selected_category],
+    theta=filtered_df["Year"].astype(str),
+    line_close=False,
+    title=f"{category_labels[selected_category]} w latach dla {selected_country}",
 )
 
-    available_years = df1['Year'].unique()
+    fig.update_traces(fill='toself')
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True)))
 
-    with col3:
-        selected_year = st.selectbox("Wybierz rok", sorted(available_years))
-
-    if len(selected_countries) == 0:
-        st.warning("Wybierz przynajmniej jeden kraj.")
-    else:
-        fig = go.Figure()
-    
-        for country in selected_countries:
-            row = df1[(df1['Entity'] == country) & (df1['Year'] == selected_year)]
-            if not row.empty:
-                labels = [
-                "przy urodzeniu", "10 lat", "25 lat", "45 lat", "65 lat", "80 lat"
-            ]
-                values = [
-    row["Period life expectancy at birth - 0"],
-    row["Period life expectancy - 10"],
-    row["Period life expectancy - 25"],
-    row["Period life expectancy - 45"],
-    row["Period life expectancy - 65"],
-    row["Period life expectancy - 80"],
-]
-                labels.append(labels[0])
-                values.append(values[0])
-            
-                fig.add_trace(go.Scatterpolar(
-                r=values,
-                theta=labels,
-                fill='toself',
-                name=f'{country}'
-            ))
-            else:
-                st.warning(f"Brak danych dla kraju: {country} w roku {selected_year}")
-    
-        fig.update_layout(
-        polar=dict(
-            radialaxis=dict(visible=True)
-        ),
-        showlegend=True
-    )
-
-        st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig)
        
 
 with tab3:
