@@ -547,7 +547,9 @@ with tab2:
 
     countries = df1["Entity"].unique()
     selected_country = st.selectbox("Wybierz kraj", countries)
-    df_country = df1[df1["Entity"] == selected_country]
+
+    df_country = df1[df1["Entity"] == selected_country].sort_values("Year")
+    df_country = df_country.dropna()  # Usunięcie wierszy z brakami danych
 
 # Przygotuj dane
     age_columns = {
@@ -809,4 +811,6 @@ with st.expander('Żródła danych:', expanded=False):
 '''
 
         st.code(code, language='python')
+
+
 
