@@ -16,13 +16,18 @@ numbers = [int(x.replace(',', '')) for x in raw_data.split()]
 total_deaths = sum(numbers)
 percentages = [n / total_deaths for n in numbers]
 
-for i in range(0, len(causes), 4):
-    cols = st.columns(4)  # tworzymy 4 kolumny
+# Sortowanie malejąco po procentach
+cause_pct_pairs = list(zip(causes, percentages))
+cause_pct_pairs_sorted = sorted(cause_pct_pairs, key=lambda x: x[1], reverse=True)
+causes_sorted, percentages_sorted = zip(*cause_pct_pairs_sorted)
+
+for i in range(0, len(causes_sorted), 4):
+    cols = st.columns(4)
     for j, col in enumerate(cols):
         idx = i + j
-        if idx < len(causes):
-            cause = causes[idx]
-            pct = percentages[idx]
+        if idx < len(causes_sorted):
+            cause = causes_sorted[idx]
+            pct = percentages_sorted[idx]
             option = {
                 "title": {"text": cause, "left": "center"},
                 "series": [{
@@ -33,4 +38,3 @@ for i in range(0, len(causes), 4):
             }
             with col:
                 st_echarts(option, height=250)
-
