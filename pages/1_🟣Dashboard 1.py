@@ -67,8 +67,6 @@ import matplotlib.pyplot as plt
 import pycountry
 import numpy as np
 
-st.title("Dashboard")
-
 @st.cache_data
 def load_data():
     df = pd.read_csv("igrzyska.csv")
