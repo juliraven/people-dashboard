@@ -472,9 +472,9 @@ with tab2:
 
             st.plotly_chart(fig, config={"displayModeBar": False})
 
-    with col2:
+        with col2:
 
-        dff = pd.read_csv('men-women-life.csv.')
+            dff = pd.read_csv('men-women-life.csv.')
        
 
 with tab3:
