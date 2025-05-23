@@ -489,7 +489,7 @@ with tab2:
 
             available_regions = df['World regions'].unique()
             selected_regions = st.multiselect(
-    "Wybierz regiony świata",
+    "Wybierz regiony świata:",
     options=available_regions,
     default=available_regions
 )
@@ -509,10 +509,16 @@ with tab2:
         'World regions': 'Region',
         'Population': 'Population'
     },
-    title='Life Expectancy of Women vs Men by Country and Region'
 )
 
             fig.update_traces(text=filtered_df['Entity'], textposition='top center')
+
+            fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', 
+            plot_bgcolor='rgba(0,0,0,0)',
+            geo=dict(bgcolor='rgba(0,0,0,0)'))
+
+            fig.update_layout(xaxis_title='Oczekiwana długość życia - mężczyźni', yaxis_title='Oczekiwana długość życia - kobiety')
 
             styled_container = st.container()
             st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
