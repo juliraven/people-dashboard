@@ -468,7 +468,7 @@ with styled_container:
     with st.expander('Ogólny schemat kodu tworzącego dashboard:', expanded=False):
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     Na samym początku zwykle umieszcza się importy niezbędnych bibliotek, np.:
     </p>
     ''',
