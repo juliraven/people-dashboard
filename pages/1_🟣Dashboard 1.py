@@ -59,7 +59,6 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -68,7 +67,7 @@ import matplotlib.pyplot as plt
 import pycountry
 import numpy as np
 
-st.set_page_config(page_title="Dashboard", layout="wide")
+st.title("Dashboard")
 
 @st.cache_data
 def load_data():
