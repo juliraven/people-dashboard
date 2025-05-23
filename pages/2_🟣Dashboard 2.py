@@ -522,6 +522,7 @@ with tab2:
             geo=dict(bgcolor='rgba(0,0,0,0)'))
 
     fig.update_layout(xaxis_title='Oczekiwana długość życia - mężczyźni', yaxis_title='Oczekiwana długość życia - kobiety')
+    fig.update_traces(textposition='top center')
 
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
