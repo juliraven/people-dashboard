@@ -604,7 +604,6 @@ with tab2:
         }
     }]
 }
-Tło jest 
                     with col:
                         st_echarts(option, height=250)
 
