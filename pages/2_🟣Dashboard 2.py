@@ -634,7 +634,7 @@ with styled_container:
         st.markdown(
     '''
     <p>
-    Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanaych w ramach tworzenia dashboardu danych:
+    Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanych w ramach tworzenia dashboardu danych:
     </p>
     ''',
     unsafe_allow_html=True
