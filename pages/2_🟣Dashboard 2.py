@@ -575,61 +575,68 @@ with tab2:
     "#08306b",
 ]
 
+    first_year = years[0]
+    df_first = df_country[df_country["Year"] <= first_year]
+
     fig = go.Figure()
 
     for i, (age_label, col_name) in enumerate(age_columns.items()):
         fig.add_trace(go.Scatter(
-        x=[], y=[], mode="lines", name=f"{age_label}",
+        x=df_first["Year"],
+        y=df_first[col_name],
+        mode="lines",
+        name=age_label,
         line=dict(color=violet_colors[i])
     ))
 
-    for i, year in enumerate(years):
-        frame_data = []
-        df_year = df_country[df_country["Year"] <= year]  # Przenieś poza pętlę wieku, bo jest taka sama dla wszystkich
-        for j, (age_label, column_name) in enumerate(age_columns.items()):
-            frame_data.append(go.Scatter(
+    frames = []
+    for year in years:
+        df_year = df_country[df_country["Year"] <= year]
+        data = []
+        for j, (age_label, col_name) in enumerate(age_columns.items()):
+            data.append(go.Scatter(
             x=df_year["Year"],
-            y=df_year[column_name],
+            y=df_year[col_name],
             mode="lines",
             line=dict(color=violet_colors[j]),
-            name=f"{age_label}"
+            name=age_label
         ))
-        frames.append(go.Frame(data=frame_data, name=str(year)))
+        frames.append(go.Frame(data=data, name=str(year)))
 
     fig.frames = frames
-    
-    fig.update(frames=frames)
+
     fig.update_layout(
     xaxis_title="Rok",
     yaxis_title="Oczekiwana długość życia",
     updatemenus=[{
         "type": "buttons",
+        "showactive": False,
         "buttons": [{
-            "label": "Start",
+            "label": "Play",
             "method": "animate",
             "args": [None, {
                 "frame": {"duration": 100, "redraw": True},
                 "fromcurrent": True,
-                "transition": {"duration": 0},
+                "transition": {"duration": 0}
             }]
         }],
-        "showactive": False,
         "x": 0.1,
-        "y": -0.1
+        "y": -0.1,
+        "xanchor": "right",
+        "yanchor": "top"
     }],
+    sliders=[{
+        "active": 0,
+        "currentvalue": {"prefix": "Rok: ", "visible": True},
+        "pad": {"b": 10},
+        "steps": [{
+            "args": [[str(year)], {"frame": {"duration": 100, "redraw": True}, "mode": "immediate"}],
+            "label": str(year),
+            "method": "animate"
+        } for year in years]
+    }]
 )
 
-    fig.update_layout(autosize=True)
-    fig.layout.sliders = [dict(
-    active=0,
-    steps=[dict(method="animate", args=[[str(year)], {
-        "frame": {"duration": 100, "redraw": True},
-        "mode": "immediate"
-    }], label=str(year)) for year in years],
-    transition={"duration": 0},
-    x=0.1,
-    y=-0.15
-)]
 
     fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
