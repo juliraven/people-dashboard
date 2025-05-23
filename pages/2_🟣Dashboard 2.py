@@ -478,10 +478,27 @@ with tab2:
 
             df["Entity"] = df["Entity"].str.replace(" \(UN\)", "", regex=True)
 
-            regions = df['World regions'].dropna().unique()
-            selected_regions = st.multiselect("Select World Regions", options=regions, default=regions)
+            df = df.dropna(subset=[
+    'Life expectancy - female', 
+    'Life expectancy - male', 
+    'Population', 
+    'World regions'
+])
 
-            filtered_df = df[df['World regions'].isin(selected_regions)]
+            available_years = sorted(df['Year'].unique())
+            selected_year = st.selectbox("Wybierz rok", options=available_years, index=len(available_years)-1)
+
+            available_regions = df['World regions'].dropna().unique()
+            selected_regions = st.multiselect(
+    "Wybierz regiony świata",
+    options=available_regions,
+    default=available_regions
+)
+
+            filtered_df = df[
+    (df['World regions'].isin(selected_regions)) &
+    (df['Year'] == selected_year)
+]
 
             fig = px.scatter(
     filtered_df,
