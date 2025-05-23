@@ -595,11 +595,11 @@ with tab2:
             }
         },
         "backgroundStyle": {
-            "color": "rgba(255, 182, 193, 0.3)"  # jasne różowe tło (pastelowe)
+            "color": "rgba(255, 182, 193, 1)"  # jasne różowe tło (pastelowe)
         },
         "label": {
             "formatter": f"{pct*100:.2f}%",
-            "fontSize": 18,
+            "fontSize": 14,
             "color": "#f48fb1"  # biały napis
         }
     }]
