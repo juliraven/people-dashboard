@@ -562,13 +562,13 @@ with tab2:
                 "przy urodzeniu", "10 lat", "25 lat", "45 lat", "65 lat", "80 lat"
             ]
                 values = [
-                row["Period life expectancy at birth - 0"].values[0],
-                row["Period life expectancy - 10"].values[0],
-                row["Period life expectancy - 25"].values[0],
-                row["Period life expectancy - 45"].values[0],
-                row["Period life expectancy - 65"].values[0],
-                row["Period life expectancy - 80"].values[0],
-            ]
+    row["Period life expectancy at birth - 0"],
+    row["Period life expectancy - 10"],
+    row["Period life expectancy - 25"],
+    row["Period life expectancy - 45"],
+    row["Period life expectancy - 65"],
+    row["Period life expectancy - 80"],
+]
                 labels.append(labels[0])
                 values.append(values[0])
             
