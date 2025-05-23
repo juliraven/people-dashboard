@@ -486,9 +486,12 @@ with tab2:
 ])
 
     df = df[df['Year'] == 2023]
-
     available_regions = df['World regions'].unique()
-    selected_regions = st.multiselect(
+
+    col1, col2, col3 = st.columns([2,2,2])
+
+    with col2:
+        selected_regions = st.multiselect(
     "Wybierz regiony świata:",
     options=available_regions,
     default=available_regions
@@ -524,7 +527,7 @@ with tab2:
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni</h3>",unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni w 2023</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig, config={"displayModeBar": False})
        
 
