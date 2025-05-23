@@ -426,7 +426,7 @@ with tab2:
             custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", 
                      "rgb(51, 157, 152)", "rgb(129, 8, 8)", "rgb(160, 0, 240)"]
 
-        cs = [
+            cs = [
     '#636EFA',  # niebieski
     '#EF553B',  # czerwony/pomarańczowy
     '#00CC96',  # zielony
