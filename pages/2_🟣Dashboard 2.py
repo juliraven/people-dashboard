@@ -585,6 +585,57 @@ with st.container():
         st.markdown(
     '''
     <p>
+    Można zmieniać styl tych kafelków tworząc wcześniej odpowiedni kod HTML modyfikujący ich wygląd, który umieszcza się w <code>st.markdown()</code>, może on wyglądać np. tak:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+         code = '''
+st.markdown(
+    """
+    <style>
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
+        background: linear-gradient(
+            135deg,
+            135deg,
+            rgba(135, 206, 250, 0.4),
+            rgba(123, 104, 238, 0.4)
+        );
+        padding: 24px;
+        transition: all 0.3s ease-in-out;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Aby zastosować wybrany przez nas styl do wybranego kafelka, należy użyć poleceń:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+styled_container = st.container()
+st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+with styled_container:
+    st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+    st.dataframe(d1)
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
     Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanaych w ramach tworzenia dashboardu danych:
     </p>
     ''',
@@ -597,5 +648,4 @@ with st.expander('Żródła danych:', expanded=False):
 '''
 
         st.code(code, language='python')
-
 
