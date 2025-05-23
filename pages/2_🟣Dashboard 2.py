@@ -618,10 +618,7 @@ st.markdown(
     <p>
     Aby zastosować wybrany przez nas styl do wybranego kafelka, należy użyć poleceń:
     </p>
-    ''',
-    unsafe_allow_html=True
-)
-
+    '''
         code = '''
 styled_container = st.container()
 st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
