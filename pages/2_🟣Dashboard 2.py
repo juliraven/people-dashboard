@@ -578,25 +578,29 @@ with tab2:
                     cause = causes_sorted[idx]
                     pct = percentages_sorted[idx]
                     option = {
-    "title": {"text": cause, "left": "center"},
+    "title": {"text": cause, "left": "center", "textStyle": {"color": "#B444FB"}},  # jasny fioletowy
     "series": [{
         "type": "liquidFill",
         "data": [pct],
-        "color": ["#ff4c4c"],  # kolor płynu, np. czerwony
+        "color": [
+            "rgba(180, 68, 251, 0.8)",  # główna fala, jasny fioletowy
+            "rgba(105, 30, 210, 0.6)",  # druga fala, ciemniejszy fiolet
+            "rgba(45, 3, 94, 0.4)"      # trzecia fala, bardzo ciemny fiolet
+        ],
         "outline": {
             "borderDistance": 5,
             "itemStyle": {
-                "borderColor": "#ff0000",
+                "borderColor": "rgba(180, 68, 251, 0.7)",  # jasny fioletowy obrys
                 "borderWidth": 3
             }
         },
         "backgroundStyle": {
-            "color": "#ffeeee"  # kolor tła wykresu (zbiornika)
+            "color": "rgba(32, 33, 37, 0.8)"  # ciemne tło zbiornika (prawie czarne)
         },
         "label": {
             "formatter": f"{pct*100:.2f}%",
-            "fontSize": 20,
-            "color": "#a00"  # kolor tekstu
+            "fontSize": 18,
+            "color": "rgba(180, 68, 251, 0.9)"  # jasny fioletowy napis
         }
     }]
 }
