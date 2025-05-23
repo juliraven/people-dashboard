@@ -66,7 +66,7 @@ import plotly.graph_objects as go
 import altair as alt
 import base64
 
-tab1, tab2, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Edukacja"])
+tab1, tab2, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Schemat kodu"])
 
 with tab1:
 
@@ -475,6 +475,38 @@ with tab2:
         with col2:
 
             dff = pd.read_table('men-women-life.txt')
+
+            dff["Entity"] = dff["Entity"].str.replace(" \(UN\)", "", regex=True)
+
+            regions = df['World regions'].dropna().unique()
+            selected_regions = st.multiselect("Select World Regions", options=regions, default=regions)
+
+            filtered_df = df[df['World regions'].isin(selected_regions)]
+
+            fig = px.scatter(
+    filtered_df,
+    x='Life expectancy - male',
+    y='Life expectancy - female',
+    color='World regions',
+    size='Population',
+    hover_name='Entity',
+    labels={
+        'Life expectancy - male': 'Life Expectancy Men',
+        'Life expectancy - female': 'Life Expectancy Women',
+        'World regions': 'Region',
+        'Population': 'Population'
+    },
+    title='Life Expectancy of Women vs Men by Country and Region'
+)
+
+        fig.update_traces(text=filtered_df['Entity'], textposition='top center')
+
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni</h3>",unsafe_allow_html=True)
+            st.plotly_chart(fig)
        
 
 with tab3:
