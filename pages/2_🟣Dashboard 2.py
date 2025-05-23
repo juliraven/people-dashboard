@@ -461,6 +461,10 @@ with styled_container:
     st.plotly_chart(fig, config={"displayModeBar": False})
        
 
-
+styled_container = st.container()
+st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+with styled_container:
+    st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+    with st.expander('Ogólny schemat kodu tworzącego dashboard:', expanded=False):
 
 
