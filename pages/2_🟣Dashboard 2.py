@@ -559,10 +559,10 @@ with tab2:
             row = df[(df['Entity'] == country) & (df['Year'] == selected_year)]
             if not row.empty:
                 labels = [
-                "0 lat", "10 lat", "25 lat", "45 lat", "65 lat", "80 lat"
+                "przy urodzeniu", "10 lat", "25 lat", "45 lat", "65 lat", "80 lat"
             ]
                 values = [
-                row["Period life expectancy - 0"].values[0],
+                row["Period life expectancy at birth - 0"].values[0],
                 row["Period life expectancy - 10"].values[0],
                 row["Period life expectancy - 25"].values[0],
                 row["Period life expectancy - 45"].values[0],
