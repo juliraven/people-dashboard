@@ -546,14 +546,16 @@ with tab2:
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
     countries = df1["Entity"].unique()
-    selected_country = st.selectbox("Wybierz kraj", countries)
+
+    col1, col2, col3 = st.columns([2,2,2])
+    with col2:
+        selected_country = st.selectbox("Wybierz kraj lub region", countries, index=countries.index('World'))
 
     df_country = df1[df1["Entity"] == selected_country].sort_values("Year")
-    df_country = df_country.dropna()  # Usunięcie wierszy z brakami danych
+    df_country = df_country.dropna()  
 
-# Przygotuj dane
     age_columns = {
-    "0": "Period life expectancy at birth - 0",
+    "przy urodzeniu": "Period life expectancy at birth - 0",
     "10": "Period life expectancy - 10",
     "25": "Period life expectancy - 25",
     "45": "Period life expectancy - 45",
@@ -564,14 +566,11 @@ with tab2:
     frames = []
     years = sorted(df_country["Year"].unique())
 
-# Dodaj puste figury do animacji
     fig = go.Figure()
 
-# Dodaj ślad dla każdej grupy wiekowej
     for age_label, column_name in age_columns.items():
         fig.add_trace(go.Scatter(x=[], y=[], mode="lines", name=f"Wiek {age_label}"))
 
-# Utwórz klatki animacji
     for i, year in enumerate(years):
         frame_data = []
         for j, (age_label, column_name) in enumerate(age_columns.items()):
@@ -584,10 +583,8 @@ with tab2:
         ))
         frames.append(go.Frame(data=frame_data, name=str(year)))
 
-# Ustawienia animacji
     fig.update(frames=frames)
     fig.update_layout(
-    title=f"Oczekiwana długość życia w {selected_country}",
     xaxis_title="Rok",
     yaxis_title="Oczekiwana długość życia",
     updatemenus=[{
@@ -607,7 +604,6 @@ with tab2:
     }],
 )
 
-# Automatyczne uruchomienie animacji po załadowaniu
     fig.update_layout(autosize=True)
     fig.layout.sliders = [dict(
     active=0,
@@ -620,8 +616,17 @@ with tab2:
     y=-0.15
 )]
 
-# Wyświetl w Streamlit
-    st.plotly_chart(fig, use_container_width=True)
+    fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', 
+            plot_bgcolor='rgba(0,0,0,0)',
+            geo=dict(bgcolor='rgba(0,0,0,0)'))
+    
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni w 2023</h3>",unsafe_allow_html=True)
+        st.plotly_chart(fig, config={"displayModeBar": False})
        
 
 with tab3:
