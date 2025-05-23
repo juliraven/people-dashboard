@@ -546,38 +546,79 @@ with tab2:
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
     countries = df1["Entity"].unique()
-
     selected_country = st.selectbox("Wybierz kraj", countries)
-
     df_country = df1[df1["Entity"] == selected_country]
 
-    df_long = df_country.melt(
-    id_vars=["Entity", "Code", "Year"],
-    value_vars=[
-        "Period life expectancy at birth - 0",
-        "Period life expectancy - 10",
-        "Period life expectancy - 25",
-        "Period life expectancy - 45",
-        "Period life expectancy - 65",
-        "Period life expectancy - 80"
-    ],
-    var_name="Age Group",
-    value_name="Life Expectancy"
+# Przygotuj dane
+    age_columns = {
+    "0": "Period life expectancy at birth - 0",
+    "10": "Period life expectancy - 10",
+    "25": "Period life expectancy - 25",
+    "45": "Period life expectancy - 45",
+    "65": "Period life expectancy - 65",
+    "80": "Period life expectancy - 80",
+}
+
+    frames = []
+    years = sorted(df_country["Year"].unique())
+
+# Dodaj puste figury do animacji
+    fig = go.Figure()
+
+# Dodaj ślad dla każdej grupy wiekowej
+    for age_label, column_name in age_columns.items():
+        fig.add_trace(go.Scatter(x=[], y=[], mode="lines", name=f"Wiek {age_label}"))
+
+# Utwórz klatki animacji
+    for i, year in enumerate(years):
+        frame_data = []
+        for j, (age_label, column_name) in enumerate(age_columns.items()):
+            df_year = df_country[df_country["Year"] <= year]
+            frame_data.append(go.Scatter(
+            x=df_year["Year"],
+            y=df_year[column_name],
+            mode="lines",
+            name=f"Wiek {age_label}"
+        ))
+        frames.append(go.Frame(data=frame_data, name=str(year)))
+
+# Ustawienia animacji
+    fig.update(frames=frames)
+    fig.update_layout(
+    title=f"Oczekiwana długość życia w {selected_country}",
+    xaxis_title="Rok",
+    yaxis_title="Oczekiwana długość życia",
+    updatemenus=[{
+        "type": "buttons",
+        "buttons": [{
+            "label": "Start",
+            "method": "animate",
+            "args": [None, {
+                "frame": {"duration": 100, "redraw": True},
+                "fromcurrent": True,
+                "transition": {"duration": 0},
+            }]
+        }],
+        "showactive": False,
+        "x": 0.1,
+        "y": -0.1
+    }],
 )
 
-    df_long["Age Group"] = df_long["Age Group"].str.extract(r'(\d+)').astype(int)
+# Automatyczne uruchomienie animacji po załadowaniu
+    fig.update_layout(autosize=True)
+    fig.layout.sliders = [dict(
+    active=0,
+    steps=[dict(method="animate", args=[[str(year)], {
+        "frame": {"duration": 100, "redraw": True},
+        "mode": "immediate"
+    }], label=str(year)) for year in years],
+    transition={"duration": 0},
+    x=0.1,
+    y=-0.15
+)]
 
-    fig = px.line(
-    df_long,
-    x="Year",
-    y="Life Expectancy",
-    color="Age Group",
-    labels={"Age Group": "Wiek", "Life Expectancy": "Oczekiwana długość życia"},
-    title=f"Oczekiwana długość życia w {selected_country} według wieku",
-    animation_frame="Year",
-    range_y=[df_long["Life Expectancy"].min() - 5, df_long["Life Expectancy"].max() + 5],
-)
-
+# Wyświetl w Streamlit
     st.plotly_chart(fig, use_container_width=True)
        
 
