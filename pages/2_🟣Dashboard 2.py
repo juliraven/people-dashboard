@@ -486,7 +486,7 @@ import plotly.express as px
 
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
     </p>
     ''',
@@ -501,7 +501,7 @@ st.title("Dashboard")
 
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
     </p>
     ''',
@@ -516,7 +516,7 @@ col1, col2, col3 = st.columns([2, 2, 2])
 
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
     </p>
     ''',
@@ -532,7 +532,7 @@ with col1:
 
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
     </p>
     ''',
@@ -549,7 +549,7 @@ df_map = df1[df1["Year"] == selected_year].copy()
 
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
     </p>
     ''',
@@ -566,7 +566,7 @@ zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_r
 
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizację. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
     </p>
     ''',
@@ -582,7 +582,7 @@ with st.container():
 
         st.markdown(
     '''
-    <p style='font-size: 20px; font-weight: normal;'>
+    <p>
     Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanaych w ramach tworzenia dashboardu danych:
     </p>
     ''',
