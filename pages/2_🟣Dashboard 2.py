@@ -556,15 +556,24 @@ with tab2:
 
     age_columns = {
     "przy urodzeniu": "Period life expectancy at birth - 0",
-    "10": "Period life expectancy - 10",
-    "25": "Period life expectancy - 25",
-    "45": "Period life expectancy - 45",
-    "65": "Period life expectancy - 65",
-    "80": "Period life expectancy - 80",
+    "10 lat": "Period life expectancy - 10",
+    "25 lat": "Period life expectancy - 25",
+    "45 lat": "Period life expectancy - 45",
+    "65 lat": "Period life expectancy - 65",
+    "80 lat": "Period life expectancy - 80",
 }
 
     frames = []
     years = sorted(df_country["Year"].unique())
+
+    violet_colors = [
+    "#a6cee3",
+    "#1f78b4",
+    "#6baed6",
+    "#3182bd",
+    "#08519c",
+    "#08306b",
+]
 
     fig = go.Figure()
 
@@ -579,7 +588,8 @@ with tab2:
             x=df_year["Year"],
             y=df_year[column_name],
             mode="lines",
-            name=f"Wiek {age_label}"
+            name=f"{age_label}",
+            line=dict(color=violet_colors[i])
         ))
         frames.append(go.Frame(data=frame_data, name=str(year)))
 
@@ -625,7 +635,7 @@ with tab2:
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni w 2023</h3>",unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Długość życia osób w różnym wieku</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig, config={"displayModeBar": False})
        
 
