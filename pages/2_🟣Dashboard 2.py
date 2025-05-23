@@ -474,7 +474,7 @@ with tab2:
 
         with col2:
 
-            dff = pd.read_csv('men-women-life.csv.')
+            dff = pd.read_table('men-women-life.txt')
        
 
 with tab3:
