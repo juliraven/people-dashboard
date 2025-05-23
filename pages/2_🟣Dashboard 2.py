@@ -405,7 +405,7 @@ with tab2:
         df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
 
         obszary = de["Entity"].unique().tolist()
-        wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, index=obszary.index('World'))
+        wybrane_obszary = st.selectbox('Wybierz obszar:', obszary, index=obszary.index('World'))
         wybrane_obszary = [wybrane_obszary]
 
         min_rok = de['Year'].min()
@@ -471,6 +471,10 @@ with tab2:
         font=dict(size=14)))
 
             st.plotly_chart(fig, config={"displayModeBar": False})
+
+    with col2:
+
+        dff = pd.read_csv('men-women-life.csv.')
        
 
 with tab3:
