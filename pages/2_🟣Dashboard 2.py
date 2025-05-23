@@ -488,7 +488,7 @@ with tab2:
             df = df[df['Year'] == 2023]
 
             available_regions = df['World regions'].unique()
-selected_regions = st.multiselect(
+            selected_regions = st.multiselect(
     "Wybierz regiony świata",
     options=available_regions,
     default=available_regions
