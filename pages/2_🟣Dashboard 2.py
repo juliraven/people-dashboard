@@ -466,5 +466,134 @@ st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
 with styled_container:
     st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
     with st.expander('Ogólny schemat kodu tworzącego dashboard:', expanded=False):
-        st.markdown('<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>', unsafe_allow_html=True)
+        st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    Na samym początku zwykle umieszcza się importy niezbędnych bibliotek, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code = '''
+import streamlit as st
+import numpy as np
+import pandas as pd
+import plotly.express as px
+'''
+
+    st.code(code, language='python')
+
+    st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code = '''
+st.title("Dashboard")
+'''
+
+    st.code(code, language='python')
+
+    st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code = '''
+col1, col2, col3 = st.columns([2, 2, 2])
+'''
+
+    st.code(code, language='python')
+
+    st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code = '''
+with col1:
+    st.plotly_chart(fig)
+'''
+
+    st.code(code, language='python')
+
+    st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code = '''
+years_available = sorted(df1["Year"].unique())
+selected_year = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
+df_map = df1[df1["Year"] == selected_year].copy()
+'''
+
+    st.code(code, language='python')
+
+    st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code = '''
+min_rok = df1['Year'].min()
+max_rok = df1['Year'].max()
+zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+'''
+
+    st.code(code, language='python')
+
+    st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizację. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code = '''
+with st.container():
+    st.dataframe(df1)
+'''
+
+    st.code(code, language='python')
+
+    st.markdown(
+    '''
+    <p style='font-size: 20px; font-weight: normal;'>
+    Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanaych w ramach tworzenia dashboardu danych:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+    code ='''
+with st.expander('Żródła danych:', expanded=False):
+    st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
+'''
+
+    st.code(code, language='python')
+
 
