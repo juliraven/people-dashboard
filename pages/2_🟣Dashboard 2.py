@@ -390,32 +390,32 @@ with tab2:
 
     col1, col2= st.columns([2, 2])
 
-    de = pd.read_csv('deaths-by-age-group.csv')
+    with col1:
 
-    de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
+        de = pd.read_csv('deaths-by-age-group.csv')
 
-    df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
+        de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
+
+        df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
                   var_name="Age_group", value_name="Deaths")
 
 
-    age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
+        age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
              "40-49", "30-39", "20-29", "10-19", "0-9"]
-    df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
+        df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
 
-    obszary = de["Entity"].unique().tolist()
-    wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, index=obszary.index('World'))
-    wybrane_obszary = [wybrane_obszary]
+        obszary = de["Entity"].unique().tolist()
+        wybrane_obszary = st.selectbox('Wybierz obszary:', obszary, index=obszary.index('World'))
+        wybrane_obszary = [wybrane_obszary]
 
-    min_rok = de['Year'].min()
-    max_rok = de['Year'].max()
-    zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+        min_rok = de['Year'].min()
+        max_rok = de['Year'].max()
+        zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 
-    df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
-    df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
+        df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
+        df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
-    df_filtered = df_filtered.sort_values("Age_group")
-
-    with col1:
+        df_filtered = df_filtered.sort_values("Age_group")
 
         styled_container = st.container()
         st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
