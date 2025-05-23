@@ -388,45 +388,47 @@ with tab2:
     st.markdown("<h1 style='text-align: center;'>📊 Długość życia i śmiertelność</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
-    col1, col2= st.columns([2, 2])
+    de = pd.read_csv('deaths-by-age-group.csv')
 
-    with col1:
+    de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
 
-        de = pd.read_csv('deaths-by-age-group.csv')
-
-        de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
-
-        df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
+    df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
                   var_name="Age_group", value_name="Deaths")
 
 
-        age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
+    age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
              "40-49", "30-39", "20-29", "10-19", "0-9"]
-        df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
+    df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
 
-        obszary = de["Entity"].unique().tolist()
+    obszary = de["Entity"].unique().tolist()
+
+    col1, col2, col3, col4, col5, col6 = st.columns[2,2,2,2,2,2]
+
+    with col2:
         wybrane_obszary = st.selectbox('Wybierz obszar:', obszary, index=obszary.index('World'))
         wybrane_obszary = [wybrane_obszary]
 
-        min_rok = de['Year'].min()
-        max_rok = de['Year'].max()
+    min_rok = de['Year'].min()
+    max_rok = de['Year'].max()
+
+    with col5:
         zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
 
-        df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
-        df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
+    df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
+    df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
 
-        df_filtered = df_filtered.sort_values("Age_group")
+    df_filtered = df_filtered.sort_values("Age_group")
 
-        styled_container = st.container()
-        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-        with styled_container:
-            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-            st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
 
-            custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", 
+        custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", 
                      "rgb(51, 157, 152)", "rgb(129, 8, 8)", "rgb(160, 0, 240)"]
 
-            cs = [
+        cs = [
     '#636EFA',  # niebieski
     '#EF553B',  # czerwony/pomarańczowy
     '#00CC96',  # zielony
@@ -438,28 +440,28 @@ with tab2:
     '#FF97FF',  # różowy (jasny)
     '#FECB52', "rgb(152, 19, 119)"]
 
-            fig = px.area(df_filtered, 
+        fig = px.area(df_filtered, 
               x="Year", 
               y="Deaths", 
               color="Age_group",
               category_orders={"Age_group": age_order},
               color_discrete_sequence=cs)
 
-            fig.update_layout(title_text="")
+        fig.update_layout(title_text="")
 
-            fig.update_layout(
+        fig.update_layout(
         xaxis=dict(
         categoryorder='array', 
         categoryarray=age_order))
     
-            fig.update_layout(
+        fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
             plot_bgcolor='rgba(0,0,0,0)',
             geo=dict(bgcolor='rgba(0,0,0,0)'))
 
-            fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
+        fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
 
-            fig.update_layout(margin=dict(l=0, r=0, t=30, b=120), 
+        fig.update_layout(margin=dict(l=0, r=0, t=30, b=120), 
         height=500,
         legend=dict(
         title=dict(text="Grupa wiekowa<br>", font=dict(size=16)),
@@ -470,33 +472,31 @@ with tab2:
         x=0.4,                        
         font=dict(size=14)))
 
-            st.plotly_chart(fig, config={"displayModeBar": False})
+        st.plotly_chart(fig, config={"displayModeBar": False})
 
-        with col2:
+    df = pd.read_csv('men-women-life.txt')
 
-            df = pd.read_csv('men-women-life.txt')
+    df["Entity"] = df["Entity"].str.replace(" \(UN\)", "", regex=True)
 
-            df["Entity"] = df["Entity"].str.replace(" \(UN\)", "", regex=True)
-
-            df = df.dropna(subset=[
+    df = df.dropna(subset=[
     'Life expectancy - female', 
     'Life expectancy - male', 
     'Population', 
     'World regions'
 ])
 
-            df = df[df['Year'] == 2023]
+    df = df[df['Year'] == 2023]
 
-            available_regions = df['World regions'].unique()
-            selected_regions = st.multiselect(
+    available_regions = df['World regions'].unique()
+    selected_regions = st.multiselect(
     "Wybierz regiony świata:",
     options=available_regions,
     default=available_regions
 )
 
-            filtered_df = df[df['World regions'].isin(selected_regions)]
+    filtered_df = df[df['World regions'].isin(selected_regions)]
 
-            fig = px.scatter(
+    fig = px.scatter(
     filtered_df,
     x='Life expectancy - male',
     y='Life expectancy - female',
@@ -511,21 +511,21 @@ with tab2:
     },
 )
 
-            fig.update_traces(text=filtered_df['Entity'], textposition='top center')
+    fig.update_traces(text=filtered_df['Entity'], textposition='top center')
 
-            fig.update_layout(
+    fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
             plot_bgcolor='rgba(0,0,0,0)',
             geo=dict(bgcolor='rgba(0,0,0,0)'))
 
-            fig.update_layout(xaxis_title='Oczekiwana długość życia - mężczyźni', yaxis_title='Oczekiwana długość życia - kobiety')
+    fig.update_layout(xaxis_title='Oczekiwana długość życia - mężczyźni', yaxis_title='Oczekiwana długość życia - kobiety')
 
-            styled_container = st.container()
-            st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-            with styled_container:
-                st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-                st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni</h3>",unsafe_allow_html=True)
-                st.plotly_chart(fig, config={"displayModeBar": False})
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni</h3>",unsafe_allow_html=True)
+        st.plotly_chart(fig, config={"displayModeBar": False})
        
 
 with tab3:
