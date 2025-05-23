@@ -590,7 +590,7 @@ with tab2:
         "outline": {
             "borderDistance": 5,
             "itemStyle": {
-                "borderColor": "rgba(244, 143, 177, 0.9)",  # obrys jasny róż
+                "borderColor": "rgba(255, 20, 147, 1)",  # obrys jasny róż
                 "borderWidth": 3
             }
         },
@@ -599,7 +599,7 @@ with tab2:
         },
         "label": {
             "formatter": f"{pct*100:.2f}%",
-            "fontSize": 20,
+            "fontSize": 30,
             "color": "rgba(0, 0, 0, 1)"  # biały napis
         }
     }]
