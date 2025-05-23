@@ -600,7 +600,7 @@ with tab2:
         },
         "label": {
             "formatter": f"{pct*100:.2f}%",
-            "fontSize": 30,
+            "fontSize": 35,
             "color": "rgba(0, 0, 0, 1)"  # biały napis
         }
     }]
