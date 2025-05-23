@@ -11,3 +11,4 @@ streamlit-extras
 openpyxl
 altair
 Pillow
+pycountry
