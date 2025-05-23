@@ -582,6 +582,7 @@ with tab2:
     "series": [{
         "type": "liquidFill",
         "data": [pct, pct*0.9, pct*0.8],
+        "radius": "90%",
         "color": [
             "rgba(255, 20, 147, 0.9)",   # Deep Pink, mocny różowy
             "rgba(255, 105, 180, 0.7)",  # Hot Pink, jasny różowy
