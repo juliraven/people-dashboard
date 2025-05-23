@@ -545,7 +545,7 @@ with tab2:
 
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
-    countries = df1["Entity"].unique()
+    countries = list(df1["Entity"].unique())
 
     col1, col2, col3 = st.columns([2,2,2])
     with col2:
