@@ -530,6 +530,66 @@ with tab2:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni w 2023</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig, config={"displayModeBar": False})
+
+    df1 = pd.read_csv('life-expectancy-at-different-age-group.csv')
+
+    all_countries = df['Entity'].unique()
+
+    col1, col2, col3 = st.columns([2,2,2])
+
+    with col1:
+        selected_countries = st.multiselect(
+    "Wybierz od 1 do 5 krajów:", 
+    options=all_countries,
+    default=[all_countries[0]],
+    max_selections=5
+)
+
+    available_years = df['Year'].unique()
+
+    with col3:
+        selected_year = st.selectbox("Wybierz rok", sorted(available_years))
+
+    if len(selected_countries) == 0:
+        st.warning("Wybierz przynajmniej jeden kraj.")
+    else:
+        fig = go.Figure()
+    
+        for country in selected_countries:
+            row = df[(df['Entity'] == country) & (df['Year'] == selected_year)]
+            if not row.empty:
+                labels = [
+                "0 lat", "10 lat", "25 lat", "45 lat", "65 lat", "80 lat"
+            ]
+                values = [
+                row["Period life expectancy - 0"].values[0],
+                row["Period life expectancy - 10"].values[0],
+                row["Period life expectancy - 25"].values[0],
+                row["Period life expectancy - 45"].values[0],
+                row["Period life expectancy - 65"].values[0],
+                row["Period life expectancy - 80"].values[0],
+            ]
+            # Zamknięcie kształtu radaru
+                labels.append(labels[0])
+                values.append(values[0])
+            
+                fig.add_trace(go.Scatterpolar(
+                r=values,
+                theta=labels,
+                fill='toself',
+                name=f'{country}'
+            ))
+            else:
+                st.warning(f"Brak danych dla kraju: {country} w roku {selected_year}")
+    
+        fig.update_layout(
+        polar=dict(
+            radialaxis=dict(visible=True)
+        ),
+        showlegend=True
+    )
+
+        st.plotly_chart(fig, use_container_width=True)
        
 
 with tab3:
