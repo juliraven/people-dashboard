@@ -66,7 +66,7 @@ import plotly.graph_objects as go
 import altair as alt
 import base64
 
-tab1, tab2, tab3 = st.tabs(["Ludność", "Śmiertelność", "Edukacja"])
+tab1, tab2, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Edukacja"])
 
 with tab1:
 
@@ -385,7 +385,7 @@ with tab1:
 
 with tab2:
 
-    st.markdown("<h1 style='text-align: center;'>📊 Śmiertelność na przestrzeni lat</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>📊 Długość życia i śmiertelność</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
     de = pd.read_csv('deaths-by-age-group.csv')
