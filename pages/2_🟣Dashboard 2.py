@@ -70,7 +70,7 @@ tab1, tab2, tab3 = st.tabs(["Ludność", "Śmiertelność", "Edukacja"])
 
 with tab1:
 
-    st.markdown("<h1 style='text-align: center; margin-top: -50px;'>📊 Ludność świata na przestrzeni lat</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; margin-top: -30px;'>📊 Ludność świata na przestrzeni lat</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
     col1, col2, col3 = st.columns([2, 2, 2])
