@@ -545,45 +545,40 @@ with tab2:
 
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
-    category_columns = [
-    "Period life expectancy at birth - 0",
-    "Period life expectancy - 10",
-    "Period life expectancy - 25",
-    "Period life expectancy - 45",
-    "Period life expectancy - 65",
-    "Period life expectancy - 80"
-]
+    countries = df1["Entity"].unique()
 
-# Mapa nazw do czytelnych etykiet
-    category_labels = {
-    "Period life expectancy at birth - 0": "Przy urodzeniu",
-    "Period life expectancy - 10": "W wieku 10 lat",
-    "Period life expectancy - 25": "W wieku 25 lat",
-    "Period life expectancy - 45": "W wieku 45 lat",
-    "Period life expectancy - 65": "W wieku 65 lat",
-    "Period life expectancy - 80": "W wieku 80 lat",
-}
+    selected_country = st.selectbox("Wybierz kraj", countries)
 
-# Wybór kraju i kategorii
-    selected_country = st.selectbox("Wybierz kraj", sorted(df1["Entity"].unique()))
-    selected_category = st.selectbox("Wybierz kategorię life expectancy", category_columns, format_func=lambda x: category_labels[x])
+    df_country = df1[df1["Entity"] == selected_country]
 
-# Filtrowanie danych
-    filtered_df = df1[df1["Entity"] == selected_country]
-
-# Przygotowanie danych do wykresu
-    fig = px.line_polar(
-    filtered_df,
-    r=filtered_df[selected_category],
-    theta=filtered_df["Year"].astype(str),
-    line_close=False,
-    title=f"{category_labels[selected_category]} w latach dla {selected_country}",
+    df_long = df_country.melt(
+    id_vars=["Entity", "Code", "Year"],
+    value_vars=[
+        "Period life expectancy at birth - 0",
+        "Period life expectancy - 10",
+        "Period life expectancy - 25",
+        "Period life expectancy - 45",
+        "Period life expectancy - 65",
+        "Period life expectancy - 80"
+    ],
+    var_name="Age Group",
+    value_name="Life Expectancy"
 )
 
-    fig.update_traces(fill='toself')
-    fig.update_layout(polar=dict(radialaxis=dict(visible=True)))
+    df_long["Age Group"] = df_long["Age Group"].str.extract(r'(\d+)').astype(int)
 
-    st.plotly_chart(fig)
+    fig = px.line(
+    df_long,
+    x="Year",
+    y="Life Expectancy",
+    color="Age Group",
+    labels={"Age Group": "Wiek", "Life Expectancy": "Oczekiwana długość życia"},
+    title=f"Oczekiwana długość życia w {selected_country} według wieku",
+    animation_frame="Year",
+    range_y=[df_long["Life Expectancy"].min() - 5, df_long["Life Expectancy"].max() + 5],
+)
+
+    st.plotly_chart(fig, use_container_width=True)
        
 
 with tab3:
