@@ -577,8 +577,8 @@ with tab2:
 
     fig = go.Figure()
 
-    for age_label, column_name in age_columns.items():
-        fig.add_trace(go.Scatter(x=[], y=[], mode="lines", name=f"Wiek {age_label}"))
+    for i, (age_label, col_name) in enumerate(age_columns.items()):
+        fig.add_trace(go.Scatter(x=[], y=[], mode="lines", name=f"{age_label}"), line=dict(color=violet_colors[i]))
 
     for i, year in enumerate(years):
         frame_data = []
@@ -588,8 +588,7 @@ with tab2:
             x=df_year["Year"],
             y=df_year[column_name],
             mode="lines",
-            name=f"{age_label}",
-            line=dict(color=violet_colors[i])
+            name=f"{age_label}"
         ))
         frames.append(go.Frame(data=frame_data, name=str(year)))
 
