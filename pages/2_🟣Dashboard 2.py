@@ -571,7 +571,7 @@ with tab2:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Przyczyny śmierci w 2021</h3>",unsafe_allow_html=True)
         for i in range(0, len(causes_sorted), 4):
-            cols = st.columns(4)
+            cols = st.columns(8)
             for j, col in enumerate(cols):
                 idx = i + j
                 if idx < len(causes_sorted):
