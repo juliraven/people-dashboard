@@ -402,7 +402,7 @@ with tab2:
 
     obszary = de["Entity"].unique().tolist()
 
-    col1, col2, col3, col4, col5, col6 = st.columns[2,2,2,2,2,2]
+    col1, col2, col3, col4, col5, col6 = st.columns([2,2,2,2,2,2])
 
     with col2:
         wybrane_obszary = st.selectbox('Wybierz obszar:', obszary, index=obszary.index('World'))
