@@ -29,12 +29,27 @@ for i in range(0, len(causes_sorted), 4):
             cause = causes_sorted[idx]
             pct = percentages_sorted[idx]
             option = {
-                "title": {"text": cause, "left": "center"},
-                "series": [{
-                    "type": "liquidFill",
-                    "data": [pct],
-                    "label": {"formatter": f"{pct*100:.2f}%", "fontSize": 20}
-                }]
+    "title": {"text": cause, "left": "center"},
+    "series": [{
+        "type": "liquidFill",
+        "data": [pct],
+        "color": ["#ff4c4c"],  # kolor płynu, np. czerwony
+        "outline": {
+            "borderDistance": 5,
+            "itemStyle": {
+                "borderColor": "#ff0000",
+                "borderWidth": 3
             }
+        },
+        "backgroundStyle": {
+            "color": "#ffeeee"  # kolor tła wykresu (zbiornika)
+        },
+        "label": {
+            "formatter": f"{pct*100:.2f}%",
+            "fontSize": 20,
+            "color": "#a00"  # kolor tekstu
+        }
+    }]
+}
             with col:
                 st_echarts(option, height=250)
