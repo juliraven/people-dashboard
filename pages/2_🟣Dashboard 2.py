@@ -581,7 +581,7 @@ with tab2:
     "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 12, "color": "#fff"}},  # jasny róż
     "series": [{
         "type": "liquidFill",
-        "data": [pct],
+        "data": [pct, pct*0.9, pct*0.8],
         "color": [
             "rgba(216, 27, 96, 0.8)",    # intensywny róż (fala 1)
             "rgba(244, 143, 177, 0.6)",  # jasny róż (fala 2)
