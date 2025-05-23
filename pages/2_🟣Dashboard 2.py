@@ -578,7 +578,10 @@ with tab2:
     fig = go.Figure()
 
     for i, (age_label, col_name) in enumerate(age_columns.items()):
-        fig.add_trace(go.Scatter(x=[], y=[], mode="lines", name=f"{age_label}", line=dict(color=violet_colors[i])))
+        fig.add_trace(go.Scatter(
+        x=[], y=[], mode="lines", name=f"{age_label}",
+        line=dict(color=violet_colors[i])
+    ))
 
     for i, year in enumerate(years):
         frame_data = []
@@ -593,7 +596,8 @@ with tab2:
         ))
         frames.append(go.Frame(data=frame_data, name=str(year)))
 
-
+    fig.frames = frames
+    
     fig.update(frames=frames)
     fig.update_layout(
     xaxis_title="Rok",
