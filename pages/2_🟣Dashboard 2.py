@@ -384,6 +384,10 @@ with tab1:
 
 
 with tab2:
+
+    st.markdown("<h1 style='text-align: center;'>📊 Śmiertelność na przestrzeni lat</h1>", unsafe_allow_html=True)
+    st.markdown(' ')
+
     de = pd.read_csv('deaths-by-age-group.csv')
 
     de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
