@@ -485,8 +485,7 @@ with tab2:
     'World regions'
 ])
 
-            available_years = sorted(df['Year'].unique())
-            selected_year = st.selectbox("Wybierz rok", options=available_years, index=len(available_years)-1)
+            df = df[df['Year'] == 2023]
 
             available_regions = df['World regions'].dropna().unique()
             selected_regions = st.multiselect(
