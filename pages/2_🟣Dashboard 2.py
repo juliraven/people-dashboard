@@ -545,15 +545,20 @@ with tab2:
 
     df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
+# Lista krajów/regionów
     countries = list(df1["Entity"].unique())
 
-    col1, col2, col3 = st.columns([2,2,2])
-    with col2:
-        selected_country = st.selectbox("Wybierz kraj lub region", countries, index=countries.index('World'))
+# Wybór kraju przez użytkownika (domyślnie World jeśli jest)
+    default_country = "World" if "World" in countries else countries[0]
+    selected_country = st.selectbox("Wybierz kraj lub region", countries, index=countries.index(default_country))
 
-    df_country = df1[df1["Entity"] == selected_country].sort_values("Year")
-    df_country = df_country.dropna()  
+# Filtracja i sortowanie danych
+    df_country = df1[df1["Entity"] == selected_country].sort_values("Year").dropna()
 
+# Zamiana Year na int, żeby oś X działała poprawnie
+    df_country["Year"] = df_country["Year"].astype(int)
+
+# Kolumny z wiekiem i odpowiadające nazwy w danych
     age_columns = {
     "przy urodzeniu": "Period life expectancy at birth - 0",
     "10 lat": "Period life expectancy - 10",
@@ -563,9 +568,9 @@ with tab2:
     "80 lat": "Period life expectancy - 80",
 }
 
-    frames = []
     years = sorted(df_country["Year"].unique())
 
+# Kolory dla linii
     violet_colors = [
     "#a6cee3",
     "#1f78b4",
@@ -575,20 +580,19 @@ with tab2:
     "#08306b",
 ]
 
-    first_year = years[0]
-    df_first = df_country[df_country["Year"] <= first_year]
-
+# Inicjalizacja pustego wykresu z pustymi liniami
     fig = go.Figure()
 
     for i, (age_label, col_name) in enumerate(age_columns.items()):
         fig.add_trace(go.Scatter(
-        x=df_first["Year"],
-        y=df_first[col_name],
+        x=[],
+        y=[],
         mode="lines",
         name=age_label,
         line=dict(color=violet_colors[i])
     ))
 
+# Tworzenie klatek animacji
     frames = []
     for year in years:
         df_year = df_country[df_country["Year"] <= year]
@@ -605,9 +609,11 @@ with tab2:
 
     fig.frames = frames
 
+# Ustawienia osi i layoutu, slider i przycisk Play
     fig.update_layout(
     xaxis_title="Rok",
     yaxis_title="Oczekiwana długość życia",
+    xaxis=dict(tickmode="linear", dtick=5),
     updatemenus=[{
         "type": "buttons",
         "showactive": False,
@@ -617,7 +623,8 @@ with tab2:
             "args": [None, {
                 "frame": {"duration": 100, "redraw": True},
                 "fromcurrent": True,
-                "transition": {"duration": 0}
+                "transition": {"duration": 0},
+                "mode": "immediate"
             }]
         }],
         "x": 0.1,
@@ -634,21 +641,14 @@ with tab2:
             "label": str(year),
             "method": "animate"
         } for year in years]
-    }]
+    }],
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
 )
 
-
-    fig.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)', 
-            plot_bgcolor='rgba(0,0,0,0)',
-            geo=dict(bgcolor='rgba(0,0,0,0)'))
-    
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Długość życia osób w różnym wieku</h3>",unsafe_allow_html=True)
-        st.plotly_chart(fig, config={"displayModeBar": False})
+# Wyświetlenie tytułu i wykresu w Streamlit
+    st.markdown(f"<h3 style='text-align: center; color: black;'>Długość życia osób w różnym wieku</h3>", unsafe_allow_html=True)
+    st.plotly_chart(fig, config={"displayModeBar": False})
        
 
 with tab3:
