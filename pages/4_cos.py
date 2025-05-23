@@ -4,8 +4,14 @@ import streamlit as st
 
 df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
-countries = list(df1["Entity"].unique())
-default_country = "World" if "World" in countries else countries[0]
+excluded_regions = [
+    "World", "Europe", "Asia", "Africa", "North America", "South America", 
+    "Oceania", "European Union", "High income", "Low income", "Upper middle income", "Lower middle income"
+]
+
+countries = [c for c in df1["Entity"].unique() if c not in excluded_regions]
+
+default_country = "Japan" if "Japan" in countries else countries[0]
 selected_country = st.selectbox("Wybierz kraj lub region", countries, index=countries.index(default_country))
 
 df_country = df1[df1["Entity"] == selected_country].sort_values("Year").dropna()
