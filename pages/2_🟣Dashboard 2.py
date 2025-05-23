@@ -487,17 +487,14 @@ with tab2:
 
             df = df[df['Year'] == 2023]
 
-            available_regions = df['World regions'].dropna().unique()
-            selected_regions = st.multiselect(
+            available_regions = df['World regions'].unique()
+selected_regions = st.multiselect(
     "Wybierz regiony świata",
     options=available_regions,
     default=available_regions
 )
 
-            filtered_df = df[
-    (df['World regions'].isin(selected_regions)) &
-    (df['Year'] == selected_year)
-]
+            filtered_df = df[df['World regions'].isin(selected_regions)]
 
             fig = px.scatter(
     filtered_df,
