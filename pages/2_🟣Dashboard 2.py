@@ -531,7 +531,7 @@ with tab2:
         st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni w 2023</h3>",unsafe_allow_html=True)
         st.plotly_chart(fig, config={"displayModeBar": False})
 
-    df1 = pd.read_csv('life-expectancy-at-different-age-group.csv')
+    df1 = pd.read_csv('life-expectancy-at-different-ages.csv')
 
     all_countries = df['Entity'].unique()
 
