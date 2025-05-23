@@ -578,32 +578,33 @@ with tab2:
                     cause = causes_sorted[idx]
                     pct = percentages_sorted[idx]
                     option = {
-    "title": {"text": cause, "left": "center", "textStyle": {"color": "#B444FB"}},  # jasny fioletowy
+    "title": {"text": cause, "left": "center", "textStyle": {"color": "#f48fb1"}},  # jasny róż
     "series": [{
         "type": "liquidFill",
         "data": [pct],
         "color": [
-            "rgba(180, 68, 251, 0.8)",  # główna fala, jasny fioletowy
-            "rgba(105, 30, 210, 0.6)",  # druga fala, ciemniejszy fiolet
-            "rgba(45, 3, 94, 0.4)"      # trzecia fala, bardzo ciemny fiolet
+            "rgba(216, 27, 96, 0.8)",    # intensywny róż (fala 1)
+            "rgba(244, 143, 177, 0.6)",  # jasny róż (fala 2)
+            "rgba(255, 182, 193, 0.4)"   # bardzo jasny róż (fala 3)
         ],
         "outline": {
             "borderDistance": 5,
             "itemStyle": {
-                "borderColor": "rgba(180, 68, 251, 0.7)",  # jasny fioletowy obrys
+                "borderColor": "rgba(244, 143, 177, 0.9)",  # obrys jasny róż
                 "borderWidth": 3
             }
         },
         "backgroundStyle": {
-            "color": "rgba(32, 33, 37, 0.8)"  # ciemne tło zbiornika (prawie czarne)
+            "color": "rgba(255, 182, 193, 0.3)"  # jasne różowe tło (pastelowe)
         },
         "label": {
             "formatter": f"{pct*100:.2f}%",
-            "fontSize": 18,
-            "color": "rgba(180, 68, 251, 0.9)"  # jasny fioletowy napis
+            "fontSize": 20,
+            "color": "#fff"  # biały napis
         }
     }]
 }
+Tło jest 
                     with col:
                         st_echarts(option, height=250)
 
