@@ -860,13 +860,8 @@ with tab3:
             f.write(html)
 
 
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
-        st.components.v1.html(html, height=750, scrolling=True)
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
+    st.components.v1.html(html, height=750, scrolling=True)
 
 
 
@@ -974,6 +969,7 @@ with tab3:
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
     fig.update_layout(width=700, height=700, margin=dict(t=10, b=10, l=10, r=10))
 
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Wykres hierarchiczny postaci Marvela</h3>",unsafe_allow_html=True)
     st.plotly_chart(fig, use_container_width=True)
 
 
