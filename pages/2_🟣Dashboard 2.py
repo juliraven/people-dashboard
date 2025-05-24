@@ -790,9 +790,6 @@ with styled_container:
     unsafe_allow_html=True
 )
 
-
-with tab21:
-    st.title("cos")
         code ='''
 with st.expander('Żródła danych:', expanded=False):
     st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
@@ -802,3 +799,5 @@ with st.expander('Żródła danych:', expanded=False):
 
 
 
+with tab21:
+    st.title("cos")
