@@ -797,7 +797,7 @@ with tab3:
 
 
     net = Network(
-    height="600px",
+    height="900px",
     width="100%",
     bgcolor="#111111",      
     font_color="white",      
