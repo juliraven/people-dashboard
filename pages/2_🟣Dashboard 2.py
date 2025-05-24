@@ -670,12 +670,6 @@ with tab21:
         node["symbolSize"] = 40
 
     option = {
-    "title": {
-        "text": "DC Characters - Heroes and Villains",
-        "subtext": "Grouped and colored by faction",
-        "top": "bottom",
-        "left": "right",
-    },
     "tooltip": {},
     "legend": [{"data": [cat["name"] for cat in categories]}],
     "categories": categories,
