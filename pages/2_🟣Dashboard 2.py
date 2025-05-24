@@ -839,8 +839,10 @@ with tab3:
             html = f.read()
 
 
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(html)
+        html = html.replace(
+    '<body>',
+    '<body style="background-color:#111111; margin:0; padding:0;">'
+)
 
 
     styled_container = st.container()
