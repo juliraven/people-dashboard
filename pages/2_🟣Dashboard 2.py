@@ -619,7 +619,7 @@ with tab3:
     st.markdown("<h1 style='text-align: center;'>📊 Marvel Comics</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
-    col1,  col2 = st.columns([2,2])
+    col1,  col2 = st.columns([2,3])
 
     data = {
  "name": "marvel",
