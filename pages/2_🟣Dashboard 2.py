@@ -856,7 +856,16 @@ with tab3:
         with open(path, "w", encoding="utf-8") as f:
             f.write(html)
 
-    st.components.v1.html(html, height=750, scrolling=True)
+
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(
+        f"<h4 style='text-align: left; color: white;'>Graf postaci z Uniwersum Marvela</h4>",
+        unsafe_allow_html=True)
+        st.components.v1.html(html, height=750, scrolling=True)
 
 
 
