@@ -797,7 +797,7 @@ with tab3:
 
 
     net = Network(
-    height="700px",
+    height="600px",
     width="100%",
     bgcolor="rgba(0,0,0,0)",      
     font_color="white",      
@@ -843,7 +843,7 @@ with tab3:
         """
         <style>
             body, #mynetwork {
-                background-color: #111827 !important;
+                background-color: transparent !important;
             }
             /* Przesuń etykiety 20px w górę i wycentruj */
             .vis-network .vis-label {
