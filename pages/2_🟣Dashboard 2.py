@@ -797,7 +797,7 @@ with tab3:
 
 
     net = Network(
-    height="700px",
+    height="600px",
     width="100%",
     bgcolor="#111111",      
     font_color="white",      
@@ -848,7 +848,7 @@ with tab3:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
-        st.components.v1.html(html, height=700, scrolling=False)
+        st.components.v1.html(html, height=600, scrolling=False)
 
 
 
