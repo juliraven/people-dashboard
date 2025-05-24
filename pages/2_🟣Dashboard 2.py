@@ -611,7 +611,7 @@ with tab2:
                         st_echarts(option, height=250)
 
 
-with tab4:
+with tab3:
     from pyvis.network import Network
     import tempfile
     import re
