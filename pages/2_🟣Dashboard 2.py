@@ -615,48 +615,95 @@ with tab21:
     st.markdown("<h1 style='text-align: center;'>Postacie z DC Comics</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
-    with open("dc-characters.json", "r") as f:
-        graph = json.load(f)
+    nodes = [
+    # Heroes - Justice League
+    {"id": "Superman", "name": "Superman", "category": 0, "group": "Justice League"},
+    {"id": "Batman", "name": "Batman", "category": 0, "group": "Justice League"},
+    {"id": "Wonder Woman", "name": "Wonder Woman", "category": 0, "group": "Justice League"},
+    {"id": "The Flash", "name": "The Flash", "category": 0, "group": "Justice League"},
+    {"id": "Aquaman", "name": "Aquaman", "category": 0, "group": "Justice League"},
+    {"id": "Cyborg", "name": "Cyborg", "category": 0, "group": "Justice League"},
+    # Heroes - Teen Titans
+    {"id": "Robin", "name": "Robin", "category": 0, "group": "Teen Titans"},
+    {"id": "Starfire", "name": "Starfire", "category": 0, "group": "Teen Titans"},
+    {"id": "Raven", "name": "Raven", "category": 0, "group": "Teen Titans"},
+    {"id": "Beast Boy", "name": "Beast Boy", "category": 0, "group": "Teen Titans"},
+    {"id": "Cyborg2", "name": "Cyborg", "category": 0, "group": "Teen Titans"},  # drugi Cyborg
+    
+    # Villains - Gotham
+    {"id": "Joker", "name": "Joker", "category": 1, "group": "Gotham"},
+    {"id": "Harley Quinn", "name": "Harley Quinn", "category": 1, "group": "Gotham"},
+    {"id": "The Penguin", "name": "The Penguin", "category": 1, "group": "Gotham"},
+    {"id": "Two-Face", "name": "Two-Face", "category": 1, "group": "Gotham"},
+    {"id": "Scarecrow", "name": "Scarecrow", "category": 1, "group": "Gotham"},
+    
+    # Villains - Other
+    {"id": "Lex Luthor", "name": "Lex Luthor", "category": 1, "group": "Other"},
+    {"id": "Darkseid", "name": "Darkseid", "category": 1, "group": "Other"},
+    {"id": "Deathstroke", "name": "Deathstroke", "category": 1, "group": "Other"},
+    {"id": "Black Manta", "name": "Black Manta", "category": 1, "group": "Other"},
+]
 
-    for node in graph["nodes"]:
-        node.pop("symbol", None)  # usuwamy obrazek
-        node["symbolSize"] = 40   # rozmiar koła
+# Linki łączące postaci w ramach grup
+    links = []
+
+# Tworzymy linki między postaciami w ramach ich grup (pełne powiązanie w grupie)
+    from collections import defaultdict
+
+    groups = defaultdict(list)
+    for node in nodes:
+        groups[node["group"]].append(node["id"])
+
+    for group, members in groups.items():
+    # Połącz każdy z każdym w grupie
+        for i in range(len(members)):
+            for j in range(i+1, len(members)):
+                links.append({"source": members[i], "target": members[j]})
+
+    categories = [
+    {"name": "Heroes", "itemStyle": {"color": "#1f77b4"}},   # niebieski
+    {"name": "Villains", "itemStyle": {"color": "#d62728"}}, # czerwony
+]
+
+# Ustawienia węzłów (rozmiar i etykieta)
+    for node in nodes:
+        node["symbolSize"] = 40
 
     option = {
     "title": {
-        "text": "DC Characters Network",
-        "subtext": "Force-directed graph with labels",
+        "text": "DC Characters - Heroes and Villains",
+        "subtext": "Grouped and colored by faction",
         "top": "bottom",
         "left": "right",
     },
     "tooltip": {},
-    "legend": [{"data": [cat["name"] for cat in graph["categories"]]}],
+    "legend": [{"data": [cat["name"] for cat in categories]}],
+    "categories": categories,
     "series": [
         {
             "name": "DC Characters",
             "type": "graph",
             "layout": "force",
-            "data": graph["nodes"],
-            "links": graph["links"],
-            "categories": graph["categories"],
+            "data": nodes,
+            "links": links,
+            "categories": categories,
             "roam": True,
             "label": {
                 "show": True,
                 "position": "inside",
-                "formatter": "{b}",  # wyświetla nazwę
+                "formatter": "{b}",
                 "fontSize": 12,
-                "color": "#000",
+                "color": "#fff",
                 "fontWeight": "bold",
             },
             "draggable": True,
-            "force": {"repulsion": 200, "edgeLength": 100},
+            "force": {"repulsion": 300, "edgeLength": 100},
             "itemStyle": {
                 "borderColor": "#555",
                 "borderWidth": 1,
                 "shadowBlur": 10,
                 "shadowColor": "rgba(0, 0, 0, 0.3)",
-                "color": "#c23531"
-            }
+            },
         }
     ],
 }
