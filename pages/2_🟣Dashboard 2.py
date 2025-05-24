@@ -79,7 +79,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab1, tab2, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Schemat kodu"])
+tab1, tab2, tab3, tab4 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Marvel", "Schemat kodu"])
 
 with tab1:
 
@@ -611,8 +611,364 @@ with tab2:
                         st_echarts(option, height=250)
 
 
+with tab4:
+    from pyvis.network import Network
+    import tempfile
+    import re
 
-with tab3:
+    data = {
+ "name": "marvel",
+ "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+ "children": [
+  {
+   "name": "Heroes",
+   "children": [
+    {
+      "hero": "Spider-Man",
+      "name": "Peter Benjamin Parker",
+      "link": "http://marvel.com/characters/54/spider-man",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png",
+      "size": 40000
+    },
+    {
+      "hero": "Capitain Marvel",
+      "name": "Carol Danvers",
+      "link": "http://marvel.com/characters/9/captain_marvel",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_captainmarvel.png",
+      "size": 40000
+    },
+    {
+      "hero": "Hulk",
+      "name": "Robert Bruce Banner",
+      "link": "http://marvel.com/characters/25/hulk",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_hulk.png",
+      "size": 40000
+    },
+    {
+      "hero": "Black Widow",
+      "name": "Natalia 'Natasha' Alianovna Romanova",
+      "link": "http://marvel.com/characters/6/black_widow",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_blackwidow.png",
+      "size": 40000
+    },
+    {
+      "hero": "Daredevil",
+      "name": "Matthew Michael Murdock",
+      "link": "http://marvel.com/characters/11/daredevil",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_daredevil.png",
+      "size": 40000
+    },
+    {
+      "hero": "Wolverine",
+      "name": "James Howlett",
+      "link": "http://marvel.com/characters/66/wolverine",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_wolverine.png",
+      "size": 40000
+    },
+    {
+      "hero": "Captain America",
+      "name": "Steven Rogers",
+      "link": "http://marvel.com/characters/8/captain_america",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_captainamerica.png",
+      "size": 40000
+    },
+    {
+      "hero": "Iron Man",
+      "name": "Anthony Edward 'Tony' Stark",
+      "link": "http://marvel.com/characters/29/iron_man",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_ironman.png",
+      "size": 40000
+    },
+    {
+      "hero": "Thor",
+      "name": "Thor Odinson",
+      "link": "http://marvel.com/characters/60/thor",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_thor.png",
+      "size": 40000
+    }
+  ]
+  },
+  {
+   "name": "Villains",
+   "children": [
+    {
+      "hero": "Dr. Doom",
+      "name": "Victor von Doom",
+      "link": "http://marvel.com/characters/13/dr_doom",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/drdoom.png",
+      "size": 40000
+    },
+    {
+      "hero": "Mystique",
+      "name": "Unrevealed",
+      "link": "http://marvel.com/characters/1552/mystique",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/mystique.png",
+      "size": 40000
+    },
+    {
+      "hero": "Red Skull",
+      "name": "Johann Shmidt",
+      "link": "http://marvel.com/characters/1901/red_skull",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/redskull.png",
+      "size": 40000
+    },
+    {
+      "hero": "Ronan",
+      "name": "Ronan",
+      "link": "http://marvel.com/characters/49/ronan",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/ronan.png",
+      "size": 40000
+    },
+    {
+      "hero": "Magneto",
+      "name": "Max Eisenhardt",
+      "link": "http://marvel.com/characters/35/magneto",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/magneto.png",
+      "size": 40000
+    },
+    {
+      "hero": "Thanos",
+      "name": "Thanos",
+      "link": "http://marvel.com/characters/58/thanos",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/thanos.png",
+      "size": 40000
+    },
+    {
+      "hero": "Black Cat",
+      "name": "Felicia Hardy",
+      "link": "http://marvel.com/characters/271/black_cat",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/blackcat.png",
+      "size": 40000
+    }
+   ]
+  },
+  {
+   "name": "Teams",
+   "children": [
+    {
+      "hero": "Avengers",
+      "name": "",
+      "link": "http://marvel.com/characters/68/avengers",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/avengers.png",
+      "size": 40000
+    },
+    {
+      "hero": "Guardians of the Galaxy",
+      "name": "",
+      "link": "http://marvel.com/characters/70/guardians_of_the_galaxy",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/gofgalaxy.png",
+      "size": 40000
+    },
+    {
+      "hero": "Defenders",
+      "name": "",
+      "link": "http://marvel.com/characters/534/defenders",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/defenders.png",
+      "size": 40000
+    },
+    {
+      "hero": "X-Men",
+      "name": "",
+      "link": "http://marvel.com/characters/71/x-men",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/xmen.png",
+      "size": 40000
+    },
+    {
+      "hero": "Fantastic Four",
+      "name": "",
+      "link": "http://marvel.com/characters/69/fantastic_four",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/fantasticfour.png",
+      "size": 40000
+    },
+    {
+      "hero": "Inhumans",
+      "name": "",
+      "link": "http://marvel.com/characters/1040/inhumans",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/inhumans.png",
+      "size": 40000
+    }
+   ]
+  }
+ ]
+}
+
+
+    net = Network(
+    height="700px",
+    width="100%",
+    bgcolor="#111827",      
+    font_color="white",      
+    directed=True
+)
+
+
+    net.add_node(
+    "Marvel Universe", 
+    label="Marvel Universe", 
+    shape="circularImage",       # zmienione z "image" na "circularImage"
+    image="http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+    size=50, color='red'
+)
+
+
+    for category in data["children"]:
+        cat_id = category["name"]
+        net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
+        net.add_edge("Marvel Universe", cat_id, color='red')
+
+        for hero in category["children"]:
+            hero_id = hero["hero"]
+            net.add_node(
+            hero_id,
+            label=hero_id,
+            title=f"<a href='{hero['link']}' target='_blank'>{hero['name']}</a>",
+            shape="circularImage",
+            image=hero["img"],
+            size=30, color='red'
+        )
+            net.add_edge(cat_id, hero_id, color='red')
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
+        path = tmp_file.name
+        net.write_html(path)
+
+        with open(path, "r", encoding="utf-8") as f:
+            html = f.read()
+
+        html = html.replace(
+        "</head>",
+        """
+        <style>
+            body, #mynetwork {
+                background-color: #111827 !important;
+            }
+            /* Przesuń etykiety 20px w górę i wycentruj */
+            .vis-network .vis-label {
+                transform: translateY(-20px);
+                text-align: center;
+                font-weight: bold;
+            }
+        </style>
+        </head>
+        """
+    )
+
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(html)
+
+    st.components.v1.html(html, height=750, scrolling=True)
+
+
+
+    import circlify
+    import plotly.graph_objects as go
+
+    data = {
+    "name": "marvel",
+    "children": [
+        {
+            "name": "Heroes",
+            "children": [
+                {"hero": "Spider-Man", "size": 40000},
+                {"hero": "Captain Marvel", "size": 40000},
+                {"hero": "Hulk", "size": 40000},
+                {"hero": "Black Widow", "size": 40000},
+                {"hero": "Daredevil", "size": 40000},
+                {"hero": "Wolverine", "size": 40000},
+                {"hero": "Captain America", "size": 40000},
+                {"hero": "Iron Man", "size": 40000},
+                {"hero": "Thor", "size": 40000},
+            ],
+        },
+        {
+            "name": "Villains",
+            "children": [
+                {"hero": "Dr. Doom", "size": 40000},
+                {"hero": "Thanos", "size": 40000},
+                {"hero": "Mystique", "size": 40000},
+                {"hero": "Red Skull", "size": 40000},
+                {"hero": "Ronan", "size": 40000},
+                {"hero": "Magneto", "size": 40000},
+                {"hero": "Black Cat", "size": 40000},
+            ],
+        },
+    ],
+}
+
+    categories = []
+    for cat in data["children"]:
+        size_cat = sum(hero["size"] for hero in cat["children"])
+        categories.append({"id": cat["name"], "datum": size_cat, "children": cat["children"]})
+
+    category_circles = circlify.circlify(
+    [ {"id": c["id"], "datum": c["datum"]} for c in categories ],
+    show_enclosure=False,
+    target_enclosure=circlify.Circle(x=0, y=0, r=1),
+)
+
+    fig = go.Figure()
+
+    fig.add_shape(
+    type="circle",
+    xref="x", yref="y",
+    x0=-1, y0=-1, x1=1, y1=1,
+    line_color="red",
+    fillcolor="rgba(255, 0, 0, 0.1)",
+    line_width=3,
+)
+    fig.add_annotation(x=0, y=0.8, text="Marvel", showarrow=False, font=dict(size=18, color="red"))
+
+    for cat_circle in category_circles:
+        if cat_circle.ex is None:
+            continue
+        cx, cy, cr = cat_circle.x, cat_circle.y, cat_circle.r
+        cat_name = cat_circle.ex["id"]
+        fig.add_shape(
+        type="circle",
+        xref="x", yref="y",
+        x0=cx - cr, y0=cy - cr, x1=cx + cr, y1=cy + cr,
+        line_color="orange",
+        fillcolor="#ffcc99",
+        opacity=0.5,
+        line_width=2,
+    )
+        fig.add_annotation(x=cx, y=cy + cr + 0.03, text=cat_name, showarrow=False, font=dict(size=14))
+
+        heroes = next(c for c in categories if c["id"] == cat_name)["children"]
+
+        heroes_data = [{"id": h["hero"], "datum": h["size"]} for h in heroes]
+
+        hero_circles = circlify.circlify(
+        heroes_data,
+        show_enclosure=False,
+        target_enclosure=circlify.Circle(x=cx, y=cy, r=cr)
+    )
+
+        for hero_circle in hero_circles:
+            if hero_circle.ex is None:
+                continue
+            hx, hy, hr = hero_circle.x, hero_circle.y, hero_circle.r
+            hero_name = hero_circle.ex["id"]
+            fig.add_shape(
+            type="circle",
+            xref="x", yref="y",
+            x0=hx - hr, y0=hy - hr, x1=hx + hr, y1=hy + hr,
+            line_color="blue",
+            fillcolor="lightblue",
+            opacity=0.6,
+            line_width=1,
+        )
+            fig.add_annotation(x=hx, y=hy, text=hero_name, showarrow=False, font=dict(size=10))
+
+    fig.update_xaxes(showgrid=False, zeroline=False, visible=False, range=[-1.1, 1.1])
+    fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
+    fig.update_layout(width=700, height=700, margin=dict(t=10, b=10, l=10, r=10))
+
+    st.plotly_chart(fig, use_container_width=True)
+
+
+
+with tab4:
     st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
