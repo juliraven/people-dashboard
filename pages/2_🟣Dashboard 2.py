@@ -523,7 +523,7 @@ with tab2:
         'Life expectancy - female': 'Life Expectancy Women',
         'World regions': 'Region',
         'Population': 'Population'
-    },
+    }, size_max=100
 )
 
     fig.update_traces(text=filtered_df['Entity'], textposition='top center')
