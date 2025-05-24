@@ -794,9 +794,7 @@ with styled_container:
 with st.expander('Żródła danych:', expanded=False):
     st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
 '''
-
         st.code(code, language='python')
-
 
 
 with tab21:
