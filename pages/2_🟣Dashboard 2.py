@@ -838,51 +838,18 @@ with tab3:
         with open(path, "r", encoding="utf-8") as f:
             html = f.read()
 
-        html = html.replace(
-    "</head>",
-    """
-    <style>
-        body, #mynetwork {
-            background-color: #111111 !important;
-        }
-        /* Przesuń etykiety 20px w górę i wycentruj */
-        .vis-network .vis-label {
-            transform: translateY(-20px);
-            text-align: center;
-            font-weight: bold;
-        }
-        /* Kontener na tytuł i grafikę */
-        #container {
-            border: 2px solid white;
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-    </style>
-    </head>
-    """
-)
-
-        html = html.replace(
-    "<body>",
-    """
-    <body>
-    <div id="container">Graf Uniwersum Marvela</div>
-    """
-)
-
 
         with open(path, "w", encoding="utf-8") as f:
             f.write(html)
 
 
-    st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
-    st.components.v1.html(html, height=750, scrolling=True)
+    st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
+        st.components.v1.html(html, height=750, scrolling=True)
 
 
 
