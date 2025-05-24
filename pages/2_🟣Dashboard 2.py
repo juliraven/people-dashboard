@@ -963,7 +963,7 @@ with tab3:
             opacity=0.6,
             line_width=1,
         )
-            fig.add_annotation(x=hx, y=hy, text=hero_name, showarrow=False, font=dict(size=10))
+            fig.add_annotation(x=hx, y=hy, text=hero_name, showarrow=False, font=dict(size=10), color='black')
 
     fig.update_xaxes(showgrid=False, zeroline=False, visible=False, range=[-1.1, 1.1])
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
