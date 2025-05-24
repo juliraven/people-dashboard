@@ -619,8 +619,6 @@ with tab3:
     st.markdown("<h1 style='text-align: center;'>📊 Marvel Comics</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
-    col1,  col2 = st.columns([2,3])
-
     data = {
  "name": "marvel",
  "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
@@ -799,7 +797,7 @@ with tab3:
 
 
     net = Network(
-    height="600px",
+    height="700px",
     width="100%",
     bgcolor="#111111",      
     font_color="white",      
@@ -862,10 +860,8 @@ with tab3:
             f.write(html)
 
 
-    with col1:
-
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
-        st.components.v1.html(html, height=750, scrolling=True)
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
+    st.components.v1.html(html, height=750, scrolling=True)
 
 
 
@@ -973,9 +969,8 @@ with tab3:
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
     fig.update_layout(width=1000, height=1000, margin=dict(t=0, b=0, l=10, r=10))
 
-    with col2:
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Wykres hierarchiczny postaci Marvela</h3>",unsafe_allow_html=True)
-        st.plotly_chart(fig, use_container_width=True)
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Wykres hierarchiczny postaci Marvela</h3>",unsafe_allow_html=True)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 
