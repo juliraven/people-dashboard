@@ -789,50 +789,13 @@ with styled_container:
     ''',
     unsafe_allow_html=True
 )
-
-        code ='''
+        
+        code = '''
 with st.expander('Żródła danych:', expanded=False):
     st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
 '''
+        
         st.code(code, language='python')
 
 
-with tab21:
-    st.markdown("<h1 style='text-align: center;'>Postacie z DC Comics</h1>", unsafe_allow_html=True)
-    st.markdown(' ')
 
-    with open("dc-characters.json", "r") as f:
-        data = json.loads(f.read())
-
-    option = {
-    "title": {
-        "text": "DC Comics Character Overview",
-        "subtext": "Source: Custom Data",
-        "textStyle": {"fontSize": 14, "align": "center"},
-    },
-    "series": {
-        "type": "sunburst",
-        "data": data,
-        "radius": [0, "95%"],
-        "sort": None,
-        "emphasis": {"focus": "ancestor"},
-        "levels": [
-            {},
-            {
-                "r0": "15%",
-                "r": "35%",
-                "itemStyle": {"borderWidth": 2},
-                "label": {"rotate": "tangential"},
-            },
-            {"r0": "35%", "r": "70%", "label": {"align": "right"}},
-            {
-                "r0": "70%",
-                "r": "72%",
-                "label": {"position": "outside", "padding": 3, "silent": False},
-                "itemStyle": {"borderWidth": 3},
-            },
-        ],
-    },
-}
-
-    st_echarts(option, height="700px")
