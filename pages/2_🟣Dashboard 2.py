@@ -79,7 +79,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab1, tab2, tab21, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "DC", "Schemat kodu"])
+tab1, tab2, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Schemat kodu"])
 
 with tab1:
 
@@ -609,140 +609,6 @@ with tab2:
 }
                     with col:
                         st_echarts(option, height=250)
-
-
-with tab21:
-    st.markdown("<h1 style='text-align: center;'>Postacie z DC Comics</h1>", unsafe_allow_html=True)
-    st.markdown(' ')
-
-    nodes = [
-    # Heroes - Justice League
-    {"id": "Superman", "name": "Superman", "category": 0, "group": "Justice League"},
-    {"id": "Batman", "name": "Batman", "category": 0, "group": "Justice League"},
-    {"id": "Wonder Woman", "name": "Wonder Woman", "category": 0, "group": "Justice League"},
-    {"id": "The Flash", "name": "The Flash", "category": 0, "group": "Justice League"},
-    {"id": "Aquaman", "name": "Aquaman", "category": 0, "group": "Justice League"},
-    {"id": "Cyborg", "name": "Cyborg", "category": 0, "group": "Justice League"},
-    # Heroes - Teen Titans
-    {"id": "Robin", "name": "Robin", "category": 0, "group": "Teen Titans"},
-    {"id": "Starfire", "name": "Starfire", "category": 0, "group": "Teen Titans"},
-    {"id": "Raven", "name": "Raven", "category": 0, "group": "Teen Titans"},
-    {"id": "Beast Boy", "name": "Beast Boy", "category": 0, "group": "Teen Titans"},
-    {"id": "Cyborg2", "name": "Cyborg", "category": 0, "group": "Teen Titans"},
-    
-    # Villains - Gotham
-    {"id": "Joker", "name": "Joker", "category": 1, "group": "Gotham"},
-    {"id": "Harley Quinn", "name": "Harley Quinn", "category": 1, "group": "Gotham"},
-    {"id": "The Penguin", "name": "The Penguin", "category": 1, "group": "Gotham"},
-    {"id": "Two-Face", "name": "Two-Face", "category": 1, "group": "Gotham"},
-    {"id": "Scarecrow", "name": "Scarecrow", "category": 1, "group": "Gotham"},
-    
-    # Villains - Other
-    {"id": "Lex Luthor", "name": "Lex Luthor", "category": 1, "group": "Other"},
-    {"id": "Darkseid", "name": "Darkseid", "category": 1, "group": "Other"},
-    {"id": "Deathstroke", "name": "Deathstroke", "category": 1, "group": "Other"},
-    {"id": "Black Manta", "name": "Black Manta", "category": 1, "group": "Other"}]
-
-# Kategorie dla kolorów
-    categories = [
-    {"name": "Heroes", "itemStyle": {"color": "#1f77b4"}},   # niebieski
-    {"name": "Villains", "itemStyle": {"color": "#d62728"}}, # czerwony
-    {"name": "Heroes Groups", "itemStyle": {"color": "transparent"}},
-    {"name": "Villains Groups", "itemStyle": {"color": "transparent"}},
-]
-
-# Dodajemy "label nodes" jako podpisy grup
-    group_labels = [
-    {"id": "Justice League Label", "name": "Justice League", "category": 2, "symbolSize": 60, "draggable": False},
-    {"id": "Teen Titans Label", "name": "Teen Titans", "category": 2, "symbolSize": 60, "draggable": False},
-    {"id": "Gotham Label", "name": "Gotham", "category": 3, "symbolSize": 60, "draggable": False},
-    {"id": "Other Label", "name": "Other", "category": 3, "symbolSize": 60, "draggable": False},
-]
-
-    nodes.extend(group_labels)
-
-    links = []
-
-# Linki niewidoczne z labelki do członków grup
-    for node in nodes:
-        if node["id"].endswith("Label"):
-            group_name = node["name"]
-            for member in nodes:
-                if member.get("group") == group_name:
-                    links.append({
-                    "source": node["id"],
-                    "target": member["id"],
-                    "lineStyle": {"opacity": 0},
-                    "label": {"show": False}
-                })
-
-# Linki między postaciami w ramach ich grup (pełne połączenie)
-    from collections import defaultdict
-
-    groups = defaultdict(list)
-    for node in nodes:
-        if "group" in node:
-            groups[node["group"]].append(node["id"])
-
-    for group, members in groups.items():
-        for i in range(len(members)):
-            for j in range(i+1, len(members)):
-                links.append({"source": members[i], "target": members[j]})
-
-# Ustaw rozmiar węzłów i etykiety
-    for node in nodes:
-        if node["id"].endswith("Label"):
-            node["symbolSize"] = 80
-            node["itemStyle"] = {"color": "transparent"}  # samego węzła nie widać
-            node["label"] = {
-            "show": True,
-            "position": "top",
-            "fontWeight": "bold",
-            "fontSize": 18,
-            "color": "#000",
-        }
-        else:
-            node["symbolSize"] = 40
-            node["label"] = {
-            "show": True,
-            "position": "inside",
-            "formatter": "{b}",
-            "fontSize": 12,
-            "color": "#fff",
-            "fontWeight": "bold",
-        }
-
-    option = {
-    "tooltip": {},
-    "legend": [{"data": [cat["name"] for cat in categories]}],
-    "categories": categories,
-    "series": [
-        {
-            "name": "DC Characters",
-            "type": "graph",
-            "layout": "force",
-            "data": nodes,
-            "links": links,
-            "categories": categories,
-            "roam": True,
-            "label": {
-                "show": True,
-                "fontSize": 12,
-            },
-            "draggable": True,
-            "force": {"repulsion": 300, "edgeLength": 100},
-            "itemStyle": {
-                "borderColor": "#555",
-                "borderWidth": 1,
-                "shadowBlur": 10,
-                "shadowColor": "rgba(0, 0, 0, 0.3)",
-            },
-        }
-    ],
-}
-
-    st_echarts(options=option, height="700px")
-
 
 
 
