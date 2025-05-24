@@ -647,6 +647,43 @@ with tab21:
 # Linki łączące postaci w ramach grup
     links = []
 
+    group_labels = [
+    {"id": "Justice League Label", "name": "Justice League", "category": 2, "symbolSize": 60, "draggable": False},
+    {"id": "Teen Titans Label", "name": "Teen Titans", "category": 2, "symbolSize": 60, "draggable": False},
+    {"id": "Gotham Label", "name": "Gotham", "category": 3, "symbolSize": 60, "draggable": False},
+    {"id": "Other Label", "name": "Other", "category": 3, "symbolSize": 60, "draggable": False},
+]
+
+    categories.extend([
+    {"name": "Heroes Groups", "itemStyle": {"color": "#4a90e2"}},
+    {"name": "Villains Groups", "itemStyle": {"color": "#e94e3d"}},
+])
+
+    nodes.extend(group_labels)
+
+# Dodaj linki z labelki do każdego członka grupy
+    for node in nodes:
+        if node["id"].endswith("Label"):
+            group_name = node["name"]
+            for member in nodes:
+                if member.get("group") == group_name:
+                    links.append({"source": node["id"], "target": member["id"], "lineStyle": {"opacity": 0}})  # link niewidoczny
+
+# W opcjach serii ustawimy, by labelki miały większy rozmiar i były wyraźne
+
+    option["categories"] = categories
+    option["series"][0]["data"] = nodes
+    option["series"][0]["links"] = links
+
+    option["series"][0]["label"]["fontSize"] = 14
+    option["series"][0]["label"]["color"] = "#000"
+
+# Możesz też ustawić itemStyle dla label nodes, np. inny kolor i brak cieni
+    for node in nodes:
+        if node["id"].endswith("Label"):
+            node["itemStyle"] = {"color": "transparent"}
+            node["label"] = {"show": True, "position": "top", "fontWeight": "bold", "fontSize": 16, "color": "#000"}
+
 # Tworzymy linki między postaciami w ramach ich grup (pełne powiązanie w grupie)
     from collections import defaultdict
 
