@@ -618,15 +618,14 @@ with tab21:
     with open("dc-characters.json", "r") as f:
         graph = json.load(f)
 
-# ustawiamy rozmiar i symbol (zdjęcie) dla każdej postaci
     for node in graph["nodes"]:
-        node["symbolSize"] = 40  # wielkość obrazka
-        node["symbol"] = f'image://{node["symbol"]}'  # potrzebne do wyświetlenia obrazka
+        node.pop("symbol", None)  # usuwamy obrazek
+        node["symbolSize"] = 40   # rozmiar koła
 
     option = {
     "title": {
         "text": "DC Characters Network",
-        "subtext": "Force-directed graph with images",
+        "subtext": "Force-directed graph with labels",
         "top": "bottom",
         "left": "right",
     },
@@ -641,9 +640,23 @@ with tab21:
             "links": graph["links"],
             "categories": graph["categories"],
             "roam": True,
-            "label": {"position": "right", "formatter": "{b}"},
+            "label": {
+                "show": True,
+                "position": "inside",
+                "formatter": "{b}",  # wyświetla nazwę
+                "fontSize": 12,
+                "color": "#000",
+                "fontWeight": "bold",
+            },
             "draggable": True,
             "force": {"repulsion": 200, "edgeLength": 100},
+            "itemStyle": {
+                "borderColor": "#555",
+                "borderWidth": 1,
+                "shadowBlur": 10,
+                "shadowColor": "rgba(0, 0, 0, 0.3)",
+                "color": "#c23531"
+            }
         }
     ],
 }
