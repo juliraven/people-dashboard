@@ -615,7 +615,7 @@ with tab21:
     st.markdown("<h1 style='text-align: center;'>Postacie z DC Comics</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
-   nodes = [
+    nodes = [
     # Heroes - Justice League
     {"id": "Superman", "name": "Superman", "category": 0, "group": "Justice League"},
     {"id": "Batman", "name": "Batman", "category": 0, "group": "Justice League"},
@@ -641,8 +641,7 @@ with tab21:
     {"id": "Lex Luthor", "name": "Lex Luthor", "category": 1, "group": "Other"},
     {"id": "Darkseid", "name": "Darkseid", "category": 1, "group": "Other"},
     {"id": "Deathstroke", "name": "Deathstroke", "category": 1, "group": "Other"},
-    {"id": "Black Manta", "name": "Black Manta", "category": 1, "group": "Other"},
-]
+    {"id": "Black Manta", "name": "Black Manta", "category": 1, "group": "Other"}]
 
 # Kategorie dla kolorów
     categories = [
