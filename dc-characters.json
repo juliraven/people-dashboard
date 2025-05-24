@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Heroes",
+    "children": [
+      {
+        "name": "Justice League",
+        "children": [
+          {"name": "Superman"},
+          {"name": "Batman"},
+          {"name": "Wonder Woman"}
+        ]
+      },
+      {
+        "name": "Teen Titans",
+        "children": [
+          {"name": "Robin"},
+          {"name": "Starfire"},
+          {"name": "Raven"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Villains",
+    "children": [
+      {
+        "name": "Gotham",
+        "children": [
+          {"name": "Joker"},
+          {"name": "Harley Quinn"}
+        ]
+      },
+      {
+        "name": "Other",
+        "children": [
+          {"name": "Lex Luthor"},
+          {"name": "Darkseid"}
+        ]
+      }
+    ]
+  }
+]
