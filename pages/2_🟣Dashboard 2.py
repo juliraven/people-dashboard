@@ -78,7 +78,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab1, tab2, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Schemat kodu"])
+tab1, tab2, tab21, tab3 = st.tabs(["Ludność", "Długość życia i śmiertelność", "DC", "Schemat kodu"])
 
 with tab1:
 
@@ -790,6 +790,9 @@ with styled_container:
     unsafe_allow_html=True
 )
 
+
+with tab21:
+    st.title("cos")
         code ='''
 with st.expander('Żródła danych:', expanded=False):
     st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
