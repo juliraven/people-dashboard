@@ -5,17 +5,22 @@
       {
         "name": "Justice League",
         "children": [
-          {"name": "Superman"},
-          {"name": "Batman"},
-          {"name": "Wonder Woman"}
+          { "name": "Superman" },
+          { "name": "Batman" },
+          { "name": "Wonder Woman" },
+          { "name": "The Flash" },
+          { "name": "Aquaman" },
+          { "name": "Cyborg" }
         ]
       },
       {
         "name": "Teen Titans",
         "children": [
-          {"name": "Robin"},
-          {"name": "Starfire"},
-          {"name": "Raven"}
+          { "name": "Robin" },
+          { "name": "Starfire" },
+          { "name": "Raven" },
+          { "name": "Beast Boy" },
+          { "name": "Cyborg" }
         ]
       }
     ]
@@ -26,17 +31,23 @@
       {
         "name": "Gotham",
         "children": [
-          {"name": "Joker"},
-          {"name": "Harley Quinn"}
+          { "name": "Joker" },
+          { "name": "Harley Quinn" },
+          { "name": "The Penguin" },
+          { "name": "Two-Face" },
+          { "name": "Scarecrow" }
         ]
       },
       {
         "name": "Other",
         "children": [
-          {"name": "Lex Luthor"},
-          {"name": "Darkseid"}
+          { "name": "Lex Luthor" },
+          { "name": "Darkseid" },
+          { "name": "Deathstroke" },
+          { "name": "Black Manta" }
         ]
       }
     ]
   }
 ]
+
