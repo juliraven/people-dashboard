@@ -616,41 +616,39 @@ with tab21:
     st.markdown(' ')
 
     with open("dc-characters.json", "r") as f:
-        data = json.loads(f.read())
+        graph = json.load(f)
+
+# ustawiamy rozmiar i symbol (zdjęcie) dla każdej postaci
+    for node in graph["nodes"]:
+        node["symbolSize"] = 40  # wielkość obrazka
+        node["symbol"] = f'image://{node["symbol"]}'  # potrzebne do wyświetlenia obrazka
 
     option = {
     "title": {
-        "text": "DC Comics Character Overview",
-        "subtext": "Source: Custom Data",
-        "textStyle": {"fontSize": 14, "align": "center"},
+        "text": "DC Characters Network",
+        "subtext": "Force-directed graph with images",
+        "top": "bottom",
+        "left": "right",
     },
-    "series": {
-        "type": "sunburst",
-        "data": data,
-        "radius": [0, "95%"],
-        "sort": None,
-        "emphasis": {"focus": "ancestor"},
-        "levels": [
-            {},
-            {
-                "r0": "15%",
-                "r": "35%",
-                "itemStyle": {"borderWidth": 2},
-                "label": {"rotate": "tangential"},
-            },
-            {"r0": "35%", "r": "70%", "label": {"align": "right"}},
-            {
-                "r0": "70%",
-                "r": "72%",
-                "label": {"position": "outside", "padding": 3, "silent": False},
-                "itemStyle": {"borderWidth": 3},
-            },
-        ],
-    },
+    "tooltip": {},
+    "legend": [{"data": [cat["name"] for cat in graph["categories"]]}],
+    "series": [
+        {
+            "name": "DC Characters",
+            "type": "graph",
+            "layout": "force",
+            "data": graph["nodes"],
+            "links": graph["links"],
+            "categories": graph["categories"],
+            "roam": True,
+            "label": {"position": "right", "formatter": "{b}"},
+            "draggable": True,
+            "force": {"repulsion": 200, "edgeLength": 100},
+        }
+    ],
 }
 
-    st_echarts(option, height="700px")
-
+    st_echarts(options=option, height="700px")
 
 
 
