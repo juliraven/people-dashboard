@@ -1,53 +1,45 @@
-[
-  {
-    "name": "Heroes",
-    "children": [
-      {
-        "name": "Justice League",
-        "children": [
-          { "name": "Superman" },
-          { "name": "Batman" },
-          { "name": "Wonder Woman" },
-          { "name": "The Flash" },
-          { "name": "Aquaman" },
-          { "name": "Cyborg" }
-        ]
-      },
-      {
-        "name": "Teen Titans",
-        "children": [
-          { "name": "Robin" },
-          { "name": "Starfire" },
-          { "name": "Raven" },
-          { "name": "Beast Boy" },
-          { "name": "Cyborg" }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Villains",
-    "children": [
-      {
-        "name": "Gotham",
-        "children": [
-          { "name": "Joker" },
-          { "name": "Harley Quinn" },
-          { "name": "The Penguin" },
-          { "name": "Two-Face" },
-          { "name": "Scarecrow" }
-        ]
-      },
-      {
-        "name": "Other",
-        "children": [
-          { "name": "Lex Luthor" },
-          { "name": "Darkseid" },
-          { "name": "Deathstroke" },
-          { "name": "Black Manta" }
-        ]
-      }
-    ]
-  }
-]
+{
+  "nodes": [
+    {"id": "1", "name": "Superman", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png"},
+    {"id": "2", "name": "Batman", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/8/86/Batman_DC_Comics.png"},
+    {"id": "3", "name": "Wonder Woman", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/9/9b/Wonder_Woman.jpg"},
+    {"id": "4", "name": "The Flash", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/e/e1/FlashRoss.png"},
+    {"id": "5", "name": "Aquaman", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/9/9b/Aquaman_Rebirth_cover_1.png"},
+    {"id": "6", "name": "Cyborg", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/7/7a/Cyborg_DC_Rebirth.png"},
+    {"id": "7", "name": "Robin", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/0/0e/RobinRoss.png"},
+    {"id": "8", "name": "Starfire", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/8/8c/Starfire_Titans_Vol_1_1.png"},
+    {"id": "9", "name": "Raven", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/3/3e/Raven_Titans.png"},
+    {"id": "10", "name": "Beast Boy", "category": 0, "symbol": "https://upload.wikimedia.org/wikipedia/en/d/d2/Beast_Boy_Young_Justice.png"},
+    {"id": "11", "name": "Joker", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/9/97/Joker_%28character%29.png"},
+    {"id": "12", "name": "Harley Quinn", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/0/0d/Harley_Quinn_DC_Rebirth.png"},
+    {"id": "13", "name": "The Penguin", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/0/06/Penguin_DC_Comics.png"},
+    {"id": "14", "name": "Two-Face", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/2/26/Two-Face_Batman.png"},
+    {"id": "15", "name": "Scarecrow", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/3/33/Scarecrow-Batman.png"},
+    {"id": "16", "name": "Lex Luthor", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/4/4b/LexLuthor_DC.png"},
+    {"id": "17", "name": "Darkseid", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/2/2a/Darkseid_52.png"},
+    {"id": "18", "name": "Deathstroke", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/a/a7/Deathstroke_DC_Rebirth.png"},
+    {"id": "19", "name": "Black Manta", "category": 1, "symbol": "https://upload.wikimedia.org/wikipedia/en/0/0f/Black_Manta_%28DC_Comics_character%29.png"}
+  ],
+  "links": [
+    {"source": "1", "target": "2"},
+    {"source": "1", "target": "3"},
+    {"source": "2", "target": "11"},
+    {"source": "11", "target": "12"},
+    {"source": "2", "target": "14"},
+    {"source": "5", "target": "19"},
+    {"source": "3", "target": "16"},
+    {"source": "17", "target": "3"},
+    {"source": "6", "target": "10"},
+    {"source": "7", "target": "8"},
+    {"source": "8", "target": "9"},
+    {"source": "9", "target": "10"},
+    {"source": "18", "target": "2"},
+    {"source": "12", "target": "14"}
+  ],
+  "categories": [
+    {"name": "Heroes"},
+    {"name": "Villains"}
+  ]
+}
+
 
