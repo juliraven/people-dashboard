@@ -839,12 +839,6 @@ with tab3:
             html = f.read()
 
 
-        html = html.replace(
-    '<body>',
-    '<body style="background-color:#111111; margin:0; padding:0;">'
-)
-
-
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
