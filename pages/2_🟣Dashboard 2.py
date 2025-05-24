@@ -616,6 +616,9 @@ with tab3:
     import tempfile
     import re
 
+    st.markdown("<h1 style='text-align: center;'>📊 Marvel Comics</h1>", unsafe_allow_html=True)
+    st.markdown(' ')
+
     data = {
  "name": "marvel",
  "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
@@ -862,9 +865,7 @@ with tab3:
 
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(
-        f"<h4 style='text-align: left; color: white;'>Graf postaci z Uniwersum Marvela</h4>",
-        unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
         st.components.v1.html(html, height=750, scrolling=True)
 
 
