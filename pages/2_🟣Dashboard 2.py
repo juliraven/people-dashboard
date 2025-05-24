@@ -955,6 +955,10 @@ with tab3:
     fig.update_xaxes(showgrid=False, zeroline=False, visible=False, range=[-1.1, 1.1])
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
     fig.update_layout(width=700, height=1000, margin=dict(t=0, b=0, l=10, r=10))
+    fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', 
+            plot_bgcolor='rgba(0,0,0,0)',
+            geo=dict(bgcolor='rgba(0,0,0,0)'))
 
 
     styled_container = st.container()
@@ -962,7 +966,7 @@ with tab3:
     with styled_container:
         st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: white;'>Wykres hierarchiczny postaci Marvela</h3>",unsafe_allow_html=True)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 
 
