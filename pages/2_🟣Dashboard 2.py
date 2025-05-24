@@ -839,22 +839,43 @@ with tab3:
             html = f.read()
 
         html = html.replace(
-        "</head>",
-        """
-        <style>
-            body, #mynetwork {
-                background-color: #111111 !important;
-            }
-            /* Przesuń etykiety 20px w górę i wycentruj */
-            .vis-network .vis-label {
-                transform: translateY(-20px);
-                text-align: center;
-                font-weight: bold;
-            }
-        </style>
-        </head>
-        """
-    )
+    "</head>",
+    """
+    <style>
+        body, #mynetwork {
+            background-color: #111111 !important;
+        }
+        /* Przesuń etykiety 20px w górę i wycentruj */
+        .vis-network .vis-label {
+            transform: translateY(-20px);
+            text-align: center;
+            font-weight: bold;
+        }
+        /* Kontener na tytuł i grafikę */
+        #container {
+            border: 2px solid white;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+    </head>
+    """
+)
+
+        html = html.replace(
+    "<body>",
+    """
+    <body>
+    <div id="container">Graf Uniwersum Marvela</div>
+    """
+)
+
 
         with open(path, "w", encoding="utf-8") as f:
             f.write(html)
