@@ -843,7 +843,6 @@ with tab3:
             f.write(html)
 
 
-    st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
     styled_container = st.container()
     st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
     with styled_container:
@@ -957,8 +956,13 @@ with tab3:
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
     fig.update_layout(width=700, height=1000, margin=dict(t=0, b=0, l=10, r=10))
 
-    st.markdown(f"<h3 style='text-align: center; color: white;'>Wykres hierarchiczny postaci Marvela</h3>",unsafe_allow_html=True)
-    st.plotly_chart(fig, use_container_width=True)
+
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Wykres hierarchiczny postaci Marvela</h3>",unsafe_allow_html=True)
+        st.plotly_chart(fig, use_container_width=True)
 
 
 
