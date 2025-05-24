@@ -971,7 +971,7 @@ with tab3:
 
     fig.update_xaxes(showgrid=False, zeroline=False, visible=False, range=[-1.1, 1.1])
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
-    fig.update_layout(width=700, height=700, margin=dict(t=10, b=10, l=10, r=10))
+    fig.update_layout(width=1000, height=1000, margin=dict(t=10, b=10, l=10, r=10))
 
     with col2:
         st.markdown(f"<h3 style='text-align: center; color: white;'>Wykres hierarchiczny postaci Marvela</h3>",unsafe_allow_html=True)
