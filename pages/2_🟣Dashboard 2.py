@@ -615,7 +615,7 @@ with tab21:
     st.markdown("<h1 style='text-align: center;'>Postacie z DC Comics</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
-    nodes = [
+   nodes = [
     # Heroes - Justice League
     {"id": "Superman", "name": "Superman", "category": 0, "group": "Justice League"},
     {"id": "Batman", "name": "Batman", "category": 0, "group": "Justice League"},
@@ -628,7 +628,7 @@ with tab21:
     {"id": "Starfire", "name": "Starfire", "category": 0, "group": "Teen Titans"},
     {"id": "Raven", "name": "Raven", "category": 0, "group": "Teen Titans"},
     {"id": "Beast Boy", "name": "Beast Boy", "category": 0, "group": "Teen Titans"},
-    {"id": "Cyborg2", "name": "Cyborg", "category": 0, "group": "Teen Titans"},  # drugi Cyborg
+    {"id": "Cyborg2", "name": "Cyborg", "category": 0, "group": "Teen Titans"},
     
     # Villains - Gotham
     {"id": "Joker", "name": "Joker", "category": 1, "group": "Gotham"},
@@ -644,9 +644,15 @@ with tab21:
     {"id": "Black Manta", "name": "Black Manta", "category": 1, "group": "Other"},
 ]
 
-# Linki łączące postaci w ramach grup
-    links = []
+# Kategorie dla kolorów
+    categories = [
+    {"name": "Heroes", "itemStyle": {"color": "#1f77b4"}},   # niebieski
+    {"name": "Villains", "itemStyle": {"color": "#d62728"}}, # czerwony
+    {"name": "Heroes Groups", "itemStyle": {"color": "transparent"}},
+    {"name": "Villains Groups", "itemStyle": {"color": "transparent"}},
+]
 
+# Dodajemy "label nodes" jako podpisy grup
     group_labels = [
     {"id": "Justice League Label", "name": "Justice League", "category": 2, "symbolSize": 60, "draggable": False},
     {"id": "Teen Titans Label", "name": "Teen Titans", "category": 2, "symbolSize": 60, "draggable": False},
@@ -654,57 +660,58 @@ with tab21:
     {"id": "Other Label", "name": "Other", "category": 3, "symbolSize": 60, "draggable": False},
 ]
 
-    categories.extend([
-    {"name": "Heroes Groups", "itemStyle": {"color": "#4a90e2"}},
-    {"name": "Villains Groups", "itemStyle": {"color": "#e94e3d"}},
-])
-
     nodes.extend(group_labels)
 
-# Dodaj linki z labelki do każdego członka grupy
+    links = []
+
+# Linki niewidoczne z labelki do członków grup
     for node in nodes:
         if node["id"].endswith("Label"):
             group_name = node["name"]
             for member in nodes:
                 if member.get("group") == group_name:
-                    links.append({"source": node["id"], "target": member["id"], "lineStyle": {"opacity": 0}})  # link niewidoczny
+                    links.append({
+                    "source": node["id"],
+                    "target": member["id"],
+                    "lineStyle": {"opacity": 0},
+                    "label": {"show": False}
+                })
 
-# W opcjach serii ustawimy, by labelki miały większy rozmiar i były wyraźne
-
-    option["categories"] = categories
-    option["series"][0]["data"] = nodes
-    option["series"][0]["links"] = links
-
-    option["series"][0]["label"]["fontSize"] = 14
-    option["series"][0]["label"]["color"] = "#000"
-
-# Możesz też ustawić itemStyle dla label nodes, np. inny kolor i brak cieni
-    for node in nodes:
-        if node["id"].endswith("Label"):
-            node["itemStyle"] = {"color": "transparent"}
-            node["label"] = {"show": True, "position": "top", "fontWeight": "bold", "fontSize": 16, "color": "#000"}
-
-# Tworzymy linki między postaciami w ramach ich grup (pełne powiązanie w grupie)
+# Linki między postaciami w ramach ich grup (pełne połączenie)
     from collections import defaultdict
 
     groups = defaultdict(list)
     for node in nodes:
-        groups[node["group"]].append(node["id"])
+        if "group" in node:
+            groups[node["group"]].append(node["id"])
 
     for group, members in groups.items():
-    # Połącz każdy z każdym w grupie
         for i in range(len(members)):
             for j in range(i+1, len(members)):
                 links.append({"source": members[i], "target": members[j]})
 
-    categories = [
-    {"name": "Heroes", "itemStyle": {"color": "#1f77b4"}},   # niebieski
-    {"name": "Villains", "itemStyle": {"color": "#d62728"}}, # czerwony
-]
-
-# Ustawienia węzłów (rozmiar i etykieta)
+# Ustaw rozmiar węzłów i etykiety
     for node in nodes:
-        node["symbolSize"] = 40
+        if node["id"].endswith("Label"):
+            node["symbolSize"] = 80
+            node["itemStyle"] = {"color": "transparent"}  # samego węzła nie widać
+            node["label"] = {
+            "show": True,
+            "position": "top",
+            "fontWeight": "bold",
+            "fontSize": 18,
+            "color": "#000",
+        }
+        else:
+            node["symbolSize"] = 40
+            node["label"] = {
+            "show": True,
+            "position": "inside",
+            "formatter": "{b}",
+            "fontSize": 12,
+            "color": "#fff",
+            "fontWeight": "bold",
+        }
 
     option = {
     "tooltip": {},
@@ -721,11 +728,7 @@ with tab21:
             "roam": True,
             "label": {
                 "show": True,
-                "position": "inside",
-                "formatter": "{b}",
                 "fontSize": 12,
-                "color": "#fff",
-                "fontWeight": "bold",
             },
             "draggable": True,
             "force": {"repulsion": 300, "edgeLength": 100},
@@ -740,7 +743,6 @@ with tab21:
 }
 
     st_echarts(options=option, height="700px")
-
 
 
 
