@@ -934,20 +934,28 @@ with tab3:
         if cat_circle.ex is None:
             continue
         cx, cy, cr = cat_circle.x, cat_circle.y, cat_circle.r
+        cr *= scale_factor  # powiększenie
+
         cat_name = cat_circle.ex["id"]
-        ell_w, ell_h = 1.2, 0.8  # elipsa, np. lekko spłaszczona
 
         fig.add_shape(
-    type="circle",
-    xref="x", yref="y",
-    x0=cx - cr * ell_w, y0=cy - cr * ell_h,
-    x1=cx + cr * ell_w, y1=cy + cr * ell_h,
-    line_color="orange",
-    fillcolor="#ffcc99",
-    opacity=0.5,
-    line_width=2,
-)
-        fig.add_annotation(x=cx, y=cy + cr + 0.03, text=cat_name, showarrow=False, font=dict(size=14))
+        type="circle",
+        xref="x", yref="y",
+        x0=cx - cr * ell_w, y0=cy - cr * ell_h,
+        x1=cx + cr * ell_w, y1=cy + cr * ell_h,
+        line_color="orange",
+        fillcolor="#ffcc99",
+        opacity=0.5,
+        line_width=2,
+    )
+
+        fig.add_annotation(
+        x=cx,
+        y=cy + cr * ell_h + 0.03,
+        text=cat_name,
+        showarrow=False,
+        font=dict(size=14)
+    )
 
         heroes = next(c for c in categories if c["id"] == cat_name)["children"]
 
@@ -967,7 +975,8 @@ with tab3:
             fig.add_shape(
             type="circle",
             xref="x", yref="y",
-            x0=hx - hr, y0=hy - hr, x1=hx + hr, y1=hy + hr,
+            x0=hx - hr * ell_w, y0=hy - hr * ell_h,
+            x1=hx + hr * ell_w, y1=hy + hr * ell_h,
             line_color="blue",
             fillcolor="lightblue",
             opacity=0.6,
