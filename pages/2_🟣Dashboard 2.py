@@ -848,7 +848,7 @@ with tab3:
                     if idx < len(causes_sorted):
                         cause = causes_sorted[idx]
                         pct = percentages_sorted_rounded[idx]
-                        colors = color_map
+                        colors = colors = color_map.get(cause, ["rgba(128,128,128,0.9)", "rgba(169,169,169,0.7)", "rgba(211,211,211,0.5)"])
                         option = {
     "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 16, "color": "#fff"}},  # jasny róż
     "series": [{
