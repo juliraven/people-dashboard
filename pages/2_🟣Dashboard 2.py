@@ -807,8 +807,8 @@ with tab3:
 
 
     from streamlit_echarts import st_echarts
+    placeholder = st.empty()
     
-
     causes = [
     "Heroes", "Villains"]
 
@@ -873,7 +873,9 @@ with tab3:
     }]
 }
                     with col:
-                        st_echarts(option, height=250)
+                        with placeholder.container():
+                            st_echarts(option, height=250)
+                        time.sleep(3)
 
 
 
