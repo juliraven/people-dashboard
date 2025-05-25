@@ -836,21 +836,23 @@ with tab3:
 }
 
     with col1 :
-        styled_container = st.container()
         st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-        with styled_container:
-            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-            st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
-            for i in range(0, len(causes_sorted), 6):
-                cols = st.columns(2)
-                for j, col in enumerate(cols):
-                    idx = i + j
-                    if idx < len(causes_sorted):
-                        cause = causes_sorted[idx]
-                        pct = percentages_sorted[idx]
-                        pct_label = percentages_sorted_rounded[idx]
-                        colors = color_map.get(cause)
-                        option = {
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(
+        "<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",
+        unsafe_allow_html=True
+    )
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
+        for i in range(0, len(causes_sorted), 6):
+            cols = st.columns(2)
+            for j, col in enumerate(cols):
+                idx = i + j
+                if idx < len(causes_sorted):
+                    cause = causes_sorted[idx]
+                    pct = percentages_sorted[idx]
+                    pct_label = percentages_sorted_rounded[idx]
+                    colors = color_map.get(cause)
+                    option = {
     "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 16, "color": "#fff"}},  # jasny róż
     "series": [{
         "type": "liquidFill",
@@ -874,8 +876,8 @@ with tab3:
         }
     }]
 }
-                        with col:
-                            st_echarts(option, height=250)
+                    with col:
+                        st_echarts(option, height=250)
 
 
 
