@@ -846,17 +846,26 @@ with tab3:
             background-color: #111111 !important;
             margin: 0;
             padding: 0;
-            height: 100%;
+            height: 100vh;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        #mynetwork, .vis-network, canvas {
+
+        #mynetwork {
             background-color: #111111 !important;
-            margin: 0 !important;
-            padding: 20px !important;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 800px;
+            height: 100%;
+            max-height: 700px;
             box-sizing: border-box;
+        }
+
+        canvas {
+            background-color: #111111 !important;
         }
     </style>
     </head>
@@ -866,13 +875,9 @@ with tab3:
 
 
 
+
     st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
-    st.components.v1.html(
-    f"""
-    <div style="background-color: #111111; padding: 0; margin: 0;">
-        {html}
-    </div>
-    """,
+    st.components.v1.html(html,
     height=750,
     scrolling=False
 )
