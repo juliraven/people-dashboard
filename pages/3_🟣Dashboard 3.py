@@ -4,9 +4,9 @@ page_bg_img_sidebar = """
 <style>
 /* Ustawienie szerokości sidebaru */
 section[data-testid="stSidebar"] {
-    width: 240px !important;
-    min-width: 240px !important;
-    max-width: 240px !important;
+    width: 340px !important;
+    min-width: 340px !important;
+    max-width: 340px !important;
     display: flex;
     align-items: center;       /* Wyśrodkowanie w pionie */
     justify-content: center;   /* Wyśrodkowanie w poziomie */
