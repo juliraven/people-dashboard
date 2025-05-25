@@ -885,7 +885,7 @@ with tab3:
 
     colors = ["#1E90FF", "#DC143C"]  
 
-    option = {,
+    option = {
     "tooltip": {
         "trigger": "item",
         "formatter": "{b}: {c} ({d}%)"
