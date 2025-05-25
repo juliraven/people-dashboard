@@ -838,10 +838,19 @@ with tab3:
         with open(path, "r", encoding="utf-8") as f:
             html = f.read()
 
+    html = html.replace("<body>", "<body style='background-color: #111111;'>")
+
 
     st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
-    st.components.v1.html(html, height=700, scrolling=False)
-
+    st.components.v1.html(
+    f"""
+    <div style="background-color: #111111; padding: 0; margin: 0;">
+        {html}
+    </div>
+    """,
+    height=700,
+    scrolling=False
+)
 
 
     import circlify
