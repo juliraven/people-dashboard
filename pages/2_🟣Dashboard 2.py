@@ -807,7 +807,7 @@ with tab3:
 
 
     from streamlit_echarts import st_echarts
-    col1, col2 = st.columns([2,2])
+    
 
     causes = [
     "Heroes", "Villains"]
@@ -836,6 +836,7 @@ with tab3:
 }
 
     st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
+    col1, col2 = st.columns([2,2])
 
     with col1 :
         for i in range(0, len(causes_sorted), 6):
