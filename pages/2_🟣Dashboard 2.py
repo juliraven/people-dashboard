@@ -872,6 +872,79 @@ with tab3:
 )
 
 
+
+    import streamlit as st
+    from streamlit_echarts import st_echarts
+
+    def render_marvel_ring_gauge():
+    # Twoje dane
+        heroes = 9
+        villains = 7
+        total = heroes + villains
+
+        perfect_pct = round(heroes / total * 100)
+        good_pct = round(villains / total * 100)
+        commonly_pct = 0  # jeśli nie masz trzeciej kategorii
+
+        option = {
+        "series": [
+            {
+                "type": "gauge",
+                "startAngle": 90,
+                "endAngle": -270,
+                "pointer": {"show": False},
+                "progress": {
+                    "show": True,
+                    "overlap": False,
+                    "roundCap": True,
+                    "clip": False,
+                    "itemStyle": {"borderWidth": 1, "borderColor": "#464646"},
+                },
+                "axisLine": {"lineStyle": {"width": 40}},
+                "splitLine": {"show": False, "distance": 0, "length": 10},
+                "axisTick": {"show": False},
+                "axisLabel": {"show": False, "distance": 50},
+                "data": [
+                    {
+                        "value": perfect_pct,
+                        "name": "Heroes",
+                        "title": {"offsetCenter": ["0%", "-30%"]},
+                        "detail": {"offsetCenter": ["0%", "-20%"]},
+                    },
+                    {
+                        "value": good_pct,
+                        "name": "Villains",
+                        "title": {"offsetCenter": ["0%", "0%"]},
+                        "detail": {"offsetCenter": ["0%", "10%"]},
+                    },
+                    {
+                        "value": commonly_pct,
+                        "name": "Other",
+                        "title": {"offsetCenter": ["0%", "30%"]},
+                        "detail": {"offsetCenter": ["0%", "40%"]},
+                    },
+                ],
+                "title": {"fontSize": 14},
+                "detail": {
+                    "width": 50,
+                    "height": 14,
+                    "fontSize": 14,
+                    "color": "auto",
+                    "borderColor": "auto",
+                    "borderRadius": 20,
+                    "borderWidth": 1,
+                    "formatter": "{value}%",
+                },
+            }
+        ]
+    }
+
+        st_echarts(option, height="500px", key="marvel_ring")
+
+# Streamlit app
+    st.title("Marvel Gauge Chart – Heroes vs Villains")
+    render_marvel_ring_gauge()
+
     
 
 
