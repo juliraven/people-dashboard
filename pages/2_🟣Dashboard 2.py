@@ -838,7 +838,29 @@ with tab3:
         with open(path, "r", encoding="utf-8") as f:
             html = f.read()
 
-    html = html.replace("<body>", "<body style='background-color: #111111;'>")
+    html = html.replace(
+    "</head>",
+    """
+    <style>
+        body {
+            background-color: #111111 !important;
+            margin: 0;
+            padding: 0;
+        }
+        #mynetwork {
+            background-color: #111111 !important;
+        }
+        .vis-network {
+            background-color: #111111 !important;
+        }
+        canvas {
+            background-color: #111111 !important;
+        }
+    </style>
+    </head>
+    """
+)
+
 
 
     st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
