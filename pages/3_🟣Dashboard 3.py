@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
+
 page_bg_img_sidebar = """
 <style>
 /* Ustawienie szerokości sidebaru */
