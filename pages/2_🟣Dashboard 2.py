@@ -935,15 +935,18 @@ with tab3:
             continue
         cx, cy, cr = cat_circle.x, cat_circle.y, cat_circle.r
         cat_name = cat_circle.ex["id"]
+        ell_w, ell_h = 1.2, 0.8  # elipsa, np. lekko spłaszczona
+
         fig.add_shape(
-        type="circle",
-        xref="x", yref="y",
-        x0=cx - cr, y0=cy - cr, x1=cx + cr, y1=cy + cr,
-        line_color="orange",
-        fillcolor="#ffcc99",
-        opacity=0.5,
-        line_width=2,
-    )
+    type="circle",
+    xref="x", yref="y",
+    x0=cx - cr * ell_w, y0=cy - cr * ell_h,
+    x1=cx + cr * ell_w, y1=cy + cr * ell_h,
+    line_color="orange",
+    fillcolor="#ffcc99",
+    opacity=0.5,
+    line_width=2,
+)
         fig.add_annotation(x=cx, y=cy + cr + 0.03, text=cat_name, showarrow=False, font=dict(size=14))
 
         heroes = next(c for c in categories if c["id"] == cat_name)["children"]
