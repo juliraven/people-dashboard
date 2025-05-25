@@ -923,7 +923,7 @@ with tab3:
     fig.add_shape(
     type="circle",
     xref="x", yref="y",
-    x0=-1, y0=-1, x1=1, y1=1,
+    x0=-2, y0=-1, x1=2, y1=1,
     line_color="red",
     fillcolor="rgba(255, 0, 0, 0.1)",
     line_width=3,
