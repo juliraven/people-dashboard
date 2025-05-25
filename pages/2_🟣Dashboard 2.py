@@ -920,7 +920,7 @@ with tab3:
                     "name": causes[0],
                     "title": {"offsetCenter": ["0%", "-30%"], "fontSize": 16, "color": "#1E90FF"},
                     "detail": {
-                "offsetCenter": ["0%", "0%"],
+                "offsetCenter": ["0%", "-10%"],
                 "formatter": "{value}%",
                 "fontSize": 18,
                 "color": "#1E90FF",
