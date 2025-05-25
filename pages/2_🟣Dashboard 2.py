@@ -873,7 +873,7 @@ with tab3:
 
 
 
-   import streamlit as st
+    import streamlit as st
     from streamlit_echarts import st_echarts
 
 # --- Przykładowe dane populacyjne w 2020 (z Twojego wpisu):
