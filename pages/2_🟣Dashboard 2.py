@@ -922,14 +922,14 @@ with tab3:
                     "detail": {
                 "offsetCenter": ["0%", "-20%"],
                 "formatter": "{value}%",
-                "fontSize": 20,
+                "fontSize": 18,
                 "color": "#1E90FF",
                 "borderColor": "#1E90FF",
                 "borderWidth": 2,
-                "borderRadius": 10,
+                "borderRadius": 20,
                 "width": 60,
                 "height": 30,
-                "backgroundColor": "#fff",
+                "backgroundColor": "#1111",
                 "padding": [5, 10],
             },
                 }
