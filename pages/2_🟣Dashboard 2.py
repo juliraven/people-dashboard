@@ -797,7 +797,7 @@ with tab3:
 
 
     net = Network(
-    height="800px",
+    height="700px",
     width="100%",
     bgcolor="#111111",      
     font_color="white",      
@@ -840,7 +840,7 @@ with tab3:
 
 
     st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
-    st.components.v1.html(html, height=800, scrolling=False)
+    st.components.v1.html(html, height=700, scrolling=False)
 
 
 
@@ -946,7 +946,7 @@ with tab3:
 
     fig.update_xaxes(showgrid=False, zeroline=False, visible=False, range=[-1.1, 1.1])
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False, scaleanchor="x", range=[-1.1, 1.1])
-    fig.update_layout(width=700, height=1000, margin=dict(t=0, b=0, l=10, r=10))
+    fig.update_layout(width=700, height=900, margin=dict(t=0, b=0, l=10, r=10))
     fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', 
             plot_bgcolor='rgba(0,0,0,0)',
