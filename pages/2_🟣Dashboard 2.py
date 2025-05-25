@@ -842,24 +842,27 @@ with tab3:
     "</head>",
     """
     <style>
-        body {
+        html, body {
             background-color: #111111 !important;
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        #mynetwork {
+        #mynetwork, .vis-network, canvas {
             background-color: #111111 !important;
-        }
-        .vis-network {
-            background-color: #111111 !important;
-        }
-        canvas {
-            background-color: #111111 !important;
+            margin: 0 !important;
+            padding: 20px !important;
+            box-sizing: border-box;
         }
     </style>
     </head>
     """
 )
+
 
 
 
@@ -870,7 +873,7 @@ with tab3:
         {html}
     </div>
     """,
-    height=650,
+    height=750,
     scrolling=False
 )
 
