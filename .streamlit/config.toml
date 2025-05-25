@@ -3,3 +3,6 @@ base="dark"
 primaryColor="#b444fb"
 backgroundColor="#111111"
 secondaryBackgroundColor="#2d035e"
+
+[global]
+layout = "wide"
