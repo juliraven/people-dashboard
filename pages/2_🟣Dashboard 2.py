@@ -804,7 +804,7 @@ with tab3:
 
     st.components.v1.html(html,
     height=750,
-    scrolling=False
+    scrolling=False, key="pyvis_network"
 )
 
 
@@ -875,7 +875,7 @@ with tab3:
     }]
 }
                     with col:
-                        st_echarts(option, height=250)
+                        st_echarts(option, height=250, key=f"echart_liquid_{idx}")
 
 
     from streamlit_echarts import st_echarts
@@ -995,7 +995,7 @@ with tab3:
 }
 
 
-    st_echarts(option, height=400)
+    st_echarts(option, height=400, key="echart_gauge")
 
 
 
