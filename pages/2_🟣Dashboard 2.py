@@ -836,12 +836,6 @@ with tab3:
 }
 
     with col1 :
-        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.markdown(
-        "<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",
-        unsafe_allow_html=True
-    )
         st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
         for i in range(0, len(causes_sorted), 6):
             cols = st.columns(2)
