@@ -873,10 +873,7 @@ with tab3:
     }]
 }
                     with col:
-                        with placeholder.container():
-                            st_echarts(option, height=250)
-                        time.sleep(3)
-
+                        st_echarts(option, height=250)
 
 
     from streamlit_echarts import st_echarts
