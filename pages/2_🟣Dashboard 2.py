@@ -846,31 +846,23 @@ with tab3:
             background-color: #111111 !important;
             margin: 0;
             padding: 0;
-            height: 100vh;
+            height: 100%;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
-        #mynetwork {
+        #mynetwork, .vis-network, canvas {
             background-color: #111111 !important;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            max-width: 800px;
-            height: 100%;
-            max-height: 700px;
+            margin: 0 !important;
+            padding: 20px !important;
             box-sizing: border-box;
-        }
-
-        canvas {
-            background-color: #111111 !important;
         }
     </style>
     </head>
     """
 )
+
 
 
 
