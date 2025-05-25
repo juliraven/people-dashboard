@@ -810,7 +810,9 @@ with tab3:
     label="Marvel Universe", 
     shape="circularImage",       # zmienione z "image" na "circularImage"
     image="http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
-    size=50, color='red'
+    size=50, color='red', x=0,
+    y=0,
+    fixed=True
 )
 
 
@@ -862,11 +864,6 @@ with tab3:
     </head>
     """
 )
-
-
-
-
-
 
     st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
     st.components.v1.html(html,
