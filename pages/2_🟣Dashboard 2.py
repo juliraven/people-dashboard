@@ -813,7 +813,7 @@ with tab3:
     "Heroes", "Villains"]
 
     raw_data = "100, 70"
-    numbers = [int(x.replace(',', '')) for x in raw_data.split()]
+    numbers = [int(x.strip()) for x in raw_data.split(',')]
     total_deaths = sum(numbers)
     percentages = [n / total_deaths for n in numbers]
 
@@ -867,7 +867,7 @@ with tab3:
             "color": "#fff"  # jasne różowe tło (pastelowe)
         },
         "label": {
-            "formatter": f"{pct*100:.2f}%",
+            "formatter": f"{percentages_sorted_rounded[idx]}%",
             "fontSize": 35,
             "color": "rgba(0, 0, 0, 1)"  # biały napis
         }
