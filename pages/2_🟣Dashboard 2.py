@@ -824,14 +824,14 @@ with tab3:
 
     color_map = {
     "Heroes": [
-        "rgba(30, 144, 255, 0.9)",   # DeepSkyBlue
-        "rgba(100, 149, 237, 0.7)",  # CornflowerBlue
-        "rgba(173, 216, 230, 0.5)"   # LightBlue
+        "rgba(30, 144, 255, 1)",   # DeepSkyBlue - pełny
+        "rgba(30, 144, 255, 0.7)",
+        "rgba(30, 144, 255, 0.4)"
     ],
     "Villains": [
-        "rgba(220, 20, 60, 0.9)",    # Crimson
-        "rgba(255, 69, 0, 0.7)",     # OrangeRed
-        "rgba(255, 160, 122, 0.5)"   # LightSalmon
+        "rgba(220, 20, 60, 1)",    # Crimson - pełny
+        "rgba(220, 20, 60, 0.7)",
+        "rgba(220, 20, 60, 0.4)"
     ]
 }
 
@@ -848,7 +848,7 @@ with tab3:
                     if idx < len(causes_sorted):
                         cause = causes_sorted[idx]
                         pct = percentages_sorted_rounded[idx]
-                        colors = colors = color_map.get(cause, ["rgba(128,128,128,0.9)", "rgba(169,169,169,0.7)", "rgba(211,211,211,0.5)"])
+                        colors = colors = color_map.get(cause)
                         option = {
     "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 16, "color": "#fff"}},  # jasny róż
     "series": [{
@@ -859,17 +859,17 @@ with tab3:
         "outline": {
             "borderDistance": 5,
             "itemStyle": {
-                "borderColor": colors[0],  # obrys jasny róż
+                "borderColor": colors[0],
                 "borderWidth": 3
             }
         },
         "backgroundStyle": {
-            "color": "#fff"  # jasne różowe tło (pastelowe)
+            "color": "#fff" 
         },
         "label": {
             "formatter": f"{percentages_sorted_rounded[idx]}%",
             "fontSize": 35,
-            "color": "rgba(0, 0, 0, 1)"  # biały napis
+            "color": "rgba(0, 0, 0, 1)" 
         }
     }]
 }
