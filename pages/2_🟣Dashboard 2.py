@@ -802,14 +802,14 @@ with tab3:
     """
 )
 
-    st.components.v1.html(html,
+    placeholder = st.empty()
+    placeholder.html(html,
     height=750,
     scrolling=False, key="pyvis_network"
 )
 
 
     from streamlit_echarts import st_echarts
-    placeholder = st.empty()
     
     causes = [
     "Heroes", "Villains"]
