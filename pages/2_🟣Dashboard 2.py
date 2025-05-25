@@ -967,9 +967,9 @@ with tab3:
                 {
                     "value": round(percentages[1] * 100),
                     "name": causes[1],
-                    "title": {"offsetCenter": ["0%", "10%"], "fontSize": 16, "color": "#DC143C"},
+                    "title": {"offsetCenter": ["0%", "20%"], "fontSize": 16, "color": "#DC143C"},
                     "detail": {
-                "offsetCenter": ["0%", "80%"],
+                "offsetCenter": ["0%", "40%"],
                 "formatter": "{value}%",
                 "fontSize": 16,
                 "color": "#DC143C",
