@@ -945,7 +945,7 @@ with tab3:
             "type": "gauge",
             "startAngle": 90,
             "endAngle": -270,
-            "radius": "70%",
+            "radius": "85%",
             "pointer": {"show": False},
             "progress": {
                 "show": True,
