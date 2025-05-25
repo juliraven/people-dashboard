@@ -875,6 +875,62 @@ with tab3:
 
 
 
+    from streamlit_echarts import st_echarts
+
+    causes = ["Heroes", "Villains"]
+    raw_data = "100, 70"
+    numbers = [int(x.strip()) for x in raw_data.split(',')]
+    total = sum(numbers)
+    percentages = [round(n / total * 100) for n in numbers]
+
+    colors = ["#1E90FF", "#DC143C"]  
+
+    option = {,
+    "tooltip": {
+        "trigger": "item",
+        "formatter": "{b}: {c} ({d}%)"
+    },
+    "legend": {
+        "orient": "horizontal",
+        "bottom": "5%",
+        "data": causes
+    },
+    "series": [
+        {
+            "name": "Marvel Characters",
+            "type": "pie",
+            "radius": ["70%", "90%"],  # Ring
+            "avoidLabelOverlap": False,
+            "label": {
+                "show": True,
+                "position": "center",
+                "formatter": "Heroes vs\nVillains",
+                "fontSize": 16,
+                "color": "#666"
+            },
+            "emphasis": {
+                "label": {
+                    "show": True,
+                    "fontSize": 22,
+                    "fontWeight": "bold"
+                }
+            },
+            "labelLine": {"show": False},
+            "data": [
+                {"value": numbers[0], "name": causes[0], "itemStyle": {"color": colors[0]}},
+                {"value": numbers[1], "name": causes[1], "itemStyle": {"color": colors[1]}}
+            ]
+        }
+    ]
+}
+
+
+    with col2:
+        st_echarts(option, height="400px")
+
+
+
+
 with tab4:
     st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
     styled_container = st.container()
