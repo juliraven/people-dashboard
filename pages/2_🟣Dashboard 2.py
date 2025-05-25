@@ -915,7 +915,7 @@ with tab3:
     category_circles = circlify.circlify(
     [ {"id": c["id"], "datum": c["datum"]} for c in categories ],
     show_enclosure=False,
-    target_enclosure=circlify.Circle(x=0, y=0, r=1),
+    target_enclosure=circlify.Circle(x=0, y=0, r=1.5),
 )
 
     fig = go.Figure()
