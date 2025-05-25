@@ -800,11 +800,7 @@ with tab3:
     """
 )
 
-    styled_container = st.container()
-    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
-    with styled_container:
-        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
-        st.components.v1.html(html,
+    st.components.v1.html(html,
     height=750,
     scrolling=False
 )
