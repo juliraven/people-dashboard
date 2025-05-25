@@ -894,47 +894,79 @@ with tab3:
             "type": "gauge",
             "startAngle": 90,
             "endAngle": -270,
+            "radius": "90%",
             "pointer": {"show": False},
             "progress": {
                 "show": True,
                 "overlap": False,
                 "roundCap": True,
                 "clip": False,
-                "itemStyle": {"borderWidth": 1, "borderColor": "#464646"},
+                "itemStyle": {"color": "#1E90FF", "borderWidth": 1, "borderColor": "#464646"},
             },
             "axisLine": {
                 "lineStyle": {
                     "width": 40,
-                    "color": [[1, "#eee"]]  # jasne tło dla całego pierścienia
+                    "color": [[1, "#eee"]]
                 }
             },
-            "splitLine": {"show": False, "distance": 0, "length": 10},
+            "splitLine": {"show": False},
             "axisTick": {"show": False},
-            "axisLabel": {"show": False, "distance": 50},
+            "axisLabel": {"show": False},
             "data": [
                 {
-                    "value": percentages[0] * 100,
+                    "value": round(percentages[0] * 100),
                     "name": causes[0],
-                    "title": {"offsetCenter": ["0%", "-30%"], "fontSize": 16, "color": colors[0]},
-                    "detail": {"offsetCenter": ["0%", "-20%"], "fontSize": 20, "color": colors[0]},
-                },
-                {
-                    "value": percentages[1] * 100,
-                    "name": causes[1],
-                    "title": {"offsetCenter": ["0%", "10%"], "fontSize": 16, "color": colors[1]},
-                    "detail": {"offsetCenter": ["0%", "20%"], "fontSize": 20, "color": colors[1]},
-                },
+                    "title": {"offsetCenter": ["0%", "-30%"], "fontSize": 16, "color": "#1E90FF"},
+                    "detail": {"offsetCenter": ["0%", "-20%"], "fontSize": 20, "color": "#1E90FF"},
+                }
             ],
-            "radius": "90%",  # rozmiar pierścienia
-            "title": {"fontSize": 18},
+            "title": {"fontSize": 18, "color": "#1E90FF"},
             "detail": {
                 "formatter": "{value}%",
                 "fontSize": 20,
-                "color": "auto",
+                "color": "#1E90FF",
+            },
+        },
+        {
+            "type": "gauge",
+            "startAngle": 90,
+            "endAngle": -270,
+            "radius": "70%",
+            "pointer": {"show": False},
+            "progress": {
+                "show": True,
+                "overlap": False,
+                "roundCap": True,
+                "clip": False,
+                "itemStyle": {"color": "#DC143C", "borderWidth": 1, "borderColor": "#464646"},
+            },
+            "axisLine": {
+                "lineStyle": {
+                    "width": 40,
+                    "color": [[1, "#eee"]]
+                }
+            },
+            "splitLine": {"show": False},
+            "axisTick": {"show": False},
+            "axisLabel": {"show": False},
+            "data": [
+                {
+                    "value": round(percentages[1] * 100),
+                    "name": causes[1],
+                    "title": {"offsetCenter": ["0%", "10%"], "fontSize": 16, "color": "#DC143C"},
+                    "detail": {"offsetCenter": ["0%", "20%"], "fontSize": 20, "color": "#DC143C"},
+                }
+            ],
+            "title": {"fontSize": 18, "color": "#DC143C"},
+            "detail": {
+                "formatter": "{value}%",
+                "fontSize": 20,
+                "color": "#DC143C",
             },
         }
     ]
 }
+
 
     with col2:
         st_echarts(option, height=400)
