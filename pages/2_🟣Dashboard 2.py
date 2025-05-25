@@ -920,7 +920,7 @@ with tab3:
                     "name": causes[0],
                     "title": {"offsetCenter": ["0%", "-30%"], "fontSize": 16, "color": "#1E90FF"},
                     "detail": {
-                "offsetCenter": ["0%", "-20%"],
+                "offsetCenter": ["0%", "50%"],
                 "formatter": "{value}%",
                 "fontSize": 18,
                 "color": "#1E90FF",
@@ -969,7 +969,7 @@ with tab3:
                     "name": causes[1],
                     "title": {"offsetCenter": ["0%", "10%"], "fontSize": 16, "color": "#DC143C"},
                     "detail": {
-                "offsetCenter": ["0%", "-20%"],
+                "offsetCenter": ["0%", "80%"],
                 "formatter": "{value}%",
                 "fontSize": 16,
                 "color": "#DC143C",
