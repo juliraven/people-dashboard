@@ -802,8 +802,7 @@ with tab3:
     """
 )
 
-    placeholder = st.empty()
-    placeholder.html(html,
+    st.components.v1..html(html,
     height=750,
     scrolling=False, key="pyvis_network"
 )
