@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
+
 page_bg_img_sidebar = """
 <style>
 /* Ustawienie szerokości sidebaru */
@@ -58,7 +60,6 @@ body {
 """
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
-st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
 import pandas as pd
 import plotly.express as px
