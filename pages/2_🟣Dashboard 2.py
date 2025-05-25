@@ -835,8 +835,9 @@ with tab3:
     ]
 }
 
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
+
     with col1 :
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
         for i in range(0, len(causes_sorted), 6):
             cols = st.columns(2)
             for j, col in enumerate(cols):
