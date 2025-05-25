@@ -800,7 +800,11 @@ with tab3:
     """
 )
 
-    st.components.v1.html(html,
+    styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.components.v1.html(html,
     height=750,
     scrolling=False
 )
@@ -827,7 +831,6 @@ with tab3:
         with styled_container:
             st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
             st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
-            st.markdown('##')
             for i in range(0, len(causes_sorted), 6):
                 cols = st.columns(2)
                 for j, col in enumerate(cols):
@@ -836,7 +839,7 @@ with tab3:
                         cause = causes_sorted[idx]
                         pct = percentages_sorted[idx]
                         option = {
-    "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 12, "color": "#fff"}},  # jasny róż
+    "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 16, "color": "#fff"}},  # jasny róż
     "series": [{
         "type": "liquidFill",
         "data": [pct, pct*0.9, pct*0.8],
