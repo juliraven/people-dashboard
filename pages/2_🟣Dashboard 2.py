@@ -934,6 +934,7 @@ with tab3:
         if cat_circle.ex is None:
             continue
         scale_factor = 1.3
+        ell_w, ell_h = 1.2, 0.8
         cx, cy, cr = cat_circle.x, cat_circle.y, cat_circle.r
         cr *= scale_factor  # powiększenie
 
