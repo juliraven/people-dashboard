@@ -865,7 +865,6 @@ with tab3:
     """
 )
 
-    st.markdown(f"<h3 style='text-align: center; color: white;'>Graf Uniwersum Marvela</h3>",unsafe_allow_html=True)
     st.components.v1.html(html,
     height=750,
     scrolling=False
