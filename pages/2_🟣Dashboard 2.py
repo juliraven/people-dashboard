@@ -870,7 +870,7 @@ with tab3:
         {html}
     </div>
     """,
-    height=690,
+    height=650,
     scrolling=False
 )
 
