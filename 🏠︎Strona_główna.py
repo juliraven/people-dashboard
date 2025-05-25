@@ -15,9 +15,9 @@ st.sidebar.markdown(
             padding: 10px;
             font-family: sans-serif;
             font-size: 18px;
-            width: 300px !important;
-            min-width: 300px !important;
-            max-width: 300px !important;
+            width: 400px !important;
+            min-width: 400px !important;
+            max-width: 400px !important;
         }
 
         [data-testid="stSidebarHeader"] {
