@@ -881,53 +881,63 @@ with tab3:
     raw_data = "100, 70"
     numbers = [int(x.strip()) for x in raw_data.split(',')]
     total = sum(numbers)
-    percentages = [round(n / total * 100) for n in numbers]
+    percentages = [n / total for n in numbers]
 
-    colors = ["#1E90FF", "#DC143C"]  
+    colors = [
+    "rgba(30, 144, 255, 0.9)",  # Heroes - niebieski
+    "rgba(220, 20, 60, 0.7)",   # Villains - czerwony
+]
 
     option = {
-    "tooltip": {
-        "trigger": "item",
-        "formatter": "{b}: {c} ({d}%)"
-    },
-    "legend": {
-        "orient": "horizontal",
-        "bottom": "5%",
-        "data": causes
-    },
     "series": [
         {
-            "name": "Marvel Characters",
-            "type": "pie",
-            "radius": ["70%", "90%"],  # Ring
-            "avoidLabelOverlap": False,
-            "label": {
+            "type": "gauge",
+            "startAngle": 90,
+            "endAngle": -270,
+            "pointer": {"show": False},
+            "progress": {
                 "show": True,
-                "position": "center",
-                "formatter": "Heroes vs\nVillains",
-                "fontSize": 16,
-                "color": "#666"
+                "overlap": False,
+                "roundCap": True,
+                "clip": False,
+                "itemStyle": {"borderWidth": 1, "borderColor": "#464646"},
             },
-            "emphasis": {
-                "label": {
-                    "show": True,
-                    "fontSize": 22,
-                    "fontWeight": "bold"
+            "axisLine": {
+                "lineStyle": {
+                    "width": 40,
+                    "color": [[1, "#eee"]]  # jasne tło dla całego pierścienia
                 }
             },
-            "labelLine": {"show": False},
+            "splitLine": {"show": False, "distance": 0, "length": 10},
+            "axisTick": {"show": False},
+            "axisLabel": {"show": False, "distance": 50},
             "data": [
-                {"value": numbers[0], "name": causes[0], "itemStyle": {"color": colors[0]}},
-                {"value": numbers[1], "name": causes[1], "itemStyle": {"color": colors[1]}}
-            ]
+                {
+                    "value": percentages[0] * 100,
+                    "name": causes[0],
+                    "title": {"offsetCenter": ["0%", "-30%"], "fontSize": 16, "color": colors[0]},
+                    "detail": {"offsetCenter": ["0%", "-20%"], "fontSize": 20, "color": colors[0]},
+                },
+                {
+                    "value": percentages[1] * 100,
+                    "name": causes[1],
+                    "title": {"offsetCenter": ["0%", "10%"], "fontSize": 16, "color": colors[1]},
+                    "detail": {"offsetCenter": ["0%", "20%"], "fontSize": 20, "color": colors[1]},
+                },
+            ],
+            "radius": "90%",  # rozmiar pierścienia
+            "title": {"fontSize": 18},
+            "detail": {
+                "formatter": "{value}%",
+                "fontSize": 20,
+                "color": "auto",
+            },
         }
     ]
 }
 
-
     with col2:
-        st_echarts(option, height="400px")
-
+        st_echarts(option, height=400)
 
 
 
