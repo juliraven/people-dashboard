@@ -933,6 +933,7 @@ with tab3:
     for cat_circle in category_circles:
         if cat_circle.ex is None:
             continue
+        scale_factor = 1.3
         cx, cy, cr = cat_circle.x, cat_circle.y, cat_circle.r
         cr *= scale_factor  # powiększenie
 
