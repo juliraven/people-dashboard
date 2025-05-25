@@ -905,7 +905,7 @@ with tab3:
             },
             "axisLine": {
                 "lineStyle": {
-                    "width": 40,
+                    "width": 20,
                     "color": [[1, "#eee"]]
                 }
             },
