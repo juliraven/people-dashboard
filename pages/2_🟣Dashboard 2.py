@@ -873,77 +873,73 @@ with tab3:
 
 
 
-    import streamlit as st
+   import streamlit as st
     from streamlit_echarts import st_echarts
 
-    def render_marvel_ring_gauge():
-    # Twoje dane
-        heroes = 9
-        villains = 7
-        total = heroes + villains
+# --- Przykładowe dane populacyjne w 2020 (z Twojego wpisu):
+    data_2020 = {
+    "Africa (UN)": 13611395,  # <-- tu jest błąd, to wygląda na dane dla Afganistanu
+    "Asia": 4641054775,
+    "Europe": 747636026,
+    "North America": 592072212,
+    "South America": 430759766,
+    "Oceania": 43111704,
+}
 
-        perfect_pct = round(heroes / total * 100)
-        good_pct = round(villains / total * 100)
-        commonly_pct = 0  # jeśli nie masz trzeciej kategorii
+# Oblicz całkowitą populację
+    total_population = sum(data_2020.values())
 
-        option = {
-        "series": [
-            {
-                "type": "gauge",
-                "startAngle": 90,
-                "endAngle": -270,
-                "pointer": {"show": False},
-                "progress": {
-                    "show": True,
-                    "overlap": False,
-                    "roundCap": True,
-                    "clip": False,
-                    "itemStyle": {"borderWidth": 1, "borderColor": "#464646"},
-                },
-                "axisLine": {"lineStyle": {"width": 40}},
-                "splitLine": {"show": False, "distance": 0, "length": 10},
-                "axisTick": {"show": False},
-                "axisLabel": {"show": False, "distance": 50},
-                "data": [
-                    {
-                        "value": perfect_pct,
-                        "name": "Heroes",
-                        "title": {"offsetCenter": ["0%", "-30%"]},
-                        "detail": {"offsetCenter": ["0%", "-20%"]},
-                    },
-                    {
-                        "value": good_pct,
-                        "name": "Villains",
-                        "title": {"offsetCenter": ["0%", "0%"]},
-                        "detail": {"offsetCenter": ["0%", "10%"]},
-                    },
-                    {
-                        "value": commonly_pct,
-                        "name": "Other",
-                        "title": {"offsetCenter": ["0%", "30%"]},
-                        "detail": {"offsetCenter": ["0%", "40%"]},
-                    },
-                ],
-                "title": {"fontSize": 14},
-                "detail": {
-                    "width": 50,
-                    "height": 14,
-                    "fontSize": 14,
-                    "color": "auto",
-                    "borderColor": "auto",
-                    "borderRadius": 20,
-                    "borderWidth": 1,
-                    "formatter": "{value}%",
-                },
-            }
-        ]
-    }
+# Przygotuj dane w formacie dla ECharts Gauge
+    echarts_data = []
+    offsets = ["-30%", "0%", "30%", "60%", "90%", "120%"]  # przesunięcia etykiet
 
-        st_echarts(option, height="500px", key="marvel_ring")
+    for i, (continent, population) in enumerate(data_2020.items()):
+        percentage = round((population / total_population) * 100, 2)
+        echarts_data.append({
+        "value": percentage,
+        "name": continent,
+        "title": {"offsetCenter": ["0%", offsets[i]]},
+        "detail": {"offsetCenter": ["0%", str(int(offsets[i][:-1]) + 10) + "%"]},
+    })
 
-# Streamlit app
-    st.title("Marvel Gauge Chart – Heroes vs Villains")
-    render_marvel_ring_gauge()
+# ECharts Gauge opcje
+    option = {
+    "series": [
+        {
+            "type": "gauge",
+            "startAngle": 90,
+            "endAngle": -270,
+            "pointer": {"show": False},
+            "progress": {
+                "show": True,
+                "overlap": False,
+                "roundCap": True,
+                "clip": False,
+                "itemStyle": {"borderWidth": 1, "borderColor": "#464646"},
+            },
+            "axisLine": {"lineStyle": {"width": 40}},
+            "splitLine": {"show": False},
+            "axisTick": {"show": False},
+            "axisLabel": {"show": False},
+            "data": echarts_data,
+            "title": {"fontSize": 14},
+            "detail": {
+                "width": 50,
+                "height": 14,
+                "fontSize": 14,
+                "color": "auto",
+                "borderColor": "auto",
+                "borderRadius": 20,
+                "borderWidth": 1,
+                "formatter": "{value}%",
+            },
+        }
+    ]
+}
+
+    st.title("Udział kontynentów w populacji świata – 2020")
+    st_echarts(option, height="600px")
+
 
     
 
