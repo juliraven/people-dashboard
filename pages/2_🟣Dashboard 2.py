@@ -820,6 +820,20 @@ with tab3:
     cause_pct_pairs = list(zip(causes, percentages))
     cause_pct_pairs_sorted = sorted(cause_pct_pairs, key=lambda x: x[1], reverse=True)
     causes_sorted, percentages_sorted = zip(*cause_pct_pairs_sorted)
+    percentages_sorted_rounded = [round(p * 100) for p in percentages_sorted]
+
+    color_map = {
+    "Heroes": [
+        "rgba(30, 144, 255, 0.9)",   # DeepSkyBlue
+        "rgba(100, 149, 237, 0.7)",  # CornflowerBlue
+        "rgba(173, 216, 230, 0.5)"   # LightBlue
+    ],
+    "Villains": [
+        "rgba(220, 20, 60, 0.9)",    # Crimson
+        "rgba(255, 69, 0, 0.7)",     # OrangeRed
+        "rgba(255, 160, 122, 0.5)"   # LightSalmon
+    ]
+}
 
     with col1 :
         styled_container = st.container()
@@ -833,22 +847,19 @@ with tab3:
                     idx = i + j
                     if idx < len(causes_sorted):
                         cause = causes_sorted[idx]
-                        pct = percentages_sorted[idx]
+                        pct = percentages_sorted_rounded[idx]
+                        colors = color_map
                         option = {
     "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 16, "color": "#fff"}},  # jasny róż
     "series": [{
         "type": "liquidFill",
         "data": [pct, pct*0.9, pct*0.8],
         "radius": "75%",
-        "color": [
-            "rgba(255, 20, 147, 0.9)",   # Deep Pink, mocny różowy
-            "rgba(255, 105, 180, 0.7)",  # Hot Pink, jasny różowy
-            "rgba(255, 182, 193, 0.5)" 
-        ],
+        "color": colors,
         "outline": {
             "borderDistance": 5,
             "itemStyle": {
-                "borderColor": "rgba(255, 20, 147, 1)",  # obrys jasny róż
+                "borderColor": colors[0],  # obrys jasny róż
                 "borderWidth": 3
             }
         },
