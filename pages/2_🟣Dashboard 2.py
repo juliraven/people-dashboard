@@ -1187,5 +1187,127 @@ with st.expander('Żródła danych:', expanded=False):
         
         st.code(code, language='python')
 
+        st.markdown(
+    '''
+    <p>
+    Aby dodać graf do dashboardu, podobny do tego na w poprzedniej zakładce, należy użyć poniższych poleceń:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
 
+
+        code = '''
+    from pyvis.network import Network
+    import tempfile
+    import re
+
+    data = {
+ "name": "marvel",
+ "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+ "children": [
+  {
+   "name": "Heroes",
+   "children": [
+    {
+      "hero": "Spider-Man",
+      "name": "Peter Benjamin Parker",
+      "link": "http://marvel.com/characters/54/spider-man",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png",
+      "size": 40000
+    },
+    {
+      "hero": "Hulk",
+      "name": "Robert Bruce Banner",
+      "link": "http://marvel.com/characters/25/hulk",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_hulk.png",
+      "size": 40000
+    },
+    {
+      "hero": "Wolverine",
+      "name": "James Howlett",
+      "link": "http://marvel.com/characters/66/wolverine",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_wolverine.png",
+      "size": 40000
+    }
+  ]
+  },
+  {
+   "name": "Villains",
+   "children": [
+    {
+      "hero": "Dr. Doom",
+      "name": "Victor von Doom",
+      "link": "http://marvel.com/characters/13/dr_doom",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/drdoom.png",
+      "size": 40000
+    },
+    {
+      "hero": "Mystique",
+      "name": "Unrevealed",
+      "link": "http://marvel.com/characters/1552/mystique",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/mystique.png",
+      "size": 40000
+    },
+    {
+      "hero": "Red Skull",
+      "name": "Johann Shmidt",
+      "link": "http://marvel.com/characters/1901/red_skull",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/redskull.png",
+      "size": 40000
+    },
+   ]
+  },
+  ]
+  }
+
+    net = Network(
+        height="700px",
+        width="100%",
+        bgcolor="#111111",      
+        font_color="white",      
+        directed=True
+)
+    net.add_node(
+    "Marvel Universe", 
+    label="Marvel Universe", 
+    shape="circularImage",   
+    image="http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+    size=50, color='red', x=0,
+    y=0,
+    fixed=True
+)
+
+    for category in data["children"]:
+        cat_id = category["name"]
+        net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
+        net.add_edge("Marvel Universe", cat_id, color='red')
+
+        for hero in category["children"]:
+            hero_id = hero["hero"]
+            net.add_node(
+            hero_id,
+            label=hero_id,
+            title=f"<a href='{hero['link']}' target='_blank'>{hero['name']}</a>",
+            shape="circularImage",
+            image=hero["img"],
+            size=30, color='red'
+        )
+            net.add_edge(cat_id, hero_id, color='red')
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
+        path = tmp_file.name
+        net.write_html(path)
+
+        with open(path, "r", encoding="utf-8") as f:
+            html = f.read()
+
+    st.components.v1.html(html,
+    height=750,
+    scrolling=False
+)
+
+'''
+        
+        st.code(code, language='python')
 
