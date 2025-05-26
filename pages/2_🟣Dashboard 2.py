@@ -1376,7 +1376,7 @@ for i, label in enumerate(labels):
     }
     
     with cols[i]:
-        st_echarts(option, height=250, key=f"echart_liquid_{idx}")
+        st_echarts(option, height=250, key=f"echart_liquid_{i}")
 
 
 gauge_series = []
