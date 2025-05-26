@@ -1003,7 +1003,7 @@ with tab4:
         st.markdown(
     '''
     <p>
-    Na samym początku zwykle umieszcza się importy niezbędnych bibliotek i wczytuje się plik w posatci ramki danych:
+    Na samym początku zwykle umieszcza się importy niezbędnych bibliotek i wczytuje się plik w postaci ramki danych:
     </p>
     ''',
     unsafe_allow_html=True
