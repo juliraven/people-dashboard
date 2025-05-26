@@ -1313,7 +1313,7 @@ st.components.v1.html(html,
         st.markdown(
     '''
     <p>
-    Pozostałe elementy to <code>Liquid Fill Chart</code> oraz <code>Gauge Chart</option>, które powstały w następujący sposób:
+    Pozostałe elementy to <code>Liquid Fill Chart</code> oraz <code>Gauge Chart</code>, które można utworzyć w następujący sposób:
     </p>
     ''',
     unsafe_allow_html=True
