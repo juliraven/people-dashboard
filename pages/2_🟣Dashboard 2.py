@@ -555,17 +555,14 @@ with tab2:
 
 with tab3:
 
-    if not st.session_state.tab3_initialized:
-        st.session_state.tab3_initialized = True
-        
-        from pyvis.network import Network
-        import tempfile
-        import re
+    from pyvis.network import Network
+    import tempfile
+    import re
 
-        st.markdown("<h1 style='text-align: center;'>📊 Marvel Comics</h1>", unsafe_allow_html=True)
-        st.markdown(' ')
+    st.markdown("<h1 style='text-align: center;'>📊 Marvel Comics</h1>", unsafe_allow_html=True)
+    st.markdown(' ')
 
-        data = {
+    data = {
  "name": "marvel",
  "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
  "children": [
@@ -742,7 +739,7 @@ with tab3:
 }
 
 
-        net = Network(
+    net = Network(
         height="700px",
         width="100%",
         bgcolor="#111111",      
@@ -751,7 +748,7 @@ with tab3:
 )
 
 
-        net.add_node(
+    net.add_node(
     "Marvel Universe", 
     label="Marvel Universe", 
     shape="circularImage",       # zmienione z "image" na "circularImage"
@@ -762,14 +759,14 @@ with tab3:
 )
 
 
-        for category in data["children"]:
-            cat_id = category["name"]
-            net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
-            net.add_edge("Marvel Universe", cat_id, color='red')
+    for category in data["children"]:
+        cat_id = category["name"]
+        net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
+        net.add_edge("Marvel Universe", cat_id, color='red')
 
-            for hero in category["children"]:
-                hero_id = hero["hero"]
-                net.add_node(
+        for hero in category["children"]:
+            hero_id = hero["hero"]
+            net.add_node(
             hero_id,
             label=hero_id,
             title=f"<a href='{hero['link']}' target='_blank'>{hero['name']}</a>",
@@ -777,16 +774,16 @@ with tab3:
             image=hero["img"],
             size=30, color='red'
         )
-                net.add_edge(cat_id, hero_id, color='red')
+            net.add_edge(cat_id, hero_id, color='red')
 
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
-            path = tmp_file.name
-            net.write_html(path)
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
+        path = tmp_file.name
+        net.write_html(path)
 
-            with open(path, "r", encoding="utf-8") as f:
-                html = f.read()
+        with open(path, "r", encoding="utf-8") as f:
+            html = f.read()
 
-        html = html.replace(
+    html = html.replace(
     "</head>",
     """
     <style>
@@ -811,28 +808,28 @@ with tab3:
     """
 )
 
-        st.components.v1.html(html,
+    st.components.v1.html(html,
     height=750,
     scrolling=False
 )
 
 
-        from streamlit_echarts import st_echarts
+    from streamlit_echarts import st_echarts
     
-        causes = [
+    causes = [
     "Heroes", "Villains"]
 
-        raw_data = "100, 70"
-        numbers = [int(x.strip()) for x in raw_data.split(',')]
-        total_deaths = sum(numbers)
-        percentages = [n / total_deaths for n in numbers]
+    raw_data = "100, 70"
+    numbers = [int(x.strip()) for x in raw_data.split(',')]
+    total_deaths = sum(numbers)
+    percentages = [n / total_deaths for n in numbers]
 
-        cause_pct_pairs = list(zip(causes, percentages))
-        cause_pct_pairs_sorted = sorted(cause_pct_pairs, key=lambda x: x[1], reverse=True)
-        causes_sorted, percentages_sorted = zip(*cause_pct_pairs_sorted)
-        percentages_sorted_rounded = [round(p * 100) for p in percentages_sorted]
+    cause_pct_pairs = list(zip(causes, percentages))
+    cause_pct_pairs_sorted = sorted(cause_pct_pairs, key=lambda x: x[1], reverse=True)
+    causes_sorted, percentages_sorted = zip(*cause_pct_pairs_sorted)
+    percentages_sorted_rounded = [round(p * 100) for p in percentages_sorted]
 
-        color_map = {
+    color_map = {
     "Heroes": [
         "rgba(30, 144, 255, 1)",   # DeepSkyBlue - pełny
         "rgba(30, 144, 255, 0.7)",
@@ -845,20 +842,20 @@ with tab3:
     ]
 }
 
-        st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
-        col1, col2, col3 = st.columns([2,2,2])
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([2,2,2])
 
-        with col2:
-            for i in range(0, len(causes_sorted), 6):
-                cols = st.columns(2)
-                for j, col in enumerate(cols):
-                    idx = i + j
-                    if idx < len(causes_sorted):
-                        cause = causes_sorted[idx]
-                        pct = percentages_sorted[idx]
-                        pct_label = percentages_sorted_rounded[idx]
-                        colors = color_map.get(cause)
-                        option = {
+    with col2:
+        for i in range(0, len(causes_sorted), 6):
+            cols = st.columns(2)
+            for j, col in enumerate(cols):
+                idx = i + j
+                if idx < len(causes_sorted):
+                    cause = causes_sorted[idx]
+                    pct = percentages_sorted[idx]
+                    pct_label = percentages_sorted_rounded[idx]
+                    colors = color_map.get(cause)
+                    option = {
     "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 16, "color": "#fff"}},  # jasny róż
     "series": [{
         "type": "liquidFill",
@@ -882,8 +879,8 @@ with tab3:
         }
     }]
 }
-                        with col:
-                            st_echarts(option, height=250, key=f"echart_liquid_{idx}")
+                    with col:
+                        st_echarts(option, height=250, key=f"echart_liquid_{idx}")
 
 
     from streamlit_echarts import st_echarts
