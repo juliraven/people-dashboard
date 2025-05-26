@@ -69,7 +69,10 @@ import altair as alt
 import base64
 import json
 import time
-
+from pyvis.network import Network
+import tempfile
+import re
+from streamlit_echarts import st_echarts
 
 st.markdown(
     """
@@ -552,10 +555,6 @@ with tab2:
 
 with tab3:
 
-    from pyvis.network import Network
-    import tempfile
-    import re
-
     st.markdown("<h1 style='text-align: center;'>📊 Marvel Comics</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
@@ -809,9 +808,6 @@ with tab3:
     height=750,
     scrolling=False
 )
-
-
-    from streamlit_echarts import st_echarts
     
     causes = [
     "Heroes", "Villains"]
@@ -879,8 +875,6 @@ with tab3:
                     with col:
                         st_echarts(option, height=250, key=f"echart_liquid_{idx}")
 
-
-    from streamlit_echarts import st_echarts
 
     causes = ["Heroes", "Villains"]
     raw_data = "100, 70"
