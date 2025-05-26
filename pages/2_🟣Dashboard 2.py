@@ -1196,7 +1196,6 @@ with st.expander('Żródła danych:', expanded=False):
     unsafe_allow_html=True
 )
 
-
         code = '''
 from pyvis.network import Network
 import tempfile
@@ -1311,3 +1310,129 @@ st.components.v1.html(html,
         
         st.code(code, language='python')
 
+        st.markdown(
+    '''
+    <p>
+    Pozostałe elementy to <code>Liquid Fill Chart</code> oraz <code>Gauge Chart</option>, które powstały w następujący sposób:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+from streamlit_echarts import st_echarts
+    
+labels = ["Heroes", "Villains"]
+raw_data = "100, 70"
+numbers = [int(x.strip()) for x in raw_data.split(',')]
+total = sum(numbers)
+percentages = [n / total for n in numbers]
+rounded_percentages = [round(p * 100) for p in percentages]
+
+color_map = {
+    "Heroes": [
+        "rgba(30, 144, 255, 1)",  
+        "rgba(30, 144, 255, 0.7)",
+        "rgba(30, 144, 255, 0.4)"
+    ],
+    "Villains": [
+        "rgba(220, 20, 60, 1)",   
+        "rgba(220, 20, 60, 0.7)",
+        "rgba(220, 20, 60, 0.4)"
+    ]
+}
+
+cols = st.columns(len(labels))
+
+for i, label in enumerate(labels):
+    pct = percentages[i]
+    color = color_map.get(label)
+    
+    option = {
+        "title": {
+            "text": label,
+            "left": "center",
+            "textStyle": {"fontSize": 16, "color": "#fff"}
+        },
+        "series": [{
+            "type": "liquidFill",
+            "data": [pct, pct * 0.9, pct * 0.8],
+            "radius": "75%",
+            "color": color,
+            "outline": {
+                "borderDistance": 5,
+                "itemStyle": {
+                    "borderColor": color[0],
+                    "borderWidth": 3
+                }
+            },
+            "backgroundStyle": {"color": "#fff"},
+            "label": {
+                "formatter": f"{rounded_percentages[i]}%",
+                "fontSize": 30,
+                "color": "#000"
+            }
+        }]
+    }
+    
+    with cols[i]:
+        st_echarts(option, height=250, key=f"echart_liquid_{idx}")
+
+
+gauge_series = []
+
+for i, label in enumerate(labels):
+    pct_value = rounded_percentages[i]
+    color = color_map[label][0]
+
+    series = {
+        "type": "gauge",
+        "startAngle": 90,
+        "endAngle": -270,
+        "radius": f"{90 - i * 12}%",
+        "pointer": {"show": False},
+        "progress": {
+            "show": True,
+            "overlap": False,
+            "roundCap": True,
+            "clip": False,
+            "itemStyle": {
+                "color": color,
+                "borderWidth": 1,
+                "borderColor": "#464646",
+            },
+        },
+        "axisLine": {
+            "lineStyle": {
+                "width": 20,
+                "color": [[1, "#eee"]]
+            }
+        },
+        "splitLine": {"show": False},
+        "axisTick": {"show": False},
+        "axisLabel": {"show": False},
+        "data": [{
+            "value": pct_value,
+            "name": label,
+            "title": {
+                "offsetCenter": ["0%", f"{-30 + i * 50}%"],
+                "fontSize": 16,
+                "color": color
+            },
+            "detail": {
+                "offsetCenter": ["0%", f"{-10 + i * 50}%"],
+                "formatter": "{value}%",
+                "fontSize": 18,
+                "color": color,
+            },
+        }],
+    }
+
+    gauge_series.append(series)
+
+gauge_option = {"series": gauge_series}
+
+st_echarts(gauge_option, height=400, key="gauge_chart")
+'''
+        
+        st.code(code, language='python')
