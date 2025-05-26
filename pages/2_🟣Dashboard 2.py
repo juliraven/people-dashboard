@@ -83,10 +83,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab1, tab2, tab3, tab4 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Marvel", "Schemat kodu"])
+if 'tab3_initialized' not in st.session_state:
+    st.session_state.tab3_initialized = False
 
-if "last_refresh" not in st.session_state:
-    st.session_state.last_refresh = time.time()
+tab1, tab2, tab3, tab4 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Marvel", "Schemat kodu"])
 
 with tab1:
 
@@ -554,6 +554,10 @@ with tab2:
 
 
 with tab3:
+
+    if not st.session_state.tab3_initialized:
+        st.session_state.tab3_initialized = True
+        
     from pyvis.network import Network
     import tempfile
     import re
@@ -1000,11 +1004,6 @@ with tab3:
 
 
     st_echarts(option, height=400, key="echart_gauge")
-
-    if time.time() - st.session_state.last_refresh > 5:
-        st.session_state.last_refresh = time.time()
-        time.sleep(0.1) 
-        st.experimental_rerun()
 
 with tab4:
     st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
