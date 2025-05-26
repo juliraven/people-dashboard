@@ -83,9 +83,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-if 'tab3_initialized' not in st.session_state:
-    st.session_state.tab3_initialized = False
-
 tab1, tab2, tab3, tab4 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Marvel", "Schemat kodu"])
 
 with tab1:
