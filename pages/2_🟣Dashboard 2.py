@@ -68,6 +68,8 @@ import plotly.graph_objects as go
 import altair as alt
 import base64
 import json
+import time
+
 
 st.markdown(
     """
@@ -82,6 +84,9 @@ st.markdown(
 )
 
 tab1, tab2, tab3, tab4 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Marvel", "Schemat kodu"])
+
+if "last_refresh" not in st.session_state:
+    st.session_state.last_refresh = time.time()
 
 with tab1:
 
@@ -996,7 +1001,10 @@ with tab3:
 
     st_echarts(option, height=400, key="echart_gauge")
 
-
+    if time.time() - st.session_state.last_refresh > 5:
+        st.session_state.last_refresh = time.time()
+        time.sleep(0.1) 
+        st.experimental_rerun()
 
 with tab4:
     st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
