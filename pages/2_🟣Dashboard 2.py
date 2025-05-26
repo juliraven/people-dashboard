@@ -1198,11 +1198,11 @@ with st.expander('Żródła danych:', expanded=False):
 
 
         code = '''
-    from pyvis.network import Network
-    import tempfile
-    import re
+from pyvis.network import Network
+import tempfile
+import re
 
-    data = {
+data = {
  "name": "marvel",
  "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
  "children": [
@@ -1261,14 +1261,14 @@ with st.expander('Żródła danych:', expanded=False):
   ]
   }
 
-    net = Network(
+net = Network(
         height="700px",
         width="100%",
         bgcolor="#111111",      
         font_color="white",      
-        directed=True
-)
-    net.add_node(
+        directed=True)
+        
+net.add_node(
     "Marvel Universe", 
     label="Marvel Universe", 
     shape="circularImage",   
@@ -1278,31 +1278,31 @@ with st.expander('Żródła danych:', expanded=False):
     fixed=True
 )
 
-    for category in data["children"]:
-        cat_id = category["name"]
-        net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
-        net.add_edge("Marvel Universe", cat_id, color='red')
+for category in data["children"]:
+    cat_id = category["name"]
+    net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
+    net.add_edge("Marvel Universe", cat_id, color='red')
 
-        for hero in category["children"]:
-            hero_id = hero["hero"]
-            net.add_node(
-            hero_id,
-            label=hero_id,
-            title=f"<a href='{hero['link']}' target='_blank'>{hero['name']}</a>",
-            shape="circularImage",
-            image=hero["img"],
-            size=30, color='red'
+    for hero in category["children"]:
+        hero_id = hero["hero"]
+        net.add_node(
+        hero_id,
+        label=hero_id,
+        title=f"<a href='{hero['link']}' target='_blank'>{hero['name']}</a>",
+        shape="circularImage",
+        image=hero["img"],
+        size=30, color='red'
         )
-            net.add_edge(cat_id, hero_id, color='red')
+        net.add_edge(cat_id, hero_id, color='red')
 
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
-        path = tmp_file.name
-        net.write_html(path)
+with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
+    path = tmp_file.name
+    net.write_html(path)
 
-        with open(path, "r", encoding="utf-8") as f:
-            html = f.read()
+    with open(path, "r", encoding="utf-8") as f:
+        html = f.read()
 
-    st.components.v1.html(html,
+st.components.v1.html(html,
     height=750,
     scrolling=False
 )
