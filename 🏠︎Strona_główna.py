@@ -107,7 +107,7 @@ if selected=="O Streamlicie":
     st.markdown(
     '''
     <p style='font-size: 20px; font-weight: normal;'>
-    Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://docs.streamlit.io/" style="color:#66ccff; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
+    Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://streamlit.io/cloud" style="color:#66ccff; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
     </p>
     ''',
     unsafe_allow_html=True
