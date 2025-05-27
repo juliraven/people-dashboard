@@ -1078,7 +1078,6 @@ with col1:
         code = '''
 years_available = sorted(df1["Year"].unique())
 selected_year = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
-df_map = df1[df1["Year"] == selected_year].copy()
 '''
 
         st.code(code, language='python')
