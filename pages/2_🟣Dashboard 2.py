@@ -1099,6 +1099,39 @@ zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_r
 
         st.code(code, language='python')
 
+
+        st.markdown(
+    '''
+    <p>
+    Aby dodać do dashboardu pewne metryki, należy użyć funkcji <code>st.metric()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+df_this_year = df1[df1["Year"] == selected_year]
+df_prev_year = df1[df1["Year"] == (selected_year - 1)]
+    
+df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
+df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
+df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
+
+top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
+top_loss = df_diff.sort_values("Population_Change").iloc[0]
+
+st.metric(label=top_gain["Country"],
+          value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+          delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
+
+st.metric(label=top_loss["Country"],
+          value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+          delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
+'''
+
+        st.code(code, language='python')
+
+
         st.markdown(
     '''
     <p>
