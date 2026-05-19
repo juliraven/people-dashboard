@@ -1,4 +1,4 @@
-# Ludność - dashboard
+# Analiza liczby ludności - dashboard
 
 ## Opis projektu
 Projekt polegał na stworzeniu interaktywnego dashboardu z użyciem biblioteki ```Streamlit```. Pozwala ona na tworzenie aplikacji, które można w łatwy spoósb udostępniać przy użyciu linku. Aplikacja pozwala na filtrowanie danych, przegląd metryk oraz generowanie wykresów.
