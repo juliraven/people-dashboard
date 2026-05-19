@@ -23,4 +23,4 @@ project/
 ├── requirements.txt # zależności
 └── README.md
 
-![Dashboard](assets/dashboard.png)
+![Dashboard](assets/Zrzut ekranu 2026-05-19 123150.png)
