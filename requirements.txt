@@ -11,7 +11,4 @@ streamlit-extras
 openpyxl
 altair
 Pillow
-pycountry
-streamlit_echarts
-pyvis
-circlify
+
