@@ -82,7 +82,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab1, tab2, tab3, tab4 = st.tabs(["Ludność", "Długość życia i śmiertelność"])
+tab1, tab2 = st.tabs(["Ludność", "Długość życia i śmiertelność"])
 
 with tab1:
 
