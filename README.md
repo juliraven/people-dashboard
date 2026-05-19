@@ -24,6 +24,5 @@ people-dashboard/
 └── README.md
 ```
 
-![Dashboard](assets\d1)
-![Dashboard](assets/d2.png)
-![test](https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg)
+![Dashboard](assets\d1.png)
+![Dashboard](assets\d2.png)
