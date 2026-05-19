@@ -65,10 +65,8 @@ import altair as alt
 import base64
 import json
 import time
-from pyvis.network import Network
 import tempfile
 import re
-from streamlit_echarts import st_echarts
 
 st.markdown(
     """
