@@ -24,5 +24,5 @@ people-dashboard/
 └── README.md
 ```
 
-![Dashboard](assets/d1.png)
+![Dashboard](assets\d1.png)
 ![Dashboard](assets/d2.png)
