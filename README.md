@@ -1,13 +1,12 @@
 # Ludność - dashboard
 
 ## Opis projektu
-Ten projekt to interaktywny dashboard stworzony w Streamlit, umożliwiający analizę i wizualizację danych w sposób dynamiczny i intuicyjny.  
-Aplikacja pozwala na filtrowanie danych, przegląd metryk oraz generowanie wykresów.
+Projekt polegał na stworzeniu interaktywnegio dashboardu z użyciem biblioteki Streamlit. Pozwala ona na tworzenie apliakcji, które można w łatwy spoósb udostępniać przy użyciu linku. Aplikacja pozwala na filtrowanie danych, przegląd metryk oraz generowanie wykresów.
 
-## Link do aplikacji:  
+## Link do aplikacji  
 [https://people-dashboard.streamlit.app/](https://people-dashboard.streamlit.app/)
 
-## Technologie
+## Użyte technologie
 - Python
 - Streamlit
 - Pandas
