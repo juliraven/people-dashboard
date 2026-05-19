@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Ludność - daschboard", layout="wide")
+st.set_page_config(page_title="Ludność - dashboard", layout="wide")
 
 page_bg_img_sidebar = """
 <style>
