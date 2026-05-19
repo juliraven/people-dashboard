@@ -22,3 +22,5 @@ project/
 ├── assets/ # obrazy i grafiki
 ├── requirements.txt # zależności
 └── README.md
+
+![Dashboard](assets/dashboard.png)
