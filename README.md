@@ -1,7 +1,7 @@
 # Ludność - dashboard
 
 ## Opis projektu
-Projekt polegał na stworzeniu interaktywnegio dashboardu z użyciem biblioteki Streamlit. Pozwala ona na tworzenie apliakcji, które można w łatwy spoósb udostępniać przy użyciu linku. Aplikacja pozwala na filtrowanie danych, przegląd metryk oraz generowanie wykresów.
+Projekt polegał na stworzeniu interaktywnego dashboardu z użyciem biblioteki Streamlit. Pozwala ona na tworzenie aplikacji, które można w łatwy spoósb udostępniać przy użyciu linku. Aplikacja pozwala na filtrowanie danych, przegląd metryk oraz generowanie wykresów.
 
 ## Link do aplikacji  
 [https://people-dashboard.streamlit.app/](https://people-dashboard.streamlit.app/)
@@ -24,5 +24,5 @@ people-dashboard/
 └── README.md
 ```
 
-![Dashboard](assets\d1.png)
+![Dashboard](assets/d1.png)
 ![Dashboard](assets\d2.png)
