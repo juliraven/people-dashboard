@@ -1,42 +1,23 @@
 import streamlit as st
-from streamlit_extras.app_logo import add_logo
-from streamlit_option_menu import option_menu
 
 st.set_page_config(page_title="Wizualizacja danych - streamlit", layout="wide")
 
-add_logo('logo.png', height=320)
-
-st.sidebar.markdown(
-    """
-    <style>
-        }
-        [data-testid="stSidebar"] {
-            padding-top: 0px;
-            padding: 10px;
-            font-family: sans-serif;
-            font-size: 18px;
-            width: 440px !important;
-            min-width: 440px !important;
-            max-width: 440px !important;
-        }
-
-        [data-testid="stSidebarHeader"] {
-            height: 30px;
-            padding: 5px 10px; 
-            margin: 0; 
-            display: flex; 
-            align-items: center;
-            justify-content: center; 
-        }
-        .main {
-            margin-left: 170px;
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 page_bg_img_sidebar = """
 <style>
+/* Ustawienie szerokości sidebaru */
+section[data-testid="stSidebar"] {
+    width: 340px !important;
+    min-width: 340px !important;
+    max-width: 340px !important;
+    display: flex;
+    align-items: center;       /* Wyśrodkowanie w pionie */
+    justify-content: center;   /* Wyśrodkowanie w poziomie */
+    flex-direction: column;
+    height: 100vh;             /* Wysokość całego widoku */
+    padding-top: 10px;
+}
+
+/* Styl samego wnętrza sidebaru */
 [data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
@@ -80,505 +61,1404 @@ body {
 
 st.markdown(page_bg_img_sidebar, unsafe_allow_html=True)
 
-selected = option_menu(
-    menu_title=None,  
-    options=["O Streamlicie", "Przydatne funkcje", "Przykłady użycia wybranych funkcji"], 
-    menu_icon="cast", 
-    default_index=0, 
-    orientation="horizontal", 
-)
-
-if selected=="O Streamlicie":
-
-    st.title("Czym jest Streamlit?")
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    <span style="color:red; font-weight:bold;">Streamlit</span> umożliwia tworzenie interaktywnych aplikacji internetowych opartych na danych.
-    Aplikacje można tworzyć wyłącznie z użyciem Pythona i bez konieczności używania innych technologii, takich jak JavaScript, HTML, CSS.
-    Dokumentacja dostępna jest na stronie: 
-    <a href="https://docs.streamlit.io" style="color:#66ccff; font-weight:bold;">dokumentacja</a>.
-    </p>
-    ''',
-    unsafe_allow_html=True
-    )
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Utworzoną aplikację można w łatwy sposób wdrożyć dzięki <a href="https://streamlit.io/cloud" style="color:#66ccff; font-weight:bold;">chmurze</a> za pomocą kilku kliknięć.
-    </p>
-    ''',
-    unsafe_allow_html=True
-    )
-
-    st.title("Pierwsze kroki")
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Aby móc rozpocząć korzystanie z biblioteki, w celu stworzenia pierwszej aplikacji, należy najpierw ją zainstalować za pomocą polecenia:
-    </p>
-    ''',
-    unsafe_allow_html=True
-    )
-
-    code = '''
-    pip install streamlit
-    '''
-
-    st.code(code, language='python')
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    W celu uruchomienia przykładowej aplikacji należy wywołać polecenie:
-    </p>
-    ''',
-    unsafe_allow_html=True
-    )
-
-    code = '''
-    streamlit hello
-    '''
-
-    st.code(code, language='python')
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Aplikację można utworzyć w dowolnym edytorze tekstowym. Należy ją zapisać następnie do pliku z rozszerzeniem <code>.py</code>, np. <code>app.py</code>. W pliku tym wpisujemy przykładowy kod:
-    </p>
-    ''',
-    unsafe_allow_html=True
-    )
-
-    code = '''
-import streamlit as st
-
-st.write("Hello world")
-'''
-
-    st.code(code, language='python')
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Następnie w terminalu wiersza poleceń wpisujemy:
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    code = '''
-streamlit run app.py
-'''
-
-    st.code(code, language='python')
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Powinno to uruchomić przeglądarkę, która wyświetli aplikację.
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    st.title("Udostępnianie aplikacji")
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Utworzoną aplikację można udostępnić do publicznego użytku przy pomocy <a href="https://github.com/" style="color:#66ccff; font-weight:bold;">GitHuba</a>. Wystarczy utworzyć konto i repozytorium, które można użyć do udostępnienia aplikacji za pomocą wyżej wspomnianej chmury.
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Przykładowa struktura repoozytorium może wyglądać następująco:
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    code = '''
-app/
-├── home.py
-└── pages/
-    └── page1.py
-    └── page2.py
-├── requirements.txt
-'''
-
-    st.code(code, language='python')
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    W pliku <code>requirements.txt</code> umieszczamy używane w aplikacji biblioteki. Może on wyglądać w następujący sposób:
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    code = '''
-streamlit
-pandas
-numpy
-plotly
-matplotlib
-seaborn
-scikit-learn
-'''
-
-    st.code(code, language='python')
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Gdy mamy już gotowy przynajmniej plik <code>home.py</code>, możemy udostępnić aplikację. W tym celu należy wejść na stronę: <a href="https://streamlit.io/" style="color:#66ccff; font-weight:bold;">streamlit</a> i założyć na niej konto, np. za pośrednictwem GitHuba lub Google.
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Następnie należy wybrać opcję <code>Create app</code> i pierwszą z dostępnych opcji wdrożenia, czyli z użyciem GitHuba.
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    st.image('first.png', caption="Opcje wdrażania aplikacji", use_container_width=True)
-
-    st.markdown(
-    '''
-    <p style='font-size: 20px; font-weight: normal;'>
-    Pojawią się pola, które należy wypełnić, a następnie kliknąć przycisk <code>Deploy</code>. Nasza aplikacja jest od tego momentu dostępna pod przypisanym (lub wskazanym przez nas) linkiem.
-    </p>
-    ''',
-    unsafe_allow_html=True
-)
-
-    st.image('second.png', caption="Wdrażanie", use_container_width=True)
-
-if selected=="Przydatne funkcje":
-    st.title("Przydatne funkcje")
-
-    col1, col2 = st.columns([2, 2])
-
-    col1.subheader('Wyświetlanie tekstu')
-
-    col1.markdown("""
-| Funkcja                         | Opis                                                                 |
-|---------------------------------|----------------------------------------------------------------------|
-| `st.text('Tekst')`              | wyświetla zwykły tekst o stałej szerokości                           |
-| `st.markdown('Markdown')`       | wyświetla tekst sformatowany za pomocą Markdown (np. _kursywa_)      |
-| `st.caption('Opis')`            | pokazuje opis, np. do obrazka                                        |
-| `st.latex(r'e^{x}')` | wyświetla wzór matematyczny w składni LaTeX                         |
-| `st.write('Dowolny obiekt')`   | uniwersalna funkcja – obsługuje tekst, liczby, listy, DataFrame itp.  |
-| `st.title('Tytuł')`            | wyświetla duży nagłówek (tytuł)                             |
-| `st.header('Nagłówek')`        | wyświetla średni nagłówek – mniejszy niż `title`, większy niż `subheader`    |
-| `st.subheader('Podnagłówek')`  | wyświetla mniejszy nagłówek, np. dla sekcji w aplikacji                   |
-| `st.code('for i in range(8):')`| pokazuje blok kodu z zachowaniem formatowania                      |
-
-""")
-
-    col1.subheader('Wyświetlanie danych')
-
-    col1.markdown("""
-| Funkcja                                       | Opis                                                                 |
-|-----------------------------------------------|----------------------------------------------------------------------|
-| `st.dataframe(my_dataframe)`                 | wyświetla ramkę danych (np. Pandas DataFrame) w formie interaktywnej tabeli |
-| `st.table(data.iloc[0:10])`                  | pokazuje dane jako statyczną tabelę – bez możliwości przewijania czy sortowania |
-| `st.json({'foo': 'bar', 'fu': 'ba'})`        | wyświetla dane w formacie JSON w przejrzystej strukturze drzewa    |
-| `st.metric(label="Temp", value="273 K", delta="1.2 K")` | prezentuje wartość liczbową z etykietą i zmianą (delta) – idealne do metryk |
-
-""")
-
-    col2.subheader('Wyświetlanie multimediów')
-
-    col2.markdown("""
-| Funkcja                        | Opis                                                                 |
-|--------------------------------|----------------------------------------------------------------------|
-| `st.image('image.png')`     | wyświetla obrazek, może to być plik lokalny, URL lub obiekt w pamięci  |
-| `st.audio(data)`               | odtwarza plik audio, `data` może być ścieżką, URL lub bajtami (np. z pliku `.mp3`) |
-| `st.video(data)`               | odtwarza wideo, obsługuje pliki lokalne, URL lub strumienie danych|
-
-""")
-
-    col2.subheader('Zakładki')
-
-    col2.markdown("""
-| Funkcja                                     | Opis                                                                 |
-|---------------------------------------------|----------------------------------------------------------------------|
-| `tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])` | tworzy dwie zakładki z nazwami „Zakładka 1” i „Zakładka 2”          |
-| `tab1.write("To zakładka 1")`          | wyświetla zawartość wewnątrz wybranej zakładki                    |
-| `with tab1:`                                | składnia `with` do grupowania kodu wewnątrz konkretnej zakładki    |
-
-""")
-
-    col2.subheader('Układ kolumnowy')
-
-    col2.markdown("""
-| Funkcja / składnia                           | Opis                                                                 |
-|----------------------------------------------|----------------------------------------------------------------------|
-| `col1, col2 = st.columns(2)`                 | tworzy dwie kolumny o równej szerokości  |
-| `col1.write('Kolumna 1')` | umieszcza zawartość w odpowiedniej kolumnie                       |
-| `st.columns([3, 1, 1])`                      | tworzy trzy kolumny o niestandardowych proporcjach szerokości (np. 3:1:1)|
-| `with col1:`                 | alternatywna składnia z `with`, pozwala lepiej grupować kod wewnątrz kolumny |
-
-""")
-
-    st.subheader('Wyświetlanie interaktywnych widżetów')
-
-    st.markdown("""
-| Funkcja                                          | Opis                                                                 |
-|--------------------------------------------------|----------------------------------------------------------------------|
-| `st.button('Kliknij')`                       | tworzy przycisk, który użytkownik może kliknąć                      |
-| `st.data_editor('Edytuj dane', data)`            | edytor danych - umożliwia użytkownikowi modyfikację danych w aplikacji |
-| `st.checkbox('Zaznacz')`                    | tworzy pole wyboru (checkbox) – można je zaznaczyć lub odznaczyć.    |
-| `st.radio('Wybierz jedną opcję:', ['cat', 'dog'])`| tworzy grupę opcji wyboru (radio buttons) – umożliwia wybór jednej z opcji |
-| `st.selectbox('Wybierz', [1, 2, 3])`             | tworzy rozwijane menu, w którym użytkownik wybiera jedną z opcji   |
-| `st.multiselect('Wybór wielu opcji', [1, 2, 3])` | tworzy rozwijane menu umożliwiające wybór wielu opcji                |
-| `st.slider('Przesuń', min_value=0, max_value=10)` | tworzy suwak do wyboru wartości w określonym zakresie             |
-| `st.select_slider('Przesuń, aby wybrać', options=[1, '2'])` | tworzy suwak z listą opcji do wyboru                              |
-| `st.text_input('Wpisz tekst')`                   | tworzy pole tekstowe, w którym użytkownik może wprowadzić dane     |
-| `st.number_input('Wpisz liczbę')`                | tworzy pole do wprowadzania liczb                                   |
-| `st.text_area('Wpisz tekst w większym polu')`    | tworzy pole tekstowe z możliwością wprowadzania dłuższych danych (wielowierszowe) |
-| `st.date_input('Wybierz datę')`                  | tworzy pole do wprowadzania daty                                    |
-| `st.time_input('Wpisz godzinę')`                 | tworzy pole do wprowadzania godziny                                |
-| `st.file_uploader('Prześlij plik')`              | tworzy widżet do przesyłania plików przez użytkownika               |
-| `st.download_button('Pobierz dane', data)`      | tworzy przycisk do pobierania danych (np. pliku)                    |
-| `st.camera_input("Kliknij, aby zrobić zdjęcie!")`| tworzy widżet do robienia zdjęć za pomocą kamery  |
-| `st.color_picker('Wybierz kolor')`              | tworzy widżet do wybierania koloru                                  |
-
-""")
-
-    st.subheader('Wyświetlanie postępu i statusu')
-
-    st.markdown("""
-| Funkcja / składnia                                    | Opis                                                                 |
-|-------------------------------------------------------|----------------------------------------------------------------------|
-| `with st.spinner(text='W trakcie...'):`               | wyświetla spinner podczas trwającego procesu |
-| `st.success('Ukończono')`                             | wyświetla komunikat o sukcesie, np. po zakończeniu procesu          |
-| `bar = st.progress(50)`                              | wyświetla pasek postępu ustawiony na wartość 50%                     |
-| `bar.progress(100)`                                   | aktualizuje pasek postępu do wartości 100%                          |
-| `st.error('Wiadomość o błędzie')`                      | wyświetla komunikat o błędzie                                       |
-| `st.warning('Wiadomość ostrzegawcza')`                 | wyświetla komunikat ostrzegawczy                                    |
-| `st.info('Wiadomość informacyjna')`                   | wyświetla komunikat informacyjny                                    |
-| `st.success('Wiadomość o sukcesie')`                  | wyświetla komunikat o sukcesie                                      |
-| `st.exception(e)`                                     | wyświetla szczegóły wyjątku, np. w przypadku błędu w kodzie         |
-
-""")
-
-if selected=="Przykłady użycia wybranych funkcji":
-
-    st.markdown(''' 
-### Przykłady użycia wybranych funkcji:
-''')
-
-    code = '''
-import streamlit as st
-import pandas as pd
 import numpy as np
+import pandas as pd
 import plotly.express as px
-from datetime import time, date
-'''
-    st.code(code, language='python')
+import plotly.graph_objects as go
+import altair as alt
+import base64
+import json
+import time
+from pyvis.network import Network
+import tempfile
+import re
+from streamlit_echarts import st_echarts
 
-    import streamlit as st
-    import pandas as pd
-    import numpy as np
-    import plotly.express as px
-    from datetime import time, date
+st.markdown(
+    """
+    <style>
+    .stTabs [data-baseweb="tab-list"] {
+        justify-content: center;
+        margin-top: -70px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-    code = '''
-st.title("📘 Przegląd funkcji Streamlit")
-st.header("1. Teksty i formatowanie")
-st.text("To jest tekst")
-st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
-st.caption("To jest podpis np. pod wykresem")
-st.latex(r"e^{i\pi} + 1 = 0")
-st.write("Lista:", [1, 2, 3])
-st.code("for i in range(5):\n    print(i)", language="python")
-'''
+tab1, tab2, tab3, tab4 = st.tabs(["Ludność", "Długość życia i śmiertelność", "Marvel", "Schemat kodu"])
 
-    st.code(code, language='python')
-
-    st.title("📘 Przegląd funkcji Streamlit")
-    st.header("1. Teksty i formatowanie")
-    st.text("To jest tekst")
-    st.markdown("**Pogrubienie**, _kursywa_, `kod`, ~~przekreślenie~~")
-    st.caption("To jest podpis np. pod wykresem")
-    st.latex(r"e^{i\pi} + 1 = 0")
-    st.write("Lista:", [1, 2, 3])
-    st.code("for i in range(5):\n    print(i)", language="python")
-
-    st.markdown(''' 
----
-''')
-
-    code = '''
-st.header("2. Kolumny i zakładki")
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("Dane")
-    df = pd.DataFrame({
-    'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
-    'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
-    'Powierzchnia (km²)': [517, 327, 262, 293],
-    'PKB': [150000, 120000, 110000, 130000]})
-    df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
-    st.dataframe(df)
-    st.json({'name': 'Streamlit', 'type': 'framework'})
-    st.metric(label="Temperatura", value="22°C", delta="1.2°C")
-    
-with col2:
-    st.subheader("Multimedia")
-    st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
-
-st.subheader("Wykres")
-fig = px.scatter(
-        df,
-        x='Powierzchnia (km²)',
-        y='Liczba mieszkańców (mln)',
-        size='PKB',
-        color='PKB',
-        hover_name='Miasto',
-        size_max=50,
-        color_continuous_scale='PuRd'
-    )
-st.plotly_chart(fig, use_container_width=True)
-
-tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
 with tab1:
-    st.write("To jest zakładka 1")
-with tab2:
-    st.write("To jest zakładka 2")
-'''
 
-    st.code(code, language='python')
+    st.markdown("<h1 style='text-align: center;'>📊 Ludność świata na przestrzeni lat</h1>", unsafe_allow_html=True)
+    st.markdown(' ')
 
-    st.header("2. Kolumny i zakładki")
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns([2, 2, 2])
+    col = st.columns((2.2, 4.9, 2.8), gap='medium')
 
-    with col1:
-        st.subheader("Dane")
-        df = pd.DataFrame({
-        'Miasto': ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'],
-        'Liczba mieszkańców (mln)': [1.8, 0.8, 0.5, 0.6],
-        'Powierzchnia (km²)': [517, 327, 262, 293],
-        'PKB': [150000, 120000, 110000, 130000]})
-        df['Liczba mieszkańców (mln)'] = df['Liczba mieszkańców (mln)'].map('{:.1f}'.format)
-        st.dataframe(df)
-        st.json({'name': 'Streamlit', 'type': 'framework'})
-        st.metric(label="Temperatura", value="22°C", delta="1.2°C")
+    df = pd.read_excel('plik.xlsx')
 
-    with col2:
-        st.subheader("Multimedia")
-        st.image("https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg?format=2500w", caption="Obrazek kota")
+    df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
+    df1["Year"] = df1["Year"].astype(int)
+    df1 = df1[(df1["Year"] >= 1959) & (df1["Year"] <= 2023)]
 
-    st.subheader("Wykres")
-    fig = px.scatter(
-        df,
-        x='Powierzchnia (km²)',
-        y='Liczba mieszkańców (mln)',
-        size='PKB',
-        color='PKB',
-        hover_name='Miasto',
-        size_max=50,
-        color_continuous_scale='PuRd'
-        )
-    st.plotly_chart(fig, use_container_width=True)
+    geo = {'Afghanistan': 'AFG', 'Åland Islands': 'ALA', 'Albania': 'ALB', 'Algeria': 'DZA', 'American Samoa': 'ASM', 'Andorra': 'AND', 
+       'Angola': 'AGO', 'Anguilla': 'AIA', 'Antigua and Barbuda': 'ATG', 'Argentina': 'ARG', 'Armenia': 'ARM', 'Aruba': 'ABW', 
+       'Australia': 'AUS', 'Austria': 'AUT', 'Azerbaijan': 'AZE', 'Bahamas': 'BHS', 'Bahrain': 'BHR', 'Bangladesh': 'BGD', 
+       'Barbados': 'BRB', 'Belarus': 'BLR', 'Belgium': 'BEL', 'Belize': 'BLZ', 'Benin': 'BEN', 'Bermuda': 'BMU', 'Bhutan': 'BTN', 
+       'Bolivia': 'BOL', 'Bosnia and Herzegovina': 'BIH', 'Botswana': 'BWA', 'Brazil': 'BRA', 'British Virgin Islands': 'VGB', 
+       'Brunei': 'BRN', 'Bulgaria': 'BGR', 'Burkina Faso': 'BFA', 'Burundi': 'BDI', 'Cambodia': 'KHM', 'Cameroon': 'CMR', 
+       'Canada': 'CAN', 'Cape Verde': 'CPV', 'Cayman Islands': 'CYM', 'Central African Republic': 'CAF', 'Chad': 'TCD', 'Chile': 'CHL', 
+       'China': 'CHN', 'Hong Kong Special Administrative Region of China': 'HKG', 'Macao Special Administrative Region of China': 'MAC', 
+       'Colombia': 'COL', 'Comoros': 'COM', 'Congo': 'COG', 'Cook Islands': 'COK', 'Costa Rica': 'CRI', "Cote d'Ivoire": 'CIV', 'Croatia': 'HRV', 
+       'Cuba': 'CUB', 'Cyprus': 'CYP', 'Czechia': 'CZE', "North Korea": 'PRK', 'Democratic Republic of Congo': 'COD', 'Congo': 'COG',
+       'Denmark': 'DNK', 'Djibouti': 'DJI', 'Dominica': 'DMA', 'Dominican Republic': 'DOM', 'Ecuador': 'ECU', 'Egypt': 'EGY', 'El Salvador': 'SLV', 
+       'Equatorial Guinea': 'GNQ', 'Eritrea': 'ERI', 'Estonia': 'EST', 'Ethiopia': 'ETH', 'Faeroe Islands': 'FRO', 'Falkland Islands': 'FLK', 
+       'Fiji': 'FJI', 'Finland': 'FIN', 'France': 'FRA', 'French Guiana': 'GUF', 'French Polynesia': 'PYF', 'Gabon': 'GAB', 'Gambia': 'GMB', 'Georgia': 'GEO', 
+       'Germany': 'DEU', 'Ghana': 'GHA', 'Gibraltar': 'GIB', 'Greece': 'GRC', 'Greenland': 'GRL', 'Grenada': 'GRD', 'Guadeloupe': 'GLP', 'Guam': 'GUM', 'Guatemala': 'GTM', 
+       'Guernsey': 'GGY', 'Guinea': 'GIN', 'Guinea-Bissau': 'GNB', 'Guyana': 'GUY', 'Haiti': 'HTI', 'Holy See': 'VAT', 'Honduras': 'HND', 'Hungary': 'HUN', 'Iceland': 'ISL', 
+       'India': 'IND', 'Indonesia': 'IDN', 'Iran': 'IRN', 'Iraq': 'IRQ', 'Ireland': 'IRL', 'Isle of Man': 'IMN', 'Israel': 'ISR', 'Italy': 'ITA', 
+       'Jamaica': 'JAM', 'Japan': 'JPN', 'Jersey': 'JEY', 'Jordan': 'JOR', 'Kazakhstan': 'KAZ', 'Kenya': 'KEN', 'Kiribati': 'KIR', 'Kuwait': 'KWT', 'Kyrgyzstan': 'KGZ', 
+       "Laos": 'LAO', 'Latvia': 'LVA', 'Lebanon': 'LBN', 'Lesotho': 'LSO', 'Liberia': 'LBR', 'Libya': 'LBY', 'Liechtenstein': 'LIE', 
+       'Lithuania': 'LTU', 'Luxembourg': 'LUX', 'Madagascar': 'MDG', 'Malawi': 'MWI', 'Malaysia': 'MYS', 'Maldives': 'MDV', 'Mali': 'MLI', 'Malta': 'MLT', 'Marshall Islands': 'MHL', 
+       'Martinique': 'MTQ', 'Mauritania': 'MRT', 'Mauritius': 'MUS', 'Mayotte': 'MYT', 'Mexico': 'MEX', 'Micronesia, Federated States of': 'FSM', 'Moldova': 'MDA', 'Monaco': 'MCO', 
+       'Mongolia': 'MNG', 'Montenegro': 'MNE', 'Montserrat': 'MSR', 'Morocco': 'MAR', 'Mozambique': 'MOZ', 'Myanmar': 'MMR', 'Namibia': 'NAM', 'Nauru': 'NRU', 'Nepal': 'NPL', 
+       'Netherlands': 'NLD', 'Netherlands Antilles': 'ANT', 'New Caledonia': 'NCL', 'New Zealand': 'NZL', 'Nicaragua': 'NIC', 'Niger': 'NER', 'Nigeria': 'NGA', 'Niue': 'NIU',
+       'Norfolk Island': 'NFK', 'Northern Mariana Islands': 'MNP', 'Norway': 'NOR', 'Occupied Palestinian Territory': 'PSE', 'Oman': 'OMN', 'Pakistan': 'PAK', 'Palau': 'PLW', 
+       'Panama': 'PAN', 'Papua New Guinea': 'PNG', 'Paraguay': 'PRY', 'Peru': 'PER', 'Philippines': 'PHL', 'Pitcairn': 'PCN', 'Poland': 'POL', 'Portugal': 'PRT', 
+       'Puerto Rico': 'PRI', 'Qatar': 'QAT', 'South Korea': 'KOR', 'R_union': 'REU', 'Romania': 'ROU', 'Russia': 'RUS', 'Rwanda': 'RWA', 
+       'Saint-Barthélemy': 'BLM', 'Saint Helena': 'SHN', 'Saint Kitts and Nevis': 'KNA', 'Saint Lucia': 'LCA', 'Saint-Martin (French part)': 'MAF', 'Saint Pierre and Miquelon': 'SPM', 
+       'Saint Vincent and the Grenadines': 'VCT', 'Samoa': 'WSM', 'San Marino': 'SMR', 'Sao Tome and Principe': 'STP', 'Saudi Arabia': 'SAU', 'Senegal': 'SEN', 'Serbia': 'SRB', 
+       'Seychelles': 'SYC', 'Sierra Leone': 'SLE', 'Singapore': 'SGP', 'Slovakia': 'SVK', 'Slovenia': 'SVN', 'Solomon Islands': 'SLB', 'Somalia': 'SOM', 'South Africa': 'ZAF', 
+       'Spain': 'ESP', 'Sri Lanka': 'LKA', 'Sudan': 'SDN', 'South Sudan': 'SSD', 'Suriname': 'SUR', 'Svalbard and Jan Mayen Islands': 'SJM', 'Eswatini': 'SWZ', 'Sweden': 'SWE', 'Switzerland': 'CHE', 
+       'Syria': 'SYR', 'Tajikistan': 'TJK', 'Thailand': 'THA', 'East Timor': 'TLS', 'Togo': 'TGO', 'Tokelau': 'TKL', 
+       'Tonga': 'TON', 'Trinidad and Tobago': 'TTO', 'Tunisia': 'TUN', 'Turkey': 'TUR', 'Turkmenistan': 'TKM', 'Turks and Caicos Islands': 'TCA', 'Tuvalu': 'TUV', 'Tanzania' : 'TZA', 'Uganda': 'UGA', 
+       'Ukraine': 'UKR', 'United Arab Emirates': 'ARE', 'United Kingdom': 'GBR', 'United Republic of Tanzania': 'TZA', 
+       'United States': 'USA', 'United States Virgin Islands': 'VIR', 'Uruguay': 'URY', 'Uzbekistan': 'UZB', 'Vanuatu': 'VUT', 
+       'Venezuela': 'VEN', 'Vietnam': 'VNM', 'Wallis and Futuna Islands': 'WLF', 'Western Sahara': 'ESH', 'Yemen': 'YEM', 
+       'Zambia': 'ZMB', 'Zimbabwe': 'ZWE', 'North Macedonia': 'MKD', 'Kosovo': 'XK', 'Taiwan': 'TWN'}
 
-    tab1, tab2 = st.tabs(["Zakładka 1", "Zakładka 2"])
-    with tab1:
-        st.write("To jest zakładka 1")
-    with tab2:
-        st.write("To jest zakładka 2")
-
-    st.markdown(''' 
----
-''')
-
-    code = '''
-st.header("3. Widżety interaktywne")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.button("Kliknij mnie")
-    st.checkbox("Zaznacz mnie")
-    st.radio("Wybierz zwierzę", ["Kot", "Pies"])
-    st.selectbox("Wybierz liczbę", [1, 2, 3])
-    st.multiselect("Wybierz wiele", ["A", "B", "C"])
-    st.slider("Przesuń", 0, 100)
-    st.select_slider("Przesuń, aby wybrać", options=["Mało", "Średnio", "Dużo"])
-
-with col2:
-    st.text_input("Wpisz imię")
-    st.number_input("Wpisz liczbę", step=1)
-    st.text_area("Opisz swój dzień")
-    st.date_input("Wybierz datę", value=date.today())
-    st.time_input("Wpisz godzinę", value=time(12, 0))
-    st.file_uploader("Prześlij plik")
-    data = pd.DataFrame({"kolumna": [1, 2, 3]})
-    st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
-'''
-
-    st.code(code, language='python')
-
-    st.header("3. Widżety interaktywne")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.button("Kliknij mnie")
-        st.checkbox("Zaznacz mnie")
-        st.radio("Wybierz zwierzę", ["Kot", "Pies"])
-        st.selectbox("Wybierz liczbę", [1, 2, 3])
-        st.multiselect("Wybierz wiele", ["A", "B", "C"])
-        st.slider("Przesuń", 0, 100)
-        st.select_slider("Przesuń, aby wybrać", options=["Mało", "Średnio", "Dużo"])
+    excluded_year = 1959
+    years_available = sorted(df1["Year"].unique())
+    years_available = [year for year in years_available if year != excluded_year]
 
     with col2:
-        st.text_input("Wpisz imię")
-        st.number_input("Wpisz liczbę", step=1)
-        st.text_area("Opisz swój dzień")
-        st.date_input("Wybierz datę", value=date.today())
-        st.time_input("Wpisz godzinę", value=time(12, 0))
-        st.file_uploader("Prześlij plik")
-        data = pd.DataFrame({"kolumna": [1, 2, 3]})
-        st.download_button("📥 Pobierz dane", data.to_csv().encode("utf-8"), "dane.csv")
+        selected_year_for_map = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
 
-    st.markdown(''' 
----
-''')
+    df_map = df1[df1["Year"] == selected_year_for_map].copy()
 
-    st.markdown('''
-```python
-st.header("4. Status i postęp")
-with st.spinner("⏳ Ładowanie..."):
-    st.success("✅ Gotowe!")
+    df_map["Population"] = pd.to_numeric(df_map["Population"], errors="coerce")
+    df_map = df_map.dropna(subset=["Population"])
 
-st.info("To jest informacja")
-st.warning("To jest ostrzeżenie")
-st.error("To jest błąd")
-''')
+    df_map["ISO3"] = df_map["Country"].map(geo)
+
+    # Usunięcie braków:
+    df_map = df_map.dropna(subset=["ISO3"])
+
+    # Kategoryzowanie populacji:
+    colors = ['#fcbec0', '#faa9b8', '#f98faf', '#f571a5', '#ec539d', '#db3695', '#c41b8a', '#a90880', '#8d0179']
+    bins = [0, 5_000_000, 10_000_000, 25_000_000, 50_000_000, 100_000_000, 250_000_000, 500_000_000, 1_000_000_000, float('inf')]
+    labels = [
+    "0–5 mln", "5–10 mln", "10–25 mln", "25–50 mln", "50–100 mln",
+    "100–250 mln", "250–500 mln", "500 mln – 1 mld", "1+ mld"
+]
+
+    color_map = {
+    "0–5 mln": "#fcbec0", 
+    "5–10 mln": "#faa9b8", 
+    "10–25 mln": "#f98faf", 
+    "25–50 mln": "#f571a5", 
+    "50–100 mln": "#ec539d", 
+    "100–250 mln": "#db3695", 
+    "250–500 mln": "#c41b8a", 
+    "500 mln – 1 mld": "#a90880", 
+    "1+ mld": "#8d0179"
+}
+
+    df_map["Population_Category"] = pd.cut(df_map["Population"], bins=bins, labels=labels, ordered=True)
+
+    fig2 = px.choropleth(
+    df_map,
+    locations="ISO3",
+    color="Population_Category",
+    hover_name="Country",
+    locationmode="ISO-3",
+    scope="world",
+    color_discrete_map=color_map,
+    hover_data={"ISO3": False, "Population": True, "Population_Category": False},
+    width=1200,  
+    height=1200,
+    category_orders={"Population_Category": labels}
+)
+
+    fig2.update_layout(
+    paper_bgcolor='rgba(0,0,0,0)', 
+    plot_bgcolor='rgba(0,0,0,0)',
+    geo=dict(
+        bgcolor='rgba(0,0,0,0)'  
+    )
+)
+
+    fig2.update_geos(
+    scope="world",
+    projection_type="orthographic",
+    showland=True,
+    projection_rotation=dict(lat=45, lon=10),
+    landcolor="#f5f2d6",
+    showframe=False,
+    showcoastlines=True,
+    bgcolor='rgba(0,0,0,0)',
+    showocean=True,
+    oceancolor="rgba(149, 189, 255, 0.9)",
+    showlakes=False
+)
+
+    fig2.update_layout(
+    margin=dict(l=0, r=0, t=30, b=100), 
+    height=600,
+    template="plotly_dark",
+
+    legend=dict(
+        title=dict(text="Liczba ludności<br>", font=dict(size=16)),
+        orientation="h",              
+        yanchor="bottom",
+        y=-0.2,                        
+        xanchor="center",
+        x=0.5,                        
+        font=dict(size=14)
+    )
+)
+
+    df_map["Population"] = df_map["Population"].astype(int)
+    df_map = df_map.sort_values(by="Population", ascending=False)
+
+    df4 = df1[df1["Country"].isin(geo.keys())].copy()
+    df4["Population"] = pd.to_numeric(df4["Population"], errors="coerce")
+    df4 = df4.dropna(subset=["Population"])
+
+    df_this_year = df4[df4["Year"] == selected_year_for_map]
+    df_prev_year = df4[df4["Year"] == (selected_year_for_map - 1)]
     
-    st.header("4. Status i postęp")
-    with st.spinner("⏳ Ładowanie..."):
-        st.success("✅ Gotowe!")
+    df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
+    df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
 
-    st.info("To jest informacja")
-    st.warning("To jest ostrzeżenie")
-    st.error("To jest błąd")
+    df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
+    top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
+    top_loss = df_diff.sort_values("Population_Change").iloc[0]
+
+    def load_data(file_path):
+        return pd.read_csv(file_path)
+
+    data_famela = load_data("female.csv")
+    data_male = load_data("male.csv")
+
+    data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Mężczyźni'))
+
+    selected_data = data[data['Year'] == selected_year_for_map]
+
+    liczba_kobiet = selected_data['all years_Kobiety'].values[0]
+    liczba_mezczyzn = selected_data['all years_Mężczyźni'].values[0]
+
+    suma = liczba_kobiet + liczba_mezczyzn
+    procent_kobiet = (liczba_kobiet / suma) * 100
+    procent_mezczyzn = (liczba_mezczyzn / suma) * 100
+
+    icon_kobieta = 'female.png'
+    icon_mezczyzna = 'male.png'
+
+    def image_to_base64(image_path):
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode()
+
+    icon_k = image_to_base64(icon_kobieta)
+    icon_m = image_to_base64(icon_mezczyzna)
+
+    st.markdown(
+    """
+    <style>
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
+        background: linear-gradient(
+            135deg,
+            rgba(180, 68, 251, 0.25),
+            rgba(45, 3, 94, 0.2),
+            rgba(32, 33, 37, 0.1)
+        );
+        border: 1px solid rgba(180, 68, 251, 0.4);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow:
+            0 0 10px rgba(180, 68, 251, 0.25),
+            0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(14px) brightness(1.1);
+        background-blend-mode: overlay;
+        transition: all 0.3s ease-in-out;
+    }
+
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)):hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 0 18px rgba(180, 68, 251, 0.4),
+            0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+    with col[0]:
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.markdown(
+        f"<h4 style='text-align: left; color: white;'>Największe wzrosty/spadki liczby ludności w {selected_year_for_map}</h4>",
+        unsafe_allow_html=True)
+
+            st.metric(
+            label=top_gain["Country"],
+            value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+            delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
+
+            st.metric(
+            label=top_loss["Country"],
+            value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+            delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
+
+
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.markdown(
+        f"<h4 style='text-align: left; color: white;'>Rozkład procentowy płci w {selected_year_for_map}</h4>",
+        unsafe_allow_html=True)
+        
+        
+            col1, col2 = st.columns([2.2, 2.2])
+            with col1:
+                st.markdown(
+    f"""
+    <div style='border: 2px solid #FF69B4; border-radius: 10px; padding: 10px; width: 100px; height: 150px; text-align: center;'>
+        <img src="data:image/jpg;base64,{icon_k}" width="200"><br>
+        <span>Kobiety <span style='color: #FF69B4; font-weight: bold;'>{procent_kobiet:.1f}%</span></span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+            with col2:
+                st.markdown(
+    f"""
+    <div style='border: 2px solid #1E90FF; border-radius: 10px; padding: 10px; width: 100px; height: 150px; text-align: center;'>
+        <img src="data:image/jpg;base64,{icon_m}" width="100"><br>
+        <span>Mężczyźni <span style='color: #1E90FF; font-weight: bold;'>{procent_mezczyzn:.1f}%</span></span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+    with col[1]:
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            st.markdown(f"<h3 style='text-align: center; color: white;'>Populacja świata w {selected_year_for_map}</h3>",unsafe_allow_html=True)
+            st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
+
+    with col[2]:
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            df_map["Population_M"] = df_map["Population"] / 1_000_000
+            st.markdown(f"<h4 style='text-align: center;'>Top 10 państw pod względem liczby ludności w {selected_year_for_map}</h4>",unsafe_allow_html=True)
+            st.dataframe(
+            df_map.head(10),
+            column_order=["Country", "Population_M"],
+            hide_index=True,
+            column_config={
+        "Country": st.column_config.TextColumn("Kraj"),
+        "Population_M": st.column_config.ProgressColumn(
+            "Populacja (mln)",
+            format="%.1f mln",
+            min_value=0.0,
+            max_value=df_map["Population_M"].max()
+        )
+    }
+)
+
+        styled_container = st.container()
+        st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+        with styled_container:
+            st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+            with st.expander('Żródła danych:', expanded=False):
+                st.markdown('<a href="https://ourworldindata.org/population-growth" target="_blank">https://ourworldindata.org/population-growth</a>', unsafe_allow_html=True)
+                st.markdown('<a href="https://ourworldindata.org/grapher/population" target="_blank">https://ourworldindata.org/grapher/population</a>', unsafe_allow_html=True)
+                st.markdown('<a href="https://ourworldindata.org/grapher/deaths-by-age-group" target="_blank">https://ourworldindata.org/grapher/deaths-by-age-group</a>', unsafe_allow_html=True)
+
+
+with tab2:
+
+    st.markdown("<h1 style='text-align: center;'>📊 Długość życia i śmiertelność</h1>", unsafe_allow_html=True)
+    st.markdown(' ')
+
+    de = pd.read_csv('deaths-by-age-group.csv')
+
+    de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
+
+    df_long = de.melt(id_vars=["Entity", "Year"], value_vars=["100+", "90-99", "80-89", "70-79", "60-69", "50-59", "40-49", "30-39", "20-29", "10-19", "0-9"],
+                  var_name="Age_group", value_name="Deaths")
+
+
+    age_order = ["100+", "90-99", "80-89", "70-79", "60-69", "50-59",
+             "40-49", "30-39", "20-29", "10-19", "0-9"]
+    df_long["Age_group"] = pd.Categorical(df_long["Age_group"], categories=age_order, ordered=True)
+
+    obszary = de["Entity"].unique().tolist()
+
+    col1, col2, col3, col4, col5, col6 = st.columns([2,2,2,2,2,2])
+
+    with col2:
+        wybrane_obszary = st.selectbox('Wybierz obszar:', obszary, index=obszary.index('World'))
+        wybrane_obszary = [wybrane_obszary]
+
+    min_rok = de['Year'].min()
+    max_rok = de['Year'].max()
+
+    with col5:
+        zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+
+    df_filtered = df_long[df_long["Entity"].isin(wybrane_obszary)]
+    df_filtered = df_filtered[(df_filtered["Year"] >= zakres_lat[0]) & (df_filtered["Year"] <= zakres_lat[1])]
+
+    df_filtered = df_filtered.sort_values("Age_group")
+
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Liczba zgonów w różnych grupach wiekowych</h3>",unsafe_allow_html=True)
+
+        custom_colors = ["rgb(245, 242, 214)", "rgb(149, 189, 255)", "rgb(121, 154, 106)", "rgb(193, 93, 57)", "rgb(193, 129, 67)", "rgb(169, 48, 104)", "rgb(223, 99, 115)", "rgb(51, 84, 124)", 
+                     "rgb(51, 157, 152)", "rgb(129, 8, 8)", "rgb(160, 0, 240)"]
+
+        cs = [
+    '#636EFA',  # niebieski
+    '#EF553B',  # czerwony/pomarańczowy
+    '#00CC96',  # zielony
+    '#AB63FA',  # fioletowy
+    '#FFA15A',  # pomarańcz
+    '#19D3F3',  # jasny niebieski
+    '#FF6692',  # różowy
+    '#B6E880',  # zielono-żółty
+    '#FF97FF',  # różowy (jasny)
+    '#FECB52', "rgb(152, 19, 119)"]
+
+        fig = px.area(df_filtered, 
+              x="Year", 
+              y="Deaths", 
+              color="Age_group",
+              category_orders={"Age_group": age_order},
+              color_discrete_sequence=cs)
+
+        fig.update_layout(title_text="")
+
+        fig.update_layout(
+        xaxis=dict(
+        categoryorder='array', 
+        categoryarray=age_order))
+    
+        fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', 
+            plot_bgcolor='rgba(0,0,0,0)',
+            geo=dict(bgcolor='rgba(0,0,0,0)'))
+
+        fig.update_layout(xaxis_title='Rok', yaxis_title='Liczba zgonów')
+
+        fig.update_layout(margin=dict(l=0, r=0, t=30, b=120), 
+        height=500,
+        legend=dict(
+        title=dict(text="Grupa wiekowa<br>", font=dict(size=16)),
+        orientation="h",              
+        yanchor="bottom",
+        y=-0.5,                        
+        xanchor="center",
+        x=0.4,                        
+        font=dict(size=14)))
+
+        st.plotly_chart(fig, config={"displayModeBar": False})
+
+    df = pd.read_csv('men-women-life.txt')
+
+    df["Entity"] = df["Entity"].str.replace(" \(UN\)", "", regex=True)
+
+    df = df.dropna(subset=[
+    'Life expectancy - female', 
+    'Life expectancy - male', 
+    'Population', 
+    'World regions'
+])
+
+    df = df[df['Year'] == 2023]
+    available_regions = df['World regions'].unique()
+
+    col1, col2, col3 = st.columns([2,2,2])
+
+    with col2:
+        selected_regions = st.multiselect(
+    "Wybierz regiony świata:",
+    options=available_regions,
+    default=available_regions
+)
+
+    filtered_df = df[df['World regions'].isin(selected_regions)]
+
+    fig = px.scatter(
+    filtered_df,
+    x='Life expectancy - male',
+    y='Life expectancy - female',
+    color='World regions',
+    size='Population',
+    hover_name='Entity',
+    labels={
+        'Life expectancy - male': 'Life Expectancy Men',
+        'Life expectancy - female': 'Life Expectancy Women',
+        'World regions': 'Region',
+        'Population': 'Population'
+    }, size_max=50
+)
+
+    fig.update_traces(text=filtered_df['Entity'], textposition='top center')
+
+    fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', 
+            plot_bgcolor='rgba(0,0,0,0)',
+            geo=dict(bgcolor='rgba(0,0,0,0)'))
+
+    fig.update_layout(xaxis_title='Oczekiwana długość życia - mężczyźni', yaxis_title='Oczekiwana długość życia - kobiety')
+    fig.update_traces(textposition='top center')
+
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: white;'>Oczekiwana długość życia: kobiety vs mężczyźni w 2023</h3>",unsafe_allow_html=True)
+        st.plotly_chart(fig, config={"displayModeBar": False})
+
+
+
+with tab3:
+
+    st.markdown("<h1 style='text-align: center;'>📊 Marvel Comics</h1>", unsafe_allow_html=True)
+    st.markdown(' ')
+
+    data = {
+ "name": "marvel",
+ "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+ "children": [
+  {
+   "name": "Heroes",
+   "children": [
+    {
+      "hero": "Spider-Man",
+      "name": "Peter Benjamin Parker",
+      "link": "http://marvel.com/characters/54/spider-man",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png",
+      "size": 40000
+    },
+    {
+      "hero": "Capitain Marvel",
+      "name": "Carol Danvers",
+      "link": "http://marvel.com/characters/9/captain_marvel",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_captainmarvel.png",
+      "size": 40000
+    },
+    {
+      "hero": "Hulk",
+      "name": "Robert Bruce Banner",
+      "link": "http://marvel.com/characters/25/hulk",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_hulk.png",
+      "size": 40000
+    },
+    {
+      "hero": "Black Widow",
+      "name": "Natalia 'Natasha' Alianovna Romanova",
+      "link": "http://marvel.com/characters/6/black_widow",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_blackwidow.png",
+      "size": 40000
+    },
+    {
+      "hero": "Daredevil",
+      "name": "Matthew Michael Murdock",
+      "link": "http://marvel.com/characters/11/daredevil",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_daredevil.png",
+      "size": 40000
+    },
+    {
+      "hero": "Wolverine",
+      "name": "James Howlett",
+      "link": "http://marvel.com/characters/66/wolverine",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_wolverine.png",
+      "size": 40000
+    },
+    {
+      "hero": "Captain America",
+      "name": "Steven Rogers",
+      "link": "http://marvel.com/characters/8/captain_america",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_captainamerica.png",
+      "size": 40000
+    },
+    {
+      "hero": "Iron Man",
+      "name": "Anthony Edward 'Tony' Stark",
+      "link": "http://marvel.com/characters/29/iron_man",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_ironman.png",
+      "size": 40000
+    },
+    {
+      "hero": "Thor",
+      "name": "Thor Odinson",
+      "link": "http://marvel.com/characters/60/thor",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_thor.png",
+      "size": 40000
+    }
+  ]
+  },
+  {
+   "name": "Villains",
+   "children": [
+    {
+      "hero": "Dr. Doom",
+      "name": "Victor von Doom",
+      "link": "http://marvel.com/characters/13/dr_doom",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/drdoom.png",
+      "size": 40000
+    },
+    {
+      "hero": "Mystique",
+      "name": "Unrevealed",
+      "link": "http://marvel.com/characters/1552/mystique",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/mystique.png",
+      "size": 40000
+    },
+    {
+      "hero": "Red Skull",
+      "name": "Johann Shmidt",
+      "link": "http://marvel.com/characters/1901/red_skull",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/redskull.png",
+      "size": 40000
+    },
+    {
+      "hero": "Ronan",
+      "name": "Ronan",
+      "link": "http://marvel.com/characters/49/ronan",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/ronan.png",
+      "size": 40000
+    },
+    {
+      "hero": "Magneto",
+      "name": "Max Eisenhardt",
+      "link": "http://marvel.com/characters/35/magneto",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/magneto.png",
+      "size": 40000
+    },
+    {
+      "hero": "Thanos",
+      "name": "Thanos",
+      "link": "http://marvel.com/characters/58/thanos",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/thanos.png",
+      "size": 40000
+    },
+    {
+      "hero": "Black Cat",
+      "name": "Felicia Hardy",
+      "link": "http://marvel.com/characters/271/black_cat",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/blackcat.png",
+      "size": 40000
+    }
+   ]
+  },
+  {
+   "name": "Teams",
+   "children": [
+    {
+      "hero": "Avengers",
+      "name": "",
+      "link": "http://marvel.com/characters/68/avengers",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/avengers.png",
+      "size": 40000
+    },
+    {
+      "hero": "Guardians of the Galaxy",
+      "name": "",
+      "link": "http://marvel.com/characters/70/guardians_of_the_galaxy",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/gofgalaxy.png",
+      "size": 40000
+    },
+    {
+      "hero": "Defenders",
+      "name": "",
+      "link": "http://marvel.com/characters/534/defenders",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/defenders.png",
+      "size": 40000
+    },
+    {
+      "hero": "X-Men",
+      "name": "",
+      "link": "http://marvel.com/characters/71/x-men",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/xmen.png",
+      "size": 40000
+    },
+    {
+      "hero": "Fantastic Four",
+      "name": "",
+      "link": "http://marvel.com/characters/69/fantastic_four",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/fantasticfour.png",
+      "size": 40000
+    },
+    {
+      "hero": "Inhumans",
+      "name": "",
+      "link": "http://marvel.com/characters/1040/inhumans",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/inhumans.png",
+      "size": 40000
+    }
+   ]
+  }
+ ]
+}
+
+
+    net = Network(
+        height="700px",
+        width="100%",
+        bgcolor="#111111",      
+        font_color="white",      
+        directed=True
+)
+
+
+    net.add_node(
+    "Marvel Universe", 
+    label="Marvel Universe", 
+    shape="circularImage",       # zmienione z "image" na "circularImage"
+    image="http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+    size=50, color='red', x=0,
+    y=0,
+    fixed=True
+)
+
+
+    for category in data["children"]:
+        cat_id = category["name"]
+        net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
+        net.add_edge("Marvel Universe", cat_id, color='red')
+
+        for hero in category["children"]:
+            hero_id = hero["hero"]
+            net.add_node(
+            hero_id,
+            label=hero_id,
+            title=f"<a href='{hero['link']}' target='_blank'>{hero['name']}</a>",
+            shape="circularImage",
+            image=hero["img"],
+            size=30, color='red'
+        )
+            net.add_edge(cat_id, hero_id, color='red')
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
+        path = tmp_file.name
+        net.write_html(path)
+
+        with open(path, "r", encoding="utf-8") as f:
+            html = f.read()
+
+    html = html.replace(
+    "</head>",
+    """
+    <style>
+        html, body {
+            background-color: #111111 !important;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #mynetwork, .vis-network, canvas {
+            background-color: #111111 !important;
+            margin: 0 !important;
+            padding: 20px !important;
+            box-sizing: border-box;
+        }
+    </style>
+    </head>
+    """
+)
+
+    st.components.v1.html(html,
+    height=750,
+    scrolling=False
+)
+    
+    causes = [
+    "Heroes", "Villains"]
+
+    raw_data = "100, 70"
+    numbers = [int(x.strip()) for x in raw_data.split(',')]
+    total_deaths = sum(numbers)
+    percentages = [n / total_deaths for n in numbers]
+
+    cause_pct_pairs = list(zip(causes, percentages))
+    cause_pct_pairs_sorted = sorted(cause_pct_pairs, key=lambda x: x[1], reverse=True)
+    causes_sorted, percentages_sorted = zip(*cause_pct_pairs_sorted)
+    percentages_sorted_rounded = [round(p * 100) for p in percentages_sorted]
+
+    color_map = {
+    "Heroes": [
+        "rgba(30, 144, 255, 1)",   # DeepSkyBlue - pełny
+        "rgba(30, 144, 255, 0.7)",
+        "rgba(30, 144, 255, 0.4)"
+    ],
+    "Villains": [
+        "rgba(220, 20, 60, 1)",    # Crimson - pełny
+        "rgba(220, 20, 60, 0.7)",
+        "rgba(220, 20, 60, 0.4)"
+    ]
+}
+
+    st.markdown(f"<h3 style='text-align: center; color: white;'>Rozkład procentowy postaci z Uniwersum Marvela</h3>",unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([2,2,2])
+
+    with col2:
+        for i in range(0, len(causes_sorted), 6):
+            cols = st.columns(2)
+            for j, col in enumerate(cols):
+                idx = i + j
+                if idx < len(causes_sorted):
+                    cause = causes_sorted[idx]
+                    pct = percentages_sorted[idx]
+                    pct_label = percentages_sorted_rounded[idx]
+                    colors = color_map.get(cause)
+                    option = {
+    "title": {"text": cause, "left": "center", "textStyle": {"fontSize": 16, "color": "#fff"}},  # jasny róż
+    "series": [{
+        "type": "liquidFill",
+        "data": [pct, pct*0.9, pct*0.8],
+        "radius": "75%",
+        "color": colors,
+        "outline": {
+            "borderDistance": 5,
+            "itemStyle": {
+                "borderColor": colors[0],
+                "borderWidth": 3
+            }
+        },
+        "backgroundStyle": {
+            "color": "#fff" 
+        },
+        "label": {
+            "formatter": f"{percentages_sorted_rounded[idx]}%",
+            "fontSize": 35,
+            "color": "rgba(0, 0, 0, 1)" 
+        }
+    }]
+}
+                    with col:
+                        st_echarts(option, height=250, key=f"echart_liquid_{idx}")
+
+
+    causes = ["Heroes", "Villains"]
+    raw_data = "100, 70"
+    numbers = [int(x.strip()) for x in raw_data.split(',')]
+    total = sum(numbers)
+    percentages = [n / total for n in numbers]
+
+    colors = [
+    "rgba(30, 144, 255, 0.9)",  # Heroes - niebieski
+    "rgba(220, 20, 60, 0.7)",   # Villains - czerwony
+]
+
+    option = {
+    "series": [
+        {
+            "type": "gauge",
+            "startAngle": 90,
+            "endAngle": -270,
+            "radius": "90%",
+            "pointer": {"show": False},
+            "progress": {
+                "show": True,
+                "overlap": False,
+                "roundCap": True,
+                "clip": False,
+                "itemStyle": {"color": "#1E90FF", "borderWidth": 1, "borderColor": "#464646"},
+            },
+            "axisLine": {
+                "lineStyle": {
+                    "width": 20,
+                    "color": [[1, "#eee"]]
+                }
+            },
+            "splitLine": {"show": False},
+            "axisTick": {"show": False},
+            "axisLabel": {"show": False},
+            "data": [
+                {
+                    "value": round(percentages[0] * 100),
+                    "name": causes[0],
+                    "title": {"offsetCenter": ["0%", "-30%"], "fontSize": 16, "color": "#1E90FF"},
+                    "detail": {
+                "offsetCenter": ["0%", "-10%"],
+                "formatter": "{value}%",
+                "fontSize": 18,
+                "color": "#1E90FF",
+                "borderColor": "#1E90FF",
+                "borderWidth": 2,
+                "borderRadius": 20,
+                "width": 60,
+                "height": 30,
+                "backgroundColor": "#1111",
+                "padding": [5, 10],
+            },
+                }
+            ],
+            "title": {"fontSize": 18, "color": "#1E90FF"},
+            "detail": {
+                "formatter": "{value}%",
+                "fontSize": 20,
+                "color": "#1E90FF",
+            },
+        },
+        {
+            "type": "gauge",
+            "startAngle": 90,
+            "endAngle": -270,
+            "radius": "78%",
+            "pointer": {"show": False},
+            "progress": {
+                "show": True,
+                "overlap": False,
+                "roundCap": True,
+                "clip": False,
+                "itemStyle": {"color": "#DC143C", "borderWidth": 1, "borderColor": "#464646"},
+            },
+            "axisLine": {
+                "lineStyle": {
+                    "width": 20,
+                    "color": [[1, "#eee"]]
+                }
+            },
+            "splitLine": {"show": False},
+            "axisTick": {"show": False},
+            "axisLabel": {"show": False},
+            "data": [
+                {
+                    "value": round(percentages[1] * 100),
+                    "name": causes[1],
+                    "title": {"offsetCenter": ["0%", "20%"], "fontSize": 16, "color": "#DC143C"},
+                    "detail": {
+                "offsetCenter": ["0%", "40%"],
+                "formatter": "{value}%",
+                "fontSize": 16,
+                "color": "#DC143C",
+                "borderColor": "#DC143C",
+                "borderWidth": 2,
+                "borderRadius": 20,
+                "width": 60,
+                "height": 30,
+                "backgroundColor": "#1111",
+                "padding": [5, 10],
+            },
+                }
+            ],
+            "title": {"fontSize": 18, "color": "#DC143C"},
+            "detail": {
+                "formatter": "{value}%",
+                "fontSize": 20,
+                "color": "#DC143C",
+            },
+        }
+    ]
+}
+
+
+    st_echarts(option, height=400, key="echart_gauge")
+
+with tab4:
+    st.markdown("<h1 style='text-align: center;'>Ogólny przykład schematu kodu tworzącego dashboard</h1>", unsafe_allow_html=True)
+    styled_container = st.container()
+    st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+    with styled_container:
+        st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+        st.markdown(' ')
+        st.markdown(
+    '''
+    <p>
+    Na samym początku zwykle umieszcza się importy niezbędnych bibliotek i wczytuje się plik w postaci ramki danych:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+import streamlit as st
+import numpy as np
+import pandas as pd
+import plotly.express as px
+
+df1 = pd.read_excel('plik.xlsx')
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Następnie można nadać tytuł naszej aplikacji wykorzystując do tego polecenie <code>st.title()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+st.title("Dashboard")
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Kolejnym krokiem może być wczytanie i przekształcenie danych do dalszej analizy oraz zdeifniowanie liczby kolumn, w których umieszczane będą wizualizacje. Wykorzystuje się w tym celu polecenie <code>st.columns()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+col1, col2, col3 = st.columns([2, 2, 2])
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Aby umieścić wybraną wizualizację, np. wcześniej utworzony wykres pod nazwą <code>fig</code> wystarczy użyć struktury:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+with col1:
+    st.plotly_chart(fig)
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    W celu dodania interakcji do aplikacji można utworzyć filtry, które pozwolą użytkownikowi zmieniać opcje w wyświetlanych wizualizacjach. Taki filtr można utworzyć np. wykorzystując funkcję <code>st.selectbox()</code>. W poniższym kodzie wykorzystujemy taki filtr do wybrania danych z konkretnego roku, w celu ich późniejszej wizualizacji.
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+years_available = sorted(df1["Year"].unique())
+selected_year = st.selectbox("Wybierz rok:", years_available, index=years_available.index(2023))
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Innym przykładem ciekawego filtrowania dnaych jest wykorzystanie funkcji <code>st.slider()</code>, tworzącej suwak do wyboru zakresu wartości. Przykładem wykorzystania tej funkcji może być utworzenie suwaka, zawierającego zakres lat, z których pochodzą dane:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+min_rok = df1['Year'].min()
+max_rok = df1['Year'].max()
+zakres_lat = st.slider('Wybierz zakres lat:', min_value=min_rok, max_value=max_rok, value=(min_rok, max_rok))
+'''
+
+        st.code(code, language='python')
+
+
+        st.markdown(
+    '''
+    <p>
+    Aby dodać do dashboardu pewne metryki, należy użyć funkcji <code>st.metric()</code>, np.:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+df_this_year = df1[df1["Year"] == selected_year]
+df_prev_year = df1[df1["Year"] == (selected_year - 1)]
+    
+df_diff = df_this_year.merge(df_prev_year, on="Country", suffixes=("_now", "_prev"))
+df_diff["Population_Change"] = df_diff["Population_now"] - df_diff["Population_prev"]
+df_diff = df_diff.dropna(subset=["Population_now", "Population_prev", "Population_Change"])
+
+top_gain = df_diff.sort_values("Population_Change", ascending=False).iloc[0]
+top_loss = df_diff.sort_values("Population_Change").iloc[0]
+
+st.metric(label=top_gain["Country"],
+          value=f"{top_gain['Population_now'] / 1_000_000:.1f} M",
+          delta=f"{int(top_gain['Population_Change'] / 1_000):,} K")
+
+st.metric(label=top_loss["Country"],
+          value=f"{top_loss['Population_now'] / 1_000_000:.1f} M",
+          delta=f"{int(top_loss['Population_Change'] / 1_000):,} K")
+'''
+
+        st.code(code, language='python')
+
+
+        st.markdown(
+    '''
+    <p>
+    Przydatną funkcją podczas tworzenia dashboardu jest także funkcja <code>st.container()</code>. Pozwala ona tworzyć "kafelki", w których można umieszczać filtry lub wizualizacje. Gdy chcemy np. wyświetlić tabelę w takim kafelku, należy użyć struktury:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+with st.container():
+    st.dataframe(df1)
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Można zmieniać styl tych kafelków tworząc wcześniej odpowiedni kod HTML modyfikujący ich wygląd, który umieszcza się w <code>st.markdown()</code>, może on wyglądać np. tak:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+st.markdown(
+    """
+    <style>
+    div[data-testid="stVerticalBlock"]:has(div#gradient_container_marker):not(:has(div#outer_marker)) {
+        background: linear-gradient(
+            135deg,
+            135deg,
+            rgba(135, 206, 250, 0.4),
+            rgba(123, 104, 238, 0.4)
+        );
+        padding: 24px;
+        transition: all 0.3s ease-in-out;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Aby zastosować wybrany przez nas styl do wybranego kafelka, należy użyć poleceń:
+    </p>
+    ''', unsafe_allow_html=True)
+            
+        code = '''
+styled_container = st.container()
+st.markdown("<div id='outer_marker'></div>", unsafe_allow_html=True)
+
+with styled_container:
+    st.markdown("<div id='gradient_container_marker'></div>", unsafe_allow_html=True)
+    st.dataframe(d1)
+'''
+
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Ciekawą opcją jest też funkcja <code>st.expander()</code>, pozwalająca na wyświetlenie np. tekstu w formie listy rozwijanej. Przykadem wykorzystania tej funkcji może być wyświetlenie źródeł wykorzystywanych w ramach tworzenia dashboardu danych:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+        
+        code = '''
+with st.expander('Żródła danych:', expanded=False):
+    st.markdown('<a href="link" target="_blank">link</a>', unsafe_allow_html=True)
+'''
+        
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Aby dodać graf do dashboardu, podobny do tego na w poprzedniej zakładce, należy użyć poniższych poleceń:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+from pyvis.network import Network
+import tempfile
+import re
+
+data = {
+ "name": "marvel",
+ "img": "http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+ "children": [
+  {
+   "name": "Heroes",
+   "children": [
+    {
+      "hero": "Spider-Man",
+      "name": "Peter Benjamin Parker",
+      "link": "http://marvel.com/characters/54/spider-man",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png",
+      "size": 40000
+    },
+    {
+      "hero": "Hulk",
+      "name": "Robert Bruce Banner",
+      "link": "http://marvel.com/characters/25/hulk",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_hulk.png",
+      "size": 40000
+    },
+    {
+      "hero": "Wolverine",
+      "name": "James Howlett",
+      "link": "http://marvel.com/characters/66/wolverine",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_wolverine.png",
+      "size": 40000
+    }
+  ]
+  },
+  {
+   "name": "Villains",
+   "children": [
+    {
+      "hero": "Dr. Doom",
+      "name": "Victor von Doom",
+      "link": "http://marvel.com/characters/13/dr_doom",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/drdoom.png",
+      "size": 40000
+    },
+    {
+      "hero": "Mystique",
+      "name": "Unrevealed",
+      "link": "http://marvel.com/characters/1552/mystique",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/mystique.png",
+      "size": 40000
+    },
+    {
+      "hero": "Red Skull",
+      "name": "Johann Shmidt",
+      "link": "http://marvel.com/characters/1901/red_skull",
+      "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/redskull.png",
+      "size": 40000
+    },
+   ]
+  },
+  ]
+  }
+
+net = Network(
+        height="700px",
+        width="100%",
+        bgcolor="#111111",      
+        font_color="white",      
+        directed=True)
+        
+net.add_node(
+    "Marvel Universe", 
+    label="Marvel Universe", 
+    shape="circularImage",   
+    image="http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png",
+    size=50, color='red', x=0,
+    y=0,
+    fixed=True
+)
+
+for category in data["children"]:
+    cat_id = category["name"]
+    net.add_node(cat_id, label=cat_id, shape="ellipse", size=40, color='red')
+    net.add_edge("Marvel Universe", cat_id, color='red')
+
+    for hero in category["children"]:
+        hero_id = hero["hero"]
+        net.add_node(
+        hero_id,
+        label=hero_id,
+        title=f"<a href='{hero['link']}' target='_blank'>{hero['name']}</a>",
+        shape="circularImage",
+        image=hero["img"],
+        size=30, color='red'
+        )
+        net.add_edge(cat_id, hero_id, color='red')
+
+with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
+    path = tmp_file.name
+    net.write_html(path)
+
+    with open(path, "r", encoding="utf-8") as f:
+        html = f.read()
+
+st.components.v1.html(html,
+    height=750,
+    scrolling=False
+)
+
+'''
+        
+        st.code(code, language='python')
+
+        st.markdown(
+    '''
+    <p>
+    Pozostałe elementy to <code>Liquid Fill Chart</code> oraz <code>Gauge Chart</code>, które można utworzyć w następujący sposób:
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
+
+        code = '''
+from streamlit_echarts import st_echarts
+    
+labels = ["Heroes", "Villains"]
+raw_data = "100, 70"
+numbers = [int(x.strip()) for x in raw_data.split(',')]
+total = sum(numbers)
+percentages = [n / total for n in numbers]
+rounded_percentages = [round(p * 100) for p in percentages]
+
+color_map = {
+    "Heroes": [
+        "rgba(30, 144, 255, 1)",  
+        "rgba(30, 144, 255, 0.7)",
+        "rgba(30, 144, 255, 0.4)"
+    ],
+    "Villains": [
+        "rgba(220, 20, 60, 1)",   
+        "rgba(220, 20, 60, 0.7)",
+        "rgba(220, 20, 60, 0.4)"
+    ]
+}
+
+cols = st.columns(len(labels))
+
+for i, label in enumerate(labels):
+    pct = percentages[i]
+    color = color_map.get(label)
+    
+    option = {
+        "title": {
+            "text": label,
+            "left": "center",
+            "textStyle": {"fontSize": 16, "color": "#fff"}
+        },
+        "series": [{
+            "type": "liquidFill",
+            "data": [pct, pct * 0.9, pct * 0.8],
+            "radius": "75%",
+            "color": color,
+            "outline": {
+                "borderDistance": 5,
+                "itemStyle": {
+                    "borderColor": color[0],
+                    "borderWidth": 3
+                }
+            },
+            "backgroundStyle": {"color": "#fff"},
+            "label": {
+                "formatter": f"{rounded_percentages[i]}%",
+                "fontSize": 30,
+                "color": "#000"
+            }
+        }]
+    }
+    
+    with cols[i]:
+        st_echarts(option, height=250, key=f"echart_liquid_{i}")
+
+
+gauge_series = []
+
+for i, label in enumerate(labels):
+    pct_value = rounded_percentages[i]
+    color = color_map[label][0]
+
+    series = {
+        "type": "gauge",
+        "startAngle": 90,
+        "endAngle": -270,
+        "radius": f"{90 - i * 12}%",
+        "pointer": {"show": False},
+        "progress": {
+            "show": True,
+            "overlap": False,
+            "roundCap": True,
+            "clip": False,
+            "itemStyle": {
+                "color": color,
+                "borderWidth": 1,
+                "borderColor": "#464646",
+            },
+        },
+        "axisLine": {
+            "lineStyle": {
+                "width": 20,
+                "color": [[1, "#eee"]]
+            }
+        },
+        "splitLine": {"show": False},
+        "axisTick": {"show": False},
+        "axisLabel": {"show": False},
+        "data": [{
+            "value": pct_value,
+            "name": label,
+            "title": {
+                "offsetCenter": ["0%", f"{-30 + i * 50}%"],
+                "fontSize": 16,
+                "color": color
+            },
+            "detail": {
+                "offsetCenter": ["0%", f"{-10 + i * 50}%"],
+                "formatter": "{value}%",
+                "fontSize": 18,
+                "color": color,
+            },
+        }],
+    }
+
+    gauge_series.append(series)
+
+gauge_option = {"series": gauge_series}
+
+st_echarts(gauge_option, height=400, key="gauge_chart")
+'''
+        
+        st.code(code, language='python')
