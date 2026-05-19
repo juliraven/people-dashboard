@@ -90,7 +90,7 @@ with tab1:
     col1, col2, col3 = st.columns([2, 2, 2])
     col = st.columns((2.2, 4.9, 2.8), gap='medium')
 
-    df = pd.read_excel('data\plik.xlsx')
+    df = pd.read_excel('data/plik.xlsx')
 
     df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
     df1["Year"] = df1["Year"].astype(int)
@@ -243,8 +243,8 @@ with tab1:
     def load_data(file_path):
         return pd.read_csv(file_path)
 
-    data_famela = load_data("data\female.csv")
-    data_male = load_data("data\male.csv")
+    data_famela = load_data("data/female.csv")
+    data_male = load_data("data/male.csv")
 
     data = pd.merge(data_famela, data_male, on="Year", suffixes=('_Kobiety', '_Mężczyźni'))
 
@@ -257,8 +257,8 @@ with tab1:
     procent_kobiet = (liczba_kobiet / suma) * 100
     procent_mezczyzn = (liczba_mezczyzn / suma) * 100
 
-    icon_kobieta = 'assets\female.png'
-    icon_mezczyzna = 'assets\male.png'
+    icon_kobieta = 'assets/female.png'
+    icon_mezczyzna = 'assets/male.png'
 
     def image_to_base64(image_path):
         with open(image_path, "rb") as image_file:
@@ -401,7 +401,7 @@ with tab2:
     st.markdown("<h1 style='text-align: center;'>📊 Długość życia i śmiertelność</h1>", unsafe_allow_html=True)
     st.markdown(' ')
 
-    de = pd.read_csv('data\deaths-by-age-group.csv')
+    de = pd.read_csv('data/deaths-by-age-group.csv')
 
     de["Entity"] = de["Entity"].str.replace(" \(UN\)", "", regex=True)
 
@@ -487,7 +487,7 @@ with tab2:
 
         st.plotly_chart(fig, config={"displayModeBar": False})
 
-    df = pd.read_csv('data\men-women-life.txt')
+    df = pd.read_csv('data/men-women-life.txt')
 
     df["Entity"] = df["Entity"].str.replace(" \(UN\)", "", regex=True)
 
