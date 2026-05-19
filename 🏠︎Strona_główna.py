@@ -90,7 +90,7 @@ with tab1:
     col1, col2, col3 = st.columns([2, 2, 2])
     col = st.columns((2.2, 4.9, 2.8), gap='medium')
 
-    df = pd.read_excel('plik.xlsx')
+    df = pd.read_excel('data\plik.xlsx')
 
     df1 = df.melt(id_vars=["Country"], var_name="Year", value_name="Population")
     df1["Year"] = df1["Year"].astype(int)
