@@ -6,12 +6,11 @@ Projekt polegał na stworzeniu interaktywnego dashboardu z użyciem biblioteki `
 ## Link do aplikacji  
 [https://people-dashboard.streamlit.app/](https://people-dashboard.streamlit.app/)
 
-## Użyte technologie
-- Python
-- Streamlit
-- Pandas
-- Plotly
-- Seaborn
+## Użyte biblioteki
+- streamlit
+- pandas
+- plotly
+- seaborn
 
 ## Struktura projektu
 ```text
