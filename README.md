@@ -18,11 +18,10 @@ Aplikacja pozwala na filtrowanie danych, przegląd metryk oraz generowanie wykre
 ```text
 project/
 │
-├── app.py              # główny plik aplikacji Streamlit
-├── data/               # dane źródłowe
-├── utils/              # funkcje pomocnicze
+├── 🏠︎Strona_główna.py  # główny plik aplikacji
+├── data/               # dane 
 ├── assets/             # obrazy i grafiki
-├── requirements.txt    # zależności
+├── requirements.txt    # biblioteki
 └── README.md
 
 ![Dashboard](assets/d1.png)
