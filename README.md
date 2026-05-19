@@ -16,7 +16,7 @@ Aplikacja pozwala na filtrowanie danych, przegląd metryk oraz generowanie wykre
 
 ## Struktura projektu
 ```text
-project/
+people-dashboard/
 │
 ├── 🏠︎Strona_główna.py  # główny plik aplikacji
 ├── data/               # dane 
